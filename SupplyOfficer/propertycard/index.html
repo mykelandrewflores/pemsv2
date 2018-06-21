@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/materialize.min.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/style.css">
+	<title>Property Card</title>
+</head>
+<body class="cloudy">
+	<header>
+		<nav class="white">
+			<a href="#!" class="sidenav-trigger black-text" data-target="slide-out"><i class="fa fa-bars" aria-hidden="true"></i></a>
+		</nav>
+		<ul class="sidenav sidenav-fixed" id="slide-out">
+			<li><div class="user-view">
+				<div class="background green"></div>
+				<a href="#user"><img class="circle" src="image/avatar.jpg"></a>
+				<a href="#name"><span class="white-text name" id="name">Mykel Andrew Flores</span></a>
+				<a href="#email"><span class="white-text email" id="dept">mykelandrww@gmail.com</span></a>
+			</div></li>
+			<li><a class="subheader">Functions</a></li>
+			<li ><a href="../IAR/index.html"><i class="fa fa-file-text-o" aria-hidden="true"></i> IAR</a></li>
+			<li  class="active active-link"><a href="../propertycard/index.html"><i class="fa fa-file-o" aria-hidden="true"></i> Property Mgmt.</a></li>
+			<li><a href="../purchase/purchaselist.html"><i class="fa fa-file" aria-hidden="true"></i> Purchase Management</a></li>
+			<li><a href="../../index.html"><i class="fa fa-power-off" aria-hidden="true"></i> Log-out</a></li>
+		</ul>
+	</header>
+	<main>
+		<div class="container mt-1">
+			<h4 class="deafult-text font-weight-low"><blockquote class="default-text">Property & Equipment Management</blockquote></h4>
+			<p class="deafult-text font-weight-low">LIST OF COMPANY PROPERTY & EQUIPMENTS</p>
+			<div class="row mt-br">
+				<div class="col s12">
+					<ul class="tabs tabs-fixed-width " style="background-color: transparent;">
+						<li class="tab col s4"><a class="active" href="#test1">ALL</a></li>
+						<li class="tab col s4"><a href="#test2">Assigned</a></li>
+						<li class="tab col s4"><a href="#test4">Unassigned<span class="new badge right red" id="newcount">0</span></a></li>
+					</ul>
+					<br>
+				</div> 
+				<div class="col s12">
+					<a class="waves-effect waves-light right green  btn modal-trigger" href="#modal1"><i class="fa fa-plus left"></i>Add Property</a>
+				</div>
+				<div id="test1" class="col s12 mt-br" >
+					<table class="table bordered responsive-table centered">
+						<thead>
+							<th class="font-weight-low">Property No.</th>
+							<th class="font-weight-low">Name</th>
+							<th class="font-weight-low">Department</th>
+							<th class="font-weight-low">Remarks</th>
+							<th class="font-weight-low">History</th>
+							<th class="font-weight-low">Transfer/Disposal</th>
+						</thead>
+						<tbody id="equiptabledata"><tr><td colspan="5">No Data</td></tr></tbody>
+					</table>
+				</div>
+				<div id="test2" class="col s12 mt-br" >
+					<table class="table bordered responsive-table centered">
+						<thead>
+							<th class="font-weight-low">Property No.</th>
+							<th class="font-weight-low">Product ID</th>
+							<th class="font-weight-low">Name</th>
+							<th class="font-weight-low">Department</th>
+							<th class="font-weight-low">History</th>
+						</thead>
+						<tbody id="equiptabledata_assigned"><tr><td colspan="5">No Data</td></tr></tbody>
+					</table>
+				</div>
+				<div id="test4" class="col s12 mt-br" >
+					<table class="table bordered responsive-table centered">
+						<thead>
+							<th class="font-weight-low">Property No.</th>
+							<th class="font-weight-low">Name</th>
+							<th class="font-weight-low">IAR No.</th>
+							<th class="font-weight-low">Action</th>
+						</thead>
+						<tbody id="equiptabledata_unassigned"><tr><td colspan="5">No Data</td></tr></tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div id="modal1" class="modal">
+			<div class="modal-content">
+				<h4 class="deafult-text font-weight-low"><blockquote>Add Property</blockquote></h4>
+				<div class="row mt-br">
+					<div class='input-field col s12' id="prodlcca_select"></div>
+					<div class='input-field col s12' id="deptlcca_select"></div>
+					<div class="input-field col s12">
+						<input id="lccarecqty" type="number" min="0">
+						<label for="lccarecqty">Receipt/Received Qty</label>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="btn red" onclick="AddEquipData()">Add Property</button>
+				<a href="#!" class="modal-close waves-effect waves-black btn-flat">Cancel</a>
+			</div>
+		</div>
+		<div id="modal2" class="modal">
+			<div class="modal-content">
+				<h4 class="deafult-text font-weight-low"><blockquote>Assign Property</blockquote></h4>
+				<div class="row mt-br">
+					<table class="table bordered responsive-table centered">
+						<thead>
+							<th class="font-weight-low">PC No.</th>
+							<th class="font-weight-low">Name</th>
+							<th class="font-weight-low">Dept.</th>
+							<th class="font-weight-low">Receipt Qty.</th>
+						</thead>
+						<tbody id="assign_table"><tr><td colspan="6">No Data</td></tr></tbody>
+					</table>
+					<div class='input-field col s6' id="testing">
+					</div>
+				</div>
+			</div>	
+			<div class="modal-footer">
+				<button class="btn red" onclick="assign_func()">Assign Property</button>
+				<a href="#!" class="modal-close waves-effect waves-black btn-flat">Cancel</a>
+			</div>
+		</div>
+		<div id="modal3" class="modal">
+			<div class="modal-content">
+				<h4 class="deafult-text font-weight-low"><blockquote>Transfer Property</blockquote></h4>
+				<div class="row mt-br">
+					<table class="table bordered responsive-table centered">
+						<thead>
+							<th class="font-weight-low">PC No.</th>
+							<th class="font-weight-low">Name</th>
+							<th class="font-weight-low">Dept.</th>
+							<th class="font-weight-low">Receipt Qty.</th>
+						</thead>
+						<tbody id="transfer_table"><tr><td colspan="6">No Data</td></tr></tbody>
+					</table>
+					<!-- <div class='input-field col s6'>
+						<input id='transfer_qty' type='number' placeholder=' '>
+						<label for='transfer_qty'>Assign Qty</label>
+					</div> -->
+					<div class='input-field col s6' id="testing2">
+
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="btn red" onclick="transfer_func()">Transfer Property</button>
+				<a href="#!" class="modal-close waves-effect waves-black btn-flat">Cancel</a>
+			</div>
+		</div>
+		<div id="modal4" class="modal">
+			<div class="modal-content">
+				<h4 class="deafult-text font-weight-low"><blockquote>Dispose Property</blockquote></h4>
+				<div class="row mt-br">
+					<table class="table bordered responsive-table centered">
+						<thead>
+							<th class="font-weight-low">PC No.</th>
+							<th class="font-weight-low">Name</th>
+							<th class="font-weight-low">Dept.</th>
+							<th class="font-weight-low">Receipt Qty.</th>
+						</thead>
+						<tbody id="disposal_table"><tr><td colspan="6">No Data</td></tr></tbody>
+					</table>
+					<div class='input-field col s6' id="testing3">
+
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="btn red" onclick="disposal_func()">Dispose Property</button>
+				<a href="#!" class="modal-close waves-effect waves-black btn-flat">Cancel</a>
+			</div>
+		</div>
+
+	</main>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/materialize.min.js"></script>
+	<script src="js/init.js"></script>
+	<script src="js/property_data.js"></script>
+	<script>
+		fetch_departments();
+		fetch_departments2();
+		fetch_departments3();
+		fetch_lccaprod();
+		fetch_lccadepartments();
+		equiptable();
+		equiptable_assigned();
+		equiptable_unassigned();
+	</script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+.summary-container{
+	font-family: calibri;
+	width: 90%;
+	margin: 0 auto;
+	border: 2px solid black;
+	text-align: left;
+}
+.summary-container h1 {
+	font-size: 35px;
+}
+.summary-container h2 {
+	font-size: 32px;
+}
+.summary-container h3 {
+	font-size: 29px;
+}
+.summary-container h4 {
+	font-size: 26px;
+}
+.summary-container h5 {
+	font-size: 23px;
+}
+.summary-container h6 {
+	font-size: 20px;
+}
+.summary-header{
+	height: 120px;
+	border-bottom: 2px solid black;
+	text-align: center;
+}
+.summary-header h1, .summary-header h6{
+	margin: 0;
+	margin-top: 5px;
+}
+.summary-header #purchaseAgency{
+	border-bottom: 1px solid black;
+	width: 70%;
+	margin: 0 auto;
+	margin-top: 5px;
+}
+.summary-details {
+	width: 100%;
+	height: 100px;
+	padding: 0 2px;
+	padding-top: 10px;
+}
+.summary-details h3{
+	margin: 0;
+}
+.summary-details .department-details{
+	width: 50%;
+	float: left;
+}
+.summary-details .order-details{
+	width: 30%;
+	float: left;
+}
+.summary-details .date{
+	width: 20%;
+	float: left;
+}
+table {
+	width: 99%;
+	margin: 0 auto;
+}
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 15px;
+    font-size: 20px;
+}
+.summary-purpose {
+	width: 100%;
+	height: 110px;
+	padding: 0 2px;
+	padding-top: 10px;
+}
+.summary-purpose h3{
+	margin: 0;
+}
+.summary-purpose .purpose {
+	text-decoration: underline;
+}
+.summary-by {
+	height: 130px;
+	padding: 0 2px;
+	border-top: 2px solid black;
+	text-align: center;
+}
+.summary-by .signature, .summary-by .requestedBy, .summary-by .approvedBy {
+	width: 33%;
+	float: left;
+	margin: 0;
+}
+.summary-by .person {
+	width: 90%;
+	border-bottom: 1px solid black;
+	margin: 0 auto;
+	font-size: 14px;
+}
+.summary-by .person span{
+	font-size: 20px;
+}

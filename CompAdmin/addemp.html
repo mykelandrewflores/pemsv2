@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/materialize.min.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<title>Company Details</title>
+</head>
+<body>
+	<header>
+		<nav class="primary">
+			<div class="nav-wrapper">
+				<a href="#!" class="brand-logo center">PEMS</a>
+				<a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fa fa-bars" aria-hidden="true"></i></a>
+			</div>
+		</nav>
+		<ul class="sidenav collapsible collapsible-accordion sidenav-fixed" id="mobile-demo">
+			<li><div class="user-view">
+				<div class="background green darken-3">
+
+				</div>
+				<a href="#user"><img class="circle" src="image/avatar.jpg"></a>
+				<a href="#name"><span class="white-text name">Mykel Andrew Flores</span></a>
+				<a href="#email"><span class="white-text email">mykelandrww@gmail.com</span></a>
+			</div></li>
+            <li class="bold"><a href="departments.html" class="collapsible-header">Departments</a></li>                
+			<li class="bold"><a href="index.html" class="collapsible-header">Edit Company Details</a></li>
+            <li class="bold active">
+                <a class="collapsible-header waves-effect waves-teal">Employee Mgmt.</a>
+              <div class="collapsible-body" style="">
+                <ul>
+                  <li class=""><a href="addemp.html">Add Employee</a></li>
+                  <li><a href="emplist.html">Employee List</a></li>
+                </ul>
+              </div>
+            </li>    
+			<li class="bold"><a href="" class="collapsible-header">Logout</a></li>         
+      
+          
+		</ul>
+	</header>
+
+	<main class="ml300">
+		<h4 class="deafult-text pl-05 font-weight-low">Add Employee</h4>
+				<hr>
+		    <center>
+
+      <div class="container">
+      	<br>
+        <div class="z-depth-1 grey lighten-4 row" style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
+
+          <form class="col s12">
+
+            <div class='row'>
+              <div class='input-field col s12 m4 l4'>
+                <input class='validate' type='text' name='emp_fname' id='emp_fname' />
+                <label for='emp_fname'>FirstName</label>
+              </div>
+              <div class='input-field col s12 m4 l4'>
+                <input class='validate' type='text' name='emp_lname' id='emp_lname' />
+                <label for='emp_lname'>LastName</label>
+              </div>
+              <div class='input-field col s12 m4 l4'>
+                <input class='validate' type='text' name='emp_fname' id='emp_mname' />
+                <label for='emp_mname'>MiddleName</label>
+              </div>
+                <div class="input-field col s6">
+				    <select id="emp_role">
+				      <option value="" disabled selected>Choose your option</option>
+				      <option value="Requisition">Requisition</option>
+				      <option value="Supply">Supply</option>
+				    </select>
+				    <label>Role</label>
+				</div>
+                <div class="input-field col s6">
+				    <select id="emp_dept" class="browser-default">
+				      <option value="" disabled selected>Choose your option</option>
+				      <option value="Requisition">Requisition</option>
+				      <option value="Supply">Supply</option>
+				    </select>
+				</div>
+				<div class='input-field col s12'><input class='validate' type='text' name='emp_username' id='emp_username' />
+                <label for='emp_username'>Username</label>
+              </div>
+
+              <div class='input-field col s6'>
+                <input class='validate' type='password' name='emp_pass' id='emp_pass' />
+                <label for='emp_pass'>Password</label>
+              </div>
+                
+                
+              <div class='input-field col s6'>
+                <input class='validate' type='password' name='emp_cpass' id='emp_cpass' />
+                <label for='emp_cpass'>Confirm Password</label>
+              </div>                
+                            
+                
+              
+            </div>
+            <center>
+              <div class='row'>
+                <button type='button' onclick="insertEmployee()" name='btn_login' class='col s12 btn btn-large waves-effect indigo'>Add Employee</button>
+              </div>
+            </center>
+          </form>
+        </div>
+      </div>
+    </center>
+	</main>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/materialize.min.js"></script>
+	<script src="js/init.js"></script>
+	<script src="../js/func.js"></script>
+	<script type="text/javascript">
+
+	</script>
+</body>
+</html>

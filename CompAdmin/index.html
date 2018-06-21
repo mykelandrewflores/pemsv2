@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/materialize.min.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<title>Company Details</title>
+</head>
+<body class="cloudy">
+	<header>
+		<nav class="white">
+			<div class="nav-wrapper">
+				<a href="#!" class="sidenav-trigger black-text" data-target="slide-out"><i class="fa fa-bars" aria-hidden="true"></i></a>
+				<a href="#" class="brand-logo center green-text">Logo</a>
+			</div>
+		</nav>
+		<ul class="sidenav sidenav-fixed" id="slide-out">
+			<li><div class="user-view">
+				<div class="background green"></div>
+				<a href="#user"><img class="circle" src="image/avatar.jpg"></a>
+				<a href="#name"><span class="white-text name">Mykel Andrew Flores</span></a>
+				<a href="#email"><span class="white-text email">mykelandrww@gmail.com</span></a>
+			</div></li>
+			<li><a class="subheader">Functions</a></li>
+			<li class="active active-link"><a href="departments.html" class="collapsible-header"><i class="fa fa-building" aria-hidden="true"></i> Departments</a></li>
+			<li><a href="index.html" class="collapsible-header"><i class="fa fa-building-o" aria-hidden="true"></i> Edit Company Details</a></li>
+			<li><a href="emplist.html" class="collapsible-header"><i class="fa fa-users" aria-hidden="true"></i> Employee Management</a></li>
+			<li onclick="logOut()"><a href="../index.html" class="collapsible-header" onclick="logOut()"><i class="fa fa-power-off" aria-hidden="true"></i> Logout</a></li>
+		</ul>
+	</header>
+	<main class="mt-1">
+		<div class="container">
+			<div class="card">
+				<div style="padding: 30px">
+					<div class="row">
+						<div class="card-header">
+							<h4>Company Details</h4>
+							<div class="divider"></div>
+						</div>
+						<div class="col s12 l4 right-align mt-1">
+							<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/F_icon.svg/2000px-F_icon.svg.png" class="responsive-img" id="comp_logo" width="300px" style="border: 2px #d0c6c6 solid">
+						</div>
+						<div class="col s6 left-align">
+							<h5 id="comp_name" class="center-align">Facebook International Shipping Co.</h5>
+							<div class="divider"></div>
+							<h6 class="pl-05"><span class="font-bold">Company Email: </span><span id="det_em">facebookshppingco@facebook.com</span></h6>
+							<h6 class="pl-05"><span class="font-bold">Address: </span><span id="det_address">12 Fonatine Extension East tapinac olongapo city philippines</span></h6>
+							<h6 class="pl-05"><span class="font-bold">
+							Contact No: </span><span id="det_contact">09297755849</span></h6>
+							<h6 class="pl-05"><span class="font-bold">Fax No: </span><span id="det_faxno">1231231</span></h6>
+							<h6 class="pl-05"><span class="font-bold">Website: </span><span id="det_website">www.ggwphahahaggna.edu.ph</span></h6>
+							<br>
+							<center>
+								<a href="#" class="btn blue darken-4 center-align"><i class="fa fa-cog"></i> Edit Details</a>
+							</center>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/materialize.min.js"></script>
+	<script src="js/init.js"></script>
+	<script src="js/property_data.js"></script>
+	<script src="../js/func.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var id = localStorage.companyID;
+			selectCompany(id)
+		});
+
+	</script>
+</body>
+
+</html>

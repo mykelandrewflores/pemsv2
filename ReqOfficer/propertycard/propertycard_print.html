@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		.summary-container{
+			font-family: calibri;
+			width: 90%;
+			margin: 0 auto;
+			border: 2px solid black;
+			text-align: left;
+		}
+		.summary-container h1 {
+			font-size: 25px;
+		}
+		.summary-container h2 {
+			font-size: 22px;
+		}
+		.summary-container h3 {
+			font-size: 19px;
+		}
+		.summary-container h4 {
+			font-size: 16px;
+		}
+		.summary-container h5 {
+			font-size: 13px;
+		}
+		.summary-container h6 {
+			font-size: 10px;
+		}
+		.summary-header{
+			height: 100px;
+			border-bottom: 2px solid black;
+			text-align: center;
+		}
+		.summary-header h1, .summary-header h6{
+			margin: 0;
+			margin-top: 1px;
+		}
+		.summary-header .propertyAgency{
+			border-bottom: 1px solid black;
+			width: 70%;
+			margin: 0 auto;
+			margin-top: 5px;
+		}
+		.summary-details {
+			width: 100%;
+			height: 80px;
+			padding: 0 2px;
+			padding-top: 10px;
+		}
+		.summary-details h3{
+			margin: 0;
+		}
+		.summary-details .department-details{
+			width: 50%;
+			float: left;
+		}
+		.summary-details .order-details{
+			width: 40%;
+			float: left;
+			/*border-left: 1px solid black;*/
+			padding-left: 10px;
+
+		}
+		.summary-details .indent{
+			padding-left: 20px;
+			font-size: 16px;
+		}
+		.summary-details .date{
+			width: 20%;
+			float: left;
+		}
+		.tablee {
+			width: 100%;
+			margin: 0 auto;
+		}
+		.tablee, th, td {
+		    border: 1px solid black;
+		    border-collapse: collapse;
+		}
+		.tablee th, td {
+		    /*padding: 15px;*/
+		}
+		.summary-purpose {
+			width: 100%;
+			height: 90px;
+			padding: 0 2px;
+			padding-top: 10px;
+		}
+		.summary-purpose h3{
+			margin: 0;	
+		}
+		.summary-purpose .purpose {
+			text-decoration: underline;
+		}
+		.summary-by {
+			height: 90px;
+			padding: 0 2px;
+			border-top: 2px solid black;
+			text-align: center;
+		}
+		.summary-by .signature, .summary-by .requestedBy, .summary-by .approvedBy {
+			width: 33%;
+			float: left;
+			margin: 0;
+		}
+		.summary-by .person {
+			width: 90%;
+			border-bottom: 1px solid black;
+			margin: 0 auto;
+			font-size: 14px;
+		}
+		.summary-by .person span{
+			font-size: 10px;
+		}
+	</style>
+</head>
+<body>
+<div id="mybody">
+	<div class="summary-container">
+		<div class="summary-header">
+			<b><h1>Property Card</h1></b>
+			<h2 id="propertyAgency" class="propertyAgency"></h2>
+			<b><h6>AGENCY</h6></b>
+		</div>
+		<div class="summary-details">
+			<div class="department-details">
+				<h3><b>Property,Plant and Equipment:</b> <br> <span id="propertyName" class="indent"></span></h3>
+				<br>
+				<h3><b>Description:</b> <br> <span id="propertyDesc" class="indent"></span></h3>
+			</div>
+			<div class="order-details">
+				<h3><b>Property Number:</b> <br> <span id="propertyNo" class="indent"></span></h3>
+				<br>
+				<h3>Department: <br> <span class="indent" id="propertyDept"></span></h3>
+			</div>
+		</div>
+		<table class="tablee">
+			<b><tr>
+				<th>Date</th>
+				<th>Reference</th>
+				<th>Receipt Qty.</th>
+				<th>Transfer/Disposal Qty.</th>
+				<th>Transfer/Disposal Office</th>
+			</tr></b>
+			<tbody id="propertyList"></tbody>
+		</table>
+	</div>
+</div>
+</body>
+<script src="../../SupplyOfficer/propertycard/js/jquery.min.js"></script>
+<script src="../../SupplyOfficer/propertycard/js/property_data.js"></script>
+<script type="text/javascript">
+	pcdata_reqofficer();
+</script>
+<script type="text/javascript" src="../../SupplyOfficer/propertycard/js/jspdf.min.js"></script>
+<script type="text/javascript" src="../../SupplyOfficer/propertycard/js/printPdf.js"></script>
+
+</html>

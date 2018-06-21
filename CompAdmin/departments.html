@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/materialize.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <title>Company Details</title>
+</head>
+
+<body>
+    <header>
+        <nav class="primary">
+            <div class="nav-wrapper">
+                <a href="#!" class="brand-logo center">PEMS</a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fa fa-bars" aria-hidden="true"></i></a>
+            </div>
+        </nav>
+        <ul class="sidenav collapsible collapsible-accordion sidenav-fixed" id="mobile-demo">
+            <li>
+                <div class="user-view">
+                    <div class="background green darken-3">
+
+                    </div>
+                    <a href="#user"><img class="circle" src="image/avatar.jpg"></a>
+                    <a href="#name"><span class="white-text name">Mykel Andrew Flores</span></a>
+                    <a href="#email"><span class="white-text email">mykelandrww@gmail.com</span></a>
+                </div>
+            </li>
+            <li class="bold"><a href="departments.html" class="collapsible-header">Departments</a></li>
+            <li class="bold"><a href="index.html" class="collapsible-header">Edit Company Details</a></li>
+            <li class="bold"><a href="emplist.html" class="collapsible-header">Employee Mgmt.</a></li>
+
+            <li class="bold"><a href="" class="collapsible-header">Logout</a></li>
+
+
+        </ul>
+    </header>
+
+    <main class="ml300">
+        <center>
+
+            <div class="row">
+                <br>
+
+                <div class="card col l5" style="margin: 40px;">
+                    <div class="card-header">
+                        <h5>Add Department</h5>
+                    </div>
+                    <div class="divider"></div>
+                    <form>
+
+                        <div class='row'>
+                            <div class='input-field col s12 m4 l12'>
+                                <center>
+                                <input class='validate' type='text' name='emp_fname' style="width: 60%" id='deptName' />
+                                <br>
+                                <label for='emp_fname'>Department Name</label>
+                                </center>
+                            </div>
+                            <div class="col s12 l12 center-align">
+                                <br>
+                                <button type='button' onclick="insertDept()" name='btn_login' class=' btn waves-effect'><i class="fa fa-plus"></i> Add</button>
+                            </div>
+                        </div>
+                        <center>
+                            <div class='row'>
+                            </div>
+                        </center>
+                    </form>
+                </div>
+                <div class="col l6">
+                    <h5>Department List:</h5>
+                    <div>
+                        <br><br>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>Department Name</td>
+                                    <td>Action</td>
+                                </tr>
+                            </thead>
+                            <tbody id="depts">
+                            
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </center>
+    </main>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/materialize.min.js"></script>
+    <script src="js/init.js"></script>
+    <script type="text/javascript">
+        function insertDept(){
+            var companyId = localStorage.companyID;
+            $.post("http://localhost/pems/apis/myapi/insert/tbl_departments/", JSON.stringify([{
+                fst: $("#deptName").val(),
+                sec: companyId
+            }]), function(data){
+                console.log(data);  
+            });
+            setTimeout(displayCompany, 100);
+        }
+        
+        
+        function delDept(val){
+            $.post("http://localhost/pems/apis/myapi/delete/tbl_departments/fldDeptID/"+val, function(data){
+                console.log(data);
+            });
+            
+            setTimeout(displayCompany, 100);
+        }
+        
+        displayCompany();
+        
+        function displayCompany(){
+        $.getJSON("http://localhost/pems/apis/myapi/select/tbl_departments/fldCompanyID/"+localStorage.companyID, function(data){
+            var ls = "";
+                for(let i = 0; i < data.length; i++){
+                    ls +='<tr>';
+                    ls += '<td>' + data[i].fldDepartmentName + '</td><td><button class="btn red" onclick="delDept('+data[i].fldDeptID+')">X</button></td>';     
+                    
+                    ls += '</tr>';
+                } 
+                $("#depts").html(ls);
+            });
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<!-- saved from url=(0071) -->
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Material Design Bootstrap -->
+    <link href="assets/css/mdb.min.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+
+    <link href="assets/css/font-awesome.css" rel="stylesheet">
+    <link href="assets/css/stepper.css" rel="stylesheet">
+</head>
+
+<body class="fixed-sn white-skin" data-gr-c-s-loaded="true">
+
+    <!--Double navigation-->
+    <header>
+        <!-- Sidebar navigation -->
+        <div id="slide-out" class="side-nav fixed" style="transform: translateX(0%);">
+            <ul class="custom-scrollbar">
+                <!-- Logo -->
+                <li>
+
+                    <center>
+                        <img src="assets/img/mdb-transparent.png" class="img-fluid flex-center" style="border-radius: 100%" width="150px">
+                    </center>
+                </li>
+                <!--/. Logo -->
+                <!--Social-->
+
+                <!--/.Search Form-->
+                <!-- Side navigation links -->
+                <li>
+                    <hr>
+                    <ul class="collapsible collapsible-accordion">
+                        <li><a class="collapsible-header waves-effect arrow-r" href="../propertycard/index.html"><i class="fa fa-arrow-left"></i> Back to Website<i class="fa fa-angle-down rotate-icon"></i></a>
+                        </li>                        
+                        <li><a class="collapsible-header waves-effect arrow-r" href="index.html"><i class="fa fa-recycle"></i> New Project<i class="fa fa-angle-down rotate-icon"></i></a>
+                        </li>
+                        <li><a class="collapsible-header waves-effect arrow-r" href="files.html"><i class="fa fa-file"></i> Recent Project<i class="fa fa-angle-down rotate-icon"></i></a>
+                        </li>                              
+                        <li><a class="collapsible-header waves-effect arrow-r" href="settings.html"><i class="fa fa-cogs"></i> Settings<i class="fa fa-angle-down rotate-icon"></i></a>
+                        </li>                            
+                    </ul>
+                </li>
+                <!--/. Side navigation links -->
+            </ul>
+            <div class="sidenav-bg mask-strong"></div>
+        </div>
+        <!--/. Sidebar navigation -->
+        <!-- Navbar -->
+        <nav class="navbar fixed-top navbar-toggleable-md navbar-expand-lg scrolling-navbar double-nav" style="background-color: #30ba40">
+            <!-- SideNav slide-out button -->
+            <div class="float-left">
+                <a href="#" data-activates="slide-out" class="button-collapse white-text"><i class="fa fa-bars"></i></a>
+            </div>
+            <!-- Breadcrumb-->
+            <div class="breadcrumb-dn mr-auto white-text">
+                <p>Life Cycle Cost Analysis</p>
+            </div>
+        </nav>
+        <!-- /.Navbar -->
+    </header>
+    <!--/.Double navigation-->
+
+    <!--Main layout-->
+    <main>
+        <div class="container text-center">
+            <!--Card-->
+            <div class="card wow fadeIn animated card-cascade reverse">
+                    <div class="view gradient-card-header green flex-centermb-4" style="width: 100%;">
+                        <h4><i class="fa fa-folder"></i> Your Projects</h4>
+                    </div>                
+                <div class="row flex-center my-5" id="myFiles">
+                    <!--Card content-->
+                    <div class="col-lg-2 col-md-5 file">
+                        <a href="http://localhost/uploadtest/blob.pdf"><img src="assets/img/file.png"></a>
+                        <small>MyWizard - 12/12/2010</small>
+                    </div>
+
+                    <div class="col-lg-2 col-md-5 file">
+                        <img src="assets/img/file.png">
+                        <small>MyWizard - 12/12/2010</small>                        
+                    </div>                  
+                    <!--/.Card content-->
+                </div>
+            </div>
+            <!--/.Card-->
+
+
+
+        </div>
+
+    </main>
+    <!--/Main layout-->
+
+    <!--Footer-->
+    <br><br><br><br>
+    <script type="text/javascript" src="js/jquery-3.2.0.min.js"></script>
+    <script type="text/javascript" src="js/popper.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+    <script type="text/javascript" src="js/Chart.min.js"></script>
+    <script type="text/javascript" src="js/Chart.bundle.min.js"></script>
+    <script type="text/javascript" src="js/stepper.js"></script>
+    <script type="text/javascript" src="js/jspdf.min.js"></script>
+    <script type="text/javascript" src="js/mainfunc.js"></script>
+    <script type="text/javascript" src="js/user.js"></script>
+    <script>
+        // SideNav Initialization
+        $(".button-collapse").sideNav();
+        $('.mdb-select').material_select();
+        new WOW().init();
+
+    </script>
+    <script>
+        
+        $.getJSON("http://localhost/lifecycleapi/__/select/tbl_files/fldUserID/"+ userId, function(data){
+            let longString = "";
+             for(let i = 0; i < data.length; i++){
+                 longString += '<div class="col-lg-2 col-md-5 file">';
+                 longString += '<a href="http://localhost/lifecycleapi/download.php?file='+data[i].fldFileNumber+'.pdf&user='+ userId +'"><img src="assets/img/file.png"></a>';
+                 longString += '<br><small>File Number <strong>'+ data[i].fldFileNumber +'</strong></small><br>';
+                 longString += '<small>'+ data[i].fldDateCreated +'</small>';
+                 longString += '</div>';
+             }
+            $("#myFiles").html(longString);
+        });
+    </script>
+
+</body>
+
+</html>
