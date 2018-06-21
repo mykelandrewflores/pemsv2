@@ -24,6 +24,7 @@ function equiptable(){
 			for (let i = 0; i < data.length; i++) {
 				longstring += "<tr>";
 				longstring += "<td>"+data[i].fldRecID+"</td>";
+				longstring += "<td>"+data[i].fldBrand+"</td>";
 				longstring += "<td>"+data[i].fldProdName+"</td>";
 				longstring += "<td>"+data[i].fldDept+"</td>";
 				longstring += "<td>"+data[i].fldRemarks+"</td>";
@@ -298,6 +299,48 @@ function assign_func(){
 	let tblname = "tbl_property";
 	let update_action = "update_propertydata";
 
+	let urllog=myurl+"/propertycard/propertyapi/tbl_lccalives_filter/tbl_lccalives/tbl_property/fldProdID/fldPNum/fldAgency/"+localStorage.companyID+"/fldRecID/"+fldRecID;
+	let log_fldRecID = "";
+	let log_fldIarNo = "";
+	let log_fldPNum = "";
+	let log_fldBrand = "";
+	let log_fldAgency = "";
+	let log_fldDept = "";
+	let log_fldDate = "";
+	let log_fldRefNo = "";
+	let log_fldRecQty = "";
+	let log_fldTDQty = "";
+	let log_fldRemarks = "";
+	let log_fldAction = "Transfer";
+	let log_fldFromDept = "";
+	let log_fldToDept = fldDept;
+	let log_tblname = "tbl_property_dispose";
+	$.getJSON(urllog,function(data){
+		for (let i = 0; i < data.length; i++) {
+			log_fldRecID = data[i].fldRecID;
+			log_fldIarNo = data[i].fldIarNo;
+			log_fldPNum = data[i].fldPNum;
+			log_fldBrand = data[i].fldBrand;
+			log_fldAgency = data[i].fldAgency;
+			log_fldDept = data[i].fldDept;
+			log_fldDate = data[i].fldDate;
+			log_fldRefNo = data[i].fldRefNo;
+			log_fldRecQty = data[i].fldRecQty;
+			log_fldTDQty = data[i].fldTDQty;
+			log_fldRemarks = data[i].fldRemarks;
+			log_fldFromDept = data[i].fldDept;
+			log_fldToDept = log_fldToDept;
+		}
+		console.log(log_fldRecID);
+		$.post(myurl+"/propertycard/propertyapi/create",{tblname:log_tblname,log_fldRecID:log_fldRecID,log_fldIarNo:log_fldIarNo,log_fldPNum:log_fldPNum,log_fldBrand:log_fldBrand,log_fldAgency:log_fldAgency,log_fldDept:log_fldDept,log_fldDate:log_fldDate,log_fldRefNo:log_fldRefNo,log_fldRecQty:log_fldRecQty,log_fldTDQty:log_fldTDQty,log_fldRemarks:log_fldRemarks,log_fldAction:log_fldAction,log_fldFromDept:log_fldFromDept,log_fldToDept:log_fldToDept},function(data){
+
+		}).fail(function(){
+			M.toast({html: 'Equipment/Property Transfer log Failed'})
+		});
+	}).fail(function(){
+		window.alert("No Equipment Found");
+	});
+
 	$.post(myurl+"/propertycard/propertyapi/update",{tblname:tblname,update_action:update_action,fldRecID:fldRecID,fldTDQty:fldTDQty,fldRemarks:fldRemarks,fldDept:fldDept},function(data){
 		equiptable();
 		equiptable_assigned();
@@ -321,6 +364,7 @@ function transfer_func(){
 	let log_fldRecID = "";
 	let log_fldIarNo = "";
 	let log_fldPNum = "";
+	let log_fldBrand = "";
 	let log_fldAgency = "";
 	let log_fldDept = "";
 	let log_fldDate = "";
@@ -330,12 +374,14 @@ function transfer_func(){
 	let log_fldRemarks = "";
 	let log_fldAction = "Transfer";
 	let log_fldFromDept = "";
+	let log_fldToDept = fldDept;
 	let log_tblname = "tbl_property_dispose";
 	$.getJSON(urllog,function(data){
 		for (let i = 0; i < data.length; i++) {
 			log_fldRecID = data[i].fldRecID;
 			log_fldIarNo = data[i].fldIarNo;
 			log_fldPNum = data[i].fldPNum;
+			log_fldBrand = data[i].fldBrand;
 			log_fldAgency = data[i].fldAgency;
 			log_fldDept = data[i].fldDept;
 			log_fldDate = data[i].fldDate;
@@ -344,14 +390,16 @@ function transfer_func(){
 			log_fldTDQty = data[i].fldTDQty;
 			log_fldRemarks = data[i].fldRemarks;
 			log_fldFromDept = data[i].fldDept;
-			// console.log(data[i].fldRecID);
+			log_fldToDept = log_fldToDept;
 		}
 		console.log(log_fldRecID);
-		$.post(myurl+"/propertycard/propertyapi/create",{tblname:log_tblname,log_fldRecID:log_fldRecID,log_fldIarNo:log_fldIarNo,log_fldPNum:log_fldPNum,log_fldAgency:log_fldAgency,log_fldDept:log_fldDept,log_fldDate:log_fldDate,log_fldRefNo:log_fldRefNo,log_fldRecQty:log_fldRecQty,log_fldTDQty:log_fldTDQty,log_fldRemarks:log_fldRemarks,log_fldAction:log_fldAction,log_fldFromDept:log_fldFromDept},function(data){
+
+		$.post(myurl+"/propertycard/propertyapi/create",{tblname:log_tblname,log_fldRecID:log_fldRecID,log_fldIarNo:log_fldIarNo,log_fldPNum:log_fldPNum,log_fldBrand:log_fldBrand,log_fldAgency:log_fldAgency,log_fldDept:log_fldDept,log_fldDate:log_fldDate,log_fldRefNo:log_fldRefNo,log_fldRecQty:log_fldRecQty,log_fldTDQty:log_fldTDQty,log_fldRemarks:log_fldRemarks,log_fldAction:log_fldAction,log_fldFromDept:log_fldFromDept,log_fldToDept:log_fldToDept},function(data){
 
 		}).fail(function(){
 			M.toast({html: 'Equipment/Property Transfer log Failed'})
 		});
+
 	}).fail(function(){
 		window.alert("No Equipment Found");
 	});
@@ -384,6 +432,7 @@ function disposal_func(){
 	let log_fldRecID = "";
 	let log_fldIarNo = "";
 	let log_fldPNum = "";
+	let log_fldBrand = "";
 	let log_fldAgency = "";
 	let log_fldDept = "";
 	let log_fldDate = "";
@@ -393,12 +442,14 @@ function disposal_func(){
 	let log_fldRemarks = "";
 	let log_fldAction = "Dispose";
 	let log_fldFromDept = "";
+	let log_fldToDept = fldDept;
 	let log_tblname = "tbl_property_dispose";
 	$.getJSON(urllog,function(data){
 		for (let i = 0; i < data.length; i++) {
 			log_fldRecID = data[i].fldRecID;
 			log_fldIarNo = data[i].fldIarNo;
 			log_fldPNum = data[i].fldPNum;
+			log_fldBrand = data[i].fldBrand;
 			log_fldAgency = data[i].fldAgency;
 			log_fldDept = data[i].fldDept;
 			log_fldDate = data[i].fldDate;
@@ -407,14 +458,16 @@ function disposal_func(){
 			log_fldTDQty = data[i].fldTDQty;
 			log_fldRemarks = data[i].fldRemarks;
 			log_fldFromDept = data[i].fldDept;
-			// console.log(data[i].fldRecID);
+			log_fldToDept = log_fldToDept;
 		}
 		console.log(log_fldRecID);
-		$.post(myurl+"/propertycard/propertyapi/create",{tblname:log_tblname,log_fldRecID:log_fldRecID,log_fldIarNo:log_fldIarNo,log_fldPNum:log_fldPNum,log_fldAgency:log_fldAgency,log_fldDept:log_fldDept,log_fldDate:log_fldDate,log_fldRefNo:log_fldRefNo,log_fldRecQty:log_fldRecQty,log_fldTDQty:log_fldTDQty,log_fldRemarks:log_fldRemarks,log_fldAction:log_fldAction,log_fldFromDept:log_fldFromDept},function(data){
+
+		$.post(myurl+"/propertycard/propertyapi/create",{tblname:log_tblname,log_fldRecID:log_fldRecID,log_fldIarNo:log_fldIarNo,log_fldPNum:log_fldPNum,log_fldBrand:log_fldBrand,log_fldAgency:log_fldAgency,log_fldDept:log_fldDept,log_fldDate:log_fldDate,log_fldRefNo:log_fldRefNo,log_fldRecQty:log_fldRecQty,log_fldTDQty:log_fldTDQty,log_fldRemarks:log_fldRemarks,log_fldAction:log_fldAction,log_fldFromDept:log_fldFromDept,log_fldToDept:log_fldToDept},function(data){
 
 		}).fail(function(){
 			M.toast({html: 'Equipment/Property Transfer log Failed'})
 		});
+		
 	}).fail(function(){
 		window.alert("No Equipment Found");
 	});
@@ -485,11 +538,12 @@ function pcdata_reqofficer(){
 			let sel_pnum  = "";
 			let sel_dept = "";
 			let sel_agncy = "";
+			console.log(data);
 
 			for (let i = 0; i < data.length; i++) {
 			sel_name=data[i].fldProdName;
-			sel_desc=data[i].fldDesc;
-			sel_pnum=data[i].fldProdID;
+			sel_desc=data[i].fldPropertyCategory;
+			sel_pnum=data[i].fldRecID;
 			sel_dept=data[i].fldDept;
 			sel_agncy=data[i].fldAgency;
 
@@ -498,8 +552,7 @@ function pcdata_reqofficer(){
 			longstring += "<td>"+data[i].fldRefNo+"</td>";
 			longstring += "<td>"+data[i].fldRecQty+"</td>";
 			longstring += "<td>"+data[i].fldTDQty+"</td>";
-			longstring += "<td>"+data[i].fldOffice+"</td>";
-			longstring += "<td>"+data[i].fldBalQty+"</td>";
+			longstring += "<td>"+data[i].fldDept+"</td>";
 			longstring += "</tr>";
 			}
 			document.getElementById("propertyName").innerHTML=sel_name;
@@ -508,6 +561,7 @@ function pcdata_reqofficer(){
 			document.getElementById("propertyDept").innerHTML=sel_dept;
 			document.getElementById("propertyAgency").innerHTML=sel_agncy;
 			$("#propertyList").html(longstring);
+
 
 		}).fail(function(){
 			window.alert("No data Found");
