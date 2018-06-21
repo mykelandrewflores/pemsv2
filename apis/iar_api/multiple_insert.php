@@ -7,7 +7,7 @@ $sql = "";
 $inserting = "";
 foreach ($data as $key => $value) {
 	for($i=0; $i<$data[$key]->Recieve_qty; $i++) {
-		$sql .= "INSERT INTO tbl_property(fldIarNo, fldPNum, fldAgency, fldDept,fldRefNo,fldRecQty,fldTDQty, fldRemarks) VALUES ('".$data[$key]->IAR."', '".$data[$key]->prodName."', '".$data[$key]->company_id."', '".$data[$key]->dept."', '".$data[$key]->invoice_no."', '1', '0', 'Unassigned');";
+		$sql .= "INSERT INTO tbl_property(fldIarNo, fldPNum, fldBrand, fldAgency, fldDept,fldRefNo,fldRecQty,fldTDQty, fldRemarks) VALUES ('".$data[$key]->IAR."', '".$data[$key]->prodName."', '".$data[$key]->brandName."','".$data[$key]->company_id."', '".$data[$key]->dept."', '".$data[$key]->invoice_no."', '1', '0', 'Unassigned');";
 		$sql .= "INSERT INTO tbl_inspection_list(fldProdID,fldProdName,fldRecieve,fldIarNo) VALUES('".$data[$key]->prodName."','".$data[$key]->prodName."','1','".$data[$key]->IAR."');";
 	}
 }

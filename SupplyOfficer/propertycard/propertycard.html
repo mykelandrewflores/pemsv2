@@ -1,160 +1,168 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="../../css/materialize.min.css">
-  <link rel="stylesheet" href="../../css/font-awesome.min.css">
-  <link rel="stylesheet" href="../../css/style.css">
-  <title>Property Card</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../css/materialize.min.css">
+    <link rel="stylesheet" href="../../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Property Card</title>
 </head>
+
 <body class="cloudy">
-  <header>
-    <nav class="white">
-      <a href="#!" class="sidenav-trigger black-text" data-target="slide-out"><i class="fa fa-bars" aria-hidden="true"></i></a>
-    </nav>
-    <ul class="sidenav sidenav-fixed" id="slide-out">
-      <li><div class="user-view">
-        <div class="background green"></div>
-        <a href="#user"><img class="circle" src="image/avatar.jpg"></a>
-        <a href="#name"><span class="white-text name" id="name">Mykel Andrew Flores</span></a>
-        <a href="#email"><span class="white-text email" id="dept">mykelandrww@gmail.com</span></a>
-      </div></li>
-      <li><a class="subheader">Functions</a></li>
-      <li ><a href="../IAR/index.html"><i class="fa fa-file-text-o" aria-hidden="true"></i> IAR</a></li>
-      <li  class="active active-link"><a href="../propertycard/index.html"><i class="fa fa-file-o" aria-hidden="true"></i> Property Card</a></li>
-      <li><a class="subheader">Purchase</a></li>
-      <li><a href="../purchase/purchaselist.html"><i class="fa fa-file" aria-hidden="true"></i> Purchase List</a></li>
-      <li><a href="../purchaseorder/index.html"><i class="fa fa-file-text" aria-hidden="true"></i> Purchase Order</a></li>
-      <li><a href="../../index.html"><i class="fa fa-power-off" aria-hidden="true"></i> Log-out</a></li>
-    </ul>
-  </header>
+    <header>
+        <nav class="white">
+            <a href="#!" class="sidenav-trigger black-text" data-target="slide-out"><i class="fa fa-bars" aria-hidden="true"></i></a>
+        </nav>
+        <ul class="sidenav sidenav-fixed" id="slide-out">
+            <li>
+                <div class="user-view">
+                    <div class="background green"></div>
+                    <a href="#user"><img class="circle" src="image/avatar.jpg"></a>
+                    <a href="#name"><span class="white-text name" id="name">Mykel Andrew Flores</span></a>
+                    <a href="#email"><span class="white-text email" id="dept">mykelandrww@gmail.com</span></a>
+                </div>
+            </li>
+            <li><a class="subheader">Functions</a></li>
+            <li><a href="#!"><i class="fa fa-file-text-o" aria-hidden="true"></i> Inspection and Acceptance</a></li>
+            <li class="active active-link"><a href="../propertycard/index.html"><i class="fa fa-file-o" aria-hidden="true"></i> Property Mgmt.</a></li>
+            <li><a href="../purchase/purchaselist.html"><i class="fa fa-file" aria-hidden="true"></i> Purchase Mgmt.</a></li>
+            <li><a href="../../index.html"><i class="fa fa-power-off" aria-hidden="true"></i> Log-out</a></li>
+        </ul>
+    </header>
     <div id="modal1" class="modal">
-      <div class="modal-content">
-      <h4 class="deafult-text font-weight-low">Add Property Data</h4>
-          <div class="row">
-            <div class="input-field col s12">
-                <input  id="pc_agency" type="text" class="validate">
-                <label for="pc_agency">Agency Name</label>
+        <div class="modal-content">
+            <h4 class="deafult-text font-weight-low">Add Property Data</h4>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="pc_agency" type="text" class="validate">
+                    <label for="pc_agency">Agency Name</label>
+                </div>
+                <div class="input-field col s12">
+                    <input id="pc_dept" type="text" class="validate">
+                    <label for="pc_dept">Department</label>
+                </div>
+                <div class="input-field col s12">
+                    <input id="pc_date" type="text" class="validate">
+                    <label for="pc_date">Date</label>
+                </div>
+                <div class="input-field col s12">
+                    <input id="pc_refno" type="text" class="validate">
+                    <label for="pc_refno">Reference No.</label>
+                </div>
+                <div class="input-field col s12">
+                    <input id="pc_rcptqty" type="text" class="validate">
+                    <label for="pc_rcptqty">Receipt Qty.</label>
+                </div>
+                <div class="input-field col s12">
+                    <input id="pc_tdqty" type="text" class="validate">
+                    <label for="pc_tdqty">Transfer/Disposal Qty.</label>
+                </div>
+                <div class="input-field col s12">
+                    <input id="pc_office" type="text" class="validate">
+                    <label for="pc_office">Office</label>
+                </div>
+                <div class="input-field col s12">
+                    <input id="pc_balqty" type="text" class="validate">
+                    <label for="pc_balqty">Balance Qty.</label>
+                </div>
             </div>
-            <div class="input-field col s12">
-                <input id="pc_dept" type="text" class="validate">
-                <label for="pc_dept">Department</label>
-            </div>
-            <div class="input-field col s12">
-                <input id="pc_date" type="text" class="validate">
-                <label for="pc_date">Date</label>
-            </div>
-            <div class="input-field col s12">
-                <input id="pc_refno" type="text" class="validate">
-                <label for="pc_refno">Reference No.</label>
-            </div>
-            <div class="input-field col s12">
-                <input id="pc_rcptqty" type="text" class="validate">
-                <label for="pc_rcptqty">Receipt Qty.</label>
-            </div>
-            <div class="input-field col s12">
-                <input id="pc_tdqty" type="text" class="validate">
-                <label for="pc_tdqty">Transfer/Disposal Qty.</label>
-            </div>
-            <div class="input-field col s12">
-                <input id="pc_office" type="text" class="validate">
-                <label for="pc_office">Office</label>
-            </div>
-            <div class="input-field col s12">
-                <input id="pc_balqty" type="text" class="validate">
-                <label for="pc_balqty">Balance Qty.</label>
-            </div>
-          </div>
-      </div>
-      <div class="modal-footer">
-        <button class="btn blue darken-3" onclick="AddPropData()">Add Property Data</button>
-          <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
-      </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn blue darken-3" onclick="AddPropData()">Add Property Data</button>
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+        </div>
     </div>
 
-      <div id="modal2" class="modal">
-      <div class="modal-content">
-      <h4 class="deafult-text font-weight-low">Transfer Property</h4>
-          <div class="row">
-            <div class="input-field col s12">
-                <input  id="pc_agency" type="text" class="validate">
-                <label for="pc_agency">Agency Name</label>
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <h4 class="deafult-text font-weight-low">Transfer Property</h4>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="pc_agency" type="text" class="validate">
+                    <label for="pc_agency">Agency Name</label>
+                </div>
+                <div class="input-field col s12">
+                    <input id="pc_dept" type="text" class="validate">
+                    <label for="pc_dept">Department</label>
+                </div>
+                <div class="input-field col s12">
+                    <input id="pc_date" type="text" class="validate">
+                    <label for="pc_date">Date</label>
+                </div>
+                <div class="input-field col s12">
+                    <input id="pc_refno" type="text" class="validate">
+                    <label for="pc_refno">Reference No.</label>
+                </div>
+                <div class="input-field col s12">
+                    <input id="pc_rcptqty" type="text" class="validate">
+                    <label for="pc_rcptqty">Receipt Qty.</label>
+                </div>
+                <div class="input-field col s12">
+                    <input id="pc_tdqty" type="text" class="validate">
+                    <label for="pc_tdqty">Transfer/Disposal Qty.</label>
+                </div>
+                <div class="input-field col s12">
+                    <input id="pc_office" type="text" class="validate">
+                    <label for="pc_office">Office</label>
+                </div>
+                <div class="input-field col s12">
+                    <input id="pc_balqty" type="text" class="validate">
+                    <label for="pc_balqty">Balance Qty.</label>
+                </div>
             </div>
-            <div class="input-field col s12">
-                <input id="pc_dept" type="text" class="validate" >
-                <label for="pc_dept">Department</label>
-            </div>
-            <div class="input-field col s12">
-                <input id="pc_date" type="text" class="validate">
-                <label for="pc_date">Date</label>
-            </div>
-            <div class="input-field col s12">
-                <input id="pc_refno" type="text" class="validate">
-                <label for="pc_refno">Reference No.</label>
-            </div>
-            <div class="input-field col s12">
-                <input id="pc_rcptqty" type="text" class="validate">
-                <label for="pc_rcptqty">Receipt Qty.</label>
-            </div>
-            <div class="input-field col s12">
-                <input id="pc_tdqty" type="text" class="validate">
-                <label for="pc_tdqty">Transfer/Disposal Qty.</label>
-            </div>
-            <div class="input-field col s12">
-                <input id="pc_office" type="text" class="validate">
-                <label for="pc_office">Office</label>
-            </div>
-            <div class="input-field col s12">
-                <input id="pc_balqty" type="text" class="validate">
-                <label for="pc_balqty">Balance Qty.</label>
-            </div>
-          </div>
-      </div>
-      <div class="modal-footer">
-        <button class="btn blue darken-3" onclick="AddPropData()">Add Property Data</button>
-          <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
-      </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn blue darken-3" onclick="AddPropData()">Add Property Data</button>
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+        </div>
     </div>
     <main>
-    <div class="container mt-1">
-      <span class="deafult-text font-weight-low">
+        <div class="container mt-1">
+            <span class="deafult-text font-weight-low">
         <blockquote class="default-text"><h4>Property  
           <span id="sel_name"></span></h4>
-          <h5>IAR No. <span id="sel_iarno">00000</span><br><span>Property No. <span id="sel_recid">000</span></span></>
-        </blockquote>
-      </span>
-      <a class="waves-effect waves-light right green btn modal-trigger" href="propertycard_print.html"><i class="fa fa-print left"></i>Print Preview</a>
-      <br><br>
-      <a class="waves-effect waves-light right green btn modal-trigger" href="#modal1"><i class="fa fa-plus left"></i>Add Data</a><!-- 
+            <h5>IAR No. <span id="sel_iarno">00000</span><br><span>Property No. <span id="sel_recid">000</span></span>
+                </>
+                </blockquote>
+                </span>
+                <a class="waves-effect waves-light right green btn modal-trigger" href="propertycard_print.html"><i class="fa fa-print left"></i>Print Preview</a>
+                <br><br>
+                <a class="waves-effect waves-light right green btn modal-trigger" href="#modal1"><i class="fa fa-plus left"></i>Add Data</a>
+                <!-- 
       <br><br>
       <a class="waves-effect waves-light right blue darken-3 btn modal-trigger" href="#modal2"><i class="fa fa-plus left"></i>Transfer Property</a> -->
-      <br>
-      <br>
-      <div class="divider"></div>
-      <div class="row">
-        <div class="col s12">
-          <table class="responsive-table">
-            <thead>
-              <th class="font-weight-low">Date</th>
-              <th class="font-weight-low">Ref No.</th>
-              <th class="font-weight-low">Receipt Qty</th>
-              <th class="font-weight-low">Transfer/Disposal Qty</th>
-              <th class="font-weight-low">Department</th>
-              <th class="font-weight-low">Remarks</th>
-              <th class="font-weight-low">Action</th>
-            </thead>
+                <br>
+                <br>
+                <div class="divider"></div>
+                <div class="row">
+                    <div class="col s12">
+                        <table class="responsive-table">
+                            <thead>
+                                <th class="font-weight-low">Date</th>
+                                <th class="font-weight-low">Ref No.</th>
+                                <th class="font-weight-low">Receipt Qty</th>
+                                <th class="font-weight-low">Transfer/Disposal Qty</th>
+                                <th class="font-weight-low">Department</th>
+                                <th class="font-weight-low">Remarks</th>
+                                <th class="font-weight-low">Action</th>
+                            </thead>
 
-            <tbody id="proptabledata"></tbody>
-          </table>
+                            <tbody id="proptabledata"></tbody>
+                        </table>
+                    </div>
+                </div>
         </div>
-      </div>
-    </div>
-  </main>
-  <script src="js/jquery.min.js"></script>
-  <script src="js/materialize.min.js"></script>
-  <script src="js/init.js"></script>
-  <script src="js/property_data.js"></script>
-  <script>proptable();</script>
+    </main>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/materialize.min.js"></script>
+    <script src="js/init.js"></script>
+    <script src="js/property_data.js"></script>
+    <script>
+        proptable();
+
+    </script>
 </body>
+
 </html>
