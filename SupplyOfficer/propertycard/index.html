@@ -3,9 +3,9 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<link rel="stylesheet" href="../../css/materialize.min.css">
-	<link rel="stylesheet" href="../../css/font-awesome.min.css">
-	<link rel="stylesheet" href="../../css/style.css">
+	<link rel="stylesheet" href="css/materialize.min.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/style.css">
 	<title>Property Card</title>
 </head>
 <body class="cloudy">
@@ -23,7 +23,9 @@
 			<li><a class="subheader">Functions</a></li>
 			<li ><a href="../IAR/index.html"><i class="fa fa-file-text-o" aria-hidden="true"></i> IAR</a></li>
 			<li  class="active active-link"><a href="../propertycard/index.html"><i class="fa fa-file-o" aria-hidden="true"></i> Property Mgmt.</a></li>
-			<li><a href="../purchase/purchaselist.html"><i class="fa fa-file" aria-hidden="true"></i> Purchase Management</a></li>
+			<li><a class="subheader">Purchase</a></li>
+			<li><a href="../purchase/purchaselist.html"><i class="fa fa-file" aria-hidden="true"></i> Purchase List</a></li>
+			<li><a href="../purchaseorder/index.html"><i class="fa fa-file-text" aria-hidden="true"></i> Purchase Order</a></li>
 			<li><a href="../../index.html"><i class="fa fa-power-off" aria-hidden="true"></i> Log-out</a></li>
 		</ul>
 	</header>
@@ -48,6 +50,7 @@
 						<thead>
 							<th class="font-weight-low">Property No.</th>
 							<th class="font-weight-low">Name</th>
+							<th class="font-weight-low">Category</th>
 							<th class="font-weight-low">Department</th>
 							<th class="font-weight-low">Remarks</th>
 							<th class="font-weight-low">History</th>
@@ -85,8 +88,12 @@
 			<div class="modal-content">
 				<h4 class="deafult-text font-weight-low"><blockquote>Add Property</blockquote></h4>
 				<div class="row mt-br">
-					<div class='input-field col s12' id="prodlcca_select"></div>
-					<div class='input-field col s12' id="deptlcca_select"></div>
+					<div class='input-field col s12' id="prodlcca_select">
+
+					</div>
+					<div class='input-field col s12' id="deptlcca_select">
+
+					</div>
 					<div class="input-field col s12">
 						<input id="lccarecqty" type="number" min="0">
 						<label for="lccarecqty">Receipt/Received Qty</label>
@@ -111,7 +118,12 @@
 						</thead>
 						<tbody id="assign_table"><tr><td colspan="6">No Data</td></tr></tbody>
 					</table>
+<!-- 					<div class='input-field col s6'>
+						<input id='assign_qty' type='number' placeholder=' '>
+						<label for='assign_qty'>Assign Qty</label>
+					</div> -->
 					<div class='input-field col s6' id="testing">
+
 					</div>
 				</div>
 			</div>	
@@ -160,6 +172,10 @@
 						</thead>
 						<tbody id="disposal_table"><tr><td colspan="6">No Data</td></tr></tbody>
 					</table>
+					<!-- <div class='input-field col s6'>
+						<input id='disposal_qty' type='number' placeholder=' '>
+						<label for='disposal_qty'>Assign Qty</label>
+					</div> -->
 					<div class='input-field col s6' id="testing3">
 
 					</div>
