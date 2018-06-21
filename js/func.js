@@ -138,7 +138,7 @@ function selectCompanyEmply(val) {
             ls += "<td>" + data[i].fldFname + " " + data[i].fldLname + "</td>";
             ls += "<td>" + data[i].fldRole + "</td>";
             ls += "<td>" + data[i].fldDepartment + "</td>";
-            ls += '<td><button class="btn red">Edit</button><button class="btn indigo">Delete</button></td>';
+            ls += '<td><button class="btn red modal-trigger" href="#editmodal" onclick="editmodal_data('+data[i].fldUserID+')">Edit</button><button class="btn indigo">Delete</button></td>';
             ls += "</tr>";
         }
 
@@ -167,3 +167,60 @@ function logOut() {
     localStorage.userID = "";
     window.location.assign("../index.html");
 }
+
+//EDIT DELETE EMPLOYEE --START--
+
+function update_func(){
+    let fldUserID = document.getElementById("editemp_userid").value;
+    let fldUsername = document.getElementById("editemp_username").value;
+    let fldFname = document.getElementById("editemp_fname").value;
+    let fldLname = document.getElementById("editemp_lname").value;
+    let fldMname = document.getElementById("editemp_mname").value;
+    let fldRole = document.getElementById("editemp_role").value;
+    let fldDepartment = document.getElementById("editemp_dept").value;
+    let tblname = "tbl_user";
+    let update_action = "update_employee";
+
+
+    $.post(myurl+"/propertycard/propertyapi/update",{
+        tblname:tblname,
+        fldUserID:fldUserID,
+        fldUsername:fldUsername,
+        fldFname:fldFname,
+        fldLname:fldLname,
+        fldMname:fldMname,
+        fldRole:fldRole,
+        fldDepartment:fldDepartment,
+        update_action:update_action
+    },function(data){
+        selectCompanyEmply(localStorage.companyID);
+        M.toast({html: 'Employee Details Updated'});
+        $('.modal').modal('close');
+    }).fail(function(){
+        M.toast({html: 'Employee Details Update Failed'})
+    });
+}
+
+function editmodal_data(val){
+
+    $(function(){
+
+        url=myurl+"/propertycard/propertyapi/tbl_user/fldCompanyID/"+localStorage.companyID+"/fldUserID/"+val;
+        
+        $.getJSON(url,function(data){
+            for (let i = 0; i < data.length; i++) {
+                document.getElementById("editemp_userid").value = data[i].fldUserID;
+                document.getElementById("editemp_username").value = data[i].fldUsername;
+                document.getElementById("editemp_fname").value = data[i].fldFname;
+                document.getElementById("editemp_lname").value = data[i].fldLname;
+                document.getElementById("editemp_mname").value = data[i].fldMname;
+            }
+        }).fail(function(){
+            window.alert("No DATA Found");
+        });
+        
+    });
+}
+
+//EDIT DELETE EMPLOYEE --END--
+

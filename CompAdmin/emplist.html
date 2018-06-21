@@ -39,11 +39,54 @@
 
         </ul>
     </header>
+    <div id="editmodal" class="modal">
+      <div class="modal-content">
+      <h4 class="deafult-text font-weight-low">Edit Employees</h4>
+          <div class="row">
+            <div class="input-field col s12">
+                <input  id="editemp_userid" type="text" hidden class="validate">
+            </div>
+            <div class="input-field col s12">
+                <input  id="editemp_username" type="text" class="validate">
+                <label for="editemp_username">Username</label>
+            </div>
+            <div class="input-field col s4">
+                <input id="editemp_fname" type="text" class="validate">
+                <label for="editemp_fname">Firstname</label>
+            </div>
+            <div class="input-field col s4">
+                <input id="editemp_lname" type="text" class="validate">
+                <label for="editemp_lname">Lastname</label>
+            </div>
+            <div class="input-field col s4">
+                <input id="editemp_mname" type="text" class="validate">
+                <label for="editemp_mname">Middlename</label>
+            </div>
+            <div class="input-field col l6 s12">
+                <select id="editemp_role">
+                    <option value="" disabled selected>Choose your option</option>
+                    <option value="Requisition">Requisition</option>
+                    <option value="Supply">Supply</option>
+                </select>
+                <label>Role</label>
+            </div>
+            <div class="input-field col l6 s12">
+                <select id="editemp_dept" class="browser-default">
+                    <option value="" disabled selected>Choose your Department</option>
+                </select>
+            </div>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn blue darken-3" onclick="update_func()">Update Employee</button>
+          <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+      </div>
+    </div>
 
     <main class="ml300">
         <div class="row">
 
-            <div class="card col l6">
+            <div class="card col l6 offset-l1">
                 <div class="card-header">
                     <h4><i class="fa fa-plus-circle"></i> Add Employees</h4>
                 </div>
@@ -102,7 +145,7 @@
 
 
 
-            <div class="col l6">
+            <div class="col l5  ">
 
                 <div class="card-head">
                     <h4><i class="fa fa-users"></i> Employees</h4>
@@ -124,7 +167,7 @@
                             <td>Singhjagjit87@gmail.com</td>
                             <td>Supply Officet</td>
                             <td>Facebook shipping co.</td>
-                            <td><button class="btn red">Edit</button> <button class="btn indigo">Delete</button></td>
+                            <td><a class="btn red modal-trigger" href="#modal1" >Edit</a> <button class="btn indigo">Delete</button></td>
                         </tr>
                     </tbody>
                 </table>
@@ -140,7 +183,6 @@
     <script src="../js/func.js"></script>
     <script type="text/javascript">
         selectCompanyEmply(localStorage.companyID);
-
         var companyId = localStorage.companyID;
         $.getJSON("http://localhost/latestPems/apis/myapi/select/tbl_departments/fldCompanyID/" + companyId, function(data) {
             var ls = "";
@@ -150,6 +192,7 @@
                     ls += '<option name="' + data[i].fldDepartmentName + '">' + data[i].fldDepartmentName + '</option>'
                 }
                 $("#emp_dept").html(ls);
+                $("#editemp_dept").html(ls);
             }
         });
 

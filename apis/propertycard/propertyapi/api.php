@@ -15,6 +15,8 @@ switch($_SERVER['REQUEST_METHOD']){
 		$db->select('*')->from($res[0]);
 	}elseif(count($res)==3){
 		$db->select('*')->from($res[0])->where($res[1], $res[2]);
+	}elseif(count($res)==5){
+		$db->select('*')->from($res[0])->where($res[1], $res[2])->clause('AND')->whereand($res[3],$res[4]);
 	}elseif ($res[0]=='whereandbetween') {
 		$db->select('*')->from($res[1])->where($res[2],$res[3])->clause('AND')->between($res[4],$res[5],$res[6]);	
 	}elseif ($res[0]=='between') {
