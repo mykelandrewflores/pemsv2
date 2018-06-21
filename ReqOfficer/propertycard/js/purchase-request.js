@@ -25,7 +25,10 @@ function setData() {
 
 function addDataSet() {
     var curdate_request = $('#curdate_request').val();
+    
     var unit = $('#unit').val();
+    var bname = $('#bname').val();
+    
     var equipement_select = $('#equipement_select').val();
     var equipment_name = $('#equipement_select option:selected').text();
     var qty = $('#qty').val();
@@ -62,6 +65,7 @@ function addDataSet() {
         'equipment': equipement_select,
         'equipment_name': equipment_name,
         'qty': qty,
+        'bname': bname,
         'cost': cost,
         'total_cost': total
     });
@@ -79,7 +83,7 @@ function getEquipCateg() {
     $.getJSON(myurl+"/purchase_api/select.php?lcca_livesdis", function (data) {
 
         var body = ''
-        body += '<select onchange="fetchEquipments(this.value)"> <option value="" disabled selected>Choose your option</option>';
+        body += '<select onchange="fetchEquipments(this.value)"> <option value="" disabled selected>Item Category</option>';
         for (var i = 0; i < data.length; i++) {
             body += '<option value="' + data[i].fldPropertyCategory + '">' + data[i].fldPropertyCategory + '</option>';
         }
@@ -96,7 +100,7 @@ function fetchEquipments(val) {
         dataType: 'JSON',
         success: function (data) {
             var body = ''
-            body += '<select id="equipement_select" class="browser-default"> <option value="" disabled selected>Choose your option</option>';
+            body += '<select id="equipement_select" class="browser-default"> <option value="" disabled selected>Item Type</option>';
             for (var i = 0; i < data.length; i++) {
                 body += '<option value="' + data[i].fldProdID + '">' + data[i].fldProdName + '</option>';
             }
@@ -150,9 +154,6 @@ $(document).ready(function () {
             });
             return false;
         }
-
-        $("#depts").val(localStorage.userDept);
-
         $.ajax({
             url: myurl+'/purchase_api/insert.php',
             method: 'POST',
@@ -181,7 +182,7 @@ $(document).ready(function () {
         form_data.append('file', $('input#myFile')[0].files[0]);
 
         $.ajax({
-            url: myurl+'/lccafiles/upload.php?tno=' + $("#curdate_request").val()+ '&uid=' + localStorage.userID,
+            url: myurl+'/lccafiles/upload.php?tno=' + $("#curdate_request").val()+'&uid=' + localStorage.userID,
             method: 'POST',
             contentType: false,
             processData: false,
@@ -190,7 +191,7 @@ $(document).ready(function () {
                 console.log(data);
             }
         });
-        /*
-        window.location.assign("purchase-list.html");*/
+        
+        window.location.assign("purchase-list.html");
     })
 });

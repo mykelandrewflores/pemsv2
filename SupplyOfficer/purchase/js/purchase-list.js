@@ -82,6 +82,7 @@
                         longString += '<td id="mUnit' + (i + 1) + '">' + data[i].fldUnit + '</td>';
                         longString += '<td style="display:none" id="mitemNo' + (i + 1) + '">' + data[i].fldPNum + '</td>';
                         longString += '<td>' + getPurchaseData(data[i].fldPNum).fldProdName + '</td>';
+                        longString += '<td>' + data[i].fldBrand + '</td>';                        
                         longString += '<td><input type="text" value="' + data[i].fldQty + '" style="width: 30px; text-align:center" id="mQty' + (i + 1) + '"></td>';
                         longString += '<td id="mUnitCost' + (i + 1) + '">' + data[i].fldUnitCost + '</td>';
                         longString += '<td id="mTotalCost' + (i + 1) + '">' + data[i].fldTotalCost + '</td>';
@@ -116,6 +117,7 @@
                         longString += '<td id="Unit' + (i + 1) + '">' + data[i].fldUnit + '</td>';
                         longString += '<td style="display:none" id="itemNo' + (i + 1) + '">' + data[i].fldPNum + '</td>';
                         longString += '<td>' + getPurchaseData(data[i].fldPNum).fldProdName + '</td>';
+                        longString += '<td>' + data[i].fldBrand + '</td>';
                         longString += '<td>' + (i + 1) + '</td>';
                         longString += '<td id="UnitCost' + (i + 1) + '">' + data[i].fldUnitCost + '</td>';
                         longString += '<td id="TotalCost' + (i + 1) + '">' + data[i].fldTotalCost + '</td>';

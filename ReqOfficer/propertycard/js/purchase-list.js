@@ -58,6 +58,7 @@ function getReqEquipment(pr_no) {
 
                     body += '<tr>';
                     body += '<td>' + getData(data[i].fldPNum).fldProdName + '</td>';
+                    body += '<td>' + data[i].fldBrand + '</td>';                    
                     body += '<td>' + data[i].fldUnit + '</td>';
                     body += '<td>' + data[i].fldQty + '</td>';
                     body += '<td>' + data[i].fldUnitCost + '</td>';
@@ -82,7 +83,8 @@ function getReqEquipment(pr_no) {
                 if (data[i].fldRemarks != "Pending") {
                     $("#fldAccept").css("display", "block");
                     body += '<tr>';
-                    body += '<td>' + data[i].fldPNum + '</td>';                    
+                    body += '<td>' + getData(data[i].fldPNum).fldProdName + '</td>'; 
+                    body += '<td>' + data[i].fldBrand + '</td>';                    
                     body += '<td>' + data[i].fldUnit + '</td>';
                     body += '<td>' + data[i].fldQty + '</td>';
                     body += '<td>' + parseInt(data[i].fldUnitCost).toLocaleString(undefined,  { minimumFractionDigits: 2 }  ) + '</td>';
