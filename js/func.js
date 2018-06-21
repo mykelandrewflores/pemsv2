@@ -151,13 +151,14 @@ function selectCompany(val) {
     var bd = "";
     $.getJSON("http://localhost/pems/apis/myapi/select/tbl_companies/fldCompanyID/" + val, function (data) {
         $("#comp_name").html(data[0].fldCompanyName);
+        $("#comp_name_sidenav").html(data[0].fldCompanyName+'/PEMS');
         $("#det_em").html(data[0].fldEmail);
         $("#det_address").html(data[0].fldAddress);
         $("#det_contact").html(data[0].fldContactNo);
         $("#det_faxno").html(data[0].fldFax);
         $("#det_website").html(data[0].fldWebsite);
-
         $("#comp_logo").attr("src", data[0].fldLogo);
+        $("#company_logo_nav").attr("src", data[0].fldLogo);
 
     });
 }
