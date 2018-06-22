@@ -181,6 +181,16 @@ class update{
 			$fldDept=$_POST['fldDept'];
 			$tblname=$_POST['tblname'];
 			$update="UPDATE $tblname SET fldTDQty='$fldTDQty',fldRemarks='$fldRemarks',fldDept='$fldDept' WHERE fldRecID='$fldRecID'";
+		}if($_POST['update_action']=='update_employee'){
+			$fldUserID=$_POST['fldUserID'];
+			$fldUsername=$_POST['fldUsername'];
+			$fldFname=$_POST['fldFname'];
+			$fldLname=$_POST['fldLname'];
+			$fldMname=$_POST['fldMname'];
+			$fldRole=$_POST['fldRole'];
+			$fldDepartment=$_POST['fldDepartment'];
+			$tblname=$_POST['tblname'];
+			$update="UPDATE $tblname SET fldUsername='$fldUsername',fldFname='$fldFname',fldLname='$fldLname',fldMname='$fldMname',fldRole='$fldRole',fldDepartment='$fldDepartment' WHERE fldUserID='$fldUserID'";
 		}
 		elseif ($_POST['update_action']=='update_tables') {
 			$tblname=$_POST['tblname'];

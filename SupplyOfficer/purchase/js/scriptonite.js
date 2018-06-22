@@ -258,7 +258,7 @@ function setDetails(elem){
 function Popup(data) {
     var mywindow = window.open('', '_blank');
     
-    mywindow.document.write('<head><link href="css/printstyle.css" rel="stylesheet"><link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet"></head>');
+    mywindow.document.write('<head><link href="../../css/printstyle.css" rel="stylesheet"><link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet"></head>');
     mywindow.document.write('<body><div id="mybody">');
     mywindow.document.write('<div style="text-align: right;"></div>');
     mywindow.document.write('<center><h1>PURCHASE ORDER SUMMARY</h1></center>');

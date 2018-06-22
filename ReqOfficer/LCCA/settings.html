@@ -34,13 +34,7 @@
                     <li>
                         <hr>
                         <ul class="collapsible collapsible-accordion">
-                            <li><a class="collapsible-header waves-effect arrow-r" href="../propertycard/index.html"><i class="fa fa-arrow-left"></i> Back to Website<i class="fa fa-angle-down rotate-icon"></i></a>
-                            </li>
-                            <li><a class="collapsible-header waves-effect arrow-r" href="index.html"><i class="fa fa-recycle"></i> New Project<i class="fa fa-angle-down rotate-icon"></i></a>
-                            </li>
-                            <li><a class="collapsible-header waves-effect arrow-r" href="files.html"><i class="fa fa-file"></i> Recent Project<i class="fa fa-angle-down rotate-icon"></i></a>
-                            </li>
-                            <li><a class="collapsible-header waves-effect arrow-r" href="settings.html"><i class="fa fa-cogs"></i> Settings<i class="fa fa-angle-down rotate-icon"></i></a>
+                            <li><a class="collapsible-header waves-effect arrow-r" href="../../CompAdmin/departments.html"><i class="fa fa-arrow-left"></i> Back to Website<i class="fa fa-angle-down rotate-icon"></i></a>
                             </li>
                         </ul>
                     </li>
@@ -252,6 +246,20 @@
 
             function viewAssets() {
                 let longString = "";
+                datas[0].assets = [];
+                $.ajaxSetup({
+                    async: false
+                });
+
+                $.getJSON("http://localhost/pems/apis/myapi/select/tbl_lccalives/", function(data) {
+                    for (let i = 0; i < data.length; i++) {
+                        let jsonObj;
+                        jsonObj = JSON.parse('{ "assetType":"' + data[i].fldProdName + '", "noLifeCycle":"' + data[i].fldYears + '"}');
+                        datas[0].assets.push(jsonObj);
+                    }
+                });
+
+
                 for (let i = 0; i < datas[0].assets.length; i++) {
                     longString += "<tr>";
                     longString += "<td>" + datas[0].assets[i].assetType + "</td>";
