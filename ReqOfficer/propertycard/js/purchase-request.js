@@ -158,7 +158,7 @@ $(document).ready(function () {
             url: myurl+'/purchase_api/insert.php',
             method: 'POST',
             data: form,
-            beforeSend: function () {
+            beforeSend: function () {   
                 M.toast({
                     html: 'Submitting...',
                     classes: 'rounded'
@@ -191,7 +191,7 @@ $(document).ready(function () {
                 console.log(data);
             }
         });
-        
-        window.location.assign("purchase-list.html");
+        /*
+        window.location.assign("purchase-list.html");*/
     })
 });

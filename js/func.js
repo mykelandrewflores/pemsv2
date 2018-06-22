@@ -7,7 +7,7 @@ function submitCompany() {
     var clogo = bsixf;
     var cweb = $("#comp_website").val()
     var cpwd = $("#comp_pass").val()
-    var cpwd_t = $("#comp_pass_two").val()
+    var cpwd_t = $("#conf_pass").val()
 
 
     if (cpwd == cpwd_t) {

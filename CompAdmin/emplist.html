@@ -11,34 +11,36 @@
 </head>
 
 <body>
-    <header>
-        <nav class="primary">
-            <div class="nav-wrapper">
-                <a href="#!" class="brand-logo center">PEMS</a>
-                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fa fa-bars" aria-hidden="true"></i></a>
-            </div>
-        </nav>
-        <ul class="sidenav collapsible collapsible-accordion sidenav-fixed" id="mobile-demo">
-            <li>
-                <div class="user-view">
-                    <div class="background green darken-3">
-
-                    </div>
-                    <a href="#user"><img class="circle" src="image/avatar.jpg"></a>
-                    <a href="#name"><span class="white-text name">Mykel Andrew Flores</span></a>
-                    <a href="#email"><span class="white-text email">mykelandrww@gmail.com</span></a>
-                </div>
-            </li>
-
-            <li class="bold"><a href="departments.html" class="collapsible-header">Departments</a></li>
-            <li class="bold"><a href="index.html" class="collapsible-header">Edit Company Details</a></li>
-            <li class="bold"><a href="emplist.html" class="collapsible-header">Employee Mgmt.</a></li>
-
-            <li class="bold"><a href="../index.html" class="collapsible-header">Logout</a></li>
-
-
-        </ul>
-    </header>
+	<header>
+		<nav class="white">
+			<div class="nav-wrapper">
+				<a href="#!" class="sidenav-trigger black-text" data-target="slide-out"><i class="fa fa-bars" aria-hidden="true"></i></a>
+				<a href="#" class="brand-logo center green-text">Logo</a>
+			</div>
+		</nav>
+		<ul class="sidenav sidenav-fixed" id="slide-out">
+			<li><div class="user-view">
+				<div class="background green"></div>
+				<a href="#user"><img class="circle" src="image/avatar.jpg"></a>
+				<a href="#name"><span class="white-text name">Mykel Andrew Flores</span></a>
+				<a href="#email"><span class="white-text email">mykelandrww@gmail.com</span></a>
+			</div></li>
+			<li><a class="subheader">Functions</a></li>
+			<li><a href="departments.html" class="collapsible-header"><i class="fa fa-building" aria-hidden="true"></i> Departments</a></li>
+            <div class="divider"></div>
+			<li><a href="index.html" class="collapsible-header"><i class="fa fa-building-o" aria-hidden="true"></i> Company Settings</a></li>
+            <div class="divider"></div>
+            
+			<li class="active active-link"><a href="emplist.html" class="collapsible-header"><i class="fa fa-users" aria-hidden="true"></i> Employee Mngmt.</a></li>
+            <div class="divider"></div>
+            
+            
+			<li><a href="../ReqOfficer/LCCA/settings.html" class="collapsible-header"><i class="fa fa-cog" aria-hidden="true"></i> LCCA Settings.</a></li>
+            <div class="divider"></div>   
+            
+			<li onclick="logOut()"><a href="../index.html" class="collapsible-header" onclick="logOut()"><i class="fa fa-power-off" aria-hidden="true"></i> Logout</a></li>
+		</ul>
+	</header>
     <div id="editmodal" class="modal">
       <div class="modal-content">
       <h4 class="deafult-text font-weight-low">Edit Employees</h4>
