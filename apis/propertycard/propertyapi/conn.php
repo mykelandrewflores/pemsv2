@@ -94,6 +94,7 @@ class con{
 		return $this;
 	}
 	function duration1($tblone,$tbltwo,$idone,$idtwo,$idthree,$value1,$idfour,$value2){
+	
 		$this->string="SELECT * FROM $tblone,$tbltwo WHERE $tblone.$idone = $tbltwo.$idtwo AND $tbltwo.$idthree = $value1 AND $tbltwo.$idfour = '$value2'";
 		return $this;
 	}

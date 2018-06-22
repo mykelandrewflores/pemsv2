@@ -406,7 +406,9 @@ function Popup(data) {
     mywindow.document.write('');
     mywindow.document.write('</body></html>');
     mywindow.focus();
-
+    
+    
+    window.location.assign("../propertycard/purchase-request.html");
     return true;
 
 }

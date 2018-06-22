@@ -106,6 +106,7 @@
 				console.log(data);
 			});
 
+<<<<<<< HEAD
 			setTimeout(displayCompany, 100);
 		}
 		displayCompany();
@@ -122,5 +123,107 @@
 			});
 		}
 	</script>
+=======
+    <main class="ml300">
+        <center>
+
+            <div class="row">
+                <br>
+
+                <div class="card col l5 offset-l1" style="margin: 40px; margin-left: 60px;">
+                    <div class="card-header">
+                        <h5>Add Department</h5>
+                    </div>
+                    <div class="divider"></div>
+                    <form>
+
+                        <div class='row'>
+                            <div class='input-field col s12 m4 l12'>
+                                <center>
+                                <input class='validate' type='text' name='emp_fname' style="width: 60%" id='deptName' />
+                                <br>
+                                <label for='emp_fname'>Department Name</label>
+                                </center>
+                            </div>
+                            <div class='input-field col s12 m4 l12'>
+                                <center>
+                                <input class='validate' type='text' name='emp_fname' style="width: 60%" id='deptCode' placeholder='e.g (CCS, MIS)' />
+                                <br>
+                                <label for='emp_fname'>Department Code</label>
+                                </center>
+                            </div>                            
+                            <div class="col s12 l12 center-align">
+                                <br>
+                                <button type='button' onclick="insertDept()" name='btn_login' class=' btn waves-effect'><i class="fa fa-plus"></i> Add</button>
+                            </div>
+                        </div>
+                        <center>
+                            <div class='row'>
+                            </div>
+                        </center>
+                    </form>
+                </div>
+                <div class="col l5">
+                    <h5>Department List:</h5>
+                    <div>
+                        <br><br>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>Department Name</td>
+                                    <td>Department Code</td>
+                                    <td>Action</td>
+                                </tr>
+                            </thead>
+                            <tbody id="depts">
+                            
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </center>
+    </main>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/materialize.min.js"></script>
+    <script src="js/init.js"></script>
+    <script type="text/javascript">
+        function insertDept(){
+            var companyId = localStorage.companyID;
+            $.post("http://localhost/pems/apis/myapi/insert/tbl_departments/", JSON.stringify([{
+                fsx: $("#deptCode").val(),
+                fst: $("#deptName").val(),
+                sec: companyId
+            }]), function(data){
+                console.log(data);  
+            });
+            setTimeout(displayCompany, 100);
+        }
+        
+        
+        function delDept(val){
+            $.post("http://localhost/pems/apis/myapi/delete/tbl_departments/fldDeptID/"+val, function(data){
+                console.log(data);
+            });
+            
+            setTimeout(displayCompany, 100);
+        }
+        
+        displayCompany();
+        
+        function displayCompany(){
+        $.getJSON("http://localhost/pems/apis/myapi/select/tbl_departments/fldCompanyID/"+localStorage.companyID, function(data){
+            var ls = "";
+                for(let i = 0; i < data.length; i++){
+                    ls +='<tr>';
+                    ls += '<td>' + data[i].fldFullDeptName + '</td><td>' + data[i].fldDepartmentName + '</td><td><button class="btn red" onclick="delDept('+data[i].fldDeptID+')">X</button></td>';     
+                    
+                    ls += '</tr>';
+                } 
+                $("#depts").html(ls);
+            });
+        }
+    </script>
+>>>>>>> 9085944d990f43103a0b08dbbf462a8ea5d30bb8
 </body>
 </html>

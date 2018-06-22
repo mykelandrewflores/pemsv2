@@ -59,6 +59,7 @@ function stocklist(id, dept) {
             ids.push(data[i].fldTransactionID);
             longstring += "<tr>";
             longstring += "<td id='unit" + data[i].fldTransactionID + "'>" + data[i].fldUnit + "</td>";
+            longstring += "<td id='prodIdz" + data[i].fldTransactionID + "' style='display: none'>" + data[i].fldPNum + "</td>";
             longstring += "<td id='prodName" + data[i].fldTransactionID + "'>" + getPurchaseData(data[i].fldPNum).fldProdName + "</td>";
             longstring += "<td id='brandName" + data[i].fldTransactionID + "'>" + data[i].fldBrand + "</td>";
             longstring += "<td>" + data[i].fldQty + "</td>";
@@ -94,6 +95,10 @@ function stopOperation() {
     recieve_json = [];
     ids = [];
 }
+
+$.ajaxSetup({
+    async:false
+})
 $(document).ready(function () {
     $('#submit_inspection').submit(function (event) {
         event.preventDefault();
@@ -103,14 +108,15 @@ $(document).ready(function () {
         if (qna == true) {
             for (var i = 0; i < ids.length; i++) {
                 var rQty = $('#receiveqty' + ids[i]).val();
-                var prodName = $('#prodName' + ids[i]).html();
-                var brandName = $('#brandName' + ids[i]).html();
+                var prodName = $('#prodIdz' + ids[i]).html();
+                var brandName = document.getElementById('brandName' + ids[i]).innerHTML;
                 var unit = $('#unit' + ids[i]).html();
                 var invoice = $('#invoice').val();
                 var company_id = localStorage.companyID;
                 var iar = $('#inspectionno').val();
                 var dept = $('#office').val();
                 var PO = $('#PO_no').val();
+                
                 recieve_json.push({
                     'IAR': iar,
                     'invoice_no': invoice,
@@ -123,7 +129,11 @@ $(document).ready(function () {
                     'unit': unit,
                     'Recieve_qty': rQty
                 });
+                
             }
+            
+            insertInspection(recieve_json);
+            
             $.ajax({
                 url: url,
                 method: 'POST',
@@ -159,12 +169,13 @@ $(document).ready(function () {
         });
     }
 
-    function insertInspection() {
+    function insertInspection(val) {
+        console.log(recieve_json);
         var url = myurl + "/iar_api/multiple_insert.php";
         $.ajax({
             url: url,
             method: 'POST',
-            data: JSON.stringify(recieve_json),
+            data: JSON.stringify(val),
             dataType: 'JSON',
             success: function (data) {}
         });
