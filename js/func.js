@@ -23,7 +23,7 @@ function submitCompany() {
                 clogo: clogo,
                 cweb: cweb,
                 cpwd: cpwd,
-                }]),
+            }]),
             function (data) {
                 console.log(data);
             });
@@ -61,7 +61,7 @@ function insertEmployee() {
             clogo: role,
             cweb: dept,
             cpwd: coid,
-                }]),
+        }]),
         function (data) {
             console.log(data);
         });
