@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,10 +13,14 @@
 		<nav class="white">
 			<div class="nav-wrapper">
 				<a href="#!" class="sidenav-trigger black-text" data-target="slide-out"><i class="fa fa-bars" aria-hidden="true"></i></a>
-				<a href="#" class="brand-logo center green-text">Logo</a>
+				<ul class="right hide-on-med-and-down">
+					<li><a href="#!"><i class="fa fa-users"></i></a></li>
+					<li><a href="#!"><i class="fa fa-cog"></i></a></li>
+				</ul>
 			</div>
 		</nav>
 		<ul class="sidenav sidenav-fixed" id="slide-out">
+			<li class="z-depth-2 white center" style="height: 64px;font-size: 20px;"><span class="green-text" id="comp_name_sidenav">Company/PEMS</span></li>
 			<li><div class="user-view">
 				<div class="background green"></div>
 				<a href="#user"><img class="circle" src="image/avatar.jpg"></a>
@@ -48,17 +51,16 @@
 							<div class="divider"></div>
 						</div>
 						<div class="col s12 l4 right-align mt-1">
-							<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/F_icon.svg/2000px-F_icon.svg.png" class="responsive-img" id="comp_logo" width="300px" style="border: 2px #d0c6c6 solid">
+							<img src="" class="responsive-img" id="comp_logo" width="300px" style="border: 2px #d0c6c6 solid">
 						</div>
 						<div class="col s6 left-align">
-							<h5 id="comp_name" class="center-align">Facebook International Shipping Co.</h5>
+							<h5 id="comp_name" class="center-align"></h5>
 							<div class="divider"></div>
-							<h6 class="pl-05"><span class="font-bold">Company Email: </span><span id="det_em">facebookshppingco@facebook.com</span></h6>
-							<h6 class="pl-05"><span class="font-bold">Address: </span><span id="det_address">12 Fonatine Extension East tapinac olongapo city philippines</span></h6>
-							<h6 class="pl-05"><span class="font-bold">
-							Contact No: </span><span id="det_contact">09297755849</span></h6>
-							<h6 class="pl-05"><span class="font-bold">Fax No: </span><span id="det_faxno">1231231</span></h6>
-							<h6 class="pl-05"><span class="font-bold">Website: </span><span id="det_website">www.ggwphahahaggna.edu.ph</span></h6>
+							<h6><span class="font-bold">Company Email: </span><span id="det_em"></span></h6>
+							<h6><span class="font-bold">Address: </span><span id="det_address"></span></h6>
+							<h6><span class="font-bold">Contact No: </span><span id="det_contact"></span></h6>
+							<h6><span class="font-bold">Fax No: </span><span id="det_faxno"></span></h6>
+							<h6><span class="font-bold">Website: </span><span id="det_website"></span></h6>
 							<br>
 							<center>
 								<a href="#" class="btn blue darken-4 center-align"><i class="fa fa-cog"></i> Edit Details</a>
@@ -79,7 +81,6 @@
 			var id = localStorage.companyID;
 			selectCompany(id)
 		});
-
 	</script>
 </body>
 
