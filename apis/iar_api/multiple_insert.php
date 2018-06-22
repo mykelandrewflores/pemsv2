@@ -15,5 +15,5 @@ if(mysqli_multi_query($db,$sql)) {
 	echo json_encode(array('response' => 'successfully updated'),JSON_PRETTY_PRINT);
 } else {
 	echo json_encode(array('response' => 'failed update'),JSON_PRETTY_PRINT);
-} 
+}
 ?>

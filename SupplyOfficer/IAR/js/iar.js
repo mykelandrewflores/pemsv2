@@ -130,8 +130,8 @@ $(document).ready(function () {
                 data: form,
                 dataType: 'JSON',
                 success: function (data) {
+                	insertInspection();
                     updateInspection();
-                    insertInspection();
                 }
             });
         } else {
