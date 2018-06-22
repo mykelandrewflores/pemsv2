@@ -1,6 +1,8 @@
 
 let myurl = "http://localhost/pems/apis";
 
+// let myurl = "http://gordoncollegeccs-ssite.net/pems/apis";
+
 function setselected(prodid,iarno,recid){
 	localStorage.setItem("selected_id",prodid);
 	localStorage.setItem("selected_iarno",iarno);
@@ -348,7 +350,11 @@ function assign_func(){
 		M.toast({html: 'Equipment/Property Assigned'});
 		$('.modal').modal('close');
 	}).fail(function(){
-		M.toast({html: 'Equipment/Property Assigning Failed'})
+		M.toast({html: 'Equipment/Property Assigning Failed'});
+		equiptable();
+		equiptable_assigned();
+		equiptable_unassigned();
+$('.modal').modal('close');
 	});
 }
 
@@ -413,7 +419,11 @@ function transfer_func(){
 		M.toast({html: 'Equipment/Property Transfered'});
 		$('.modal').modal('close');
 	}).fail(function(){
-		M.toast({html: 'Equipment/Property Transfered Failed'})
+		M.toast({html: 'Equipment/Property Transfered Failed'});
+		equiptable();
+		equiptable_assigned();
+		equiptable_unassigned();
+$('.modal').modal('close');
 	});
 
 
@@ -479,7 +489,11 @@ function disposal_func(){
 		M.toast({html: 'Equipment/Property disposed'});
 		$('.modal').modal('close');
 	}).fail(function(){
-		M.toast({html: 'Equipment/Property disposed Failed'})
+		M.toast({html: 'Equipment/Property disposed Failed'});
+		equiptable();
+		equiptable_assigned();
+		equiptable_unassigned();
+$('.modal').modal('close');
 	});
 }
 
