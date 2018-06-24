@@ -205,7 +205,7 @@ function equiptable_reqofficer(){
 					longstring += "<td class=''><a class='blue-text ni-jags' href='./propertycard.html' onclick='setselected_reqofficer("+data[i].fldProdID+","+'"'+data[i].fldIarNo+'"'+","+data[i].fldRecID+")'><i class='fa fa-eye'></i></a></td>";
 					longstring += "</tr>";
 				}
-
+			
 			}
 			$("#equiptabledata_reqofficer").html(longstring);
 
@@ -231,7 +231,7 @@ function assign_tabledata(recID){
 				longstring += "<td id='assign_dept'>"+data[i].fldDept+"</td>";
 				longstring += "<td id='assign_recqty'>"+data[i].fldRecQty+"</td>";
 				longstring += "</tr>";
-
+			
 			}
 			$("#assign_table").html(longstring);
 
@@ -256,7 +256,7 @@ function transfer_tabledata(recID){
 				longstring += "<td id='assign_dept'>"+data[i].fldDept+"</td>";
 				longstring += "<td id='assign_recqty'>"+data[i].fldRecQty+"</td>";
 				longstring += "</tr>";
-
+			
 
 			}
 			$("#transfer_table").html(longstring);
@@ -282,7 +282,7 @@ function disposal_tabledata(recID){
 				longstring += "<td id='assign_dept'>"+data[i].fldDept+"</td>";
 				longstring += "<td id='assign_recqty'>"+data[i].fldRecQty+"</td>";
 				longstring += "</tr>";
-
+			
 
 			}
 			$("#disposal_table").html(longstring);
@@ -293,92 +293,8 @@ function disposal_tabledata(recID){
 		
 	});
 }
-<<<<<<< HEAD
-function fetch_lccaprod(){
-	url=myurl+"/propertycard/propertyapi/tbl_lccalives";
-	$.getJSON(url,function(data){
-		var body = ''
-		body+='<select id="lccaprod_select"> <option value="" disabled selected>Choose Product Name</option>';
-		for(var i = 0; i<data.length; i++) {
-			body+='<option value="'+data[i].fldProdID+'">'+data[i].fldProdName+'</option>';
-		}
-		body+='</select>';
-		$('#prodlcca_select').html(body);
 
 
-	}).fail(function(){
-		M.toast({html: 'No lcca data found'});
-	});
-}
-function fetch_lccadepartments(){
-	url=myurl+"/propertycard/propertyapi/tbl_departments/fldCompanyID/"+localStorage.companyID;
-	$.getJSON(url,function(data){
-		var body = ''
-		body+='<select id="lccadept_select"> <option value="" disabled selected>Choose Department</option>';
-		for(var i = 0; i<data.length; i++) {
-			body+='<option value="'+data[i].fldDepartmentName+'">'+data[i].fldDepartmentName+'</option>';
-		}
-		body+='</select>';
-		$('#deptlcca_select').html(body);
-
-
-	}).fail(function(){
-		M.toast({html: 'No deparments found'});
-	});
-}
-function fetch_departments(){
-	url=myurl+"/propertycard/propertyapi/tbl_departments/fldCompanyID/"+localStorage.companyID;
-	$.getJSON(url,function(data){
-		var body = ''
-		body+='<select id="department_select"> <option value="" disabled selected>Choose Department</option>';
-		for(var i = 0; i<data.length; i++) {
-			body+='<option value="'+data[i].fldDepartmentName+'">'+data[i].fldDepartmentName+'</option>';
-		}
-		body+='</select>';
-		$('#testing').html(body);
-
-
-	}).fail(function(){
-		M.toast({html: 'No deparments found'});
-	});
-}
-function fetch_departments2(){
-	url=myurl+"/propertycard/propertyapi/tbl_departments/fldCompanyID/"+localStorage.companyID;
-	$.getJSON(url,function(data){
-		var body = ''
-		body+='<select id="department_select2"> <option value="" disabled selected>Choose Department</option>';
-		for(var i = 0; i<data.length; i++) {
-			body+='<option value="'+data[i].fldDepartmentName+'">'+data[i].fldDepartmentName+'</option>';
-		}
-		body+='</select>';
-		$('#testing2').html(body);
-
-
-	}).fail(function(){
-		M.toast({html: 'No deparments found'});
-	});
-}
-function fetch_departments3(){
-	url=myurl+"/propertycard/propertyapi/tbl_departments/fldCompanyID/"+localStorage.companyID;
-	$.getJSON(url,function(data){
-		var body = ''
-		body+='<select id="department_select3"> <option value="" disabled selected>Choose Department</option>';
-		for(var i = 0; i<data.length; i++) {
-			body+='<option value="'+data[i].fldDepartmentName+'">'+data[i].fldDepartmentName+'</option>';
-		}
-		body+='</select>';
-		$('#testing3').html(body);
-
-
-	}).fail(function(){
-		M.toast({html: 'No deparments found'});
-	});
-}
-
-=======
-
-
->>>>>>> 4052d11c55c9d7295b91ad8f23530b74900e2f4d
 function assign_func(){
 	let fldRecID = document.getElementById("assign_recid").innerHTML;
 	let fldTDQty = 1;
@@ -440,7 +356,7 @@ function assign_func(){
 		equiptable();
 		equiptable_assigned();
 		equiptable_unassigned();
-		$('.modal').modal('close');
+$('.modal').modal('close');
 	});
 }
 
@@ -509,7 +425,7 @@ function transfer_func(){
 		equiptable();
 		equiptable_assigned();
 		equiptable_unassigned();
-		$('.modal').modal('close');
+$('.modal').modal('close');
 	});
 
 
@@ -579,7 +495,7 @@ function disposal_func(){
 		equiptable();
 		equiptable_assigned();
 		equiptable_unassigned();
-		$('.modal').modal('close');
+$('.modal').modal('close');
 	});
 }
 
@@ -598,19 +514,19 @@ function pcdata(){
 			console.log(data);
 
 			for (let i = 0; i < data.length; i++) {
-				sel_name=data[i].fldProdName;
-				sel_desc=data[i].fldPropertyCategory;
-				sel_pnum=data[i].fldRecID;
-				sel_dept=data[i].fldDept;
-				sel_agncy=data[i].fldAgency;
+			sel_name=data[i].fldProdName;
+			sel_desc=data[i].fldPropertyCategory;
+			sel_pnum=data[i].fldRecID;
+			sel_dept=data[i].fldDept;
+			sel_agncy=data[i].fldAgency;
 
-				longstring += "<tr>";
-				longstring += "<td>"+data[i].fldDate+"</td>";
-				longstring += "<td>"+data[i].fldRefNo+"</td>";
-				longstring += "<td>"+data[i].fldRecQty+"</td>";
-				longstring += "<td>"+data[i].fldTDQty+"</td>";
-				longstring += "<td>"+data[i].fldDept+"</td>";
-				longstring += "</tr>";
+			longstring += "<tr>";
+			longstring += "<td>"+data[i].fldDate+"</td>";
+			longstring += "<td>"+data[i].fldRefNo+"</td>";
+			longstring += "<td>"+data[i].fldRecQty+"</td>";
+			longstring += "<td>"+data[i].fldTDQty+"</td>";
+			longstring += "<td>"+data[i].fldDept+"</td>";
+			longstring += "</tr>";
 			}
 			document.getElementById("propertyName").innerHTML=sel_name;
 			document.getElementById("propertyDesc").innerHTML=sel_desc;
@@ -641,19 +557,19 @@ function pcdata_reqofficer(){
 			console.log(data);
 
 			for (let i = 0; i < data.length; i++) {
-				sel_name=data[i].fldProdName;
-				sel_desc=data[i].fldPropertyCategory;
-				sel_pnum=data[i].fldRecID;
-				sel_dept=data[i].fldDept;
-				sel_agncy=data[i].fldAgency;
+			sel_name=data[i].fldProdName;
+			sel_desc=data[i].fldPropertyCategory;
+			sel_pnum=data[i].fldRecID;
+			sel_dept=data[i].fldDept;
+			sel_agncy=data[i].fldAgency;
 
-				longstring += "<tr>";
-				longstring += "<td>"+data[i].fldDate+"</td>";
-				longstring += "<td>"+data[i].fldRefNo+"</td>";
-				longstring += "<td>"+data[i].fldRecQty+"</td>";
-				longstring += "<td>"+data[i].fldTDQty+"</td>";
-				longstring += "<td>"+data[i].fldDept+"</td>";
-				longstring += "</tr>";
+			longstring += "<tr>";
+			longstring += "<td>"+data[i].fldDate+"</td>";
+			longstring += "<td>"+data[i].fldRefNo+"</td>";
+			longstring += "<td>"+data[i].fldRecQty+"</td>";
+			longstring += "<td>"+data[i].fldTDQty+"</td>";
+			longstring += "<td>"+data[i].fldDept+"</td>";
+			longstring += "</tr>";
 			}
 			document.getElementById("propertyName").innerHTML=sel_name;
 			document.getElementById("propertyDesc").innerHTML=sel_desc;
@@ -681,18 +597,6 @@ function proptable(){
 			let longstring = "";
 			let sel_name = "";
 			for (let i = 0; i < data.length; i++) {
-<<<<<<< HEAD
-				sel_name=data[i].fldProdName;
-				longstring += "<tr>";
-				longstring += "<td>"+formDNow(new Date(data[i].fldDate))+"</td>";
-				longstring += "<td>"+data[i].fldRefNo+"</td>";
-				longstring += "<td>"+data[i].fldRecQty+"</td>";
-				longstring += "<td>"+data[i].fldTDQty+"</td>";
-				longstring += "<td>"+data[i].fldDept+"</td>";
-				longstring += "<td>"+data[i].fldAction+"</td>";
-				longstring += "<td class=''><a class='red-text' onclick='DeletePropData("+data[i].fldRecID+")'><i class='fa fa-trash'></i></a></td>";
-				longstring += "</tr>";
-=======
 			sel_name=data[i].fldProdName;
 			longstring += "<tr>";
 			longstring += "<td>"+data[i].fldDate+"</td>";
@@ -703,7 +607,6 @@ function proptable(){
 			longstring += "<td>"+data[i].fldAction+"</td>";
 			longstring += "<td class=''><a class='btn red darken-3' onclick='DeletePropData("+data[i].fldRecID+")'><i class='fa fa-trash'></i></a></td>";
 			longstring += "</tr>";
->>>>>>> 4052d11c55c9d7295b91ad8f23530b74900e2f4d
 			}
 			document.getElementById("sel_name").innerHTML=sel_name;
 			document.getElementById("sel_iarno").innerHTML=localStorage.selected_iarno;
@@ -727,17 +630,6 @@ function proptable_reqofficer(){
 			let longstring = "";
 			let sel_name = "";
 			for (let i = 0; i < data.length; i++) {
-<<<<<<< HEAD
-				sel_name=data[i].fldProdName;
-				longstring += "<tr>";
-				longstring += "<td>"+data[i].fldDate+"</td>";
-				longstring += "<td>"+data[i].fldRefNo+"</td>";
-				longstring += "<td>"+data[i].fldRecQty+"</td>";
-				longstring += "<td>"+data[i].fldTDQty+"</td>";
-				longstring += "<td>"+data[i].fldDept+"</td>";
-				longstring += "<td>"+data[i].fldAction+"</td>";
-				longstring += "</tr>";
-=======
 			sel_name=data[i].fldProdName;
 			longstring += "<tr>";
 			longstring += "<td>"+data[i].fldDate+"</td>";
@@ -747,7 +639,6 @@ function proptable_reqofficer(){
 			longstring += "<td>"+data[i].fldToDept+"</td>";
 			longstring += "<td>"+data[i].fldAction+"</td>";
 			longstring += "</tr>";
->>>>>>> 4052d11c55c9d7295b91ad8f23530b74900e2f4d
 			}
 			document.getElementById("sel_name").innerHTML=sel_name;
 			document.getElementById("sel_iarno").innerHTML=localStorage.selected_iarno_reqofficer;
@@ -765,14 +656,14 @@ function proptable_reqofficer(){
 
 function DeleteEquipData(equipid){
 
-	$.post(myurl+"/propertycard/propertyapi/delete/tbl_equipment/"+equipid,function(data){
-		M.toast({html: 'Equipment Deleted'});
-		equiptable();
-	}).fail(function(){
+  $.post(myurl+"/propertycard/propertyapi/delete/tbl_equipment/"+equipid,function(data){
+    M.toast({html: 'Equipment Deleted'});
+    equiptable();
+  }).fail(function(){
 
-		M.toast({html: 'Equipment Not Deleted'});
+  	M.toast({html: 'Equipment Not Deleted'});
 
-	});
+  });
 
 }
 
@@ -822,7 +713,7 @@ function AddPropData(){
 	$.post(myurl+"/propertycard/propertyapi/create",{tblname:tblname,fldPNum:fldPNum,fldAgency:fldAgency,fldDept:fldDept,fldDate:fldDate,fldRefNo:fldRefNo,fldRecQty:fldRecQty,fldTDQty:fldTDQty,fldOffice:fldOffice,fldBalQty:fldBalQty,update_action:update_action},function(data){
 		M.toast({html: 'Equipment Added'});
 		document.getElementById("equip_name").value="";
-		document.getElementById("equip_desc").value="";
+ 		document.getElementById("equip_desc").value="";
 		document.getElementById("equip_qty").value="";
 		equiptable();
 	}).fail(function(){
