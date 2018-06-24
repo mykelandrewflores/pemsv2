@@ -19,7 +19,7 @@
 		<div class="container">
 			<div class="z-depth-1 grey lighten-4" style="padding: 30px 35px">
 				<h4 class="green-text mt-br"><blockquote>Please, Register your Company</blockquote></h4>
-				<form>
+				<form id="form_request">
 					<div class='row mt-1'>
 						<div class='input-field col s12 m6 l6'>
 							<input class='validate' type='text' name='comp_name' id='comp_name' placeholder="@McDonalds" onblur="validateData(this.value, this.id, 'companies','CompanyName')" validate required />
@@ -34,7 +34,7 @@
 							<label for='comp_email'>Email</label>
 						</div>
 						<div class='input-field col s12 m6 l6'>
-							<input class='validate' type='password' name='comp_pass' id='comp_pass' placeholder="Password must be atleast 8 characters" onblur="validateLength(this.value, this.id)" required />
+							<input class='validate' type='password' name='comp_pass' id='comp_pass' placeholder="Password must be atleast 8 characters" pattern=".{8,}"  title="8 characters minimum" required/>
 							<label for='comp_pass'>Password</label>
 						</div>
 						<div class='input-field col s12 m6 l6'>
@@ -67,7 +67,7 @@
 						</div>
 					</div>
 					<div class='center mt-1'>
-						<button type='button' onclick="submitCompany()" name='btn_login' class='col s12 btn green waves-effect '>Register as Company</button>
+						<button type='submit' name='btn_login' class='col s12 btn green waves-effect '>Register as Company</button>
 					</div>
 				</form>
 			</div>

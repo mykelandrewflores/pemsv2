@@ -26,8 +26,10 @@ if(mysqli_multi_query($db,$sql)) {
 
 	echo "<br>";
 	echo $sql;
-} 
-=======
 }
->>>>>>> 6ca21c68199f1ff15bc8d4d7ae65a67c8f2c89d5
+
+}
+=======
+} 
+>>>>>>> 088bbfc3541e871aead3d1ac0eb45e067358b4c6
 ?>

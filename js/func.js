@@ -1,4 +1,7 @@
-function submitCompany() {
+var myurls = "http://localhost/";
+
+$('#form_request').submit(function (e) {
+    e.preventDefault();
     var cname = $("#comp_name").val()
     var cadd = $("#comp_address").val()
     var cnum = $("#comp_contactno").val()
@@ -15,7 +18,7 @@ function submitCompany() {
     if (cpwd == cpwd_t) {
 
 
-        $.post("http://localhost/pems/apis/myapi/insert/tbl_companies",
+        $.post(myurls+"pems/apis/myapi/insert/tbl_companies",
             JSON.stringify([{
                 cn: cname,
                 ca: cadd,
@@ -41,7 +44,7 @@ function submitCompany() {
     } else {
         window.alert("Password didn't Match");
     }
-}
+});
 
 function sendEmail(eadd, val) {
     $.post("http://localhost" + "/pems/apis/emailverif/", {
@@ -52,7 +55,8 @@ function sendEmail(eadd, val) {
     });
 }
 
-function insertEmployee() {
+$('#emp_form').submit(function (e) {
+    e.preventDefault();
     var un = $("#emp_username").val();
     var pwd = $("#emp_pass").val();
     var cpwd = $("#emp_cpass").val();
@@ -67,7 +71,7 @@ function insertEmployee() {
     if (pwd == cpwd) {
 
     }
-    $.post("http://localhost/pems/apis/myapi/insert/tbl_user",
+    $.post(myurls+"pems/apis/myapi/insert/tbl_user",
         JSON.stringify([{
             cn: un,
             ca: pwd,
@@ -84,8 +88,9 @@ function insertEmployee() {
 
 
     window.alert("Employee Succesfully Added!");
+    window.location.assign("emplist.html");
     selectCompanyEmply(localStorage.companyID);
-}
+});
 
 
 var bsixf = "";
@@ -117,7 +122,7 @@ function loginUser() {
 
     var un = $("#username").val();
     var pw = $("#password").val();
-    $.post("http://localhost/pems/apis/myapi/login/", {
+    $.post(myurls+"pems/apis/myapi/login/", {
         un: un,
         pw: pw
     }, function (data) {
@@ -145,7 +150,7 @@ function loginUser() {
 function validateData(val, valid, tbl, datafld) {
     tbl = "tbl_" + tbl;
 
-    $.getJSON("http://localhost/pems/apis/myapi/select/" + tbl + "/fld" + datafld + "/" + val, function (data) {
+    $.getJSON(myurls+"pems/apis/myapi/select/" + tbl + "/fld" + datafld + "/" + val, function (data) {
         if (data.length > 0) {
             window.alert(datafld + " has been already taken, Please choose another");
             $("#" + valid).val("");
@@ -154,10 +159,29 @@ function validateData(val, valid, tbl, datafld) {
     });
 }
 
+function validateDataDept(val, valid, tbl, datafld) {
+    tbl = "tbl_" + tbl;
+
+    $.getJSON(myurls+"pems/apis/myapi/select/" + tbl + "/fld" + datafld + "/" + val, function (data) {
+        if (data.length > 0 && data[i].fldCompanyID == localStorage.companyID) {
+            if(datafld == "DepartmentName"){
+                datafld = "Department Code";
+            }
+            if(datafld == "FullDeptName"){
+                datafld = "Department Name";
+            }
+            window.alert(datafld + " has been already taken, Please choose another");
+            $("#" + valid).val("");
+            $("#" + valid).focus();
+        }
+    });
+}
+
+
 //LOGIN SIDE
 
 function selectCompanyEmply(val) {
-    $.getJSON("http://localhost/pems/apis/myapi/select/tbl_user/fldCompanyID/" + val, function (data) {
+    $.getJSON(myurls+"pems/apis/myapi/select/tbl_user/fldCompanyID/" + val, function (data) {
         var ls = "";
 
         for (var i = 0; i < data.length; i++) {
@@ -176,7 +200,7 @@ function selectCompanyEmply(val) {
 
 function selectCompany(val) {
     var bd = "";
-    $.getJSON("http://localhost/pems/apis/myapi/select/tbl_companies/fldCompanyID/" + val, function (data) {
+    $.getJSON(myurls+"pems/apis/myapi/select/tbl_companies/fldCompanyID/" + val, function (data) {
         $("#comp_name").html(data[0].fldCompanyName);
         $("#comp_name_sidenav").html(data[0].fldCompanyName + '/PEMS');
         $("#comp_name_navbar").html(data[0].fldCompanyName + '/PEMS');
@@ -214,7 +238,7 @@ function update_func() {
     let update_action = "update_employee";
 
 
-    $.post(myurl + "/propertycard/propertyapi/update", {
+    $.post(myurls + "/propertycard/propertyapi/update", {
         tblname: tblname,
         fldUserID: fldUserID,
         fldUsername: fldUsername,
@@ -241,7 +265,7 @@ function editmodal_data(val) {
 
     $(function () {
 
-        url = myurl + "/propertycard/propertyapi/tbl_user/fldCompanyID/" + localStorage.companyID + "/fldUserID/" + val;
+        url = myurls + "/propertycard/propertyapi/tbl_user/fldCompanyID/" + localStorage.companyID + "/fldUserID/" + val;
 
         $.getJSON(url, function (data) {
             for (let i = 0; i < data.length; i++) {
@@ -261,7 +285,7 @@ function editmodal_data(val) {
 function verifyCode() {
     let val = $("#vcode").val()
     if (val != "") {
-        $.getJSON("http://localhost/pems/apis/myapi/select/tbl_companies/fldVerify/" + val, function (data) {
+        $.getJSON(myurls+"pems/apis/myapi/select/tbl_companies/fldVerify/" + val, function (data) {
             if (data.length > 0) {
                 updateData(val);
                 window.alert("Account already verified please login now!");
@@ -284,7 +308,7 @@ function validateLength(val, valid){
 }
 
 function updateData(val) {
-    $.post("http://localhost/pems/apis/myapi/update/tbl_companies/fldVerify/" + val, JSON.stringify([{
+    $.post(myurls+"pems/apis/myapi/update/tbl_companies/fldVerify/" + val, JSON.stringify([{
         fldVerify: "Active"
     }]), function (data) {
 
@@ -299,11 +323,12 @@ function resetPass(){
     updateCode(email, thval);
     sendCode(email, thval);
     window.alert("Password has been reset please check your E-mail address");
+    window.location.assign("index.html");
 }
 
 
 function updateCode(val, vcode) {
-    $.post("http://localhost/pems/apis/myapi/update/tbl_companies/fldEmail/" + val, JSON.stringify([{
+    $.post(myurls+"pems/apis/myapi/update/tbl_companies/fldEmail/" + val, JSON.stringify([{
         fldVerify: vcode
     }]), function (data) {
 
@@ -326,7 +351,7 @@ function updatePass(){
     myx = myx.replace('?vcode=', '');
     
     if(pwd == cpwd){
-            $.post("http://localhost/pems/apis/myapi/update/tbl_companies/fldVerify/" + myx, JSON.stringify([{
+            $.post(myurls+"pems/apis/myapi/update/tbl_companies/fldVerify/" + myx, JSON.stringify([{
                 fldVerify: "Active", fldPassword: pwd
             }]), function (data) {
 
