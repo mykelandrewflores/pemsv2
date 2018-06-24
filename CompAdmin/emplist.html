@@ -2,203 +2,188 @@
 <html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/materialize.min.css">
-    <link rel="stylesheet" href="../css/font-awesome.min.css">
-    <title>Company Details</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="../css/materialize.min.css">
+	<link rel="stylesheet" href="../css/font-awesome.min.css">
+	<title>Company Details</title>
 </head>
-
-<body>
-	<header>
-		<nav class="white">
-			<div class="nav-wrapper">
-				<a href="#!" class="sidenav-trigger black-text" data-target="slide-out"><i class="fa fa-bars" aria-hidden="true"></i></a>
-				<a href="#" class="brand-logo center green-text">Logo</a>
-			</div>
-		</nav>
+<body class="cloudy">
+	<header class="padded">
+		<div class="navbar-fixed">
+			<nav class="white">
+				<div class="nav-wrapper">
+					<ul class="left">
+						<li><a id="toggleNav"  style="display: block" class="sidenav-trigger grey-text waves-effect" data-target="slide-out"><i class="fa fa-bars" aria-hidden="true"></i></a></li>
+						<li><span class="green-text hide" id="comp_name_navbar">Company/PEMS</span></li>
+					</ul>
+					<div class="container nav-container">
+						<ul class="right">
+							<li><a ><i class="fa fa-bell grey-text"></i></a></li>
+							<li><a ><img src="../image/avatar.jpg" class="circle" style="margin-top:15px" width="30" /></a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</div>
 		<ul class="sidenav sidenav-fixed" id="slide-out">
+			<li class="z-depth-2 white center" id="toggle_header_sidenav" style="height: 64px;font-size: 20px;"><span class="green-text" id="comp_name_sidenav">Company/PEMS</span></li>
 			<li><div class="user-view">
-				<div class="background green"></div>
-				<a href="#user"><img class="circle" src="image/avatar.jpg"></a>
-				<a href="#name"><span class="white-text name">Mykel Andrew Flores</span></a>
-				<a href="#email"><span class="white-text email">mykelandrww@gmail.com</span></a>
+				<div class="background green">
+					<img src="" class="responsive-img"  style="opacity: 0.1;margin-top:-55px;" id="sidepanel_bg" />
+				</div>
+				<a href="#user"><img class="circle" src="../image/avatar.jpg"></a>
+				<a href="#name"><span class="white-text name" id="comp_name">John Doe</span></a>
+				<a href="#email"><span class="white-text email" id="det_em">johndoe@gmail.com</span></a>
 			</div></li>
 			<li><a class="subheader">Functions</a></li>
 			<li><a href="departments.html" class="collapsible-header"><i class="fa fa-building" aria-hidden="true"></i> Departments</a></li>
-            <div class="divider"></div>
 			<li><a href="index.html" class="collapsible-header"><i class="fa fa-building-o" aria-hidden="true"></i> Company Settings</a></li>
-            <div class="divider"></div>
-            
-			<li class="active active-link"><a href="emplist.html" class="collapsible-header"><i class="fa fa-users" aria-hidden="true"></i> Employee Mngmt.</a></li>
-            <div class="divider"></div>
-            
-            
-			<li><a href="../ReqOfficer/LCCA/settings.html" class="collapsible-header"><i class="fa fa-cog" aria-hidden="true"></i> LCCA Settings.</a></li>
-            <div class="divider"></div>   
-            
+			<li  class="active active-link"><a href="emplist.html" class="collapsible-header"><i class="fa fa-users" aria-hidden="true"></i> Employee Management</a></li>
+			<li><a href="../ReqOfficer/LCCA/settings.html" class="collapsible-header"><i class="fa fa-cog" aria-hidden="true"></i> LCCA Settings</a></li>
 			<li onclick="logOut()"><a href="../index.html" class="collapsible-header" onclick="logOut()"><i class="fa fa-power-off" aria-hidden="true"></i> Logout</a></li>
 		</ul>
 	</header>
-    <div id="editmodal" class="modal">
-      <div class="modal-content">
-      <h4 class="deafult-text font-weight-low">Edit Employees</h4>
-          <div class="row">
-            <div class="input-field col s12">
-                <input  id="editemp_userid" type="text" hidden class="validate">
-            </div>
-            <div class="input-field col s12">
-                <input  id="editemp_username" type="text" class="validate">
-                <label for="editemp_username">Username</label>
-            </div>
-            <div class="input-field col s4">
-                <input id="editemp_fname" type="text" class="validate">
-                <label for="editemp_fname">Firstname</label>
-            </div>
-            <div class="input-field col s4">
-                <input id="editemp_lname" type="text" class="validate">
-                <label for="editemp_lname">Lastname</label>
-            </div>
-            <div class="input-field col s4">
-                <input id="editemp_mname" type="text" class="validate">
-                <label for="editemp_mname">Middlename</label>
-            </div>
-            <div class="input-field col l6 s12">
-                <select id="editemp_role">
-                    <option value="" disabled selected>Choose your option</option>
-                    <option value="Requisition">Requisition</option>
-                    <option value="Supply">Supply</option>
-                </select>
-                <label>Role</label>
-            </div>
-            <div class="input-field col l6 s12">
-                <select id="editemp_dept" class="browser-default">
-                    <option value="" disabled selected>Choose your Department</option>
-                </select>
-            </div>
-          </div>
-      </div>
-      <div class="modal-footer">
-        <button class="btn blue darken-3" onclick="update_func()">Update Employee</button>
-          <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
-      </div>
-    </div>
-
-    <main class="ml300">
-        <div class="row">
-
-            <div class="card col l6 offset-l1">
-                <div class="card-header">
-                    <h4><i class="fa fa-plus-circle"></i> Add Employees</h4>
-                </div>
-
-                <form>
-
-                    <div class='row'>
-                        <div class='input-field col l6 s12'>
-                            <input class='validate' type='text' name='emp_fname' id='emp_fname' />
-                            <label for='emp_fname'>FirstName</label>
-                        </div>
-                        <div class='input-field col l6 s12'>
-                            <input class='validate' type='text' name='emp_lname' id='emp_lname' />
-                            <label for='emp_lname'>LastName</label>
-                        </div>
-                        <div class='input-field col l6 s12'>
-                            <input class='validate' type='text' name='emp_fname' id='emp_mname' />
-                            <label for='emp_mname'>MiddleName</label>
-                        </div>
-                        <div class="input-field col l6 s12">
-                            <select id="emp_role">
-                              <option value="" disabled selected>Choose your option</option>
-                              <option value="Requisition">Requisition</option>
-                              <option value="Supply">Supply</option>
-                            </select>
-                            <label>Role</label>
-                        </div>
-                        <div class="input-field col l12">
-                            <select id="emp_dept" class="browser-default">
-                              <option value="" disabled selected>Choose your Department</option>
-				            </select>
-                        </div>
-                        <div class='input-field col s12 s12'><input class='validate' type='text' name='emp_username' id='emp_username' />
-                            <label for='emp_username'>Username</label>
-                        </div>
-
-                        <div class='input-field col l6 s12'>
-                            <input class='validate' type='password' name='emp_pass' id='emp_pass' />
-                            <label for='emp_pass'>Password</label>
-                        </div>
-
-
-                        <div class='input-field col l6 s12'>
-                            <input class='validate' type='password' name='emp_cpass' id='emp_cpass' />
-                            <label for='emp_cpass'>Confirm Password</label>
-                        </div>
-
-
-
-                    </div>
-                    <center>
-                        <button type='button' onclick="insertEmployee()" name='btn_login' class='col s12 btn btn-large waves-effect indigo'>Add Employee</button>
-                    </center>
-                </form>
-            </div>
-
-
-
-            <div class="col l5  ">
-
-                <div class="card-head">
-                    <h4><i class="fa fa-users"></i> Employees</h4>
-                </div>
-
-                <table class="responsive-table">
-                    <thead>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Role</th>
-                        <th>Department</th>
-                        <th>Action</th>
-                    </thead>
-
-                    <tbody id="proptabledata">
-                        <tr>
-                            <td>1</td>
-                            <td>JagjitSingh</td>
-                            <td>Singhjagjit87@gmail.com</td>
-                            <td>Supply Officet</td>
-                            <td>Facebook shipping co.</td>
-                            <td><a class="btn red modal-trigger" href="#modal1" >Edit</a> <button class="btn indigo">Delete</button></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-
-        </div>
-    </main>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/materialize.min.js"></script>
-    <script src="js/init.js"></script>
-    <script src="js/property_data.js"></script>
-    <script src="../js/func.js"></script>
-    <script type="text/javascript">
-        selectCompanyEmply(localStorage.companyID);
-        var companyId = localStorage.companyID;
-        $.getJSON("http://localhost/latestPems/apis/myapi/select/tbl_departments/fldCompanyID/" + companyId, function(data) {
-            var ls = "";
-            if (data.length > 0) {
-
-                for (let i = 0; i < data.length; i++) {
-                    ls += '<option name="' + data[i].fldDepartmentName + '">' + data[i].fldDepartmentName + '</option>'
-                }
-                $("#emp_dept").html(ls);
-                $("#editemp_dept").html(ls);
-            }
-        });
-
-    </script>
+	<main class="mt-1">
+		<div class="container">
+			<h4 class="deafult-text"><blockquote>Employee Management</blockquote></h4>
+			<ul class="tabs tabs-fixed-width tab-demo" style="background-color: transparent;">
+				<li class="tab"><a class="active" href="#employee">Employee</a></li>
+				<li class="tab"><a  href="#addemployee">Add New Employee</a></li>
+			</ul>
+			<div class="row mt-br">
+				<div id="employee" class="col s12">
+					<div class="col s12 m12 l12">
+						<h5>Employee:</h5>
+						<table class="table  centered responsive-table">
+							<thead>
+								<th>ID</th>
+								<th>Name</th>
+								<th>Role</th>
+								<th>Department</th>
+								<th>Action</th>
+							</thead>
+							<tbody id="proptabledata"><tr><td colspan="5">No Data</td></tr></tbody>
+						</table>
+					</div>
+				</div>
+				<div id="addemployee" class="col s12">
+					<div class="col s12 m12 l12">
+						<h5>Add Employees:</h5>
+						<form class="mt-br">
+							<div class='input-field s12  m4 col l4'>
+								<input class='validate' type='text' name='emp_fname' id='emp_fname' placeholder="@John" />
+								<label for='emp_fname'>FirstName</label>
+							</div>
+							<div class='input-field col s12 m4 l4'>
+								<input class='validate' type='text' name='emp_lname' id='emp_lname'  placeholder="@Doe" />
+								<label for='emp_lname'>LastName</label>
+							</div>
+							<div class='input-field col s12 m4 l4'>
+								<input class='validate' type='text' name='emp_fname' id='emp_mname' placeholder="@Toe" />
+								<label for='emp_mname'>MiddleName</label>
+							</div>
+							<div class="input-field col s12 m6 l6">
+								<select id="emp_role">
+									<option value="" disabled selected>Choose your option</option>
+									<option value="Requisition">Requisition</option>
+									<option value="Supply">Supply</option>
+								</select>
+								<label>Role</label>
+							</div>
+							<div class="input-field col s12 m6 l6">
+								<select id="emp_dept" class="browser-default">
+									<option value="" disabled selected>Choose your Department</option>
+								</select>
+							</div>
+							<div class='input-field col s12 m12 l12'>
+								<input class='validate' type='text' name='emp_username' id='emp_username' placeholder="@johndoe123" />
+								<label for='emp_username'>Username</label>
+							</div>
+							<div class='input-field col s12 m6 l6'>
+								<input class='validate' type='password' name='emp_pass' id='emp_pass' placeholder="@23john21"/>
+								<label for='emp_pass'>Password</label>
+							</div>
+							<div class='input-field col s12 m6 l6'>
+								<input class='validate' type='password' name='emp_cpass' id='emp_cpass' placeholder="@23john21" />
+								<label for='emp_cpass'>Confirm Password</label>
+							</div>
+							<div class="col s12 center">
+								<button type='button' onclick="insertEmployee()" name='btn_login' class='btn  waves-effect green'>Add Employee</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+	<div id="editmodal" class="modal modal-fixed-footer">
+		<div class="modal-content">
+			<h4 class="deafult-text font-weight-low">Edit Employees</h4>
+			<div class="row">
+				<div class="input-field col s12">
+					<input  id="editemp_userid" type="text" hidden class="validate">
+				</div>
+				<div class="input-field col s12 m12 l12">
+					<input  id="editemp_username" type="text" class="validate" placeholder="@John Doe">
+					<label for="editemp_username">Username</label>
+				</div>
+				<div class="input-field col s12 m4 l4">
+					<input id="editemp_fname" type="text" class="validate"  placeholder="@John">
+					<label for="editemp_fname">Firstname</label>
+				</div>
+				<div class="input-field col s12 m4 l4">
+					<input id="editemp_lname" type="text" class="validate"  placeholder="@Doe">
+					<label for="editemp_lname">Lastname</label>
+				</div>
+				<div class="input-field col s12 m4 l4">
+					<input id="editemp_mname" type="text" class="validate"  placeholder="@Toe">
+					<label for="editemp_mname">Middlename</label>
+				</div>
+				<div class="input-field col l6 m6 s12">
+					<select id="editemp_role">
+						<option value="" disabled selected>Choose your option</option>
+						<option value="Requisition">Requisition</option>
+						<option value="Supply">Supply</option>
+					</select>
+					<label>Role</label>
+				</div>
+				<div class="input-field col l6 m6 s12">
+					<select id="editemp_dept" class="browser-default">
+						<option value="" disabled selected>Choose your Department</option>
+					</select>
+				</div>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<button class="btn green" onclick="update_func()">Update Employee</button>
+			<a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
+		</div>
+	</div>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/materialize.min.js"></script>
+	<script src="js/init.js"></script>
+	<script src="js/property_data.js"></script>
+	<script src="../js/func.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var id = localStorage.companyID;
+			selectCompany(id)
+		});
+		selectCompanyEmply(localStorage.companyID);
+		var companyId = localStorage.companyID;
+		$.getJSON("http://localhost/pems/apis/myapi/select/tbl_departments/fldCompanyID/" + companyId, function(data) {
+			var ls = "";
+			if (data.length > 0) {
+				for (let i = 0; i < data.length; i++) {
+					ls += '<option name="' + data[i].fldDepartmentName + '">' + data[i].fldDepartmentName + '</option>'
+				}
+				$("#emp_dept").html(ls);
+				$("#editemp_dept").html(ls);
+			}
+		});
+	</script>
 </body>
 
 </html>

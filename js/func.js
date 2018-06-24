@@ -23,7 +23,7 @@ function submitCompany() {
                 clogo: clogo,
                 cweb: cweb,
                 cpwd: cpwd,
-                }]),
+            }]),
             function (data) {
                 console.log(data);
             });
@@ -61,7 +61,7 @@ function insertEmployee() {
             clogo: role,
             cweb: dept,
             cpwd: coid,
-                }]),
+        }]),
         function (data) {
             console.log(data);
         });
@@ -138,26 +138,28 @@ function selectCompanyEmply(val) {
             ls += "<td>" + data[i].fldFname + " " + data[i].fldLname + "</td>";
             ls += "<td>" + data[i].fldRole + "</td>";
             ls += "<td>" + data[i].fldDepartment + "</td>";
-            ls += '<td><button class="btn red modal-trigger" href="#editmodal" onclick="editmodal_data('+data[i].fldUserID+')">Edit</button><button class="btn indigo">Delete</button></td>';
+            ls += '<td><a class="modal-trigger" href="#editmodal" onclick="editmodal_data('+data[i].fldUserID+')"><i class="fa fa-pencil"></i></a> | <a class="red-text"><i class="fa fa-trash"></i></a></td>';
             ls += "</tr>";
         }
 
         $("#proptabledata").html(ls);
     });
 }
-
-
 function selectCompany(val) {
     var bd = "";
     $.getJSON("http://localhost/pems/apis/myapi/select/tbl_companies/fldCompanyID/" + val, function (data) {
         $("#comp_name").html(data[0].fldCompanyName);
         $("#comp_name_sidenav").html(data[0].fldCompanyName+'/PEMS');
+        $("#comp_name_navbar").html(data[0].fldCompanyName+'/PEMS');
+        $("#comp_name_card").html(data[0].fldCompanyName+'/PEMS');
         $("#det_em").html(data[0].fldEmail);
+        $("#dept_em").html(data[0].fldEmail);
         $("#det_address").html(data[0].fldAddress);
         $("#det_contact").html(data[0].fldContactNo);
         $("#det_faxno").html(data[0].fldFax);
         $("#det_website").html(data[0].fldWebsite);
         $("#comp_logo").attr("src", data[0].fldLogo);
+        $("#sidepanel_bg").attr("src", data[0].fldLogo);
         $("#company_logo_nav").attr("src", data[0].fldLogo);
 
     });
