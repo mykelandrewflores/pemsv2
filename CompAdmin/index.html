@@ -66,7 +66,7 @@
 									<h6><span class="font-bold">Website: </span><span id="det_website"></span></h6>
 								</div>
 								<div class="col s12 m12 l12 center-align mt-br">
-									<a href="#" class="btn  green waves-effect">Edit Details</a>
+									<a href="#editmodal" class="btn  green waves-effect modal-trigger">Edit Details</a>
 								</div>
 							</div>
 						</div>
@@ -87,6 +87,52 @@
 			</ul>
 		</div>
 	</main>
+    
+    
+
+	<div id="editmodal" class="modal modal-fixed-footer">
+		<div class="modal-content">
+			<h4 class="deafult-text font-weight-low">Edit Employees</h4>
+			<div class="row">
+				<div class="input-field col s12">
+					<input  id="editemp_userid" type="text" hidden class="validate">
+				</div>
+				<div class="input-field col s12 m12 l12">
+					<input  id="editemp_username" type="text" class="validate" placeholder="@John Doe">
+					<label for="editemp_username">Username</label>
+				</div>
+				<div class="input-field col s12 m4 l4">
+					<input id="editemp_fname" type="text" class="validate"  placeholder="@John">
+					<label for="editemp_fname">Firstname</label>
+				</div>
+				<div class="input-field col s12 m4 l4">
+					<input id="editemp_lname" type="text" class="validate"  placeholder="@Doe">
+					<label for="editemp_lname">Lastname</label>
+				</div>
+				<div class="input-field col s12 m4 l4">
+					<input id="editemp_mname" type="text" class="validate"  placeholder="@Toe">
+					<label for="editemp_mname">Middlename</label>
+				</div>
+				<div class="input-field col l6 m6 s12">
+					<select id="editemp_role" required onchange="roleCheckModal(this.value)">
+						<option value="" disabled selected>Choose your option</option>
+						<option value="Requisition">Requisition</option>
+						<option value="Supply">Supply</option>
+					</select>
+					<label>Role</label>
+				</div>
+				<div class="input-field col l6 m6 s12" id="thsRole">
+					<select id="editemp_dept" class="browser-default">
+						<option value="" disabled selected>Choose your Department</option>
+					</select>
+				</div>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<button class="btn green" onclick="update_func()">Save Company Details</button>
+			<a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
+		</div>
+	</div>    
 	<script src="../js/jquery.min.js"></script>
 	<script src="../js/materialize.min.js"></script>
 	<script src="../js/init.js"></script>
