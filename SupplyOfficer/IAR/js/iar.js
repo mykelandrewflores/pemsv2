@@ -6,6 +6,7 @@ purchaselist();
 iarFetch();
 var ids = [];
 var recieve_json = [];
+var log_prno = "";
 
 function purchaselist() {
     var url = myurl + "/iar_api/select.php?tbl_purchaserequest&company_id=" + localStorage.companyID;
@@ -18,7 +19,12 @@ function purchaselist() {
             longstring += "<td id='dept'>" + data[i].fldDept + "</td>";
             longstring += "<td>" + formatDate(new Date(data[i].fldDate)) + "</td>";
             longstring += "<td>" + data[i].fldPurpose + "</td>";
-            longstring += "<td><a class='modal-trigger waves-effect waves-light  ' href='#modal1' onclick='stocklist(\"" + data[i].fldPrNo + "\",\"" + data[i].fldDept + "\")'><i class='fa fa-eye' aria-hidden='true'></i></a></td>";
+            longstring += "<td>" + data[i].fldPurchaseRemarks + "</td>";
+            if (data[i].fldPurchaseRemarks == 'Done') {
+                longstring += "<td><a class='modal-trigger waves-effect waves-light  ' href='#modal2' onclick='donelist(\"" + data[i].fldPrNo + "\",\"" + data[i].fldDept + "\")'><i class='fa fa-list-alt' aria-hidden='true'></i></a></td>";
+            }else{
+                longstring += "<td><a class='modal-trigger waves-effect waves-light  ' href='#modal1' onclick='stocklist(\"" + data[i].fldPrNo + "\",\"" + data[i].fldDept + "\")'><i class='fa fa-eye' aria-hidden='true'></i></a></td>";
+            }
             longstring += "</tr>";
         }
         $('#purchaselist').html(longstring);
@@ -57,6 +63,7 @@ function stocklist(id, dept) {
         $('#invoice').val('INV' + currentdate + '-');
         for (var i = 0; i < data.length; i++) {
             ids.push(data[i].fldTransactionID);
+            log_prno = data[i].fldPrNo;
             longstring += "<tr>";
             longstring += "<td id='unit" + data[i].fldTransactionID + "'>" + data[i].fldUnit + "</td>";
             longstring += "<td id='prodIdz" + data[i].fldTransactionID + "' style='display: none'>" + data[i].fldPNum + "</td>";
@@ -69,6 +76,10 @@ function stocklist(id, dept) {
         }
         $('#stocklist').html(longstring);
     });
+}
+
+function donelist(){
+    
 }
 
 function pad(num) {
@@ -90,10 +101,11 @@ function formatDate(date) {
     minutes = minutes < 10 ? '0' + minutes : minutes;
     return monthNames[monthIndex] + ' ' + day + ', ' + year + ' ' + pad(hours) + ":" + pad(minutes) + pad(ampm);
 }
-
+    
 function stopOperation() {
     recieve_json = [];
     ids = [];
+    log_prno = "";
 }
 
 $.ajaxSetup({
@@ -122,6 +134,7 @@ $(document).ready(function () {
                     'invoice_no': invoice,
                     'company_id': company_id,
                     'PrNo': ids[i],
+                    'log_prno': log_prno,
                     'PO': PO,
                     'prodName': prodName,
                     'brandName': brandName,

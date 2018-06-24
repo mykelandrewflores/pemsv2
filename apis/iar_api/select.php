@@ -6,7 +6,7 @@ $data = array();
 
 if(isset($_GET['tbl_purchaserequest']) AND isset($_GET['company_id'])) {
 	$cid = $_GET['company_id'];
-	$sql = mysqli_query($db, "SELECT * FROM tbl_purchaserequest WHERE fldPurchaseRemarks = 'For Order' AND fldCompanyID = '$cid'  ORDER BY fldTransactionNo DESC ");
+	$sql = mysqli_query($db, "SELECT * FROM tbl_purchaserequest WHERE fldPurchaseRemarks != 'Pending' AND fldCompanyID = '$cid'  ORDER BY fldTransactionNo DESC ");
 } elseif(isset($_GET['tbl_purchaserequest'])) {
 	$sql = mysqli_query($db, "SELECT * FROM tbl_purchaserequest WHERE fldPurchaseRemarks = 'For Order'  ORDER BY fldTransactionNo DESC ");
 } elseif(isset($_GET['tbl_purchaseitems'])) {

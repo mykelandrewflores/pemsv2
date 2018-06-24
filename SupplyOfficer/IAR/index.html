@@ -59,6 +59,7 @@
 							<th class="font-weight-low">Department</th>
 							<th class="font-weight-low">Date</th>
 							<th class="font-weight-low">Purpose</th>
+							<th class="font-weight-low">Remarks</th>
 							<th class="font-weight-low">Action</th>
 						</thead>
 						<tbody id="purchaselist"><tr><td colspan="5">No Data</td></tr></tbody>
@@ -113,6 +114,27 @@
 				</div>
 			</div>
 		</form>
+			<div id="modal2" class="modal">
+				<div class="modal-content">
+					<h4>Transaction History</h4>
+					<table class="table responsive-table mt-br centered">
+						<thead>
+							<tr>
+								<th>Unit</th>
+								<th>Product Type</th>
+								<th>Product Name</th>
+								<th>PR Quantity</th>
+								<th>Receive Quantity</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+						<tbody id="stocklist"></tbody>
+					</table>
+				</div>
+				<div class="modal-footer">
+					<a href="#!" onclick="stopOperation()" class="modal-close waves-effect waves-green btn-flat" >Close</a>
+				</div>
+			</div>
 	</main>
 	<script src="../../js/jquery.min.js"></script>
 	<script src="../../js/materialize.min.js"></script>
