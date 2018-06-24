@@ -600,8 +600,8 @@ function proptable(){
 			longstring += "<td>"+data[i].fldDate+"</td>";
 			longstring += "<td>"+data[i].fldRefNo+"</td>";
 			longstring += "<td>"+data[i].fldRecQty+"</td>";
-			longstring += "<td>"+data[i].fldTDQty+"</td>";
-			longstring += "<td>"+data[i].fldDept+"</td>";
+			longstring += "<td>"+data[i].fldBrand+"</td>";
+			longstring += "<td>"+data[i].fldToDept+"</td>";
 			longstring += "<td>"+data[i].fldAction+"</td>";
 			longstring += "<td class=''><a class='btn red darken-3' onclick='DeletePropData("+data[i].fldRecID+")'><i class='fa fa-trash'></i></a></td>";
 			longstring += "</tr>";

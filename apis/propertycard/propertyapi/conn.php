@@ -158,8 +158,10 @@ class create{
 			$log_fldRemarks = $_POST['log_fldRemarks'];
 			$log_fldAction = $_POST['log_fldAction'];
 			$log_fldFromDept = $_POST['log_fldFromDept'];
+			$log_fldToDept = $_POST['log_fldToDept'];
+			$log_fldBrand = $_POST['log_fldBrand'];
 			$log_tblname = $_POST['tblname'];
-			$insert="INSERT INTO tbl_property_dispose (fldRecID,fldIarNo,fldPNum,fldAgency,fldDept,fldDate,fldRefNo,fldRecQty,fldTDQty,fldRemarks,fldAction,fldFromDept) VALUES('$log_fldRecID','$log_fldIarNo','$log_fldPNum','$log_fldAgency','$log_fldDept','$log_fldDate','$log_fldRefNo','$log_fldRecQty','$log_fldTDQty','$log_fldRemarks','$log_fldAction','$log_fldFromDept')";
+			$insert="INSERT INTO tbl_property_dispose (fldRecID,fldIarNo,fldPNum,fldAgency,fldDept,fldDate,fldRefNo,fldRecQty,fldTDQty,fldRemarks,fldAction,fldFromDept,fldBrand,fldToDept) VALUES('$log_fldRecID','$log_fldIarNo','$log_fldPNum','$log_fldAgency','$log_fldDept','$log_fldDate','$log_fldRefNo','$log_fldRecQty','$log_fldTDQty','$log_fldRemarks','$log_fldAction','$log_fldFromDept','$log_fldBrand','$log_fldToDept')";
 		}
 		else{
 			
