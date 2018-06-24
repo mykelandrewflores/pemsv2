@@ -605,7 +605,7 @@ function proptable(){
 			longstring += "<td>"+data[i].fldBrand+"</td>";
 			longstring += "<td>"+data[i].fldToDept+"</td>";
 			longstring += "<td>"+data[i].fldAction+"</td>";
-			longstring += "<td class=''><a class='btn red darken-3' onclick='DeletePropData("+data[i].fldRecID+")'><i class='fa fa-trash'></i></a></td>";
+			longstring += "<td class=''><a class='red-text darken-3' onclick='DeletePropData("+data[i].fldRecID+")'><i class='fa fa-trash'></i></a></td>";
 			longstring += "</tr>";
 			}
 			document.getElementById("sel_name").innerHTML=sel_name;

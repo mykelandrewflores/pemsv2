@@ -10,67 +10,82 @@
 	<title>Property Card</title>
 </head>
 <body class="cloudy">
-	<header>
-		<nav class="white">
-			<a href="#!" class="sidenav-trigger black-text" data-target="slide-out"><i class="fa fa-bars" aria-hidden="true"></i></a>
-		</nav>
-		<ul class="sidenav sidenav-fixed" id="slide-out">
-			<li>
-				<div class="user-view">
-					<div class="background green"></div>
-					<a href="#user"><img class="circle" src="image/avatar.jpg"></a>
-					<a href="#name"><span class="white-text name" id="name">Mykel Andrew Flores</span></a>
-					<a href="#email"><span class="white-text email" id="dept">mykelandrww@gmail.com</span></a>
+	<header class="padded">
+		<div class="navbar-fixed">
+			<nav class="white">
+				<div class="nav-wrapper">
+					<ul class="left">
+						<li><a id="toggleNav"  style="display: block" class="sidenav-trigger grey-text waves-effect" data-target="slide-out"><i class="fa fa-bars" aria-hidden="true"></i></a></li>
+						<li><span class="green-text dtime-now" id="">Date/Time</span></li>
+						<li><span class="green-text hide" id="comp_name_navbar">Company/PEMS</span></li>
+					</ul>
+					<div class="container nav-container">
+						<ul class="right">
+							<li><a ><i class="fa fa-bell grey-text"></i></a></li>
+							<li><a ><img src="../../image/avatar.jpg" class="circle" style="margin-top:15px" width="30" /></a></li>
+						</ul>
+					</div>
 				</div>
-			</li>
+			</nav>
+		</div>
+		<ul class="sidenav sidenav-fixed" id="slide-out">
+			<li class="z-depth-2 white center" id="toggle_header_sidenav" style="height: 64px;font-size: 20px;"><span class="green-text" id="comp_name_sidenav">Company/PEMS</span></li>
+			<li><div class="user-view">
+				<div class="background green">
+					<img src="../../image/bg.jpg" class="responsive-img"  style="opacity: 0.1;margin-top:-55px;" id="sidepanel_bg" />
+				</div>
+				<a href="#user"><img class="circle" src="../../image/avatar.jpg"></a>
+				<a href="#name"><span class="white-text name" id="name">John Doe</span></a>
+				<a href="#email"><span class="white-text email" id="dept">johndoe@gmail.com</span></a>
+			</div></li>
 			<li><a class="subheader">Functions</a></li>
-			<li><a href="#!"><i class="fa fa-file-text-o" aria-hidden="true"></i> Inspection and Acceptance</a></li>
-			<li class="active active-link"><a href="../propertycard/index.html"><i class="fa fa-file-o" aria-hidden="true"></i> Property Mgmt.</a></li>
-			<li><a href="../purchase/purchaselist.html"><i class="fa fa-file" aria-hidden="true"></i> Purchase Mgmt.</a></li>
+			<li><a href="../IAR/index.html"><i class="fa fa-file-text-o" aria-hidden="true"></i> Inspection and Acceptance</a></li>
+			<li  class="active active-link"><a href="#!"><i class="fa fa-file-o" aria-hidden="true"></i> Property Management</a></li>
+			<li ><a href="../purchase/purchaselist.html"><i class="fa fa-file" aria-hidden="true"></i> Purchase Management</a></li>
 			<li><a href="../../index.html"><i class="fa fa-power-off" aria-hidden="true"></i> Log-out</a></li>
 		</ul>
 	</header>
-	<div id="modal1" class="modal">
+	<div id="modal1" class="modal modal-fixed-footer">
 		<div class="modal-content">
-			<h4 class="deafult-text font-weight-low">Add Property Data</h4>
-			<div class="row">
-				<div class="input-field col s12">
-					<input id="pc_agency" type="text" class="validate">
+			<h4 class="deafult-text font-weight-low"><blockquote>Add Property Data</blockquote></h4>
+			<div class="row mt-br">
+				<div class="input-field col s12 m6 l6">
+					<input id="pc_agency" type="text" class="validate" placeholder="@John Doe Agency">
 					<label for="pc_agency">Agency Name</label>
 				</div>
-				<div class="input-field col s12">
-					<input id="pc_dept" type="text" class="validate">
+				<div class="input-field col s12  m6 l6">
+					<input id="pc_dept" type="text" class="validate" placeholder="@ e.g (MIS, HR)">
 					<label for="pc_dept">Department</label>
 				</div>
-				<div class="input-field col s12">
-					<input id="pc_date" type="text" class="validate">
+				<div class="input-field col s12  m6 l6">
+					<input id="pc_date" type="text" class="validate" placeholder="@Month/Day/Year">
 					<label for="pc_date">Date</label>
 				</div>
-				<div class="input-field col s12">
-					<input id="pc_refno" type="text" class="validate">
+				<div class="input-field col s12 m6 l6">
+					<input id="pc_refno" type="text" class="validate" placeholder="@INV14223">
 					<label for="pc_refno">Reference No.</label>
 				</div>
-				<div class="input-field col s12">
-					<input id="pc_rcptqty" type="text" class="validate">
+				<div class="input-field col s12 m6 l6">
+					<input id="pc_rcptqty" type="text" class="validate" placeholder="@2">
 					<label for="pc_rcptqty">Receipt Qty.</label>
 				</div>
-				<div class="input-field col s12">
-					<input id="pc_tdqty" type="text" class="validate">
+				<div class="input-field col s12 m6 l6">
+					<input id="pc_tdqty" type="text" class="validate" placeholder="@5">
 					<label for="pc_tdqty">Transfer/Disposal Qty.</label>
 				</div>
-				<div class="input-field col s12">
-					<input id="pc_office" type="text" class="validate">
+				<div class="input-field col s12 m6 l6">
+					<input id="pc_office" type="text" class="validate" placeholder="@John Doe Office">
 					<label for="pc_office">Office</label>
 				</div>
-				<div class="input-field col s12">
-					<input id="pc_balqty" type="text" class="validate">
+				<div class="input-field col s12 m6 l6">
+					<input id="pc_balqty" type="text" class="validate" placeholder="@4">
 					<label for="pc_balqty">Balance Qty.</label>
 				</div>
 			</div>
 		</div>
 		<div class="modal-footer">
-			<button class="btn blue darken-3" onclick="AddPropData()">Add Property Data</button>
-			<a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+			<button class="btn green" onclick="AddPropData()">Add Property Data</button>
+			<a href="#!" class="modal-close waves-effect btn-flat">Cancel</a>
 		</div>
 	</div>
 
@@ -126,15 +141,15 @@
 						</>
 					</blockquote>
 				</span>
-				<a class="waves-effect waves-light right green btn modal-trigger" href="propertycard_print.html"><i class="fa fa-print left"></i>Print Preview</a>
-				<br><br>
-				<a class="waves-effect waves-light right green btn modal-trigger" href="#modal1"><i class="fa fa-plus left"></i>Add Data</a>
-				<br>
-				<br>
-				<div class="divider"></div>
 				<div class="row">
 					<div class="col s12">
-						<table class="responsive-table">
+						<a class="waves-effect waves-light right btn-flat blue-text modal-trigger" href="propertycard_print.html"><i class="fa fa-print left"></i>Print Preview</a>
+						<a class="waves-effect waves-light right btn-flat green-text modal-trigger" href="#modal1"><i class="fa fa-plus left"></i>Add Data</a>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col s12">
+						<table class="table centered responsive-table">
 							<thead>
 								<th class="font-weight-low">Date</th>
 								<th class="font-weight-low">Ref No.</th>
