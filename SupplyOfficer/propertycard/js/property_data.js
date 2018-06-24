@@ -15,6 +15,87 @@ function setselected_reqofficer(prodid,iarno,recid){
 	localStorage.setItem("selected_recid_reqofficer",recid);
 }
 
+function fetch_lccaprod(){
+	url=myurl+"/propertycard/propertyapi/tbl_lccalives";
+	$.getJSON(url,function(data){
+			var body = ''
+			body+='<select id="lccaprod_select"> <option value="" disabled selected>Choose Product Name</option>';
+			for(var i = 0; i<data.length; i++) {
+				body+='<option value="'+data[i].fldProdID+'">'+data[i].fldProdName+'</option>';
+			}
+			body+='</select>';
+			$('#prodlcca_select').html(body);
+
+
+		}).fail(function(){
+			M.toast({html: 'No lcca data found'});
+		});
+}
+function fetch_lccadepartments(){
+	url=myurl+"/propertycard/propertyapi/tbl_departments/fldCompanyID/"+localStorage.companyID;
+	$.getJSON(url,function(data){
+			var body = ''
+			body+='<select id="lccadept_select"> <option value="" disabled selected>Choose Department</option>';
+			for(var i = 0; i<data.length; i++) {
+				body+='<option value="'+data[i].fldDepartmentName+'">'+data[i].fldDepartmentName+'</option>';
+			}
+			body+='</select>';
+			$('#deptlcca_select').html(body);
+
+
+		}).fail(function(){
+			M.toast({html: 'No deparments found'});
+		});
+}
+function fetch_departments(){
+	url=myurl+"/propertycard/propertyapi/tbl_departments/fldCompanyID/"+localStorage.companyID;
+	$.getJSON(url,function(data){
+			var body = ''
+			body+='<select id="department_select"> <option value="" disabled selected>Choose Department</option>';
+			for(var i = 0; i<data.length; i++) {
+				body+='<option value="'+data[i].fldDepartmentName+'">'+data[i].fldDepartmentName+'</option>';
+			}
+			body+='</select>';
+			$('#testing').html(body);
+
+
+		}).fail(function(){
+			M.toast({html: 'No deparments found'});
+		});
+}
+function fetch_departments2(){
+	url=myurl+"/propertycard/propertyapi/tbl_departments/fldCompanyID/"+localStorage.companyID;
+	$.getJSON(url,function(data){
+			var body = ''
+			body+='<select id="department_select2"> <option value="" disabled selected>Choose Department</option>';
+			for(var i = 0; i<data.length; i++) {
+				body+='<option value="'+data[i].fldDepartmentName+'">'+data[i].fldDepartmentName+'</option>';
+			}
+			body+='</select>';
+			$('#testing2').html(body);
+
+
+		}).fail(function(){
+			M.toast({html: 'No deparments found'});
+		});
+}
+function fetch_departments3(){
+	url=myurl+"/propertycard/propertyapi/tbl_departments/fldCompanyID/"+localStorage.companyID;
+	$.getJSON(url,function(data){
+			var body = ''
+			body+='<select id="department_select3"> <option value="" disabled selected>Choose Department</option>';
+			for(var i = 0; i<data.length; i++) {
+				body+='<option value="'+data[i].fldDepartmentName+'">'+data[i].fldDepartmentName+'</option>';
+			}
+			body+='</select>';
+			$('#testing3').html(body);
+
+
+		}).fail(function(){
+			M.toast({html: 'No deparments found'});
+		});
+}
+
 function equiptable(){
 
 	$(function(){
@@ -212,6 +293,7 @@ function disposal_tabledata(recID){
 		
 	});
 }
+<<<<<<< HEAD
 function fetch_lccaprod(){
 	url=myurl+"/propertycard/propertyapi/tbl_lccalives";
 	$.getJSON(url,function(data){
@@ -293,6 +375,10 @@ function fetch_departments3(){
 	});
 }
 
+=======
+
+
+>>>>>>> 4052d11c55c9d7295b91ad8f23530b74900e2f4d
 function assign_func(){
 	let fldRecID = document.getElementById("assign_recid").innerHTML;
 	let fldTDQty = 1;
@@ -595,6 +681,7 @@ function proptable(){
 			let longstring = "";
 			let sel_name = "";
 			for (let i = 0; i < data.length; i++) {
+<<<<<<< HEAD
 				sel_name=data[i].fldProdName;
 				longstring += "<tr>";
 				longstring += "<td>"+formDNow(new Date(data[i].fldDate))+"</td>";
@@ -605,6 +692,18 @@ function proptable(){
 				longstring += "<td>"+data[i].fldAction+"</td>";
 				longstring += "<td class=''><a class='red-text' onclick='DeletePropData("+data[i].fldRecID+")'><i class='fa fa-trash'></i></a></td>";
 				longstring += "</tr>";
+=======
+			sel_name=data[i].fldProdName;
+			longstring += "<tr>";
+			longstring += "<td>"+data[i].fldDate+"</td>";
+			longstring += "<td>"+data[i].fldRefNo+"</td>";
+			longstring += "<td>"+data[i].fldRecQty+"</td>";
+			longstring += "<td>"+data[i].fldBrand+"</td>";
+			longstring += "<td>"+data[i].fldToDept+"</td>";
+			longstring += "<td>"+data[i].fldAction+"</td>";
+			longstring += "<td class=''><a class='btn red darken-3' onclick='DeletePropData("+data[i].fldRecID+")'><i class='fa fa-trash'></i></a></td>";
+			longstring += "</tr>";
+>>>>>>> 4052d11c55c9d7295b91ad8f23530b74900e2f4d
 			}
 			document.getElementById("sel_name").innerHTML=sel_name;
 			document.getElementById("sel_iarno").innerHTML=localStorage.selected_iarno;
@@ -628,6 +727,7 @@ function proptable_reqofficer(){
 			let longstring = "";
 			let sel_name = "";
 			for (let i = 0; i < data.length; i++) {
+<<<<<<< HEAD
 				sel_name=data[i].fldProdName;
 				longstring += "<tr>";
 				longstring += "<td>"+data[i].fldDate+"</td>";
@@ -637,6 +737,17 @@ function proptable_reqofficer(){
 				longstring += "<td>"+data[i].fldDept+"</td>";
 				longstring += "<td>"+data[i].fldAction+"</td>";
 				longstring += "</tr>";
+=======
+			sel_name=data[i].fldProdName;
+			longstring += "<tr>";
+			longstring += "<td>"+data[i].fldDate+"</td>";
+			longstring += "<td>"+data[i].fldRefNo+"</td>";
+			longstring += "<td>"+data[i].fldRecQty+"</td>";
+			longstring += "<td>"+data[i].fldBrand+"</td>";
+			longstring += "<td>"+data[i].fldToDept+"</td>";
+			longstring += "<td>"+data[i].fldAction+"</td>";
+			longstring += "</tr>";
+>>>>>>> 4052d11c55c9d7295b91ad8f23530b74900e2f4d
 			}
 			document.getElementById("sel_name").innerHTML=sel_name;
 			document.getElementById("sel_iarno").innerHTML=localStorage.selected_iarno_reqofficer;
