@@ -16,7 +16,10 @@ switch($_SERVER["REQUEST_METHOD"]){
     		$conn->select("*")->from($operation[1]);
     	} elseif (count($operation) == 4 && $operation[0] == "select"){
     		$conn->select("*")->from($operation[1])->where($operation[2], $operation[3]);    		
-    	} else {
+    	} elseif ($operation[0] == "join"){
+            $conn->join($operation[1], $operation[2], $operation[3], $operation[4]);     
+        }
+        else {
     		$conn->runQuery();
     	}
 

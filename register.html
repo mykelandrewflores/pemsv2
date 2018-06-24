@@ -22,7 +22,7 @@
 				<form>
 					<div class='row mt-1'>
 						<div class='input-field col s12 m6 l6'>
-							<input class='validate' type='text' name='comp_name' id='comp_name' placeholder="@McDonalds" required />
+							<input class='validate' type='text' name='comp_name' id='comp_name' placeholder="@McDonalds" onblur="validateData(this.value, this.id, 'companies','CompanyName')" validate required />
 							<label for='comp_name'>Company Name</label>
 						</div>
 						<div class='input-field col s12 m6 l6'>
@@ -30,11 +30,11 @@
 							<label for='comp_address'> Company Address</label>
 						</div>
 						<div class='input-field col s12 m6 l6'>
-							<input class='validate' type='email' name='comp_email' id='comp_email' placeholder="@johndoe@gmail.com" required />
+							<input class='validate' type='email' name='comp_email' id='comp_email' placeholder="@johndoe@gmail.com" onblur="validateData(this.value, this.id, 'companies','Email')" required />
 							<label for='comp_email'>Email</label>
 						</div>
 						<div class='input-field col s12 m6 l6'>
-							<input class='validate' type='password' name='comp_pass' id='comp_pass' placeholder="@21john23" required />
+							<input class='validate' type='password' name='comp_pass' id='comp_pass' placeholder="Password must be atleast 8 characters" onblur="validateLength(this.value, this.id)" required />
 							<label for='comp_pass'>Password</label>
 						</div>
 						<div class='input-field col s12 m6 l6'>

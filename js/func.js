@@ -8,6 +8,8 @@ function submitCompany() {
     var cweb = $("#comp_website").val()
     var cpwd = $("#comp_pass").val()
     var cpwd_t = $("#conf_pass").val()
+    var thval = Math.random().toString(36).slice(2);
+    thval = thval.substring(0, 6);
 
 
     if (cpwd == cpwd_t) {
@@ -23,17 +25,31 @@ function submitCompany() {
                 clogo: clogo,
                 cweb: cweb,
                 cpwd: cpwd,
+                vcode: thval
+
             }]),
             function (data) {
                 console.log(data);
             });
-
-        window.alert("Company Succesfuly Added");
-        window.location.assign("index.html");
+        
+        
+        sendEmail(cmail, thval);
+        
+        window.alert("We've already sent an email for your verification code please check your email now");
+        window.location.assign("verify.html");
 
     } else {
         window.alert("Password didn't Match");
     }
+}
+
+function sendEmail(eadd, val) {
+    $.post("http://localhost" + "/pems/apis/emailverif/", {
+        eadd: eadd,
+        vcode: val
+    }, function (data) {
+        console.log(data);
+    });
 }
 
 function insertEmployee() {
@@ -47,9 +63,9 @@ function insertEmployee() {
     var dept = $("#emp_dept").val();
     var coid = localStorage.companyID;
 
-    
-    if(pwd == cpwd){
-        
+
+    if (pwd == cpwd) {
+
     }
     $.post("http://localhost/pems/apis/myapi/insert/tbl_user",
         JSON.stringify([{
@@ -126,6 +142,18 @@ function loginUser() {
 }
 
 
+function validateData(val, valid, tbl, datafld) {
+    tbl = "tbl_" + tbl;
+
+    $.getJSON("http://localhost/pems/apis/myapi/select/" + tbl + "/fld" + datafld + "/" + val, function (data) {
+        if (data.length > 0) {
+            window.alert(datafld + " has been already taken, Please choose another");
+            $("#" + valid).val("");
+            $("#" + valid).focus();
+        }
+    });
+}
+
 //LOGIN SIDE
 
 function selectCompanyEmply(val) {
@@ -138,20 +166,21 @@ function selectCompanyEmply(val) {
             ls += "<td>" + data[i].fldFname + " " + data[i].fldLname + "</td>";
             ls += "<td>" + data[i].fldRole + "</td>";
             ls += "<td>" + data[i].fldDepartment + "</td>";
-            ls += '<td><a class="modal-trigger" href="#editmodal" onclick="editmodal_data('+data[i].fldUserID+')"><i class="fa fa-pencil"></i></a> | <a class="red-text"><i class="fa fa-trash"></i></a></td>';
+            ls += '<td><a class="modal-trigger" href="#editmodal" onclick="editmodal_data(' + data[i].fldUserID + ')"><i class="fa fa-pencil"></i></a> | <a class="red-text"><i class="fa fa-trash"></i></a></td>';
             ls += "</tr>";
         }
 
         $("#proptabledata").html(ls);
     });
 }
+
 function selectCompany(val) {
     var bd = "";
     $.getJSON("http://localhost/pems/apis/myapi/select/tbl_companies/fldCompanyID/" + val, function (data) {
         $("#comp_name").html(data[0].fldCompanyName);
-        $("#comp_name_sidenav").html(data[0].fldCompanyName+'/PEMS');
-        $("#comp_name_navbar").html(data[0].fldCompanyName+'/PEMS');
-        $("#comp_name_card").html(data[0].fldCompanyName+'/PEMS');
+        $("#comp_name_sidenav").html(data[0].fldCompanyName + '/PEMS');
+        $("#comp_name_navbar").html(data[0].fldCompanyName + '/PEMS');
+        $("#comp_name_card").html(data[0].fldCompanyName + '/PEMS');
         $("#det_em").html(data[0].fldEmail);
         $("#dept_em").html(data[0].fldEmail);
         $("#det_address").html(data[0].fldAddress);
@@ -173,7 +202,7 @@ function logOut() {
 
 //EDIT DELETE EMPLOYEE --START--
 
-function update_func(){
+function update_func() {
     let fldUserID = document.getElementById("editemp_userid").value;
     let fldUsername = document.getElementById("editemp_username").value;
     let fldFname = document.getElementById("editemp_fname").value;
@@ -185,32 +214,36 @@ function update_func(){
     let update_action = "update_employee";
 
 
-    $.post(myurl+"/propertycard/propertyapi/update",{
-        tblname:tblname,
-        fldUserID:fldUserID,
-        fldUsername:fldUsername,
-        fldFname:fldFname,
-        fldLname:fldLname,
-        fldMname:fldMname,
-        fldRole:fldRole,
-        fldDepartment:fldDepartment,
-        update_action:update_action
-    },function(data){
+    $.post(myurl + "/propertycard/propertyapi/update", {
+        tblname: tblname,
+        fldUserID: fldUserID,
+        fldUsername: fldUsername,
+        fldFname: fldFname,
+        fldLname: fldLname,
+        fldMname: fldMname,
+        fldRole: fldRole,
+        fldDepartment: fldDepartment,
+        update_action: update_action
+    }, function (data) {
         selectCompanyEmply(localStorage.companyID);
-        M.toast({html: 'Employee Details Updated'});
+        M.toast({
+            html: 'Employee Details Updated'
+        });
         $('.modal').modal('close');
-    }).fail(function(){
-        M.toast({html: 'Employee Details Update Failed'})
+    }).fail(function () {
+        M.toast({
+            html: 'Employee Details Update Failed'
+        })
     });
 }
 
-function editmodal_data(val){
+function editmodal_data(val) {
 
-    $(function(){
+    $(function () {
 
-        url=myurl+"/propertycard/propertyapi/tbl_user/fldCompanyID/"+localStorage.companyID+"/fldUserID/"+val;
-        
-        $.getJSON(url,function(data){
+        url = myurl + "/propertycard/propertyapi/tbl_user/fldCompanyID/" + localStorage.companyID + "/fldUserID/" + val;
+
+        $.getJSON(url, function (data) {
             for (let i = 0; i < data.length; i++) {
                 document.getElementById("editemp_userid").value = data[i].fldUserID;
                 document.getElementById("editemp_username").value = data[i].fldUsername;
@@ -218,12 +251,92 @@ function editmodal_data(val){
                 document.getElementById("editemp_lname").value = data[i].fldLname;
                 document.getElementById("editemp_mname").value = data[i].fldMname;
             }
-        }).fail(function(){
+        }).fail(function () {
             window.alert("No DATA Found");
         });
-        
+
     });
 }
 
-//EDIT DELETE EMPLOYEE --END--
+function verifyCode() {
+    let val = $("#vcode").val()
+    if (val != "") {
+        $.getJSON("http://localhost/pems/apis/myapi/select/tbl_companies/fldVerify/" + val, function (data) {
+            if (data.length > 0) {
+                updateData(val);
+                window.alert("Account already verified please login now!");
+                window.location.assign("index.html");
 
+            } else {
+                window.alert("Invalid Verification Code");
+            }
+        });
+    } else {
+        window.alert("Please enter Verification Code");
+    }
+}
+
+function validateLength(val, valid){
+    if(val.length < 8){
+        $("#"+valid).val("");
+        window.alert("Password must be atleast 8 characters");
+    }
+}
+
+function updateData(val) {
+    $.post("http://localhost/pems/apis/myapi/update/tbl_companies/fldVerify/" + val, JSON.stringify([{
+        fldVerify: "Active"
+    }]), function (data) {
+
+    });
+}
+
+function resetPass(){
+    var thval = Math.random().toString(36).slice(2);
+    var email = $("#email").val()
+    thval = thval.substring(0, 6);
+    
+    updateCode(email, thval);
+    sendCode(email, thval);
+    window.alert("Password has been reset please check your E-mail address");
+}
+
+
+function updateCode(val, vcode) {
+    $.post("http://localhost/pems/apis/myapi/update/tbl_companies/fldEmail/" + val, JSON.stringify([{
+        fldVerify: vcode
+    }]), function (data) {
+
+    });
+}
+
+function sendCode(eadd, val) {
+    $.post("http://localhost" + "/pems/apis/emailverif/forgotpass.php", {
+        eadd: eadd,
+        vcode: val
+    }, function (data) {
+        console.log(data);
+    });
+}
+
+function updatePass(){
+    var myx = $(location).attr('search');
+    var pwd = $("#pwd").val();
+    var cpwd = $("#cpwd").val();
+    myx = myx.replace('?vcode=', '');
+    
+    if(pwd == cpwd){
+            $.post("http://localhost/pems/apis/myapi/update/tbl_companies/fldVerify/" + myx, JSON.stringify([{
+                fldVerify: "Active", fldPassword: pwd
+            }]), function (data) {
+
+            });
+        window.alert("Password has been reset, Please login to continue");
+        window.location.assign("index.html");
+    } else {
+        window.alert("Password didn't match");
+    }
+    
+
+}
+//EDIT DELETE EMPLOYEE --END--

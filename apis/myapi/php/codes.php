@@ -98,6 +98,12 @@ class dbConn{
     	return $this;
     }
 
+
+    public function join($tbl_one, $id_one, $tbl_two, $id_two){
+        $this->sql = "SELECT * FROM ".$tbl_one.", ".$tbl_two." WHERE ".$tbl_one.".".$id_one." = ".$tbl_two.".".$id_two."";
+        return $this;
+    }
+
     public function runQuery(){
     	$info = array();
     	if($result = $this->db->query($this->sql)){
@@ -208,7 +214,7 @@ class dbConn{
         $count = mysqli_num_rows($result);
 
 
-        $sql_two = "SELECT * FROM tbl_companies WHERE fldEmail = '$un' AND fldPassword = '$pw'";
+        $sql_two = "SELECT * FROM tbl_companies WHERE fldEmail = '$un' AND fldPassword = '$pw' AND fldVerify = 'Active'";
         $result_two = $db->query($sql_two);
         $count_two = mysqli_num_rows($result_two);
 
