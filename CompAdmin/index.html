@@ -21,7 +21,7 @@
 					<div class="container nav-container">
 						<ul class="right">
 							<li><a ><i class="fa fa-bell grey-text"></i></a></li>
-							<li><a ><img src="../image/avatar.jpg" class="circle" style="margin-top:15px" width="30" /></a></li>
+							<li><a ><img src="../image/avatar.jpg" id="usersideavatar" class="circle" style="margin-top:15px" width="30" /></a></li>
 						</ul>
 					</div>
 				</div>
@@ -33,7 +33,7 @@
 				<div class="background green">
 					<img src="" class="responsive-img"  style="opacity: 0.1;margin-top:-55px;" id="sidepanel_bg" />
 				</div>
-				<a href="#user"><img class="circle" src="../image/avatar.jpg"></a>
+				<a href="#user"><img class="circle" id="useravatar" src="../image/avatar.jpg"></a>
 				<a href="#name"><span class="white-text name" id="comp_name">John Doe</span></a>
 				<a href="#email"><span class="white-text email" id="det_em">johndoe@gmail.com</span></a>
 			</div></li>
@@ -92,6 +92,7 @@
 	<script src="../js/init.js"></script>
 	<script src="js/property_data.js"></script>
 	<script src="../js/func.js"></script>
+	<script src="js/userimg.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			var id = localStorage.companyID;
