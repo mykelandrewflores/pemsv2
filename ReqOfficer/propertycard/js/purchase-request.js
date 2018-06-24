@@ -83,11 +83,11 @@ function getEquipCateg() {
     $.getJSON(myurl+"/purchase_api/select.php?lcca_livesdis", function (data) {
 
         var body = ''
-        body += '<select onchange="fetchEquipments(this.value)"> <option value="" disabled selected>Item Category</option>';
+        body += '<select onchange="fetchEquipments(this.value)"> <option value="" disabled selected>Choose your Option</option>';
         for (var i = 0; i < data.length; i++) {
             body += '<option value="' + data[i].fldPropertyCategory + '">' + data[i].fldPropertyCategory + '</option>';
         }
-        body += '</select>';
+        body += '</select><label>Item Category</label>';
         $('#testingtwo').html(body)
 
     });

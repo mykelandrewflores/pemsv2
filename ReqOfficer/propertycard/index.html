@@ -68,6 +68,12 @@
 	<script src="../../js/materialize.min.js"></script>
 	<script src="../../js/init.js"></script>
 	<script src="../../SupplyOfficer/propertycard/js/property_data.js"></script>
-	<script>equiptable_reqofficer();</script>
+	<script>
+		$.getJSON(myUrl+"/myapi/select/tbl_user/fldUserID/" + localStorage.userID, function(data) {
+			document.getElementById('name').innerHTML = data[0].fldFname + " " + data[0].fldLname;
+			document.getElementById('dept').innerHTML = data[0].fldDepartment;
+		});
+		equiptable_reqofficer();
+	</script>
 </body>
 </html>
