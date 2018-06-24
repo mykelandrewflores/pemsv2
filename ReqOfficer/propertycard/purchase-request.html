@@ -2,140 +2,154 @@
 <html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../../css/materialize.min.css">
-    <link rel="stylesheet" href="../../css/font-awesome.min.css">
-    <link rel="stylesheet" href="../../css/style.css">
-    <title>Purchase Request</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="../../css/materialize.min.css">
+	<link rel="stylesheet" href="../../css/font-awesome.min.css">
+	<link rel="stylesheet" href="../../css/style.css">
+	<title>Purchase Request</title>
 </head>
 <body class="cloudy">
-    <header>
-        <nav class="white">
-            <a href="#!" class="sidenav-trigger black-text" data-target="slide-out"><i class="fa fa-bars" aria-hidden="true"></i></a>
-        </nav>
-        <ul class="sidenav sidenav-fixed" id="slide-out">
-            <li>
-                <div class="user-view">
-                    <div class="background green"></div>
-                    <a href="#user"><img class="circle" src="image/avatar.jpg"></a>
-                    <a href="#name"><span class="white-text name" id="name">Mykel Andrew Flores</span></a>
-                    <a href="#email"><span class="white-text email" id="dept">mykelandrww@gmail.com</span></a>
-                </div>
-            </li>
-            <li><a class="subheader">Functions</a></li>
-            <li><a href="index.html"><i class="fa fa-file-text-o" aria-hidden="true"></i> Property List</a></li>
-            <li class="active active-link"><a href="#!"><i class="fa fa-plus-square-o" aria-hidden="true"></i> New Purchase Request</a></li>
-            <li><a href="purchase-list.html"><i class="fa fa-file-text" aria-hidden="true"></i> Purchase Request List</a></li>
-            <li><a href="../LCCA/index.html"><i class="fa fa-wrench" aria-hidden="true"></i> LCCA Tool</a></li>
-            <li><a href="../../index.html"><i class="fa fa-power-off" aria-hidden="true"></i> Log-out</a></li>
-        </ul>
-    </header>
-    <main>
-        <div class="container mt-1">
-            <h4 class="deafult-text font-weight-low">
-                <blockquote>Purchase Request</blockquote>
-            </h4>
-            <div class="row mt-br">
-                <div class="col s12 ">
-                    <div class="row">
-                        <div class="col s12 l6">
-                            <div class="file-field input-field">
-                                <div class="btn green">
-                                    <span>Attacment</span>
-                                    <input type="file" id="myFile">
-                                </div>
-                                <div class="file-path-wrapper">
-                                    <input class="file-path" type="text" placeholder="Select File">
-                                </div>
-                            </div>
-                        </div>
-                        
+	<header class="padded">
+		<div class="navbar-fixed">
+			<nav class="white">
+				<div class="nav-wrapper">
+					<ul class="left">
+						<li><a id="toggleNav"  style="display: block" class="sidenav-trigger grey-text waves-effect" data-target="slide-out"><i class="fa fa-bars" aria-hidden="true"></i></a></li>
+						<li><span class="green-text dtime-now" id="">Date/Time</span></li>
+						<li><span class="green-text hide" id="comp_name_navbar">Company/PEMS</span></li>
+					</ul>
+					<div class="container nav-container">
+						<ul class="right">
+							<li><a ><i class="fa fa-bell grey-text"></i></a></li>
+							<li><a ><img src="../../image/avatar.jpg" class="circle" style="margin-top:15px" width="30" /></a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</div>
+		<ul class="sidenav sidenav-fixed" id="slide-out">
+			<li class="z-depth-2 white center" id="toggle_header_sidenav" style="height: 64px;font-size: 20px;"><span class="green-text" id="comp_name_sidenav">Company/PEMS</span></li>
+			<li><div class="user-view">
+				<div class="background green">
+					<img src="../../image/bg.jpg" class="responsive-img"  style="opacity: 0.1;margin-top:-55px;" id="sidepanel_bg" />
+				</div>
+				<a href="#user"><img class="circle" src="../../image/avatar.jpg"></a>
+				<a href="#name"><span class="white-text name" id="name">John Doe</span></a>
+				<a href="#email"><span class="white-text email" id="dept">johndoe@gmail.com</span></a>
+			</div></li>
+			<li><a class="subheader">Functions</a></li>
+			<li><a href="index.html"><i class="fa fa-file-text-o" aria-hidden="true"></i> Property List</a></li>
+			<li class="active active-link"><a href="#!"><i class="fa fa-plus-square-o" aria-hidden="true"></i> New Purchase Request</a></li>
+			<li><a href="purchase-list.html"><i class="fa fa-file-text" aria-hidden="true"></i> Purchase Request List</a></li>
+			<li><a href="../LCCA/index.html"><i class="fa fa-wrench" aria-hidden="true"></i> LCCA Tool</a></li>
+			<li><a href="../../index.html"><i class="fa fa-power-off" aria-hidden="true"></i> Log-out</a></li>
+		</ul>
+	</header>
+	<main>
+		<div class="container mt-1">
+			<h4 class="deafult-text font-weight-low">
+				<blockquote>Purchase Request</blockquote>
+			</h4>
+			<div class="row mt-br">
+				<div class="col s12 ">
+					<div class="row">
+						<div class="col s12 l6">
+							<div class="file-field input-field">
+								<div class="btn green">
+									<span>Attacment</span>
+									<input type="file" id="myFile">
+								</div>
+								<div class="file-path-wrapper">
+									<input class="file-path" type="text" placeholder="Select File">
+								</div>
+							</div>
+						</div>
 
-                        <div class="col s12 l6" style="margin-top: 15px;">
-                            <input type="text" id="unit" class="col s12" /><label for="unit">Unit</label>
-                        </div>                        
-                    </div>
-                    <div class="row">
-                                             
 
-                        <div class="col s12 l4">
-                            <div class="input-field col s12" id="testingtwo" style="margin-top:0"></div>
-                        </div>
+						<div class="col s12 l6" style="margin-top: 15px;">
+							<input type="text" id="unit" class="col s12" /><label for="unit">Unit</label>
+						</div>                        
+					</div>
+					<div class="row">
 
-                        <div class="col s12 l4">
-                            <div class="input-field col s12" id="testing" style="margin-top:0"></div>
-                        </div>
-                        
-                        <div class="col s12 l4">
-                            <input type="text" id="bname" class="col s12" /><label for="bname">Brand Name:</label>
-                        </div>                           
 
-                    </div>
-                    <div class="row">
-                        <div class="col s12 l6">
-                            <input type="number" id="qty" class="col s12" /><label for="qty">Quantity</label>
-                        </div>
+						<div class="col s12 l4">
+							<div class="input-field col s12" id="testingtwo" style="margin-top:0"></div>
+						</div>
 
-                        <div class="col s12 l6">
-                            <input type="number" id="cost" class="col s12" /><label for="cost">Cost</label>
-                        </div>
-                        <div class="row center">
-                            <div class="col s12 l12">
-                                <a href="#!" class="btn red right" onclick="addDataSet()">ADD</a>
-                            </div>
-                        </div>
-                    </div>
-                    <table class="table responsive-table centered">
-                        <thead>
-                            <th class="font-weight-low">Unit</th>
-                            <th class="font-weight-low">Equipment</th>
-                            <th class="font-weight-low">Quantity</th>
-                            <th class="font-weight-low">Cost</th>
-                            <th class="font-weight-low">Total</th>
-                            <th class="font-weight-low">Action</th>
-                        </thead>
-                        <tbody id="add_data_set">
-                            <tr>
-                                <td colspan="6">No Equipment Added</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="col s12 mt-1">
-                    <form id="form_request">
-                        <input type="hidden" id="depts" name="dept">
-                        <input type="hidden" id="company_id" name="company_id">
-                        <input type="hidden" id="user_id" name="user_id">
-                        <div class="col s12">
-                            <div class="input-field col m6 s12">
-                                <input placeholder="Purchse Number" id="curdate_request" name="curdate_request" type="hidden" required>
-                                <label for="curdate_request"></label>
-                            </div>
-                            <div class="input-field col m12 s12">
-                                <textarea placeholder="Request Purpose" class="materialize-textarea" id="request_purpose" name="request_purpose" style="height: 100px" required></textarea>
-                                <label for="request_purpose">Request Purpose</label>
-                            </div>
-                            <div class="col s12" align="center">
-                                <button class="btn red">Submit</button>
-                                <input type="hidden" name="request_form" />
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </main>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/materialize.min.js"></script>
-    <script src="js/init.js"></script>
-    <script src="js/purchase-request.js"></script>
-    <script>
-        $("#depts").val(localStorage.userDept);
-        $("#company_id").val(localStorage.companyID);
-        $("#user_id").val(localStorage.userID);
+						<div class="col s12 l4">
+							<div class="input-field col s12" id="testing" style="margin-top:0"></div>
+						</div>
 
-    </script>
+						<div class="col s12 l4">
+							<input type="text" id="bname" class="col s12" /><label for="bname">Brand Name:</label>
+						</div>                           
+
+					</div>
+					<div class="row">
+						<div class="col s12 l6">
+							<input type="number" id="qty" class="col s12" /><label for="qty">Quantity</label>
+						</div>
+
+						<div class="col s12 l6">
+							<input type="number" id="cost" class="col s12" /><label for="cost">Cost</label>
+						</div>
+						<div class="row center">
+							<div class="col s12 l12">
+								<a href="#!" class="btn red right" onclick="addDataSet()">ADD</a>
+							</div>
+						</div>
+					</div>
+					<table class="table responsive-table centered">
+						<thead>
+							<th class="font-weight-low">Unit</th>
+							<th class="font-weight-low">Equipment</th>
+							<th class="font-weight-low">Quantity</th>
+							<th class="font-weight-low">Cost</th>
+							<th class="font-weight-low">Total</th>
+							<th class="font-weight-low">Action</th>
+						</thead>
+						<tbody id="add_data_set">
+							<tr>
+								<td colspan="6">No Equipment Added</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="col s12 mt-1">
+					<form id="form_request">
+						<input type="hidden" id="depts" name="dept">
+						<input type="hidden" id="company_id" name="company_id">
+						<input type="hidden" id="user_id" name="user_id">
+						<div class="col s12">
+							<div class="input-field col m6 s12">
+								<input placeholder="Purchse Number" id="curdate_request" name="curdate_request" type="hidden" required>
+								<label for="curdate_request"></label>
+							</div>
+							<div class="input-field col m12 s12">
+								<textarea placeholder="Request Purpose" class="materialize-textarea" id="request_purpose" name="request_purpose" style="height: 100px" required></textarea>
+								<label for="request_purpose">Request Purpose</label>
+							</div>
+							<div class="col s12" align="center">
+								<button class="btn red">Submit</button>
+								<input type="hidden" name="request_form" />
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</main>
+	<script src="../../js/jquery.min.js"></script>
+	<script src="../../js/materialize.min.js"></script>
+	<script src="../../js/init.js"></script>
+	<script src="js/purchase-request.js"></script>
+	<script>
+		$("#depts").val(localStorage.userDept);
+		$("#company_id").val(localStorage.companyID);
+		$("#user_id").val(localStorage.userID);
+	</script>
 </body>
 
 </html>
