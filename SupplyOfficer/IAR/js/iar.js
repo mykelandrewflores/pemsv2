@@ -23,7 +23,7 @@ function purchaselist() {
             if (data[i].fldPurchaseRemarks == 'Done') {
                 longstring += "<td><a class='modal-trigger waves-effect waves-light  ' href='#modal2' onclick='donelist(\"" + data[i].fldPrNo + "\")'><i class='fa fa-list-alt' aria-hidden='true'></i></a></td>";
             }else{
-                longstring += "<td><a class='modal-trigger waves-effect waves-light  ' href='#modal1' onclick='stocklist(\"" + data[i].fldPrNo + "\",\"" + data[i].fldDept + "\")'><i class='fa fa-eye' aria-hidden='true'></i></a></td>";
+                longstring += "<td><a class='modal-trigger waves-effect waves-light  ' href='#modal1' onclick='stocklist(\"" + data[i].fldPrNo + "\",\"" + data[i].fldDept + "\")'><i class='fa fa-eye' aria-hidden='true'></i></a> | <a class='modal-trigger waves-effect waves-light  ' href='#modal2' onclick='donelist(\"" + data[i].fldPrNo + "\")'><i class='fa fa-list-alt' aria-hidden='true'></i></a></td>";
             }
             longstring += "</tr>";
         }
