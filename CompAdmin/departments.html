@@ -52,17 +52,17 @@
 			<div class="row">
 				<div class="card col s12 m5  l5 p-trbl">
 					<h5>Add Department: </h5>
-					<form class="mt-br">
+					<form class="mt-br" id="insert_dept">
 						<div class='input-field col s12'>
-							<input class='validate' type='text' name=''  id='deptName' placeholder="@Purchase & Equipment Management Solution" />
+							<input class='validate' onblur="validateData(this.value, this.id, 'departments','FullDeptName')" type='text' name=''  id='deptName' placeholder="@Purchase & Equipment Management Solution" required/>
 							<label for='deptName'>Department Name</label>
 						</div>
 						<div class='input-field col s12'>
-							<input class='validate' type='text' name=''  id='deptCode' placeholder='@e.g (PEMS)' />
+							<input class='validate' type='text' name='' onblur="validateData(this.value, this.id, 'departments','DepartmentName')" id='deptCode' placeholder='@e.g (PEMS)' required/>
 							<label for='deptCode'>Department Code</label>
 						</div>                            
 						<div class="col s12 l12 center-align">
-							<button type='button' onclick="insertDept()" name='btn_login' class=' btn green waves-effect'>add</button>
+							<button type='submit' name='btn_login' class=' btn green waves-effect'>add</button>
 						</div>
 					</form>
 				</div>
@@ -91,7 +91,9 @@
 			var id = localStorage.companyID;
 			selectCompany(id)
 		});
-		function insertDept(){
+        
+		$('#insert_dept').submit(function (e) {
+            e.preventDefault();
 			var companyId = localStorage.companyID;
 			$.post("http://localhost/pems/apis/myapi/insert/tbl_departments/", JSON.stringify([{
 				fsx: $("#deptCode").val(),
@@ -101,7 +103,11 @@
 				console.log(data);  
 			});
 			setTimeout(displayCompany, 100);
-		}
+            window.alert("Company Added!");
+            $("#deptCode").val("");
+            $("#deptName").val("");
+		});
+        
 		function delDept(val){
 			$.post("http://localhost/pems/apis/myapi/delete/tbl_departments/fldDeptID/"+val, function(data){
 				console.log(data);

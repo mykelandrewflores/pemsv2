@@ -1,4 +1,5 @@
-function submitCompany() {
+$('#form_request').submit(function (e) {
+    e.preventDefault();
     var cname = $("#comp_name").val()
     var cadd = $("#comp_address").val()
     var cnum = $("#comp_contactno").val()
@@ -41,7 +42,7 @@ function submitCompany() {
     } else {
         window.alert("Password didn't Match");
     }
-}
+});
 
 function sendEmail(eadd, val) {
     $.post("http://localhost" + "/pems/apis/emailverif/", {
@@ -52,7 +53,8 @@ function sendEmail(eadd, val) {
     });
 }
 
-function insertEmployee() {
+$('#emp_form').submit(function (e) {
+    e.preventDefault();
     var un = $("#emp_username").val();
     var pwd = $("#emp_pass").val();
     var cpwd = $("#emp_cpass").val();
@@ -84,8 +86,9 @@ function insertEmployee() {
 
 
     window.alert("Employee Succesfully Added!");
+    window.location.assign("emplist.html");
     selectCompanyEmply(localStorage.companyID);
-}
+});
 
 
 var bsixf = "";
@@ -147,6 +150,12 @@ function validateData(val, valid, tbl, datafld) {
 
     $.getJSON("http://localhost/pems/apis/myapi/select/" + tbl + "/fld" + datafld + "/" + val, function (data) {
         if (data.length > 0) {
+            if(datafld == "DepartmentName"){
+                datafld = "Department Code";
+            }
+            if(datafld == "FullDeptName"){
+                datafld = "Department Name";
+            }
             window.alert(datafld + " has been already taken, Please choose another");
             $("#" + valid).val("");
             $("#" + valid).focus();
@@ -299,6 +308,7 @@ function resetPass(){
     updateCode(email, thval);
     sendCode(email, thval);
     window.alert("Password has been reset please check your E-mail address");
+    window.location.assign("index.html");
 }
 
 

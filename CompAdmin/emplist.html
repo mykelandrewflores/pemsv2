@@ -72,46 +72,46 @@
 				<div id="addemployee" class="col s12">
 					<div class="col s12 m12 l12">
 						<h5>Add Employees:</h5>
-						<form class="mt-br">
+						<form id="emp_form" class="mt-br">
 							<div class='input-field s12  m4 col l4'>
-								<input class='validate' type='text' name='emp_fname' id='emp_fname' placeholder="@John" />
+								<input class='validate' type='text' name='emp_fname' id='emp_fname' placeholder="@John" required />
 								<label for='emp_fname'>FirstName</label>
 							</div>
 							<div class='input-field col s12 m4 l4'>
-								<input class='validate' type='text' name='emp_lname' id='emp_lname'  placeholder="@Doe" />
+								<input class='validate' type='text' name='emp_lname' id='emp_lname'  placeholder="@Doe" required />
 								<label for='emp_lname'>LastName</label>
 							</div>
 							<div class='input-field col s12 m4 l4'>
-								<input class='validate' type='text' name='emp_fname' id='emp_mname' placeholder="@Toe" />
+								<input class='validate' type='text' name='emp_fname' id='emp_mname' placeholder="@Toe" required />
 								<label for='emp_mname'>MiddleName</label>
 							</div>
 							<div class="input-field col s12 m6 l6">
-								<select id="emp_role">
+								<select id="emp_role" required onchange="roleCheck(this.value)">
 									<option value="" disabled selected>Choose your option</option>
 									<option value="Requisition">Requisition</option>
 									<option value="Supply">Supply</option>
 								</select>
 								<label>Role</label>
 							</div>
-							<div class="input-field col s12 m6 l6">
+							<div class="input-field col s12 m6 l6" required id="thRole">
 								<select id="emp_dept" class="browser-default">
 									<option value="" disabled selected>Choose your Department</option>
 								</select>
 							</div>
 							<div class='input-field col s12 m12 l12'>
-								<input class='validate' type='text' name='emp_username' id='emp_username' placeholder="@johndoe123" />
+								<input class='validate' type='text' name='emp_username' id='emp_username' placeholder="@johndoe123" required />
 								<label for='emp_username'>Username</label>
 							</div>
 							<div class='input-field col s12 m6 l6'>
-								<input class='validate' type='password' name='emp_pass' id='emp_pass' placeholder="@23john21"/>
+                                <input class='validate' type='password' name='emp_pass' id='emp_pass' pattern=".{8,}" required title="8 characters minimum"/>
 								<label for='emp_pass'>Password</label>
 							</div>
 							<div class='input-field col s12 m6 l6'>
-								<input class='validate' type='password' name='emp_cpass' id='emp_cpass' placeholder="@23john21" />
+								<input class='validate' type='password' name='emp_cpass' id='emp_cpass' placeholder="@23john21" required/>
 								<label for='emp_cpass'>Confirm Password</label>
 							</div>
 							<div class="col s12 center">
-								<button type='button' onclick="insertEmployee()" name='btn_login' class='btn  waves-effect green'>Add Employee</button>
+								<button type='submit' name='btn_login' class='btn  waves-effect green'>Add Employee</button>
 							</div>
 						</form>
 					</div>
@@ -184,6 +184,16 @@
 				$("#editemp_dept").html(ls);
 			}
 		});
+        
+        roleCheck("Supply");
+        
+        function roleCheck(val){
+            if(val == "Requisition"){
+                $("#thRole").css("display", "block");
+            } else {
+                $("#thRole").css("display", "none");
+            }
+        }
 	</script>
 </body>
 
