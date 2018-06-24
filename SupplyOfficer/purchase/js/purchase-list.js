@@ -22,27 +22,22 @@
                     longString += '<tr>';
                     longString += '<td>' + data[i].fldPrNo + '</td>';
                     longString += '<td>' + data[i].fldDept + '</td>';
-                    longString += '<td>' + data[i].fldDate + '</td>';
+                    longString += '<td>' + formDNow(new Date(data[i].fldDate)) + '</td>';
                     longString += '<td>' + data[i].fldPurpose + '</td>';
                     longString += '<td>' + data[i].fldRequestByID + '</td>';
                     longString += '<td>' + data[i].fldPurchaseRemarks + '</td>';
                     if (data[i].fldPurchaseRemarks != "Pending") {
                         longString += '<td><a href="#!" class="" onclick="getitemApproved(\'' + data[i].fldPrNo + '\'); viewPO(\'' + data[i].fldPrNo + '\')"><i class="fa fa-eye"></i></a></td>';
                     } else {
-
-                        longString += '<td><a href="#!" class="" onclick="getitemData(\'' + data[i].fldPrNo + '\')"><i class="fa fa-eye"></i></a></td>';
+                        longString += '<td><a href="#!" class="" onclick="getitemData(\'' + data[i].fldPrNo + '\')"><i class="fa fa-eye"></i></a> |';
                     }
-                    longString += "<td><a class='green-text' href='"+url+"/lccafiles/download.php?file="+data[i].fldPrNo+".pdf'><i class='fa fa-download'></i></a></td>";
+                    longString += " <a class='green-text' href='"+url+"/lccafiles/download.php?file="+data[i].fldPrNo+".pdf'><i class='fa fa-download'></i></a></td>";
                     longString += '</tr>';
 
                 }
             }
             $("#purchaselist").html(longString);
         });
-
-
-
-
 
         function getPurchaseData(val) {
             for (let i = 0; i < equipData.length; i++) {
@@ -91,7 +86,7 @@
                     }
                 }
 /*                longString += "<tr style='text-align:right' id='btnConf'><td><button class='btn' onclick='sendData(\"" + CurrItem + "\")' type='button'>Generate Purchase Order</button></td><tr>";*/
-                longString += "<tr style='text-align:right' id='btnConf'><td><button class='btn blue modal-trigger' href='#modal1' type='button'><i class='fa fa-send'></i> Generate Purchase Order</button></td><tr>";         
+                longString += "<tr style='text-align:right' id='btnConf'><td><button class='btn btn-large blue modal-trigger' href='#modal1' type='button'><i class='fa fa-send'></i> Generate Purchase Order</button></td><tr>";         
                 $("#items").html(longString);
             });
         }
@@ -172,5 +167,3 @@
                 responsiveThreshold: 1920
             });
         });
-
-        //LOGIN FOR DYNAMIC

@@ -3,33 +3,51 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	 <link rel="stylesheet" href="../../css/materialize.min.css">
-    <link rel="stylesheet" href="../../css/font-awesome.min.css">
-    <link rel="stylesheet" href="../../css/style.css">
+	<link rel="stylesheet" href="../../css/materialize.min.css">
+	<link rel="stylesheet" href="../../css/font-awesome.min.css">
+	<link rel="stylesheet" href="../../css/style.css">
 	<title>Inspection and Acceptance Report</title>
 </head>
 <body class="cloudy">
-	<header>
-		<nav class="white">
-			<a href="#!" class="sidenav-trigger black-text" data-target="slide-out"><i class="fa fa-bars" aria-hidden="true"></i></a>
-		</nav>
+	<header class="padded">
+		<div class="navbar-fixed">
+			<nav class="white">
+				<div class="nav-wrapper">
+					<ul class="left">
+						<li><a id="toggleNav"  style="display: block" class="sidenav-trigger grey-text waves-effect" data-target="slide-out"><i class="fa fa-bars" aria-hidden="true"></i></a></li>
+						<li><span class="green-text dtime-now" id="">Date/Time</span></li>
+						<li><span class="green-text hide" id="comp_name_navbar">Company/PEMS</span></li>
+					</ul>
+					<div class="container nav-container">
+						<ul class="right">
+							<li><a ><i class="fa fa-bell grey-text"></i></a></li>
+							<li><a ><img src="../../image/avatar.jpg" class="circle" style="margin-top:15px" width="30" /></a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</div>
 		<ul class="sidenav sidenav-fixed" id="slide-out">
+			<li class="z-depth-2 white center" id="toggle_header_sidenav" style="height: 64px;font-size: 20px;"><span class="green-text" id="comp_name_sidenav">Company/PEMS</span></li>
 			<li><div class="user-view">
-				<div class="background green"></div>
-				<a href="#user"><img class="circle" src="image/avatar.jpg"></a>
-				<a href="#name"><span class="white-text name" id="name">Mykel Andrew Flores</span></a>
-				<a href="#email"><span class="white-text email" id="dept">mykelandrww@gmail.com</span></a>
+				<div class="background green">
+					<img src="../../image/bg.jpg" class="responsive-img"  style="opacity: 0.1;margin-top:-55px;" id="sidepanel_bg" />
+				</div>
+				<a href="#user"><img class="circle" src="../../image/avatar.jpg"></a>
+				<a href="#name"><span class="white-text name" id="name">John Doe</span></a>
+				<a href="#email"><span class="white-text email" id="dept">johndoe@gmail.com</span></a>
 			</div></li>
 			<li><a class="subheader">Functions</a></li>
 			<li  class="active active-link"><a href="#!"><i class="fa fa-file-text-o" aria-hidden="true"></i> Inspection and Acceptance</a></li>
-			<li><a href="../propertycard/index.html"><i class="fa fa-file-o" aria-hidden="true"></i> Property Mgmt.</a></li>
-			<li ><a href="../purchase/purchaselist.html"><i class="fa fa-file" aria-hidden="true"></i> Purchase Mgmt.</a></li>
+			<li><a href="../propertycard/index.html"><i class="fa fa-file-o" aria-hidden="true"></i> Property Management</a></li>
+			<li ><a href="../purchase/purchaselist.html"><i class="fa fa-file" aria-hidden="true"></i> Purchase Management</a></li>
 			<li><a href="../../index.html"><i class="fa fa-power-off" aria-hidden="true"></i> Log-out</a></li>
 		</ul>
 	</header>
 	<main>
 		<div class="container mt-1">
 			<h4 class="deafult-text font-weight-low"><blockquote class="default-text">Inspection and Acceptance Report</blockquote></h4>
+			<h6 class="deafult-text">LIST OF RECEIVING EQUIPMENT</h6>
 			<div class="row mt-br">
 				<div class="col s12">
 					<a class="waves-effect waves-light btn green right">Logs</a>
@@ -96,9 +114,17 @@
 			</div>
 		</form>
 	</main>
-	<script src="js/jquery.min.js"></script>
-	<script src="js/materialize.min.js"></script>
-	<script src="js/init.js"></script>
+	<script src="../../js/jquery.min.js"></script>
+	<script src="../../js/materialize.min.js"></script>
+	<script src="../../js/init.js"></script>
 	<script src="js/iar.js"></script>
+	<script>
+		$(document).ready(function(){
+		$.getJSON(myUrl+"/myapi/select/tbl_user/fldUserID/" + localStorage.userID, function(data) {
+			document.getElementById('name').innerHTML = data[0].fldFname + " " + data[0].fldLname;
+			document.getElementById('dept').innerHTML = data[0].fldDepartment;
+		});
+	});
+</script>
 </body>
 </html>
