@@ -35,7 +35,7 @@
  }
  $(document).ready(function(){
  	$('.modal').modal({
- 		dismissible: true
+ 		dismissible: false
  	});
  	M.AutoInit();
  	$('.sidenav').sidenav();

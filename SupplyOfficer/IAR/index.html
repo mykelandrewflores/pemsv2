@@ -114,26 +114,26 @@
 				</div>
 			</div>
 		</form>
-			<div id="modal2" class="modal">
-				<div class="modal-content">
-					<h4>Transaction History</h4>
-					<table class="table responsive-table mt-br centered">
-						<thead>
-							<tr>
-								<th>PR No.</th>
-								<th>Iar No.</th>
-								<th>Date</th>
-								<th>Department</th>
-								<th>Purpose</th>
-							</tr>
-						</thead>
-						<tbody id="donelist"></tbody>
-					</table>
-				</div>
-				<div class="modal-footer">
-					<a href="#!" onclick="stopOperation()" class="modal-close waves-effect waves-green btn-flat" >Close</a>
-				</div>
+		<div id="modal2" class="modal">
+			<div class="modal-content">
+				<h4>Transaction History</h4>
+				<table class="table responsive-table mt-br centered">
+					<thead>
+						<tr>
+							<th>PR No.</th>
+							<th>Iar No.</th>
+							<th>Date</th>
+							<th>Department</th>
+							<th>Purpose</th>
+						</tr>
+					</thead>
+					<tbody id="donelist"></tbody>
+				</table>
 			</div>
+			<div class="modal-footer">
+				<a href="#!" onclick="stopOperation()" class="modal-close waves-effect waves-green btn-flat" >Close</a>
+			</div>
+		</div>
 	</main>
 	<script src="../../js/jquery.min.js"></script>
 	<script src="../../js/materialize.min.js"></script>
@@ -141,11 +141,14 @@
 	<script src="js/iar.js"></script>
 	<script>
 		$(document).ready(function(){
-		$.getJSON(myUrl+"/myapi/select/tbl_user/fldUserID/" + localStorage.userID, function(data) {
-			document.getElementById('name').innerHTML = data[0].fldFname + " " + data[0].fldLname;
-			document.getElementById('dept').innerHTML = data[0].fldDepartment;
+			$('.modal').modal({
+				dismissible: false
+			});
+			$.getJSON(myUrl+"/myapi/select/tbl_user/fldUserID/" + localStorage.userID, function(data) {
+				document.getElementById('name').innerHTML = data[0].fldFname + " " + data[0].fldLname;
+				document.getElementById('dept').innerHTML = data[0].fldDepartment;
+			});
 		});
-	});
-</script>
+	</script>
 </body>
 </html>
