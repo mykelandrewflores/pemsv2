@@ -16,8 +16,8 @@
 				<div class="nav-wrapper">
 					<ul class="left">
 						<li><a id="toggleNav"  style="display: block" class="sidenav-trigger grey-text waves-effect" data-target="slide-out"><i class="fa fa-bars" aria-hidden="true"></i></a></li>
-						<li><span class="green-text dtime-now" id="">Date/Time</span></li>
-						<li><span class="green-text hide" id="comp_name_navbar">Company/PEMS</span></li>
+						<li><span class="deafult-text dtime-now" id="">Date/Time</span></li>
+						<li><span class="deafult-text hide" id="comp_name_navbar">Company/PEMS</span></li>
 					</ul>
 					<div class="container nav-container">
 						<ul class="right">
@@ -29,9 +29,9 @@
 			</nav>
 		</div>
 		<ul class="sidenav sidenav-fixed" id="slide-out">
-			<li class="z-depth-2 white center" id="toggle_header_sidenav" style="height: 64px;font-size: 20px;"><span class="green-text" id="comp_name_sidenav">Company/PEMS</span></li>
+			<li class="z-depth-2 white center" id="toggle_header_sidenav" style="height: 64px;font-size: 20px;"><span class="deafult-text" id="comp_name_sidenav">Company/PEMS</span></li>
 			<li><div class="user-view">
-				<div class="background green">
+				<div class="background primary">
 					<img src="../../image/bg.jpg" class="responsive-img"  style="opacity: 0.1;margin-top:-55px;" id="sidepanel_bg" />
 				</div>
 				<a href="#user"><img class="circle" src="../../image/avatar.jpg"></a>
@@ -128,7 +128,7 @@
 			</div>
 		</div>
 		<div class="modal-footer">
-			<button class="btn blue darken-3" onclick="AddPropData()">Add Property Data</button>
+			<button class="btn  darken-3" onclick="AddPropData()">Add Property Data</button>
 			<a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
 		</div>
 	</div>
@@ -165,10 +165,10 @@
 				</div>
 			</div>
 		</main>
-
 		<script src="../../js/jquery.min.js"></script>
 		<script src="../../js/materialize.min.js"></script>
 		<script src="../../js/init.js"></script>
+		<script src="../../js/changing_color.js"></script>
 		<script src="js/property_data.js"></script>
 		<script>
 			$.getJSON(myUrl+"/myapi/select/tbl_user/fldUserID/" + localStorage.userID, function(data) {

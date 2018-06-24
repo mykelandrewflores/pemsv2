@@ -15,8 +15,8 @@
 				<div class="nav-wrapper">
 					<ul class="left">
 						<li><a id="toggleNav"  style="display: block" class="sidenav-trigger grey-text waves-effect" data-target="slide-out"><i class="fa fa-bars" aria-hidden="true"></i></a></li>
-						<li><span class="green-text dtime-now" id="">Date/Time</span></li>
-						<li><span class="green-text hide" id="comp_name_navbar">Company/PEMS</span></li>
+						<li><span class="deafult-text dtime-now" id="">Date/Time</span></li>
+						<li><span class="deafult-text hide" id="comp_name_navbar">Company/PEMS</span></li>
 					</ul>
 					<div class="container nav-container">
 						<ul class="right">
@@ -28,10 +28,10 @@
 			</nav>
 		</div>
 		<ul class="sidenav sidenav-fixed" id="slide-out">
-			<li class="z-depth-2 white center" id="toggle_header_sidenav" style="height: 64px;font-size: 20px;"><span class="green-text" id="comp_name_sidenav">Company/PEMS</span></li>
+			<li class="z-depth-2 white center" id="toggle_header_sidenav" style="height: 64px;font-size: 20px;"><span class="deafult-text" id="comp_name_sidenav">Company/PEMS</span></li>
 			<li><div class="user-view">
-				<div class="background green">
-					<img src="" class="responsive-img"  style="opacity: 0.1;margin-top:-55px;" id="sidepanel_bg" />
+				<div class="background primary">
+					<img src="" class="responsive-img"  style="opacity: 0.1;margin-top:0px;" id="sidepanel_bg" />
 				</div>
 				<a href="#user"><img class="circle" src="../image/avatar.jpg"></a>
 				<a href="#name"><span class="white-text name" id="comp_name">John Doe</span></a>
@@ -47,7 +47,7 @@
 	</header>
 	<main class="mt-1">
 		<div class="container">
-			<h4><blockquote>Company Settings</blockquote></h4>
+			<h4 class="deafult-text"><blockquote>Company Settings</blockquote></h4>
 			<div class="row  mt-br">
 				<div class="col s12">
 					<div class="card mt-br">
@@ -57,7 +57,7 @@
 									<img src="" class="responsive-img" id="comp_logo">
 								</div>
 								<div class="col s12 m8 l8 left-align mt-br pl-1">
-									<h5 id="comp_name_card" class="green-text"></h5>
+									<h5 id="comp_name_card" class="deafult-text"></h5>
 									<div class="divider"></div>
 									<h6><span class="font-bold">Company Email: </span><span id="dept_em"></span></h6>
 									<h6><span class="font-bold">Address: </span><span id="det_address"></span></h6>
@@ -66,7 +66,7 @@
 									<h6><span class="font-bold">Website: </span><span id="det_website"></span></h6>
 								</div>
 								<div class="col s12 m12 l12 center-align mt-br">
-									<a href="#" class="btn  green waves-effect">Edit Details</a>
+									<a href="#" class="btn primary waves-effect">Edit Details</a>
 								</div>
 							</div>
 						</div>
@@ -75,21 +75,22 @@
 			</div>
 		</div>
 		<div class="fixed-action-btn">
-			<a class="btn-floating btn-large green">
+			<a class="btn-floating btn-large btn ">
 				<i class="fa fa-cog"></i>
 			</a>
 			<ul>
-				<li><a class="btn-floating red"></a></li>
-				<li><a class="btn-floating blue"></a></li>
-				<li><a class="btn-floating green"></a></li>
-				<li><a class="btn-floating yellow"></a></li>
-				<li><a class="btn-floating orange"></a></li>
+				<li><a class="btn-floating red" id="change_red"></a></li>
+				<li><a class="btn-floating blue" id="change_blue"></a></li>
+				<li><a class="btn-floating green" id="change_green"></a></li>
+				<li><a class="btn-floating orange" id="change_orange"></a></li>
+				<li><a class="btn-floating indigo" id="change_indigo"></a></li>
 			</ul>
 		</div>
 	</main>
 	<script src="../js/jquery.min.js"></script>
 	<script src="../js/materialize.min.js"></script>
 	<script src="../js/init.js"></script>
+	<script src="../js/changing_color.js"></script>
 	<script src="js/property_data.js"></script>
 	<script src="../js/func.js"></script>
 	<script type="text/javascript">
