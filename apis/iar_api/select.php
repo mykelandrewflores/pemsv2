@@ -14,6 +14,9 @@ if(isset($_GET['tbl_purchaserequest']) AND isset($_GET['company_id'])) {
 	$sql = mysqli_query($db, "SELECT * FROM tbl_purchaseitems WHERE fldPrNo = '$PrNo' AND fldRemarks='Approved' ");
 } elseif(isset($_GET['tbl_inspection'])) {
 	$sql = mysqli_query($db, "SELECT * FROM tbl_inspection ORDER BY 	fldIarNo DESC LIMIT 1");
+} elseif (isset($_GET['IARhistory'])) {
+	$PrNo = $_GET['IARhistory'];
+	$sql = mysqli_query($db, "SELECT * FROM tbl_inspection_list a,tbl_purchaserequest b, tbl_purchaseorder d  WHERE a.fldPRNo = '$PrNo' AND b.fldPrNo = '$PrNo' AND d.fldPoNo = '$PrNo'");
 }
 while ($rows = mysqli_fetch_assoc($sql)) {
 	$data[] = $rows;

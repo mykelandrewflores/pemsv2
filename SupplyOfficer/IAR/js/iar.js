@@ -21,7 +21,7 @@ function purchaselist() {
             longstring += "<td>" + data[i].fldPurpose + "</td>";
             longstring += "<td>" + data[i].fldPurchaseRemarks + "</td>";
             if (data[i].fldPurchaseRemarks == 'Done') {
-                longstring += "<td><a class='modal-trigger waves-effect waves-light  ' href='#modal2' onclick='donelist(\"" + data[i].fldPrNo + "\",\"" + data[i].fldDept + "\")'><i class='fa fa-list-alt' aria-hidden='true'></i></a></td>";
+                longstring += "<td><a class='modal-trigger waves-effect waves-light  ' href='#modal2' onclick='donelist(\"" + data[i].fldPrNo + "\")'><i class='fa fa-list-alt' aria-hidden='true'></i></a></td>";
             }else{
                 longstring += "<td><a class='modal-trigger waves-effect waves-light  ' href='#modal1' onclick='stocklist(\"" + data[i].fldPrNo + "\",\"" + data[i].fldDept + "\")'><i class='fa fa-eye' aria-hidden='true'></i></a></td>";
             }
@@ -78,8 +78,26 @@ function stocklist(id, dept) {
     });
 }
 
-function donelist(){
-    
+function donelist(id){
+    var url = myurl + "/iar_api/select.php?IARhistory=" + id;
+    $.getJSON(url, function (data) {
+        var longstring = "";
+        var today = new Date();
+        var month = today.getMonth();
+        var day = today.getDay();
+        var year = today.getFullYear();
+        var currentdate = month + year;
+        for (var i = 0; i < data.length; i++) {
+            longstring += "<tr>";
+            longstring += "<td>" + data[i].fldPRNo + "</td>";
+            longstring += "<td>" + data[i].fldIarNo + "</td>";
+            longstring += "<td>" + formatDate(new Date(data[i].fldDate)) + "</td>";
+            longstring += "<td>" + data[i].fldDept + "</td>";
+            longstring += "<td>" + data[i].fldPurpose + "</td>";
+            longstring += "</tr>";
+        }
+        $('#donelist').html(longstring);
+    });
 }
 
 function pad(num) {
