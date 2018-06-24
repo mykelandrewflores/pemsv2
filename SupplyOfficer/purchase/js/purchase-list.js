@@ -12,7 +12,7 @@
             equipData = data;
         });
 
-        $.getJSON(url+"/myapi/select/tbl_purchaserequest/", function(data) {
+        $.getJSON(url+"/myapi/select/tbl_purchaserequest?ORDERBY=fldTransactionNO DESC", function(data) {
             var longString = "";
             for (let i = 0; i < data.length; i++) {
 
@@ -29,9 +29,9 @@
                     if (data[i].fldPurchaseRemarks != "Pending") {
                         longString += '<td><a href="#!" class="" onclick="getitemApproved(\'' + data[i].fldPrNo + '\'); viewPO(\'' + data[i].fldPrNo + '\')"><i class="fa fa-eye"></i></a></td>';
                     } else {
-                        longString += '<td><a href="#!" class="" onclick="getitemData(\'' + data[i].fldPrNo + '\')"><i class="fa fa-eye"></i></a> |';
+                        longString += '<td><a href="#!" class="" onclick="getitemData(\'' + data[i].fldPrNo + '\')"><i class="fa fa-eye"></i></a></td>';
                     }
-                    longString += " <a class='green-text' href='"+url+"/lccafiles/download.php?file="+data[i].fldPrNo+".pdf'><i class='fa fa-download'></i></a></td>";
+                    longString += "<td><a class='green-text' href='"+url+"/lccafiles/download.php?file="+data[i].fldPrNo+".pdf'><i class='fa fa-download'></i></a></td>";
                     longString += '</tr>';
 
                 }

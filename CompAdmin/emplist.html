@@ -22,7 +22,7 @@
 					<div class="container nav-container">
 						<ul class="right">
 							<li><a ><i class="fa fa-bell grey-text"></i></a></li>
-							<li><a ><img src="../image/avatar.jpg" class="circle" style="margin-top:15px" width="30" /></a></li>
+							<li><a ><img src="../image/avatar.jpg" id="usersideavatar" class="circle" style="margin-top:15px" width="30" /></a>
 						</ul>
 					</div>
 				</div>
@@ -34,7 +34,7 @@
 				<div class="background green">
 					<img src="" class="responsive-img"  style="opacity: 0.1;margin-top:-55px;" id="sidepanel_bg" />
 				</div>
-				<a href="#user"><img class="circle" src="../image/avatar.jpg"></a>
+				<a href="#user"><img class="circle" id="useravatar" src="../image/avatar.jpg"></a>
 				<a href="#name"><span class="white-text name" id="comp_name">John Doe</span></a>
 				<a href="#email"><span class="white-text email" id="det_em">johndoe@gmail.com</span></a>
 			</div></li>
@@ -143,14 +143,14 @@
 					<label for="editemp_mname">Middlename</label>
 				</div>
 				<div class="input-field col l6 m6 s12">
-					<select id="editemp_role">
+					<select id="editemp_role" required onchange="roleCheckModal(this.value)">
 						<option value="" disabled selected>Choose your option</option>
 						<option value="Requisition">Requisition</option>
 						<option value="Supply">Supply</option>
 					</select>
 					<label>Role</label>
 				</div>
-				<div class="input-field col l6 m6 s12">
+				<div class="input-field col l6 m6 s12" id="thsRole">
 					<select id="editemp_dept" class="browser-default">
 						<option value="" disabled selected>Choose your Department</option>
 					</select>
@@ -167,6 +167,7 @@
 	<script src="../js/init.js"></script>
 	<script src="js/property_data.js"></script>
 	<script src="../js/func.js"></script>
+	<script src="js/userimg.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			var id = localStorage.companyID;
@@ -186,6 +187,7 @@
 		});
         
         roleCheck("Supply");
+        roleCheckModal("Supply");
         
         function roleCheck(val){
             if(val == "Requisition"){
@@ -194,6 +196,14 @@
                 $("#thRole").css("display", "none");
             }
         }
+        
+        function roleCheckModal(val){
+            if(val == "Requisition"){
+                $("#thsRole").css("display", "block");
+            } else {
+                $("#thsRole").css("display", "none");
+            }
+        }        
 	</script>
 </body>
 

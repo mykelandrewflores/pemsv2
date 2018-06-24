@@ -22,12 +22,5 @@ if(mysqli_multi_query($db,$sql)) {
 	echo json_encode(array('response' => 'successfully updated'),JSON_PRETTY_PRINT);
 } else {
 	echo json_encode(array('response' => 'failed update'),JSON_PRETTY_PRINT);
-<<<<<<< HEAD
-
-	echo "<br>";
-	echo $sql;
 } 
-=======
-}
->>>>>>> 6ca21c68199f1ff15bc8d4d7ae65a67c8f2c89d5
 ?>
