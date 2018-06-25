@@ -53,14 +53,24 @@
 			margin: 0;
 		}
 		.summary-details .department-details{
+			width: 25%;
+			float: left;
+		}
+		.summary-details .reqoffice-details{
+			width: 100%;
+			float: left;
+			padding-bottom: 10px;
+		}
+		.summary-details .supplier-details{
 			width: 50%;
 			float: left;
 		}
+
 		.summary-details .order-details{
-			width: 40%;
+			width: 25%;
 			float: left;
 			/*border-left: 1px solid black;*/
-			padding-left: 10px;
+			/*padding-left: 10px;*/
 
 		}
 		.summary-details .indent{
@@ -68,9 +78,10 @@
 			font-size: 16px;
 		}
 		.summary-details .date{
-			width: 20%;
+			width: 25%;
 			float: left;
 		}
+
 		.tablee {
 			width: 100%;
 			margin: 0 auto;
@@ -84,24 +95,24 @@
 		}
 		.summary-purpose {
 			width: 100%;
-			height: 90px;
+			height:61px;
 			padding: 0 2px;
-			padding-top: 10px;
-		}
-		.summary-purpose h3{
-			margin: 0;	
 		}
 		.summary-purpose .purpose {
 			text-decoration: underline;
 		}
-		.summary-by {
-			height: 90px;
-			padding: 0 2px;
-			border-top: 2px solid black;
+		.summary-purpose .lalang {
+			width: 50%;
+			float: left;
 			text-align: center;
 		}
+		.summary-by {
+			height: 209px;
+			padding: 0 2px;
+			border-top: 2px solid black;
+		}
 		.summary-by .signature, .summary-by .requestedBy, .summary-by .approvedBy {
-			width: 33%;
+			width: 49%;
 			float: left;
 			margin: 0;
 		}
@@ -110,10 +121,49 @@
 			border-bottom: 1px solid black;
 			margin: 0 auto;
 			font-size: 14px;
+			text-align: center;
 		}
 		.summary-by .person span{
 			font-size: 10px;
 		}
+		.summary-details .supplier-details-1{
+	width: 50%;
+	float: left;
+	border-right: 1px solid black;
+	padding: 0 2px;
+}
+.summary-details .supplier-details-2{
+	width: 50%;
+	float: left;
+	padding: 0 2px;
+	border-left: 1px solid black;
+}
+.boxed {
+	padding-top: 0px;
+	width: 40px;
+	height: 40px;
+  	border: 2px solid black ;
+}
+.margin-bot-1{
+	margin-bottom: 10px;
+}
+.checkbox input:before {
+  content: '';
+  background: #fff;
+  display: block;
+  width: 24px;
+  height: 24px;
+  border: 1px solid black;
+}
+
+.checkbox input:checked:before {
+  background-color: black;
+}
+.c3{
+
+  text-indent: 50px;
+}
+
 	</style>
 </head>
 <body>
@@ -125,27 +175,73 @@
 			<b><h6>AGENCY</h6></b>
 		</div>
 		<div class="summary-details">
+			<div class="supplier-details">
+	            <h3><b>Requisitioning Office/Dept. :</b> <span id="date"  class="indent"></span></h3>
+	        </div>
+	        <div class="supplier-details">
+	            <h3><b>Requisitioning Office/Dept. :</b> <span id="date"  class="indent"></span></h3>
+	        </div>
+	        <br><br>
 			<div class="department-details">
-				<h3><b>Supplier:</b> <br> <span id="propertyName" class="indent"></span></h3>
-				<br>
-				<h3><b>Description:</b> <br> <span id="propertyDesc" class="indent"></span> </h3>
+				<h3><b>PO No:</b> <span id="propertyName" class="indent"></span></h3>
 			</div>
 			<div class="order-details">
-				<h3><b>IAR Number:</b> <br> <span id="propertyNo" class="indent"></span></h3>
-				<br>
-				<h3>Department: <br> <span class="indent" id="propertyDept"></span></h3>
+				<h3><b>Date:</b> <span id="propertyNo" class="indent"></span></h3>
 			</div>
+	        <div class="date">
+	            <h3><b>Invoice No:</b> <span id="date" class="indent"></span></h3>
+	        </div>
+	        <div class="date">
+	            <h3><b>Date:</b> <span id="date" class="indent"></span></h3>
+	        </div>
+	        <br><br>
+	        <div class="reqoffice-details">
+	            <h3><b>Requisitioning Office/Dept. :</b> <span id="date"  class="indent"></span></h3>
+	        </div>
 		</div>
 		<table class="tablee">
 			<b><tr>
-				<th>Date</th>
-				<th>Reference</th>
-				<th>Receipt Qty.</th>
-				<th>Transfer/Disposal Qty.</th>
-				<th>Transfer/Disposal Office</th>
+				<th>Stock No.</th>
+				<th>Unit</th>
+				<th>Description</th>
+				<th>Quantity</th>
 			</tr></b>
-			<tbody id="propertyList"></tbody>
+			<tbody id="propertyList">
+				
 		</table>
+		<div class="summary-purpose">
+			<div class="lalang">
+	            <h3><b>INSPECTION</b></h3>
+	        </div>
+	        <div class="lalang">
+	            <h3><b>ACCEPTANCE</b></h3>
+	        </div>
+	    </div>
+		<div class="summary-by">
+	        <div class="signature">
+	            <h3 class="margin-bot-1"><b>Date Inspected:</b> <span id="date"  class="indent"></span></h3>
+	            <div class="checkbox">
+					<label for="c3"><input type="checkbox" id="c3"><span style="padding-left: 50px; text-align: center;">Inspected, verified and found in order as to quantity and specifications</span></label>
+				</div>
+				<br><br>
+				<br><br>
+	            <h3 class="person" style="padding-top: 10px;"><span>SIGNATURE OVER PRINTED NAME</span></h3>
+	            <p style="text-align: center; margin-top: 0px;">Inspection Officer/ Inspection Committee</p>
+	        </div>
+	        <div class="requestedBy" style="border-left: 2px solid black; padding-left: 10px;">
+	            <h3><b>Date Received:</b> <span id="date"  class="indent"></span></h3>
+	            <div class="checkbox">
+					<label for="c3"><input type="checkbox" id="c5"><span style="padding-left: 50px; text-align: center;">Complete</span></label>
+				</div>
+				<br>
+				<div class="checkbox">
+					<label for="c4"><input type="checkbox" id="c4"><span style="padding-left: 50px; text-align: center;">Partial (Pls. specify quantity)</span></label>
+				</div>
+				<br><br>
+	            <h3 class="person"><span>SIGNATURE OVER PRINTED NAME</span></h3>
+	            <p style="text-align: center; margin-top: 0px;">Property Officcer</p>
+	        </div>
+    </div>
 	</div>
 </div>
 </body>
