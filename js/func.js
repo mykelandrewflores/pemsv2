@@ -163,7 +163,7 @@ function validateDataDept(val, valid, tbl, datafld) {
     tbl = "tbl_" + tbl;
 
     $.getJSON(myurls+"pems/apis/myapi/select/" + tbl + "/fld" + datafld + "/" + val, function (data) {
-        if (data.length > 0 && data[i].fldCompanyID == localStorage.companyID) {
+        if (data.length > 0 && data[0].fldCompanyID == localStorage.companyID) {
             if(datafld == "DepartmentName"){
                 datafld = "Department Code";
             }
@@ -364,4 +364,5 @@ function updatePass(){
     
 
 }
+
 //EDIT DELETE EMPLOYEE --END--
