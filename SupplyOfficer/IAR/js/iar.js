@@ -79,6 +79,7 @@ function stocklist(id, dept) {
 }
 
 function donelist(id){
+    localStorage.selectedprintid=id;
     var url = myurl + "/iar_api/select.php?IARhistory=" + id;
     $.getJSON(url, function (data) {
         var longstring = "";
@@ -99,6 +100,7 @@ function donelist(id){
         $('#donelist').html(longstring);
     });
 }
+
 
 function pad(num) {
     return ("0" + num).slice(-2);
@@ -124,6 +126,7 @@ function stopOperation() {
     recieve_json = [];
     ids = [];
     log_prno = "";
+    localStorage.selectedprintid="";
 }
 
 $.ajaxSetup({

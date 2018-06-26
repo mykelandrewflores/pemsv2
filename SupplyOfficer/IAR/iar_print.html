@@ -176,37 +176,36 @@
 		</div>
 		<div class="summary-details">
 			<div class="supplier-details">
-	            <h3><b>Requisitioning Office/Dept. :</b> <span id="date"  class="indent"></span></h3>
+	            <h3><b>Supplier :</b> <span id="supplier"  class="indent"></span></h3>
 	        </div>
 	        <div class="supplier-details">
-	            <h3><b>Requisitioning Office/Dept. :</b> <span id="date"  class="indent"></span></h3>
+	            <h3><b>IAR No. :</b> <span id="iarno"  class="indent"></span></h3>
 	        </div>
 	        <br><br>
 			<div class="department-details">
-				<h3><b>PO No:</b> <span id="propertyName" class="indent"></span></h3>
+				<h3><b>PO No:</b> <span id="ponum" class="indent"></span></h3>
 			</div>
 			<div class="order-details">
-				<h3><b>Date:</b> <span id="propertyNo" class="indent"></span></h3>
+				<h3><b>Date:</b> <span id="podate" class="indent"></span></h3>
 			</div>
 	        <div class="date">
-	            <h3><b>Invoice No:</b> <span id="date" class="indent"></span></h3>
+	            <h3><b>Invoice No:</b> <span id="invnum" class="indent"></span></h3>
 	        </div>
 	        <div class="date">
-	            <h3><b>Date:</b> <span id="date" class="indent"></span></h3>
+	            <h3><b>Date:</b> <span id="invdate" class="indent"></span></h3>
 	        </div>
 	        <br><br>
 	        <div class="reqoffice-details">
-	            <h3><b>Requisitioning Office/Dept. :</b> <span id="date"  class="indent"></span></h3>
+	            <h3><b>Requisitioning Office/Dept. :</b> <span id="reqoffice"  class="indent"></span></h3>
 	        </div>
 		</div>
 		<table class="tablee">
 			<b><tr>
-				<th>Stock No.</th>
 				<th>Unit</th>
 				<th>Description</th>
 				<th>Quantity</th>
 			</tr></b>
-			<tbody id="propertyList">
+			<tbody id="tabledata">
 				
 		</table>
 		<div class="summary-purpose">
@@ -245,12 +244,41 @@
 	</div>
 </div>
 </body>
-<script src="js/jquery.min.js"></script>
-<script src="js/property_data.js"></script>.
+<script src="../../js/jquery.min.js"></script>
+<script src="js/iar.js"></script>
 <script type="text/javascript">
-	pcdata();
+	function printdata(id){
+    var url = myurl + "/iar_api/select.php?IARhistory=" + id;
+    $.getJSON(url, function (data) {
+        var longstring = "";
+        var today = new Date();
+        var month = today.getMonth();
+        var day = today.getDay();
+        var year = today.getFullYear();
+        var currentdate = month + year;
+        for (var i = 0; i < data.length; i++) {
+            longstring += "<tr>";
+            longstring += "<td>" + data[i].fldUnit + "</td>";
+            longstring += "<td>" + data[i].fldPurpose + "</td>";
+            longstring += "<td>" + data[i].fldQty + "</td>";
+            longstring += "</tr>";
+        }
+        $('#tabledata').html(longstring);
+        document.getElementById("supplier").innerHTML=data[0].fldSupplier;
+        document.getElementById("iarno").innerHTML=data[0].fldIarNo;
+        document.getElementById("ponum").innerHTML=data[0].fldPoNo;
+        document.getElementById("podate").innerHTML=data[0].fldToday;
+        document.getElementById("invnum").innerHTML=data[0].product_uniq_id;
+        document.getElementById("invdate").innerHTML=formatDate(new Date(data[0].fldDate));
+        document.getElementById("reqoffice").innerHTML=data[0].fldDept;
+
+
+    });
+}
+
+	printdata(localStorage.selectedprintid);
 </script>
-<script type="text/javascript" src="js/jspdf.min.js"></script>
-<script type="text/javascript" src="js/printPdf.js"></script>
+<script type="text/javascript" src="../propertycard/js/jspdf.min.js"></script>
+<script type="text/javascript" src="../propertycard/js/printPdf.js"></script>
 
 </html>
