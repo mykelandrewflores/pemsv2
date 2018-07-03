@@ -2,3 +2,7 @@ $.getJSON(myUrl+"/pems/apis/myapi/select/tbl_companies/fldCompanyID/"+localStora
     $("#useravatar").attr("src", data[0].fldLogo);
     $("#usersideavatar").attr("src", data[0].fldLogo);
 });
+
+if(localStorage.companyID == undefined){
+    window.location.assign("../index.html")
+}

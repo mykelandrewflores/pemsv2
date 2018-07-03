@@ -219,8 +219,8 @@ function selectCompany(val) {
 }
 
 function logOut() {
-    localStorage.companyID = "";
-    localStorage.userID = "";
+    localStorage.removeItem("userID");
+    localStorage.removeItem("companyID");
     window.location.assign("../index.html");
 }
 
@@ -336,7 +336,7 @@ function updateCode(val, vcode) {
 }
 
 function sendCode(eadd, val) {
-    $.post("http://localhost" + "/pems/apis/emailverif/forgotpass.php", {
+    $.post(myurls+ "pems/apis/emailverif/forgotpass.php", {
         eadd: eadd,
         vcode: val
     }, function (data) {
@@ -364,5 +364,6 @@ function updatePass(){
     
 
 }
+
 
 //EDIT DELETE EMPLOYEE --END--

@@ -44,6 +44,18 @@
  	});
  	$('select').formSelect();
  });
+function userLoginCheck(){
+    if(localStorage.userID == null){
+        window.location.assign("../../index.html");
+    }
+}
 
+
+
+function logOut() {
+    localStorage.removeItem("userID");
+    localStorage.removeItem("companyID");
+    window.location.assign("../../index.html");
+}
 
 

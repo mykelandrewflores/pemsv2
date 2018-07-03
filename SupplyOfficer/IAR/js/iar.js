@@ -1,4 +1,3 @@
-var myurl = "http://localhost/pems/apis";
 setInterval(function () {
     purchaselist();
 }, 5000);
@@ -9,7 +8,7 @@ var recieve_json = [];
 var log_prno = "";
 
 function purchaselist() {
-    var url = myurl + "/iar_api/select.php?tbl_purchaserequest&company_id=" + localStorage.companyID;
+    var url = myUrl + "/pems/apis/iar_api/select.php?tbl_purchaserequest&company_id=" + localStorage.companyID;
     $.getJSON(url, function (data) {
         var longstring = "";
         for (var i = 0; i < data.length; i++) {
@@ -32,7 +31,7 @@ function purchaselist() {
 }
 
 function iarFetch() {
-    var url = myurl + "/iar_api/select.php?tbl_inspection";
+    var url = myUrl + "/pems/apis/iar_api/select.php?tbl_inspection";
     $.getJSON(url, function (data) {
         var longstring = "";
         var longstring = "";
@@ -52,7 +51,7 @@ function stocklist(id, dept) {
     $('#office').val(dept)
     $('#office_out').val(dept)
     $('#PO_no').val(id)
-    var url = myurl + "/iar_api/select.php?tbl_purchaseitems=" + id;
+    var url = myUrl + "/pems/apis/iar_api/select.php?tbl_purchaseitems=" + id;
     $.getJSON(url, function (data) {
         var longstring = "";
         var today = new Date();
@@ -79,7 +78,7 @@ function stocklist(id, dept) {
 }
 
 function donelist(id){
-    var url = myurl + "/iar_api/select.php?IARhistory=" + id;
+    var url = myUrl + "/pems/apis/iar_api/select.php?IARhistory=" + id;
     $.getJSON(url, function (data) {
         var longstring = "";
         var today = new Date();
@@ -132,7 +131,7 @@ $.ajaxSetup({
 $(document).ready(function () {
     $('#submit_inspection').submit(function (event) {
         event.preventDefault();
-        var url = myurl + "/iar_api/insert.php";
+        var url = myUrl + "/pems/apis/iar_api/insert.php";
         var form = $(this).serialize();
         var qna = confirm('Procceed?');
         if (qna == true) {
@@ -171,7 +170,6 @@ $(document).ready(function () {
                 data: form,
                 dataType: 'JSON',
                 success: function (data) {
-                	insertInspection();
                     updateInspection();
                 }
             });
@@ -181,7 +179,7 @@ $(document).ready(function () {
     });
 
     function updateInspection() {
-        var url = myurl + "/iar_api/multiple_statement.php";
+        var url = myUrl + "/pems/apis/iar_api/multiple_statement.php";
         $.ajax({
             url: url,
             method: 'POST',
@@ -202,7 +200,7 @@ $(document).ready(function () {
 
     function insertInspection(val) {
         console.log(recieve_json);
-        var url = myurl + "/iar_api/multiple_insert.php";
+        var url = myUrl + "/pems/apis/iar_api/multiple_insert.php";
         $.ajax({
             url: url,
             method: 'POST',
@@ -213,7 +211,7 @@ $(document).ready(function () {
     }
 
     function checkPrZero() {
-        var url = myurl + "/iar_api/update_pr.php";
+        var url = myUrl + "/pems/apis/iar_api/update_pr.php";
         $.ajax({
             url: url,
             method: 'POST',
@@ -236,7 +234,7 @@ $.ajaxSetup({
     async: false
 });
 
-$.getJSON(myurl + "/myapi/select/tbl_lccalives", function (data) {
+$.getJSON(myUrl + "/myapi/select/tbl_lccalives", function (data) {
     equipData = data;
 });
 

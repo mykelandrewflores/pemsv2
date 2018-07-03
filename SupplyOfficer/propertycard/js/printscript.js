@@ -33,7 +33,7 @@ $(document).ready(function(){
 function pcdata(){
 	$(function(){
 
-		url=myurl+"/propertycard/propertyapi/duration/tbl_equipment/tbl_property/fldProdID/fldPNum/"+localStorage.getItem("selected_id");
+		url=myUrl+"/propertycard/propertyapi/duration/tbl_equipment/tbl_property/fldProdID/fldPNum/"+localStorage.getItem("selected_id");
 		
 		$.getJSON(url,function(data){
 			let longstring = "";

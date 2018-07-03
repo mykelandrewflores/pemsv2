@@ -1,9 +1,8 @@
-var myurl = "http://localhost/pems/apis";
 getRequest();
 
 myArr = [];
 
-$.getJSON(myurl+"/myapi/select/tbl_lccalives", function(data){
+$.getJSON(myUrl+"/myapi/select/tbl_lccalives", function(data){
     myArr = data;
 });
 
@@ -17,7 +16,7 @@ function getData(val){
 
 function getRequest() {
     $.ajax({
-        url: myurl+'/purchase_api/select.php?fetch_pr_list',
+        url: myUrl+'/purchase_api/select.php?fetch_pr_list',
         method: 'GET',
         dataType: 'JSON',
         success: function (data) {
@@ -44,7 +43,7 @@ function getRequest() {
 
 function getReqEquipment(pr_no) {
     $.ajax({
-        url: myurl+'/purchase_api/select.php?fetch_pr_equipment=' + pr_no,
+        url: myUrl+'/purchase_api/select.php?fetch_pr_equipment=' + pr_no,
         method: 'GET',
         dataType: 'JSON',
         success: function (data) {
@@ -71,7 +70,7 @@ function getReqEquipment(pr_no) {
     });
 
     $.ajax({
-        url: myurl+'/purchase_api/select.php?fetch_pr_equipment=' + pr_no,
+        url: myUrl+'/purchase_api/select.php?fetch_pr_equipment=' + pr_no,
         method: 'GET',
         dataType: 'JSON',
         success: function (data) {

@@ -27,8 +27,5 @@ if(mysqli_multi_query($db,$sql)) {
 	echo $sql;
 }
 
-}
-
-} 
 
 ?>

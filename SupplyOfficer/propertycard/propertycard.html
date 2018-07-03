@@ -42,7 +42,7 @@
 			<li><a href="../IAR/index.html"><i class="fa fa-file-text-o" aria-hidden="true"></i> Inspection and Acceptance</a></li>
 			<li  class="active active-link"><a href="#!"><i class="fa fa-file-o" aria-hidden="true"></i> Property Management</a></li>
 			<li ><a href="../purchase/purchaselist.html"><i class="fa fa-file" aria-hidden="true"></i> Purchase Management</a></li>
-			<li><a href="../../index.html"><i class="fa fa-power-off" aria-hidden="true"></i> Log-out</a></li>
+			<li onclick="logOut()"><a href="#"><i class="fa fa-power-off" aria-hidden="true"></i> Log-out</a></li>
 		</ul>
 	</header>
 	<div id="modal1" class="modal modal-fixed-footer">
@@ -143,6 +143,9 @@
 				</span>
 				<div class="row">
 					<div class="col s12">
+						<a class="btn waves-effect waves-light left btn-flat white-text modal-trigger" href="index.html"><i class="fa fa-arrow-left fa-small"></i> Back</a>
+					</div>                    
+					<div class="col s12">
 						<a class="waves-effect waves-light right btn-flat blue-text modal-trigger" href="propertycard_print.html"><i class="fa fa-print left"></i>Print Preview</a>
 						<a class="waves-effect waves-light right btn-flat green-text modal-trigger" href="#modal1"><i class="fa fa-plus left"></i>Add Data</a>
 					</div>
@@ -171,6 +174,7 @@
 		<script src="../../js/changing_color.js"></script>
 		<script src="js/property_data.js"></script>
 		<script>
+                    userLoginCheck();   
 			$.getJSON(myUrl+"/myapi/select/tbl_user/fldUserID/" + localStorage.userID, function(data) {
 				document.getElementById('name').innerHTML = data[0].fldFname + " " + data[0].fldLname;
 				document.getElementById('dept').innerHTML = data[0].fldDepartment;

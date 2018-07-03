@@ -43,7 +43,7 @@
 			<li class="active active-link"><a href="#!"><i class="fa fa-plus-square-o" aria-hidden="true"></i> New Purchase Request</a></li>
 			<li><a href="purchase-list.html"><i class="fa fa-file-text" aria-hidden="true"></i> Purchase Request List</a></li>
 			<li><a href="../LCCA/index.html"><i class="fa fa-wrench" aria-hidden="true"></i> LCCA Tool</a></li>
-			<li><a href="../../index.html"><i class="fa fa-power-off" aria-hidden="true"></i> Log-out</a></li>
+			<li onclick="logOut()"><a href="#"><i class="fa fa-power-off" aria-hidden="true"></i> Log-out</a></li>
 		</ul>
 	</header>
 	<main>
@@ -148,6 +148,7 @@
 		$("#depts").val(localStorage.userDept);
 		$("#company_id").val(localStorage.companyID);
 		$("#user_id").val(localStorage.userID);
+                userLoginCheck();
 	</script>
 </body>
 

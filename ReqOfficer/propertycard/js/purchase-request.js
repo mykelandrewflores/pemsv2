@@ -1,4 +1,3 @@
-var myurl= "http://localhost/pems/apis";
 setData();
 fetchEquipments();
 var req_item = [];
@@ -80,7 +79,7 @@ let testArr = [];
 fetchEquipments("Office Equipment");
 
 function getEquipCateg() {
-    $.getJSON(myurl+"/purchase_api/select.php?lcca_livesdis", function (data) {
+    $.getJSON(myUrl+"/purchase_api/select.php?lcca_livesdis", function (data) {
 
         var body = ''
         body += '<select onchange="fetchEquipments(this.value)"> <option value="" disabled selected>Choose your Option</option>';
@@ -95,7 +94,7 @@ function getEquipCateg() {
 
 function fetchEquipments(val) {
     $.ajax({
-        url: myurl+'/purchase_api/select.php?fetch_equipments_data=' + val,
+        url: myUrl+'/purchase_api/select.php?fetch_equipments_data=' + val,
         method: 'GET',
         dataType: 'JSON',
         success: function (data) {
@@ -137,7 +136,7 @@ function removeItem(id) {
 
 function requestUnits() {
     $.ajax({
-        url: myurl+'/purchase_api/insert_json.php',
+        url: myUrl+'/purchase_api/insert_json.php',
         method: 'POST',
         data: JSON.stringify(req_item),
         success: function (data) {}
@@ -155,7 +154,7 @@ $(document).ready(function () {
             return false;
         }
         $.ajax({
-            url: myurl+'/purchase_api/insert.php',
+            url: myUrl+'/purchase_api/insert.php',
             method: 'POST',
             data: form,
             beforeSend: function () {   
@@ -182,7 +181,7 @@ $(document).ready(function () {
         form_data.append('file', $('input#myFile')[0].files[0]);
 
         $.ajax({
-            url: myurl+'/lccafiles/upload.php?tno=' + $("#curdate_request").val()+'&uid=' + localStorage.userID,
+            url: myUrl+'/lccafiles/upload.php?tno=' + $("#curdate_request").val()+'&uid=' + localStorage.userID,
             method: 'POST',
             contentType: false,
             processData: false,

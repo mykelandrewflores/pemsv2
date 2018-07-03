@@ -1,7 +1,5 @@
 
-let myurl = "http://localhost/pems/apis";
-
-// let myurl = "http://gordoncollegeccs-ssite.net/pems/apis";
+// let myUrl = "http://gordoncollegeccs-ssite.net/pems/apis";
 
 function setselected(prodid,iarno,recid){
 	localStorage.setItem("selected_id",prodid);
@@ -16,7 +14,7 @@ function setselected_reqofficer(prodid,iarno,recid){
 }
 
 function fetch_lccaprod(){
-	url=myurl+"/propertycard/propertyapi/tbl_lccalives";
+	url=myUrl+"/pems/apis/propertycard/propertyapi/tbl_lccalives";
 	$.getJSON(url,function(data){
 			var body = ''
 			body+='<select id="lccaprod_select"> <option value="" disabled selected>Choose Product Name</option>';
@@ -32,7 +30,7 @@ function fetch_lccaprod(){
 		});
 }
 function fetch_lccadepartments(){
-	url=myurl+"/propertycard/propertyapi/tbl_departments/fldCompanyID/"+localStorage.companyID;
+	url=myUrl+"/pems/apis/propertycard/propertyapi/tbl_departments/fldCompanyID/"+localStorage.companyID;
 	$.getJSON(url,function(data){
 			var body = ''
 			body+='<select id="lccadept_select"> <option value="" disabled selected>Choose Department</option>';
@@ -48,7 +46,7 @@ function fetch_lccadepartments(){
 		});
 }
 function fetch_departments(){
-	url=myurl+"/propertycard/propertyapi/tbl_departments/fldCompanyID/"+localStorage.companyID;
+	url=myUrl+"/pems/apis/propertycard/propertyapi/tbl_departments/fldCompanyID/"+localStorage.companyID;
 	$.getJSON(url,function(data){
 			var body = ''
 			body+='<select id="department_select"> <option value="" disabled selected>Choose Department</option>';
@@ -64,7 +62,7 @@ function fetch_departments(){
 		});
 }
 function fetch_departments2(){
-	url=myurl+"/propertycard/propertyapi/tbl_departments/fldCompanyID/"+localStorage.companyID;
+	url=myUrl+"/pems/apis/propertycard/propertyapi/tbl_departments/fldCompanyID/"+localStorage.companyID;
 	$.getJSON(url,function(data){
 			var body = ''
 			body+='<select id="department_select2"> <option value="" disabled selected>Choose Department</option>';
@@ -80,7 +78,7 @@ function fetch_departments2(){
 		});
 }
 function fetch_departments3(){
-	url=myurl+"/propertycard/propertyapi/tbl_departments/fldCompanyID/"+localStorage.companyID;
+	url=myUrl+"/pems/apis/propertycard/propertyapi/tbl_departments/fldCompanyID/"+localStorage.companyID;
 	$.getJSON(url,function(data){
 			var body = ''
 			body+='<select id="department_select3"> <option value="" disabled selected>Choose Department</option>';
@@ -100,7 +98,7 @@ function equiptable(){
 
 	$(function(){
 
-		url=myurl+"/propertycard/propertyapi/tbl_lccalives_all/tbl_lccalives/tbl_property/fldProdID/fldPNum/fldAgency/"+localStorage.companyID+"/";
+		url=myUrl+"/pems/apis/propertycard/propertyapi/tbl_lccalives_all/tbl_lccalives/tbl_property/fldProdID/fldPNum/fldAgency/"+localStorage.companyID+"/";
 		
 		$.getJSON(url,function(data){
 			let longstring = "";
@@ -134,7 +132,7 @@ function equiptable_assigned(){
 
 	$(function(){
 
-		url=myurl+"/propertycard/propertyapi/tbl_lccalives_filter/tbl_lccalives/tbl_property/fldProdID/fldPNum/fldAgency/"+localStorage.companyID+"/fldRemarks/Assigned";
+		url=myUrl+"/pems/apis/propertycard/propertyapi/tbl_lccalives_filter/tbl_lccalives/tbl_property/fldProdID/fldPNum/fldAgency/"+localStorage.companyID+"/fldRemarks/Assigned";
 		
 		$.getJSON(url,function(data){
 			let longstring = "";
@@ -159,7 +157,7 @@ function equiptable_unassigned(){
 
 	$(function(){
 
-		url=myurl+"/propertycard/propertyapi/tbl_lccalives_filter/tbl_lccalives/tbl_property/fldProdID/fldPNum/fldAgency/"+localStorage.companyID+"/fldRemarks/Unassigned";
+		url=myUrl+"/pems/apis/propertycard/propertyapi/tbl_lccalives_filter/tbl_lccalives/tbl_property/fldProdID/fldPNum/fldAgency/"+localStorage.companyID+"/fldRemarks/Unassigned";
 		
 		$.getJSON(url,function(data){
 			let longstring = "";
@@ -191,7 +189,7 @@ function equiptable_reqofficer(){
 
 	$(function(){
 
-		url=myurl+"/propertycard/propertyapi/tbl_lccalives_all/tbl_lccalives/tbl_property/fldProdID/fldPNum/fldAgency/"+localStorage.companyID+"/";
+		url=myUrl+"/pems/apis/propertycard/propertyapi/tbl_lccalives_all/tbl_lccalives/tbl_property/fldProdID/fldPNum/fldAgency/"+localStorage.companyID+"/";
 		
 		$.getJSON(url,function(data){
 			let longstring = "";
@@ -220,7 +218,7 @@ function assign_tabledata(recID){
 
 	$(function(){
 
-		url=myurl+"/propertycard/propertyapi/tbl_lccalives_filter/tbl_lccalives/tbl_property/fldProdID/fldPNum/fldAgency/"+localStorage.companyID+"/fldRecID/"+recID;
+		url=myUrl+"/pems/apis/propertycard/propertyapi/tbl_lccalives_filter/tbl_lccalives/tbl_property/fldProdID/fldPNum/fldAgency/"+localStorage.companyID+"/fldRecID/"+recID;
 		
 		$.getJSON(url,function(data){
 			let longstring = "";
@@ -245,7 +243,7 @@ function transfer_tabledata(recID){
 
 	$(function(){
 
-		url=myurl+"/propertycard/propertyapi/tbl_lccalives_filter/tbl_lccalives/tbl_property/fldProdID/fldPNum/fldAgency/"+localStorage.companyID+"/fldRecID/"+recID;
+		url=myUrl+"/pems/apis/propertycard/propertyapi/tbl_lccalives_filter/tbl_lccalives/tbl_property/fldProdID/fldPNum/fldAgency/"+localStorage.companyID+"/fldRecID/"+recID;
 		
 		$.getJSON(url,function(data){
 			let longstring = "";
@@ -271,7 +269,7 @@ function disposal_tabledata(recID){
 
 	$(function(){
 
-		url=myurl+"/propertycard/propertyapi/tbl_lccalives_filter/tbl_lccalives/tbl_property/fldProdID/fldPNum/fldAgency/"+localStorage.companyID+"/fldRecID/"+recID;
+		url=myUrl+"/pems/apis/propertycard/propertyapi/tbl_lccalives_filter/tbl_lccalives/tbl_property/fldProdID/fldPNum/fldAgency/"+localStorage.companyID+"/fldRecID/"+recID;
 		
 		$.getJSON(url,function(data){
 			let longstring = "";
@@ -303,7 +301,7 @@ function assign_func(){
 	let tblname = "tbl_property";
 	let update_action = "update_propertydata";
 
-	let urllog=myurl+"/propertycard/propertyapi/tbl_lccalives_filter/tbl_lccalives/tbl_property/fldProdID/fldPNum/fldAgency/"+localStorage.companyID+"/fldRecID/"+fldRecID;
+	let urllog=myUrl+"/pems/apis/propertycard/propertyapi/tbl_lccalives_filter/tbl_lccalives/tbl_property/fldProdID/fldPNum/fldAgency/"+localStorage.companyID+"/fldRecID/"+fldRecID;
 	let log_fldRecID = "";
 	let log_fldIarNo = "";
 	let log_fldPNum = "";
@@ -336,7 +334,7 @@ function assign_func(){
 			log_fldToDept = log_fldToDept;
 		}
 		console.log(log_fldRecID);
-		$.post(myurl+"/propertycard/propertyapi/create",{tblname:log_tblname,log_fldRecID:log_fldRecID,log_fldIarNo:log_fldIarNo,log_fldPNum:log_fldPNum,log_fldBrand:log_fldBrand,log_fldAgency:log_fldAgency,log_fldDept:log_fldDept,log_fldDate:log_fldDate,log_fldRefNo:log_fldRefNo,log_fldRecQty:log_fldRecQty,log_fldTDQty:log_fldTDQty,log_fldRemarks:log_fldRemarks,log_fldAction:log_fldAction,log_fldFromDept:log_fldFromDept,log_fldToDept:log_fldToDept},function(data){
+		$.post(myUrl+"/pems/apis/propertycard/propertyapi/create",{tblname:log_tblname,log_fldRecID:log_fldRecID,log_fldIarNo:log_fldIarNo,log_fldPNum:log_fldPNum,log_fldBrand:log_fldBrand,log_fldAgency:log_fldAgency,log_fldDept:log_fldDept,log_fldDate:log_fldDate,log_fldRefNo:log_fldRefNo,log_fldRecQty:log_fldRecQty,log_fldTDQty:log_fldTDQty,log_fldRemarks:log_fldRemarks,log_fldAction:log_fldAction,log_fldFromDept:log_fldFromDept,log_fldToDept:log_fldToDept},function(data){
 
 		}).fail(function(){
 			M.toast({html: 'Equipment/Property Transfer log Failed'})
@@ -345,7 +343,7 @@ function assign_func(){
 		window.alert("No Equipment Found");
 	});
 
-	$.post(myurl+"/propertycard/propertyapi/update",{tblname:tblname,update_action:update_action,fldRecID:fldRecID,fldTDQty:fldTDQty,fldRemarks:fldRemarks,fldDept:fldDept},function(data){
+	$.post(myUrl+"/pems/apis/propertycard/propertyapi/update",{tblname:tblname,update_action:update_action,fldRecID:fldRecID,fldTDQty:fldTDQty,fldRemarks:fldRemarks,fldDept:fldDept},function(data){
 		equiptable();
 		equiptable_assigned();
 		equiptable_unassigned();
@@ -368,7 +366,7 @@ function transfer_func(){
 	let tblname = "tbl_property";
 	let update_action = "update_propertydata";
 
-	let urllog=myurl+"/propertycard/propertyapi/tbl_lccalives_filter/tbl_lccalives/tbl_property/fldProdID/fldPNum/fldAgency/"+localStorage.companyID+"/fldRecID/"+fldRecID;
+	let urllog=myUrl+"/pems/apis/propertycard/propertyapi/tbl_lccalives_filter/tbl_lccalives/tbl_property/fldProdID/fldPNum/fldAgency/"+localStorage.companyID+"/fldRecID/"+fldRecID;
 	let log_fldRecID = "";
 	let log_fldIarNo = "";
 	let log_fldPNum = "";
@@ -402,7 +400,7 @@ function transfer_func(){
 		}
 		console.log(log_fldRecID);
 
-		$.post(myurl+"/propertycard/propertyapi/create",{tblname:log_tblname,log_fldRecID:log_fldRecID,log_fldIarNo:log_fldIarNo,log_fldPNum:log_fldPNum,log_fldBrand:log_fldBrand,log_fldAgency:log_fldAgency,log_fldDept:log_fldDept,log_fldDate:log_fldDate,log_fldRefNo:log_fldRefNo,log_fldRecQty:log_fldRecQty,log_fldTDQty:log_fldTDQty,log_fldRemarks:log_fldRemarks,log_fldAction:log_fldAction,log_fldFromDept:log_fldFromDept,log_fldToDept:log_fldToDept},function(data){
+		$.post(myUrl+"/pems/apis/propertycard/propertyapi/create",{tblname:log_tblname,log_fldRecID:log_fldRecID,log_fldIarNo:log_fldIarNo,log_fldPNum:log_fldPNum,log_fldBrand:log_fldBrand,log_fldAgency:log_fldAgency,log_fldDept:log_fldDept,log_fldDate:log_fldDate,log_fldRefNo:log_fldRefNo,log_fldRecQty:log_fldRecQty,log_fldTDQty:log_fldTDQty,log_fldRemarks:log_fldRemarks,log_fldAction:log_fldAction,log_fldFromDept:log_fldFromDept,log_fldToDept:log_fldToDept},function(data){
 
 		}).fail(function(){
 			M.toast({html: 'Equipment/Property Transfer log Failed'})
@@ -414,7 +412,7 @@ function transfer_func(){
 
 
 
-	$.post(myurl+"/propertycard/propertyapi/update",{tblname:tblname,update_action:update_action,fldRecID:fldRecID,fldTDQty:fldTDQty,fldRemarks:fldRemarks,fldDept:fldDept},function(data){
+	$.post(myUrl+"/pems/apis/propertycard/propertyapi/update",{tblname:tblname,update_action:update_action,fldRecID:fldRecID,fldTDQty:fldTDQty,fldRemarks:fldRemarks,fldDept:fldDept},function(data){
 		equiptable();
 		equiptable_assigned();
 		equiptable_unassigned();
@@ -440,7 +438,7 @@ function disposal_func(){
 	let tblname = "tbl_property";
 	let update_action = "update_propertydata";
 
-	let urllog=myurl+"/propertycard/propertyapi/tbl_lccalives_filter/tbl_lccalives/tbl_property/fldProdID/fldPNum/fldAgency/"+localStorage.companyID+"/fldRecID/"+fldRecID;
+	let urllog=myUrl+"/pems/apis/propertycard/propertyapi/tbl_lccalives_filter/tbl_lccalives/tbl_property/fldProdID/fldPNum/fldAgency/"+localStorage.companyID+"/fldRecID/"+fldRecID;
 	let log_fldRecID = "";
 	let log_fldIarNo = "";
 	let log_fldPNum = "";
@@ -474,7 +472,7 @@ function disposal_func(){
 		}
 		console.log(log_fldRecID);
 
-		$.post(myurl+"/propertycard/propertyapi/create",{tblname:log_tblname,log_fldRecID:log_fldRecID,log_fldIarNo:log_fldIarNo,log_fldPNum:log_fldPNum,log_fldBrand:log_fldBrand,log_fldAgency:log_fldAgency,log_fldDept:log_fldDept,log_fldDate:log_fldDate,log_fldRefNo:log_fldRefNo,log_fldRecQty:log_fldRecQty,log_fldTDQty:log_fldTDQty,log_fldRemarks:log_fldRemarks,log_fldAction:log_fldAction,log_fldFromDept:log_fldFromDept,log_fldToDept:log_fldToDept},function(data){
+		$.post(myUrl+"/pems/apis/propertycard/propertyapi/create",{tblname:log_tblname,log_fldRecID:log_fldRecID,log_fldIarNo:log_fldIarNo,log_fldPNum:log_fldPNum,log_fldBrand:log_fldBrand,log_fldAgency:log_fldAgency,log_fldDept:log_fldDept,log_fldDate:log_fldDate,log_fldRefNo:log_fldRefNo,log_fldRecQty:log_fldRecQty,log_fldTDQty:log_fldTDQty,log_fldRemarks:log_fldRemarks,log_fldAction:log_fldAction,log_fldFromDept:log_fldFromDept,log_fldToDept:log_fldToDept},function(data){
 
 		}).fail(function(){
 			M.toast({html: 'Equipment/Property Transfer log Failed'})
@@ -484,7 +482,7 @@ function disposal_func(){
 		window.alert("No Equipment Found");
 	});
 
-	$.post(myurl+"/propertycard/propertyapi/update",{tblname:tblname,update_action:update_action,fldRecID:fldRecID,fldTDQty:fldTDQty,fldRemarks:fldRemarks,fldDept:fldDept},function(data){
+	$.post(myUrl+"/pems/apis/propertycard/propertyapi/update",{tblname:tblname,update_action:update_action,fldRecID:fldRecID,fldTDQty:fldTDQty,fldRemarks:fldRemarks,fldDept:fldDept},function(data){
 		equiptable();
 		equiptable_assigned();
 		equiptable_unassigned();
@@ -502,7 +500,7 @@ $('.modal').modal('close');
 function pcdata(){
 	$(function(){
 
-		url=myurl+"/propertycard/propertyapi/where3and/tbl_property_dispose/tbl_lccalives/fldPNum/"+localStorage.selected_id+"/fldIarNo/"+localStorage.selected_iarno+"/fldRecID/"+localStorage.selected_recid+"/fldAgency/"+localStorage.companyID+"/fldProdID";
+		url=myUrl+"/pems/apis/propertycard/propertyapi/where3and/tbl_property_dispose/tbl_lccalives/fldPNum/"+localStorage.selected_id+"/fldIarNo/"+localStorage.selected_iarno+"/fldRecID/"+localStorage.selected_recid+"/fldAgency/"+localStorage.companyID+"/fldProdID";
 		
 		$.getJSON(url,function(data){
 			let longstring = "";
@@ -545,7 +543,7 @@ function pcdata(){
 function pcdata_reqofficer(){
 	$(function(){
 
-		url=myurl+"/propertycard/propertyapi/where3and/tbl_property_dispose/tbl_lccalives/fldPNum/"+localStorage.selected_id_reqofficer+"/fldIarNo/"+localStorage.selected_iarno_reqofficer+"/fldRecID/"+localStorage.selected_recid_reqofficer+"/fldAgency/"+localStorage.companyID+"/fldProdID";
+		url=myUrl+"/pems/apis/propertycard/propertyapi/where3and/tbl_property_dispose/tbl_lccalives/fldPNum/"+localStorage.selected_id_reqofficer+"/fldIarNo/"+localStorage.selected_iarno_reqofficer+"/fldRecID/"+localStorage.selected_recid_reqofficer+"/fldAgency/"+localStorage.companyID+"/fldProdID";
 		
 		$.getJSON(url,function(data){
 			let longstring = "";
@@ -591,7 +589,7 @@ function proptable(){
 
 	$(function(){
 
-		url=myurl+"/propertycard/propertyapi/where3and/tbl_property_dispose/tbl_lccalives/fldPNum/"+localStorage.selected_id+"/fldIarNo/"+localStorage.selected_iarno+"/fldRecID/"+localStorage.selected_recid+"/fldAgency/"+localStorage.companyID+"/fldProdID";
+		url=myUrl+"/pems/apis/propertycard/propertyapi/where3and/tbl_property_dispose/tbl_lccalives/fldPNum/"+localStorage.selected_id+"/fldIarNo/"+localStorage.selected_iarno+"/fldRecID/"+localStorage.selected_recid+"/fldAgency/"+localStorage.companyID+"/fldProdID";
 		
 		$.getJSON(url,function(data){
 			let longstring = "";
@@ -624,7 +622,7 @@ function proptable_reqofficer(){
 
 	$(function(){
 
-		url=myurl+"/propertycard/propertyapi/where3and/tbl_property_dispose/tbl_lccalives/fldPNum/"+localStorage.selected_id_reqofficer+"/fldIarNo/"+localStorage.selected_iarno_reqofficer+"/fldRecID/"+localStorage.selected_recid_reqofficer+"/fldAgency/"+localStorage.companyID+"/fldProdID";
+		url=myUrl+"/pems/apis/propertycard/propertyapi/where3and/tbl_property_dispose/tbl_lccalives/fldPNum/"+localStorage.selected_id_reqofficer+"/fldIarNo/"+localStorage.selected_iarno_reqofficer+"/fldRecID/"+localStorage.selected_recid_reqofficer+"/fldAgency/"+localStorage.companyID+"/fldProdID";
 		
 		$.getJSON(url,function(data){
 			let longstring = "";
@@ -656,7 +654,7 @@ function proptable_reqofficer(){
 
 function DeleteEquipData(equipid){
 
-  $.post(myurl+"/propertycard/propertyapi/delete/tbl_equipment/"+equipid,function(data){
+  $.post(myUrl+"/pems/apis/propertycard/propertyapi/delete/tbl_equipment/"+equipid,function(data){
     M.toast({html: 'Equipment Deleted'});
     equiptable();
   }).fail(function(){
@@ -682,7 +680,7 @@ function AddEquipData(){
 
 	for (let i = 0; i < RecQty; i++) {
 		let fldRecQty = 1;
-		$.post(myurl+"/propertycard/propertyapi/create",{tblname:tblname,fldIarNo:fldIarNo,fldAgency:fldAgency,fldPNum:fldPNum,fldDept:fldDept,fldRefNo:fldRefNo,fldRecQty:fldRecQty,fldTDQty:fldTDQty,fldRemarks:fldRemarks},function(data){
+		$.post(myUrl+"/pems/apis/propertycard/propertyapi/create",{tblname:tblname,fldIarNo:fldIarNo,fldAgency:fldAgency,fldPNum:fldPNum,fldDept:fldDept,fldRefNo:fldRefNo,fldRecQty:fldRecQty,fldTDQty:fldTDQty,fldRemarks:fldRemarks},function(data){
 
 		}).fail(function(){
 			M.toast({html: 'Property Add Failed'})
@@ -710,7 +708,7 @@ function AddPropData(){
 
 	/*console.log(uploadFile);*/
 
-	$.post(myurl+"/propertycard/propertyapi/create",{tblname:tblname,fldPNum:fldPNum,fldAgency:fldAgency,fldDept:fldDept,fldDate:fldDate,fldRefNo:fldRefNo,fldRecQty:fldRecQty,fldTDQty:fldTDQty,fldOffice:fldOffice,fldBalQty:fldBalQty,update_action:update_action},function(data){
+	$.post(myUrl+"/pems/apis/propertycard/propertyapi/create",{tblname:tblname,fldPNum:fldPNum,fldAgency:fldAgency,fldDept:fldDept,fldDate:fldDate,fldRefNo:fldRefNo,fldRecQty:fldRecQty,fldTDQty:fldTDQty,fldOffice:fldOffice,fldBalQty:fldBalQty,update_action:update_action},function(data){
 		M.toast({html: 'Equipment Added'});
 		document.getElementById("equip_name").value="";
  		document.getElementById("equip_desc").value="";

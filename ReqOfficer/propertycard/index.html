@@ -42,7 +42,7 @@
 			<li><a href="purchase-request.html"><i class="fa fa-plus-square-o" aria-hidden="true"></i> New Purchase Request</a></li>
 			<li><a href="purchase-list.html"><i class="fa fa-file-text" aria-hidden="true"></i> Purchase Request List</a></li>
 			<li><a href="../LCCA/index.html"><i class="fa fa-wrench" aria-hidden="true"></i> LCCA Tool</a></li>
-			<li><a href="../../index.html"><i class="fa fa-power-off" aria-hidden="true"></i> Log-out</a></li>
+			<li onclick="logOut()"><a href="#"><i class="fa fa-power-off" aria-hidden="true"></i> Log-out</a></li>
 		</ul>
 	</header>
 	<main>
@@ -70,6 +70,7 @@
 	<script src="../../js/changing_color.js"></script>
 	<script src="../../SupplyOfficer/propertycard/js/property_data.js"></script>
 	<script>
+                userLoginCheck();
 		$.getJSON(myUrl+"/myapi/select/tbl_user/fldUserID/" + localStorage.userID, function(data) {
 			document.getElementById('name').innerHTML = data[0].fldFname + " " + data[0].fldLname;
 			document.getElementById('dept').innerHTML = data[0].fldDepartment;

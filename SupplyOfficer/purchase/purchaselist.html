@@ -42,7 +42,7 @@
 			<li><a href="../IAR/index.html"><i class="fa fa-file-text-o" aria-hidden="true"></i> Inspection and Acceptance</a></li>
 			<li><a href="../propertycard/index.html"><i class="fa fa-file-o" aria-hidden="true"></i> Property Management</a></li>
 			<li   class="active active-link"><a href="#!"><i class="fa fa-file" aria-hidden="true"></i> Purchase Management</a></li>
-			<li><a href="../../index.html"><i class="fa fa-power-off" aria-hidden="true"></i> Log-out</a></li>
+			<li onclick="logOut()"><a href="#"><i class="fa fa-power-off" aria-hidden="true"></i> Log-out</a></li>
 		</ul>
 	</header>
 	<main class="mt-1">
@@ -304,6 +304,7 @@
 	<script src="js/purchase-list.js"></script>
 	<script src="js/scriptonite.js"></script>
 	<script>
+        userLoginCheck();
 		$.getJSON(myUrl+"/myapi/select/tbl_user/fldUserID/" + localStorage.userID, function(data) {
 			document.getElementById('name').innerHTML = data[0].fldFname + " " + data[0].fldLname;
 			document.getElementById('dept').innerHTML = data[0].fldDepartment;
