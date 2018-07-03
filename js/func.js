@@ -257,7 +257,7 @@ function update_func() {
     let update_action = "update_employee";
 
 
-    $.post(myurls + "/propertycard/propertyapi/update", {
+    $.post(myurls + "pems/apis/propertycard/propertyapi/update", {
         tblname: tblname,
         fldUserID: fldUserID,
         fldUsername: fldUsername,

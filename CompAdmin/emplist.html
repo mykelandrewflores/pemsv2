@@ -45,7 +45,7 @@
             <li><a href="departments.html" class="collapsible-header"><i class="fa fa-building" aria-hidden="true"></i> Departments</a></li>
             <li><a href="index.html" class="collapsible-header"><i class="fa fa-building-o" aria-hidden="true"></i> Company Settings</a></li>
             <li class="active active-link"><a href="emplist.html" class="collapsible-header"><i class="fa fa-users" aria-hidden="true"></i> Employee Management</a></li>
-            <li><a href="../ReqOfficer/LCCA/settings.html" class="collapsible-header"><i class="fa fa-cog" aria-hidden="true"></i> LCCA Settings</a></li>
+            <li><a href="lccasettings.html" class="collapsible-header"><i class="fa fa-cog" aria-hidden="true"></i> LCCA Settings</a></li>
             <li onclick="logOut()"><a href="../index.html" class="collapsible-header" onclick="logOut()"><i class="fa fa-power-off" aria-hidden="true"></i> Logout</a></li>
         </ul>
     </header>
@@ -195,46 +195,7 @@
                     <select id="editemp_dept" class="browser-default">
 							<option value="" disabled selected>Choose your Department</option>
 						</select>
-<<<<<<< HEAD
                 </div>
-            </div>
-        </div>
-        <div class="modal-footer">
-            <button class="btn green" onclick="update_func()">Update Employee</button>
-            <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
-        </div>
-    </div>
-    <script src="../js/jquery.min.js"></script>
-    <script src="../js/materialize.min.js"></script>
-    <script src="../js/init.js"></script>
-    <script src="../js/changing_color.js"></script>
-    <script src="js/property_data.js"></script>
-    <script src="../js/func.js"></script>
-    <script src="js/userimg.js"></script>
-    <script type="text/javascript">
-        selectCompanyEmply(localStorage.companyID);
-        var companyId = localStorage.companyID;
-
-        selDept();
-
-        function selDept() {
-            $.getJSON(myUrl + "/myapi/select/tbl_departments/fldCompanyID/" + companyId, function(data) {
-                var ls = "";
-                if (data.length > 0) {
-                    for (let i = 0; i < data.length; i++) {
-                        ls += '<option name="' + data[i].fldDepartmentName + '">' + data[i].fldDepartmentName + '</option>'
-                    }
-                    $("#emp_dept").html(ls);
-                    $("#editemp_dept").html(ls);
-                }
-            });
-        }
-
-
-        roleCheck("Supply");
-        roleCheckModal("Supply");
-=======
-					</div>
 				</div>
 			</div>
 			<div class="modal-footer">
@@ -266,7 +227,6 @@
 					$("#editemp_dept").html(ls);
 				}
 			});
->>>>>>> d2c2f68d2b1ca94ce6ae5842fb7b24b93975547b
 
         function roleCheck(val) {
             if (val == "Requisition") {
