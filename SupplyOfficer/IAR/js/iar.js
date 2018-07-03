@@ -78,7 +78,12 @@ function stocklist(id, dept) {
 }
 
 function donelist(id){
+<<<<<<< HEAD
     var url = myUrl + "/pems/apis/iar_api/select.php?IARhistory=" + id;
+=======
+    localStorage.selectedprintid=id;
+    var url = myurl + "/iar_api/select.php?IARhistory=" + id;
+>>>>>>> dcfd8035022a35aa3f7a8ee7bee30e42f3b50878
     $.getJSON(url, function (data) {
         var longstring = "";
         var today = new Date();
@@ -98,6 +103,7 @@ function donelist(id){
         $('#donelist').html(longstring);
     });
 }
+
 
 function pad(num) {
     return ("0" + num).slice(-2);
@@ -123,6 +129,7 @@ function stopOperation() {
     recieve_json = [];
     ids = [];
     log_prno = "";
+    localStorage.selectedprintid="";
 }
 
 $.ajaxSetup({
