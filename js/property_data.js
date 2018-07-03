@@ -1,5 +1,5 @@
 
-let myurl = "http://localhost/pems/apis";
+let myurl = "http://gordoncollegeccs-ssite.net/pems/apis";
 
 function setselected(prodid,iarno,recid){
 	localStorage.setItem("selected_id",prodid);
