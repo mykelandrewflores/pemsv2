@@ -1,5 +1,10 @@
+
  var myUrl = "http://gordoncollegeccs-ssite.net/pems/apis";
  function mySidenav(x) {
+ //var myUrl = "http://gordoncollegeccs-ssite.net";
+
+
+function mySidenav(x) {
  	if (x.matches) { 
  		$('header').removeClass('padded');
  		$('#toggle_header_sidenav').addClass('hide');
@@ -12,6 +17,9 @@
  		$('.dtime-now').removeClass('hide');
  	}
  }
+
+
+
  var x = window.matchMedia("(max-width: 989px)")
  mySidenav(x) 
  x.addListener(mySidenav);
@@ -52,6 +60,8 @@ function userLoginCheck(){
 
 
 
+
+//EDIT DELETE EMPLOYEE --END--
 function logOut() {
     localStorage.removeItem("userID");
     localStorage.removeItem("companyID");

@@ -18,7 +18,7 @@ $('#form_request').submit(function (e) {
     if (cpwd == cpwd_t) {
 
 
-        $.post(myurls+"pems/apis/myapi/insert/tbl_companies",
+        $.post(myurls + "pems/apis/myapi/insert/tbl_companies",
             JSON.stringify([{
                 cn: cname,
                 ca: cadd,
@@ -34,13 +34,14 @@ $('#form_request').submit(function (e) {
             function (data) {
                 console.log(data);
             });
-        
-        
-        sendEmail(cmail, thval);
-        
-        window.alert("We've already sent an email for your verification code please check your email now");
-        window.location.assign("verify.html");
 
+
+        sendEmail(cmail, thval);
+
+        window.alert("We've already sent an email for your verification code please check your email now");
+
+        setTimeout(function(){ window.location.assign("verify.html"); }, 2000);
+        
     } else {
         window.alert("Password didn't Match");
     }
@@ -71,7 +72,7 @@ $('#emp_form').submit(function (e) {
     if (pwd == cpwd) {
 
     }
-    $.post(myurls+"pems/apis/myapi/insert/tbl_user",
+    $.post(myurls + "pems/apis/myapi/insert/tbl_user",
         JSON.stringify([{
             cn: un,
             ca: pwd,
@@ -122,7 +123,7 @@ $('#login_user').submit(function (e) {
     e.preventDefault();
     var un = $("#username").val();
     var pw = $("#password").val();
-    $.post(myurls+"pems/apis/myapi/login/", {
+    $.post(myurls + "pems/apis/myapi/login/", {
         un: un,
         pw: pw
     }, function (data) {
@@ -139,6 +140,15 @@ $('#login_user').submit(function (e) {
             }
         } else if (data.Authorize == "Company") {
             localStorage.companyID = data.fldCompanyID;
+            localStorage.companyName = data.fldCompanyName;
+            localStorage.companyEmail = data.fldEmail;
+            localStorage.companyAddress = data.fldAddress;
+            localStorage.companyContactNo = data.fldContactNo;
+            localStorage.companyFaxNo = data.fldFax;
+            localStorage.companyWeb = data.fldWebsite;
+            localStorage.companyLogo = data.fldLogo;
+            
+            
             window.location.assign("CompAdmin/");
         } else {
             window.alert("Login Failed");
@@ -150,7 +160,7 @@ $('#login_user').submit(function (e) {
 function validateData(val, valid, tbl, datafld) {
     tbl = "tbl_" + tbl;
 
-    $.getJSON(myurls+"pems/apis/myapi/select/" + tbl + "/fld" + datafld + "/" + val, function (data) {
+    $.getJSON(myurls + "pems/apis/myapi/select/" + tbl + "/fld" + datafld + "/" + val, function (data) {
         if (data.length > 0) {
             window.alert(datafld + " has been already taken, Please choose another");
             $("#" + valid).val("");
@@ -161,7 +171,7 @@ function validateData(val, valid, tbl, datafld) {
 
 
 function validateEm(val) {
-    $.getJSON(myurls+"pems/apis/myapi/select/tbl_companies/fldEmail/" + val, function (data) {
+    $.getJSON(myurls + "pems/apis/myapi/select/tbl_companies/fldEmail/" + val, function (data) {
         if (data.length == 0) {
             window.alert("Invalid Email Address");
             $("#email").val("");
@@ -173,12 +183,12 @@ function validateEm(val) {
 function validateDataDept(val, valid, tbl, datafld) {
     tbl = "tbl_" + tbl;
 
-    $.getJSON(myurls+"pems/apis/myapi/select/" + tbl + "/fld" + datafld + "/" + val, function (data) {
+    $.getJSON(myurls + "pems/apis/myapi/select/" + tbl + "/fld" + datafld + "/" + val, function (data) {
         if (data.length > 0 && data[0].fldCompanyID == localStorage.companyID) {
-            if(datafld == "DepartmentName"){
+            if (datafld == "DepartmentName") {
                 datafld = "Department Code";
             }
-            if(datafld == "FullDeptName"){
+            if (datafld == "FullDeptName") {
                 datafld = "Department Name";
             }
             window.alert(datafld + " has been already taken, Please choose another");
@@ -192,7 +202,7 @@ function validateDataDept(val, valid, tbl, datafld) {
 //LOGIN SIDE
 
 function selectCompanyEmply(val) {
-    $.getJSON(myurls+"pems/apis/myapi/select/tbl_user/fldCompanyID/" + val, function (data) {
+    $.getJSON(myurls + "pems/apis/myapi/select/tbl_user/fldCompanyID/" + val, function (data) {
         var ls = "";
 
         for (var i = 0; i < data.length; i++) {
@@ -210,23 +220,21 @@ function selectCompanyEmply(val) {
 }
 
 function selectCompany(val) {
-    var bd = "";
-    $.getJSON(myurls+"pems/apis/myapi/select/tbl_companies/fldCompanyID/" + val, function (data) {
-        $("#comp_name").html(data[0].fldCompanyName);
-        $("#comp_name_sidenav").html(data[0].fldCompanyName + '/PEMS');
-        $("#comp_name_navbar").html(data[0].fldCompanyName + '/PEMS');
-        $("#comp_name_card").html(data[0].fldCompanyName + '/PEMS');
-        $("#det_em").html(data[0].fldEmail);
-        $("#dept_em").html(data[0].fldEmail);
-        $("#det_address").html(data[0].fldAddress);
-        $("#det_contact").html(data[0].fldContactNo);
-        $("#det_faxno").html(data[0].fldFax);
-        $("#det_website").html(data[0].fldWebsite);
-        $("#comp_logo").attr("src", data[0].fldLogo);
-        $("#sidepanel_bg").attr("src", data[0].fldLogo);
-        $("#company_logo_nav").attr("src", data[0].fldLogo);
+    console.log(val);
+        $("#comp_name").html(localStorage.companyName);
+        $("#comp_name_sidenav").html(localStorage.companyName + '/PEMS');
+        $("#comp_name_navbar").html(localStorage.companyName + '/PEMS');
+        $("#comp_name_card").html(localStorage.companyName + '/PEMS');
+        $("#det_em").html(localStorage.companyEmail);
+        $("#dept_em").html(localStorage.companyEmail);
+        $("#det_address").html(localStorage.companyAddress);
+        $("#det_contact").html(localStorage.companyContactNo);
+        $("#det_faxno").html(localStorage.companyFaxNo);
+        $("#det_website").html(localStorage.companyWeb);
+        $("#comp_logo").attr("src", localStorage.companyLogo);
+        $("#sidepanel_bg").attr("src", localStorage.companyLogo);
+        $("#company_logo_nav").attr("src", localStorage.companyLogo);
 
-    });
 }
 
 function logOut() {
@@ -335,7 +343,7 @@ function delete_data(val) {
 function verifyCode() {
     let val = $("#vcode").val()
     if (val != "") {
-        $.getJSON(myurls+"pems/apis/myapi/select/tbl_companies/fldVerify/" + val, function (data) {
+        $.getJSON(myurls + "pems/apis/myapi/select/tbl_companies/fldVerify/" + val, function (data) {
             if (data.length > 0) {
                 updateData(val);
                 window.alert("Account already verified please login now!");
@@ -350,27 +358,27 @@ function verifyCode() {
     }
 }
 
-function validateLength(val, valid){
-    if(val.length < 8){
-        $("#"+valid).val("");
+function validateLength(val, valid) {
+    if (val.length < 8) {
+        $("#" + valid).val("");
         window.alert("Password must be atleast 8 characters");
     }
 }
 
 function updateData(val) {
-    $.post(myurls+"pems/apis/myapi/update/tbl_companies/fldVerify/" + val, JSON.stringify([{
+    $.post(myurls + "pems/apis/myapi/update/tbl_companies/fldVerify/" + val, JSON.stringify([{
         fldVerify: "Active"
     }]), function (data) {
 
     });
 }
 
-function resetPass(){
+function resetPass() {
     var thval = Math.random().toString(36).slice(2);
     var email = $("#email").val()
     thval = thval.substring(0, 6);
-    
-    if(email != undefined){
+
+    if (email != undefined) {
         updateCode(email, thval);
         sendCode(email, thval);
         window.alert("Password has been reset please check your E-mail address");
@@ -382,7 +390,7 @@ function resetPass(){
 
 
 function updateCode(val, vcode) {
-    $.post(myurls+"pems/apis/myapi/update/tbl_companies/fldEmail/" + val, JSON.stringify([{
+    $.post(myurls + "pems/apis/myapi/update/tbl_companies/fldEmail/" + val, JSON.stringify([{
         fldVerify: vcode
     }]), function (data) {
 
@@ -390,7 +398,7 @@ function updateCode(val, vcode) {
 }
 
 function sendCode(eadd, val) {
-    $.post(myurls+ "pems/apis/emailverif/forgotpass.php", {
+    $.post(myurls + "pems/apis/emailverif/forgotpass.php", {
         eadd: eadd,
         vcode: val
     }, function (data) {
@@ -398,26 +406,30 @@ function sendCode(eadd, val) {
     });
 }
 
-function updatePass(){
+function updatePass() {
     var myx = $(location).attr('search');
     var pwd = $("#pwd").val();
     var cpwd = $("#cpwd").val();
     myx = myx.replace('?vcode=', '');
-    
-    if(pwd == cpwd){
-            $.post(myurls+"pems/apis/myapi/update/tbl_companies/fldVerify/" + myx, JSON.stringify([{
-                fldVerify: "Active", fldPassword: pwd
+
+    if (pwd == cpwd) {
+        $.post(myurls + "pems/apis/myapi/update/tbl_companies/fldVerify/" + myx, JSON.stringify([{
+            fldVerify: "Active",
+            fldPassword: pwd
             }]), function (data) {
 
-            });
+        });
         window.alert("Password has been reset, Please login to continue");
         window.location.assign("index.html");
     } else {
         window.alert("Password didn't match");
     }
-    
+
 
 }
 
 
+
+var id = localStorage.companyID;
+selectCompany(id)
 //EDIT DELETE EMPLOYEE --END--

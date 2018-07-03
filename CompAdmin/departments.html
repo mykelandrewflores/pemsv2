@@ -100,15 +100,12 @@
 	<script src="../js/func.js"></script>
 	<script src="js/userimg.js"></script>
 	<script type="text/javascript">
-		$(document).ready(function() {
-			var id = localStorage.companyID;
 			selectCompany(id)
-		});
 		
 		$('#insert_dept').submit(function (e) {
 			e.preventDefault();
 			var companyId = localStorage.companyID;
-			$.post("http://localhost/pems/apis/myapi/insert/tbl_departments/", JSON.stringify([{
+			$.post(myUrl+"/myapi/insert/tbl_departments/", JSON.stringify([{
 				fsx: $("#deptCode").val(),
 				fst: $("#deptName").val(),
 				sec: companyId
@@ -122,14 +119,14 @@
 		});
 		
 		function delDept(val){
-			$.post("http://localhost/pems/apis/myapi/delete/tbl_departments/fldDeptID/"+val, function(data){
+			$.post(myUrl+"/myapi/delete/tbl_departments/fldDeptID/"+val, function(data){
 				console.log(data);
 			});
 			setTimeout(displayCompany, 100);
 		}
 		displayCompany();
 		function displayCompany(){
-			$.getJSON("http://localhost/pems/apis/myapi/select/tbl_departments/fldCompanyID/"+localStorage.companyID, function(data){
+			$.getJSON(myUrl+"/myapi/select/tbl_departments/fldCompanyID/"+localStorage.companyID, function(data){
 				var ls = "";
 				for(let i = 0; i < data.length; i++){
 					ls +='<tr>';
