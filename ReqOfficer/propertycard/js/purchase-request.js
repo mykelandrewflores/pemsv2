@@ -8,9 +8,9 @@ $("#user_id").val(localStorage.userID);
 
 function formatDate(date) {
     var d = new Date(date),
-        month = '' + (d.getMonth() + 1),
-        day = '' + d.getDate(),
-        year = new Date().getFullYear().toString().substr(-2)
+    month = '' + (d.getMonth() + 1),
+    day = '' + d.getDate(),
+    year = new Date().getFullYear().toString().substr(-2)
     if (month.length < 2) month = '0' + month;
     if (day.length < 2) day = '0' + day;
 
@@ -149,28 +149,28 @@ $(document).ready(function () {
         var form = $(this).serialize();
         if (0 == req_item.length) {
             M.toast({
-                html: 'Set Order First Before to Proceed!',
-                classes: 'rounded'
+                html: 'Set Order First Before to Proceed!'
             });
             return false;
         }
         $.ajax({
+            beforeSend:function() {
+                $('#submitting').attr("disabled","disabled");
+                $('#submitting').text('Submitting...');
+            },
             url: myUrl+'/purchase_api/insert.php',
             method: 'POST',
             data: form,
-            beforeSend: function () {   
-                M.toast({
-                    html: 'Submitting...',
-                    classes: 'rounded'
-                });
-            },
             success: function (data) {
                 requestUnits();
                 M.toast({
-                    html: 'Succefully Request!',
-                    classes: 'rounded'
-                });
-
+                    html: 'Succefully Request!'
+                });     
+                $('#form_request')[0].reset();
+                req_item = [];
+                getItems();
+                $('#submitting').prop("disabled",false);
+                $('#submitting').text('Submit');
             }
         });
 

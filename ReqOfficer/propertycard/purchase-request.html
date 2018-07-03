@@ -91,18 +91,18 @@
 						</div>
 						<div class="row center">
 							<div class="col s12 l12">
-								<a href="#!" class="btn btn-floating red right" onclick="addDataSet()">+</a>
+								<a href="#!" class="btn btn-floating red right tooltipped" data-position="top" data-tooltip="Add Item" onclick="addDataSet()"><b>+</b></a>
 							</div>
 						</div>
 					</div>
 					<table class="table responsive-table centered">
 						<thead>
-							<th class="font-weight-low">Unit</th>
-							<th class="font-weight-low">Equipment</th>
-							<th class="font-weight-low">Quantity</th>
-							<th class="font-weight-low">Cost</th>
-							<th class="font-weight-low">Total</th>
-							<th class="font-weight-low">Action</th>
+							<th>Unit</th>
+							<th>Equipment</th>
+							<th>Quantity</th>
+							<th>Cost</th>
+							<th>Total</th>
+							<th>Action</th>
 						</thead>
 						<tbody id="add_data_set">
 							<tr>
@@ -125,8 +125,9 @@
 								<textarea  placeholder="@Lorem ipsum ipsum" class="materialize-textarea" id="request_purpose" name="request_purpose" style="height: 100px" required></textarea>
 								<label for="request_purpose">Request Purpose</label>
 							</div>
+							<div
 							<div class="col s12" align="center">
-								<button class="btn green">Submit</button>
+								<button class="btn green" id="submitting">Submit</button>
 								<input type="hidden" name="request_form" />
 							</div>
 						</div>
@@ -148,7 +149,7 @@
 		$("#depts").val(localStorage.userDept);
 		$("#company_id").val(localStorage.companyID);
 		$("#user_id").val(localStorage.userID);
-                userLoginCheck();
+		userLoginCheck();
 	</script>
 </body>
 
