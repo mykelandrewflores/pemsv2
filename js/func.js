@@ -118,8 +118,8 @@ try {
 
 }
 
-function loginUser() {
-
+$('#login_user').submit(function (e) {
+    e.preventDefault();
     var un = $("#username").val();
     var pw = $("#password").val();
     $.post(myurls+"pems/apis/myapi/login/", {
@@ -144,7 +144,7 @@ function loginUser() {
             window.alert("Login Failed");
         }
     });
-}
+});
 
 
 function validateData(val, valid, tbl, datafld) {
@@ -155,6 +155,17 @@ function validateData(val, valid, tbl, datafld) {
             window.alert(datafld + " has been already taken, Please choose another");
             $("#" + valid).val("");
             $("#" + valid).focus();
+        }
+    });
+}
+
+
+function validateEm(val) {
+    $.getJSON(myurls+"pems/apis/myapi/select/tbl_companies/fldEmail/" + val, function (data) {
+        if (data.length == 0) {
+            window.alert("Invalid Email Address");
+            $("#email").val("");
+            $("#email").focus();
         }
     });
 }
@@ -320,10 +331,14 @@ function resetPass(){
     var email = $("#email").val()
     thval = thval.substring(0, 6);
     
-    updateCode(email, thval);
-    sendCode(email, thval);
-    window.alert("Password has been reset please check your E-mail address");
-    window.location.assign("index.html");
+    if(email != undefined){
+        updateCode(email, thval);
+        sendCode(email, thval);
+        window.alert("Password has been reset please check your E-mail address");
+        window.location.assign("index.html");
+    } else {
+        window.alert("Please enter your email address");
+    }
 }
 
 

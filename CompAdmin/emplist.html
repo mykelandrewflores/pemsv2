@@ -88,8 +88,8 @@
 								<div class="input-field col s12 m6 l6">
 									<select id="emp_role" required onchange="roleCheck(this.value)">
 										<option value="" disabled selected>Choose your option</option>
-										<option value="Requisition">Requisition</option>
-										<option value="Supply">Supply</option>
+										<option value="Requisition">Requisitioning Officer</option>
+										<option value="Supply">Supply Officer</option>
 									</select>
 									<label>Role</label>
 								</div>
@@ -205,8 +205,10 @@
 			function roleCheck(val){
 				if(val == "Requisition"){
 					$("#thRole").css("display", "block");
+                    
 				} else {
 					$("#thRole").css("display", "none");
+                    $("#emp_role").val("");
 				}
 			}
 
