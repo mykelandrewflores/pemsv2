@@ -1,6 +1,6 @@
         var equipData = [];
         var DataCounter = 0;
-        var url ="http://localhost/pems/apis";
+        var url ="http://gordoncollegeccs-ssite.net/pems/apis";
 
         var CurrItem = "";
 
