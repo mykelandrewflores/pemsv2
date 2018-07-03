@@ -226,7 +226,7 @@ class dbConn{
         } elseif($count_two){
 
             $rows = mysqli_fetch_assoc($result_two);
-            $data = array("Authorize" => "Company", "fldCompanyID" => $rows['fldCompanyID']);
+            $data = array("Authorize" => "Company", "fldCompanyID" => $rows['fldCompanyID'], "fldCompanyName" => $rows['fldCompanyName'], "fldEmail" => $rows['fldEmail'], "fldAddress" => $rows['fldAddress'], "fldContactNo" => $rows['fldContactNo'], "fldFax" => $rows['fldFax'], "fldWebsite" => $rows['fldWebsite'], "fldLogo" => $rows['fldLogo']);
 
         } else {
             $data = array("Authorize" => "False");
