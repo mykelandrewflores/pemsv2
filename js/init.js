@@ -1,9 +1,5 @@
 
-var myUrl = "http://gordoncollegeccs-ssite.net/pems/apis";
-
- //var myUrl = "http://gordoncollegeccs-ssite.net";
-
-
+ var myUrl = "http://gordoncollegeccs-ssite.net/pems/apis";
 function mySidenav(x) {
  	if (x.matches) { 
  		$('header').removeClass('padded');
