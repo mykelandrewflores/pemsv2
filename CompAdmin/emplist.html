@@ -188,7 +188,7 @@
 			});
 			selectCompanyEmply(localStorage.companyID);
 			var companyId = localStorage.companyID;
-			$.getJSON("http://localhost/pems/apis/myapi/select/tbl_departments/fldCompanyID/" + companyId, function(data) {
+			$.getJSON("http://gordoncollegeccs-ssite.net/pems/apis/myapi/select/tbl_departments/fldCompanyID/" + companyId, function(data) {
 				var ls = "";
 				if (data.length > 0) {
 					for (let i = 0; i < data.length; i++) {
