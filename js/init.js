@@ -1,8 +1,13 @@
+<<<<<<< HEAD
  var myUrl = "http://gordoncollegeccs-ssite.net/pems/apis";
 
 
 
 function mySidenav(x) {
+=======
+ var myUrl = "http://gordoncollegeccs-ssite.net";
+ function mySidenav(x) {
+>>>>>>> a7b465cbb33d4e1a7d9e8b0e24927cde80a8c4f0
  	if (x.matches) { 
  		$('header').removeClass('padded');
  		$('#toggle_header_sidenav').addClass('hide');

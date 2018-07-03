@@ -2,6 +2,7 @@ setData();
 fetchEquipments();
 var req_item = [];
 
+
 $("#company_id").val(localStorage.companyID);
 $("#user_id").val(localStorage.userID);
 

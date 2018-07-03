@@ -2,6 +2,7 @@ getRequest();
 
 myArr = [];
 
+
 $.getJSON(myUrl+"/myapi/select/tbl_lccalives", function(data){
     myArr = data;
 });

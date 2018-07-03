@@ -78,12 +78,9 @@ function stocklist(id, dept) {
 }
 
 function donelist(id){
-<<<<<<< HEAD
     var url = myUrl + "/pems/apis/iar_api/select.php?IARhistory=" + id;
-=======
     localStorage.selectedprintid=id;
-    var url = myurl + "/iar_api/select.php?IARhistory=" + id;
->>>>>>> dcfd8035022a35aa3f7a8ee7bee30e42f3b50878
+    var url = myUrl + "/iar_api/select.php?IARhistory=" + id;
     $.getJSON(url, function (data) {
         var longstring = "";
         var today = new Date();
