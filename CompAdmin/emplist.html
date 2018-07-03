@@ -195,6 +195,7 @@
                     <select id="editemp_dept" class="browser-default">
 							<option value="" disabled selected>Choose your Department</option>
 						</select>
+<<<<<<< HEAD
                 </div>
             </div>
         </div>
@@ -232,6 +233,40 @@
 
         roleCheck("Supply");
         roleCheckModal("Supply");
+=======
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="btn green" onclick="update_func()">Update Employee</button>
+				<a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
+			</div>
+		</div>
+		<script src="../js/jquery.min.js"></script>
+		<script src="../js/materialize.min.js"></script>
+		<script src="../js/init.js"></script>
+		<script src="../js/changing_color.js"></script>
+		<script src="js/property_data.js"></script>
+		<script src="../js/func.js"></script>
+		<script src="js/userimg.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				var id = localStorage.companyID;
+				selectCompany(id)
+			});
+			selectCompanyEmply(localStorage.companyID);
+			var companyId = localStorage.companyID;
+			$.getJSON("http://gordoncollegeccs-ssite.net/pems/apis/myapi/select/tbl_departments/fldCompanyID/" + companyId, function(data) {
+				var ls = "";
+				if (data.length > 0) {
+					for (let i = 0; i < data.length; i++) {
+						ls += '<option name="' + data[i].fldDepartmentName + '">' + data[i].fldDepartmentName + '</option>'
+					}
+					$("#emp_dept").html(ls);
+					$("#editemp_dept").html(ls);
+				}
+			});
+>>>>>>> d2c2f68d2b1ca94ce6ae5842fb7b24b93975547b
 
         function roleCheck(val) {
             if (val == "Requisition") {

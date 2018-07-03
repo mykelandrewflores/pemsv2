@@ -211,7 +211,7 @@ function selectCompanyEmply(val) {
             ls += "<td>" + data[i].fldFname + " " + data[i].fldLname + "</td>";
             ls += "<td>" + data[i].fldRole + "</td>";
             ls += "<td>" + data[i].fldDepartment + "</td>";
-            ls += '<td><a class="modal-trigger" href="#editmodal" onclick="editmodal_data(' + data[i].fldUserID + ')"><i class="fa fa-pencil"></i></a> | <a class="red-text"><i class="fa fa-trash"></i></a></td>';
+            ls += '<td><a class="modal-trigger" href="#editmodal" onclick="editmodal_data(' + data[i].fldUserID + ')"><i class="fa fa-pencil"></i></a> | <a class="red-text" onclick="delete_data(' + data[i].fldUserID + ')"><i class="fa fa-trash"></i></a> | <a class="red-text" onclick="archive_data(' + data[i].fldUserID + ')"><i class="fa fa-archive"></i></a></td>';
             ls += "</tr>";
         }
 
@@ -284,7 +284,7 @@ function editmodal_data(val) {
 
     $(function () {
 
-        url = myurls + "/propertycard/propertyapi/tbl_user/fldCompanyID/" + localStorage.companyID + "/fldUserID/" + val;
+        url = myurls + "pems/apis/propertycard/propertyapi/tbl_user/fldCompanyID/" + localStorage.companyID + "/fldUserID/" + val;
 
         $.getJSON(url, function (data) {
             for (let i = 0; i < data.length; i++) {
@@ -297,6 +297,45 @@ function editmodal_data(val) {
         }).fail(function () {
             window.alert("No DATA Found");
         });
+
+    });
+}
+
+function archive_data(val) {
+
+    $(function () {
+
+        if (confirm('Are you sure you want to archive this record?')) {
+            $.post(myurls+"pems/apis/propertycard/propertyapi/delete/tbl_user_archive/"+val,function(data){
+                M.toast({html: 'Employee Archived'});
+                selectCompanyEmply(localStorage.companyID);
+            }).fail(function(){
+                M.toast({html: 'Process Failed'});
+            });
+        } else {
+                M.toast({html: 'Cancelled'});
+        }
+
+          
+
+    });
+}
+function delete_data(val) {
+
+    $(function () {
+
+        if (confirm('Are you sure you want to delete this record permanently?')) {
+            $.post(myurls+"pems/apis/propertycard/propertyapi/delete/tbl_user/"+val,function(data){
+                M.toast({html: 'Employee Deleted Permanently'});
+                selectCompanyEmply(localStorage.companyID);
+            }).fail(function(){
+                M.toast({html: 'Process Failed'});
+            });
+        } else {
+                M.toast({html: 'Delete Cancelled'});
+        }
+
+          
 
     });
 }
