@@ -1,4 +1,4 @@
-var myurls = "http://localhost/";
+var myurls = "http://gordoncollegeccs-ssite.net/";
 
 $('#form_request').submit(function (e) {
     e.preventDefault();
