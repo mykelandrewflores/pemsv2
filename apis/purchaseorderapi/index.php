@@ -1,6 +1,7 @@
 <?php
 header('Access-Control-Allow-Origin: *');
-header('Content-Type: application/json');
+header('Access-Control-Allow-Origin-Method: *');
+header("Content-Type: application/json; charset=UTF-8");
 
 class dbConnect {
 	// private $servername	= "192.168.11.3";

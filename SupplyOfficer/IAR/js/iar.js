@@ -203,7 +203,6 @@ $(document).ready(function () {
     }
 
     function insertInspection(val) {
-        console.log(recieve_json);
         var url = myUrl + "/iar_api/multiple_insert.php";
         $.ajax({
             url: url,

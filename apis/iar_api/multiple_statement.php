@@ -1,6 +1,7 @@
 <?php
-header('Access-Allow-Control-Origin:*');
-header('Content-Type:application/json');
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Origin-Method: *');
+header("Content-Type: application/json; charset=UTF-8");
 include('connect.php');
 $data = json_decode(file_get_contents("php://input"));
 $sql = "";
