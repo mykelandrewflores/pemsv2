@@ -1,5 +1,4 @@
-
- var myUrl = "http://gordoncollegeccs-ssite.net/pems/apis";
+var myUrl = "http://gordoncollegeccs-ssite.net/pems/apis";
 function mySidenav(x) {
  	if (x.matches) { 
  		$('header').removeClass('padded');
@@ -13,9 +12,6 @@ function mySidenav(x) {
  		$('.dtime-now').removeClass('hide');
  	}
  }
-
-
-
  var x = window.matchMedia("(max-width: 989px)")
  mySidenav(x) 
  x.addListener(mySidenav);
@@ -53,9 +49,6 @@ function userLoginCheck(){
         window.location.assign("../../index.html");
     }
 }
-
-
-
 
 //EDIT DELETE EMPLOYEE --END--
 function logOut() {
