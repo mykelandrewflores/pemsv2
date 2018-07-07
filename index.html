@@ -1,52 +1,61 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/materialize.min.css">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/style.css">
-    <title>PEMS PORTAL</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/materialize.min.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/style.css">
+	<script src="js/checkLogin.js"></script>
+	<title>Purchase & Equpment Monitoring Solution with Life Cycle Tool</title>
 </head>
-<script src="js/checkLogin.js"></script>
-
 <body>
-    <div class="hero hero-dusk">
-      <div class="hero-logo"><img src="image/LOGO.png" class="circle z-depth-2"></div>
-        <div class="hero-caption">
-            <form id="login_user">
-                <div class="card youtube-side">
-                    <p class="my-0">&nbsp;</p>
-                    <div class="ribbon primary py-2 z-depth-2 center">
-                        <h5 class="white-text login-title">P.E.M.S PORTAL</h5>
-                    </div>
-                    <div class="card-content white-text">
-                        <div class="input-field container">
-                            <div class="form-group group">
-                                <input type="text" class="form-control grey-text text-darken-2 custom-input" id="username" name="username" placeholder="Email Address.." required>
-                            </div>
-                            <div class="form-group group mt-br">
-                                <input type="password" class="form-control grey-text text-darken-2 custom-input" id="password" name="password" placeholder="Password.." required>
-                            </div>
-                        </div>
-                        <div align="right">
-                            <a href="register.html" class="blue-text">Create an Account</a>
-                            <br>
-                            <a href="forgotpass.html" class="red-text">Forgot Password?</a>
-                        </div>
-                    </div>
-                    <div class="card-action">
-                        <button class="btn btn-lg primary right">Sign in</button>
-                        <div class="clearfix"></div>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/materialize.min.js"></script>
-    <script src="js/init.js"></script>
-    <script src="js/func.js"></script>
+	<div class="hero hero-dusk">
+		<div class="hero-caption">
+			<form id="login_user">
+				<div class="card z-depth-3 bg-form">
+					<div class="bg-overlay center">
+						<form id="login_user">
+							<p>&nbsp;</p>
+							<img src="image/LOGO.png" width="100" />
+							<h5 class="deafult-text login-title">SIGN IN</h5>
+							<div class="card-content white-text" style="padding-top: 2px;">
+								<div class="input-field container">
+									<div class="input-container">
+										<h5><i class="fa fa-envelope-o icon"></i></h5>
+										<input type="text" class="form-control grey-text text-darken-2 custom-input" id="username" name="username" placeholder="Email Address.." required>
+									</div>
+									<div class="input-container mt-br">
+										<h5><i class="fa fa-unlock-alt icon"></i></h5>
+										<input type="password" class="form-control grey-text text-darken-2 custom-input" id="password" name="password" placeholder="Password.." required>
+									</div>
+								</div>
+								<div class="right">
+									<a href="forgotpass.html" class="red-text">Forgot Password?</a>
+								</div><br>
+							</div>
+							<div class="card-action">
+								<button class="btn btn-lg primary right">Sign in</button>
+								<div class="clearfix"></div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="hero-caption-second mt-3">
+			<h6 class="side-pan-title">Purchase & Equipment Monitoring with Life Cycle Tool</h6>
+			<h4 class="default-text">Invetory Monitoring Solution</h4>
+			<p class="default-text"><b>Track all your equipment, recieve order, manage (company,employee), and use life cycle tool for you purchasing</b></p>	
+			<p><a href="#!" class="white-text"> Sign up for Free Today Click here</a></p>
+			<div class="left" style="margin-top: -100px;">
+				<img src="image/promotion.png" width="350" />
+			</div>
+		</div>
+	</div>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/materialize.min.js"></script>
+	<script src="js/init.js"></script>
+	<script src="js/func.js"></script>
 </body>
-
 </html>
