@@ -274,6 +274,9 @@ class delete{
 		if($tblname=='tbl_equipment'){
 			$delete="DELETE FROM $tblname WHERE fldProdID = '$id'";
 			$archive="INSERT INTO tbl_equipment_archive SELECT * FROM tbl_equipment WHERE fldProdID= '$id'";
+		}elseif($tblname=='tbl_user_archive'){
+			$delete="UPDATE tbl_user SET fldRole = 'Inactive' WHERE fldUserID = '$id'";
+			$archive="INSERT INTO tbl_user_archive SELECT * FROM tbl_user WHERE fldUserID= '$id'";
 		}elseif ($tblname =='tbl_equipment_archive') {
 			$delete="DELETE FROM $tblname WHERE fldProdID = '$id'";
 			$archive="INSERT INTO tbl_equipment SELECT * FROM tbl_equipment_archive WHERE fldProdID= '$id'";
@@ -281,6 +284,8 @@ class delete{
 			$delete="DELETE FROM $tblname WHERE fldTableID = '$id'";
 		}elseif ($tblname =='tblproducts') {
 			$delete="DELETE FROM $tblname WHERE fldFoodID = '$id'";
+		}elseif ($tblname =='tbl_user') {
+			$delete="DELETE FROM $tblname WHERE fldUserID = '$id'";
 		}
 		else{
 			$info= array("status" =>"No table Found");
@@ -293,10 +298,12 @@ class delete{
 		}elseif ($tblname =='tbl_equipment_archive') {
 			dbconnect::db()->query($archive);
 			dbconnect::db()->query($delete);
+		}elseif ($tblname =='tbl_user_archive') {
+			dbconnect::db()->query($archive);
+			dbconnect::db()->query($delete);
 		}else{
 			dbconnect::db()->query($delete);	
 		}
-		/*dbconnect::db()->query($delete);*/
 		$data=['status'=>'Reminder Deleted'];
 		echo json_encode($data);
 	}

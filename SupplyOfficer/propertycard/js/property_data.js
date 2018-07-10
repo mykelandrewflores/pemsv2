@@ -1,6 +1,4 @@
 
-// let myUrl = "http://gordoncollegeccs-ssite.net";
-
 function setselected(prodid,iarno,recid){
 	localStorage.setItem("selected_id",prodid);
 	localStorage.setItem("selected_iarno",iarno);
@@ -33,7 +31,7 @@ function fetch_lccadepartments(){
 	url=myUrl+"/propertycard/propertyapi/tbl_departments/fldCompanyID/"+localStorage.companyID;
 	$.getJSON(url,function(data){
 			var body = ''
-			body+='<select id="lccadept_select"> <option value="" disabled selected>Choose Department</option>';
+			body+='<select id="lccadept_select" browser-default> <option value="" disabled selected>Choose Department</option>';
 			for(var i = 0; i<data.length; i++) {
 				body+='<option value="'+data[i].fldDepartmentName+'">'+data[i].fldDepartmentName+'</option>';
 			}
@@ -49,14 +47,12 @@ function fetch_departments(){
 	url=myUrl+"/propertycard/propertyapi/tbl_departments/fldCompanyID/"+localStorage.companyID;
 	$.getJSON(url,function(data){
 			var body = ''
-			body+='<select id="department_select"> <option value="" disabled selected>Choose Department</option>';
+			body+='<select id="department_select" class="browser-default"> <option value="" disabled selected>Choose Department</option>';
 			for(var i = 0; i<data.length; i++) {
 				body+='<option value="'+data[i].fldDepartmentName+'">'+data[i].fldDepartmentName+'</option>';
 			}
 			body+='</select>';
 			$('#testing').html(body);
-
-
 		}).fail(function(){
 			M.toast({html: 'No deparments found'});
 		});
@@ -65,7 +61,7 @@ function fetch_departments2(){
 	url=myUrl+"/propertycard/propertyapi/tbl_departments/fldCompanyID/"+localStorage.companyID;
 	$.getJSON(url,function(data){
 			var body = ''
-			body+='<select id="department_select2"> <option value="" disabled selected>Choose Department</option>';
+			body+='<select id="department_select2" class="browser-default"> <option value="" disabled selected>Choose Department</option>';
 			for(var i = 0; i<data.length; i++) {
 				body+='<option value="'+data[i].fldDepartmentName+'">'+data[i].fldDepartmentName+'</option>';
 			}
@@ -81,7 +77,7 @@ function fetch_departments3(){
 	url=myUrl+"/propertycard/propertyapi/tbl_departments/fldCompanyID/"+localStorage.companyID;
 	$.getJSON(url,function(data){
 			var body = ''
-			body+='<select id="department_select3"> <option value="" disabled selected>Choose Department</option>';
+			body+='<select id="department_select3" class="browser-default"> <option value="" disabled selected>Choose Department</option>';
 			for(var i = 0; i<data.length; i++) {
 				body+='<option value="'+data[i].fldDepartmentName+'">'+data[i].fldDepartmentName+'</option>';
 			}
@@ -258,6 +254,7 @@ function transfer_tabledata(recID){
 
 			}
 			$("#transfer_table").html(longstring);
+			fetch_departments2();
 
 		}).fail(function(){
 			window.alert("No Equipment Found");
@@ -350,7 +347,7 @@ function assign_func(){
 		M.toast({html: 'Equipment/Property Assigned'});
 		$('.modal').modal('close');
 	}).fail(function(){
-		M.toast({html: 'Equipment/Property Assigning Failed'});
+		M.toast({html: 'Equipment/Property Assigning '});
 		equiptable();
 		equiptable_assigned();
 		equiptable_unassigned();
@@ -398,7 +395,6 @@ function transfer_func(){
 			log_fldFromDept = data[i].fldDept;
 			log_fldToDept = log_fldToDept;
 		}
-		console.log(log_fldRecID);
 
 		$.post(myUrl+"/propertycard/propertyapi/create",{tblname:log_tblname,log_fldRecID:log_fldRecID,log_fldIarNo:log_fldIarNo,log_fldPNum:log_fldPNum,log_fldBrand:log_fldBrand,log_fldAgency:log_fldAgency,log_fldDept:log_fldDept,log_fldDate:log_fldDate,log_fldRefNo:log_fldRefNo,log_fldRecQty:log_fldRecQty,log_fldTDQty:log_fldTDQty,log_fldRemarks:log_fldRemarks,log_fldAction:log_fldAction,log_fldFromDept:log_fldFromDept,log_fldToDept:log_fldToDept},function(data){
 
@@ -419,15 +415,12 @@ function transfer_func(){
 		M.toast({html: 'Equipment/Property Transfered'});
 		$('.modal').modal('close');
 	}).fail(function(){
-		M.toast({html: 'Equipment/Property Transfered Failed'});
+		M.toast({html: 'Equipment/Property Transfered '});
 		equiptable();
 		equiptable_assigned();
 		equiptable_unassigned();
-$('.modal').modal('close');
+		$('.modal').modal('close');
 	});
-
-
-
 }
 
 function disposal_func(){
@@ -489,7 +482,7 @@ function disposal_func(){
 		M.toast({html: 'Equipment/Property disposed'});
 		$('.modal').modal('close');
 	}).fail(function(){
-		M.toast({html: 'Equipment/Property disposed Failed'});
+		M.toast({html: 'Equipment/Property disposed '});
 		equiptable();
 		equiptable_assigned();
 		equiptable_unassigned();
@@ -498,9 +491,10 @@ $('.modal').modal('close');
 }
 
 function pcdata(){
+			var url=myUrl+"/propertycard/propertyapi/where3and/tbl_property_dispose/tbl_lccalives/fldPNum/"+localStorage.selected_id+"/fldIarNo/"+localStorage.selected_iarno+"/fldRecID/"+localStorage.selected_recid+"/fldAgency/"+localStorage.companyID+"/fldProdID";
+
 	$(function(){
 
-		url=myUrl+"/propertycard/propertyapi/where3and/tbl_property_dispose/tbl_lccalives/fldPNum/"+localStorage.selected_id+"/fldIarNo/"+localStorage.selected_iarno+"/fldRecID/"+localStorage.selected_recid+"/fldAgency/"+localStorage.companyID+"/fldProdID";
 		
 		$.getJSON(url,function(data){
 			let longstring = "";
@@ -650,8 +644,6 @@ function proptable_reqofficer(){
 	});
 }
 
-
-
 function DeleteEquipData(equipid){
 
   $.post(myUrl+"/propertycard/propertyapi/delete/tbl_equipment/"+equipid,function(data){
@@ -717,7 +709,6 @@ function AddPropData(){
 	}).fail(function(){
 		M.toast({html: 'Equipment Add Failed'})
 	});
-
 	
 }
 

@@ -1,4 +1,7 @@
 var myUrl = "http://gordoncollegeccs-ssite.net/pems/apis";
+ $(document).ready(function(){
+    $('select').formSelect();
+  });
 function mySidenav(x) {
 	if (x.matches) { 
 		$('header').removeClass('padded');
