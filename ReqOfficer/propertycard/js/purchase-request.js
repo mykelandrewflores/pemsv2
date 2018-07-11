@@ -20,7 +20,17 @@ function formatDate(date) {
 }
 
 function setData() {
-    $('#curdate_request').val(formatDate(new Date))
+   var url = myUrl + "/iar_api/select.php?purchase_no";
+   $.ajax({
+    url: url,
+    method: 'GET',
+    dataType: 'JSON',
+    success: function (data) {
+        data.forEach(function(i) {
+            $('#curdate_request').val(formatDate(new Date) + i.fldTransactionNo)     
+        });
+    }
+});
 }
 
 function addDataSet() {
@@ -166,7 +176,8 @@ $(document).ready(function () {
                 M.toast({
                     html: 'Succefully Request!'
                 });     
-                $('#form_request')[0].reset();
+                setData();
+                $('#request_purpose').val('');
                 req_item = [];
                 getItems();
                 $('#submitting').prop("disabled",false);

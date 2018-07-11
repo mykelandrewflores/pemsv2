@@ -1,103 +1,100 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-  <title>PEMS Company Register</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/materialize.min.css">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+	<title>PEMS Company Register</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link href="css/font-awesome.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/materialize.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script src="js/checkLogin.js"></script>
 </head>
 <style>
-    .bg-register {
-        background: #00c9ff;
-        background: -webkit-linear-gradient(to right, #00c9ff, #92fe9d);
-        background: linear-gradient(to right, #00c9ff, #92fe9d);
-    }
-
+.bg-register {
+	background: #00c9ff;
+	background: -webkit-linear-gradient(to right, #00c9ff, #92fe9d);
+	background: linear-gradient(to right, #00c9ff, #92fe9d);
+}
 </style>
-
-    <script src="js/checkLogin.js"></script>
 <body>
-    <div class="bg-register">
-        <div class="container">
-            <div class="z-depth-1 grey lighten-4" style="padding: 30px 35px">
-                <h4 class="deafult-text mt-br">
-                    <blockquote><b>Register your Company</b></blockquote>
-                </h4>
-                <form id="form_request">
-                    <div class='row mt-1'>
-                      <div class="col s12">
-                        <h5>Company Information</h5>
-                      </div>
-                      <div class="col s12 mt-br">
-                      <div class="file-field input-field col s12 m6 l6">
-                          <div class="btn">
-                              <span>Logo</span>
-                              <input id="inp" type="file" onchange="document.getElementById('comp_logo').src = window.URL.createObjectURL(this.files[0]); readFile(this.file)" required>
-                          </div>
-                          <div class="file-path-wrapper">
-                              <input class="file-path validate" placeholder="@e.g(.png .jpg .gif)" type="text">
-                          </div>
-                      </div>
-                      <div class="col s6 m3 l3 offset-s3 ">
-                        <img id="comp_logo" class="responsive-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIGlkPSJMYXllcl8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDUwOS4yODcgNTA5LjI4NyIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTA5LjI4NyA1MDkuMjg3OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiIGNsYXNzPSIiPjxnPjxjaXJjbGUgc3R5bGU9ImZpbGw6IzRGNTU2NSIgY3g9IjI1NC42NDQiIGN5PSIyNTQuNjQ0IiByPSIyNTQuNjQ0IiBkYXRhLW9yaWdpbmFsPSIjRjA1ODJGIiBjbGFzcz0iYWN0aXZlLXBhdGgiIGRhdGEtb2xkX2NvbG9yPSIjRjA1ODJGIj48L2NpcmNsZT48cGF0aCBzdHlsZT0iZmlsbDojRkNGQ0ZEOyIgZD0iTTQwNC41MTQsNzguMzI2aC0yOTkuNzRjLTE0LjU4LDAtMjYuNDQ4LDExLjg2OC0yNi40NDgsMjYuNDQ4djI5OS43NCAgYzAsMTQuNTgsMTEuODY4LDI2LjQ0OCwyNi40NDgsMjYuNDQ4aDI5OS43NGMxNC41OCwwLDI2LjQ0OC0xMS44NjgsMjYuNDQ4LTI2LjQ0OHYtMjk5Ljc0ICBDNDMwLjk2Miw5MC4xOTMsNDE5LjA5NCw3OC4zMjYsNDA0LjUxNCw3OC4zMjZ6IiBkYXRhLW9yaWdpbmFsPSIjRkNGQ0ZEIiBjbGFzcz0iIj48L3BhdGg+PHBvbHlnb24gc3R5bGU9ImZpbGw6IzZFQjFFMTsiIHBvaW50cz0iMjQ5LjIxOSwyNjMuMTIxIDMzMi45NywxNzkuMDMgMzk4LjA3MiwyNDQuMTMyIDM5OC4wNzIsMTA3LjgyNSAxMTEuMjE2LDEwNy44MjUgICAxMTEuMjE2LDI3NS42NjYgMTg2LjQ5LDIwMC4zOTIgIiBkYXRhLW9yaWdpbmFsPSIjNkVCMUUxIj48L3BvbHlnb24+PHBvbHlnb24gc3R5bGU9ImZpbGw6IzRGNTU2NTsiIHBvaW50cz0iMzMyLjk3LDE3OS4wMyAyNDkuMjE5LDI2My4xMjEgMTg2LjQ5LDIwMC4zOTIgMTExLjIxNiwyNzUuNjY2IDExMS4yMTYsMzUwLjYwMSAgIDM5OC4wNzIsMzUwLjYwMSAzOTguMDcyLDI0NC4xMzIgIiBkYXRhLW9yaWdpbmFsPSIjNEY1NTY1IiBjbGFzcz0iIj48L3BvbHlnb24+PGNpcmNsZSBzdHlsZT0iZmlsbDojRkZGRkZDIiBjeD0iMjUyLjI3IiBjeT0iMTY2LjQ4NSIgcj0iMjUuMDkxIiBkYXRhLW9yaWdpbmFsPSIjRkZGRkZDIiBjbGFzcz0iIj48L2NpcmNsZT48L2c+IDwvc3ZnPg=="/>
-                      </div>
-                        <div class='input-field col s12 m6 l6 mt-br'>
-                            <input class='validate' type='text' name='comp_name' id='comp_name' placeholder="@McDonalds" onblur="validateData(this.value, this.id, 'companies','CompanyName')" validate required />
-                            <label for='comp_name'>Company Name</label>
-                        </div>
-                        <div class='input-field col s12 m6 l6 mt-br'>
-                            <input class='validate' type='text' name='comp_address' id='comp_address' placeholder="@#24 St. City" required />
-                            <label for='comp_address'> Company Address</label>
-                        </div>
-                        </div>
-                        <div class="col s12">
-                            <h5>Account Information</h5>
-                        </div>
-                        <div class="col s12 mt-br">
-                        <div class='input-field col s12 m6 l6'>
-                            <input class='validate' type='email' name='comp_email' id='comp_email' placeholder="@johndoe@gmail.com" onblur="validateData(this.value, this.id, 'companies','Email')" required />
-                            <label for='comp_email'>Email</label>
-                        </div>
-                        <div class='input-field col s12 m6 l6'>
-                            <input class='validate' type='password' name='comp_pass' id='comp_pass' placeholder="Password must be atleast 8 characters" pattern=".{8,}" title="8 characters minimum" required/>
-                            <label for='comp_pass'>Password</label>
-                        </div>
-                        <div class='input-field col s12 m6 l6'>
-                            <input class='validate' type='password' name='comp_pass' id='conf_pass' placeholder="@21john23" required />
-                            <label for='conf_pass'>Confirm Password</label>
-                        </div>
-                        </div>
-                        <div class="col s12">
-                            <h5>Contact Information</h5>
-                        </div>
-                        <div class="col s12 mt-br">
-                        <div class='input-field col s12 m6 l6'>
-                            <input class='validate' type='number' name='comp_contactno' id='comp_contactno' placeholder="@09012341234" required />
-                            <label for='comp_contactno'>Contact No.</label>
-                        </div>
-                        <div class='input-field col s12 m6 l6'>
-                            <input class='validate' type='text' name='comp_faxno' id='comp_faxno' placeholder="@2222-4444-444" />
-                            <label for='comp_faxno'>Fax No.</label>
-                        </div>
-                        <div class='input-field col s12 m6 l6'>
-                            <input class='validate' type='text' name='comp_website' id='comp_website' placeholder="@www.johndoe.com" />
-                            <label for='comp_website'>Website</label>
-                        </div>
-                    </div>
-                  </div>
-                    <div class='center mt-1'>
-                        <button type='submit' name='btn_login' class='col s12 btn green waves-effect '>Register as Company</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    <script type="text/javascript" src="js/jquery.min.js"></script>
-    <script type="text/javascript" src="js/materialize.min.js"></script>
-    <script type="text/javascript" src="js/func.js"></script>
+	<div class="bg-register">
+		<div class="container">
+			<div class="z-depth-1 grey lighten-4" style="padding: 30px 35px">
+				<h4 class="deafult-text mt-br">
+					<blockquote><b>Register your Company</b></blockquote>
+				</h4>
+				<form id="form_request">
+					<div class='row mt-1'>
+						<div class="col s12">
+							<h5>Company Information</h5>
+						</div>
+						<div class="col s12 mt-br">
+							<div class="file-field input-field col s12 m6 l6">
+								<div class="btn">
+									<span>Logo</span>
+									<input id="inp" type="file" onchange="document.getElementById('comp_logo').src = window.URL.createObjectURL(this.files[0]); readFile(this.file)" required>
+								</div>
+								<div class="file-path-wrapper">
+									<input class="file-path validate" placeholder="@e.g(.png .jpg .gif)" type="text">
+								</div>
+							</div>
+							<div class="col s6 m3 l3 offset-s3 ">
+								<img id="comp_logo" class="responsive-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIGlkPSJMYXllcl8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDUwOS4yODcgNTA5LjI4NyIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTA5LjI4NyA1MDkuMjg3OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiIGNsYXNzPSIiPjxnPjxjaXJjbGUgc3R5bGU9ImZpbGw6IzRGNTU2NSIgY3g9IjI1NC42NDQiIGN5PSIyNTQuNjQ0IiByPSIyNTQuNjQ0IiBkYXRhLW9yaWdpbmFsPSIjRjA1ODJGIiBjbGFzcz0iYWN0aXZlLXBhdGgiIGRhdGEtb2xkX2NvbG9yPSIjRjA1ODJGIj48L2NpcmNsZT48cGF0aCBzdHlsZT0iZmlsbDojRkNGQ0ZEOyIgZD0iTTQwNC41MTQsNzguMzI2aC0yOTkuNzRjLTE0LjU4LDAtMjYuNDQ4LDExLjg2OC0yNi40NDgsMjYuNDQ4djI5OS43NCAgYzAsMTQuNTgsMTEuODY4LDI2LjQ0OCwyNi40NDgsMjYuNDQ4aDI5OS43NGMxNC41OCwwLDI2LjQ0OC0xMS44NjgsMjYuNDQ4LTI2LjQ0OHYtMjk5Ljc0ICBDNDMwLjk2Miw5MC4xOTMsNDE5LjA5NCw3OC4zMjYsNDA0LjUxNCw3OC4zMjZ6IiBkYXRhLW9yaWdpbmFsPSIjRkNGQ0ZEIiBjbGFzcz0iIj48L3BhdGg+PHBvbHlnb24gc3R5bGU9ImZpbGw6IzZFQjFFMTsiIHBvaW50cz0iMjQ5LjIxOSwyNjMuMTIxIDMzMi45NywxNzkuMDMgMzk4LjA3MiwyNDQuMTMyIDM5OC4wNzIsMTA3LjgyNSAxMTEuMjE2LDEwNy44MjUgICAxMTEuMjE2LDI3NS42NjYgMTg2LjQ5LDIwMC4zOTIgIiBkYXRhLW9yaWdpbmFsPSIjNkVCMUUxIj48L3BvbHlnb24+PHBvbHlnb24gc3R5bGU9ImZpbGw6IzRGNTU2NTsiIHBvaW50cz0iMzMyLjk3LDE3OS4wMyAyNDkuMjE5LDI2My4xMjEgMTg2LjQ5LDIwMC4zOTIgMTExLjIxNiwyNzUuNjY2IDExMS4yMTYsMzUwLjYwMSAgIDM5OC4wNzIsMzUwLjYwMSAzOTguMDcyLDI0NC4xMzIgIiBkYXRhLW9yaWdpbmFsPSIjNEY1NTY1IiBjbGFzcz0iIj48L3BvbHlnb24+PGNpcmNsZSBzdHlsZT0iZmlsbDojRkZGRkZDIiBjeD0iMjUyLjI3IiBjeT0iMTY2LjQ4NSIgcj0iMjUuMDkxIiBkYXRhLW9yaWdpbmFsPSIjRkZGRkZDIiBjbGFzcz0iIj48L2NpcmNsZT48L2c+IDwvc3ZnPg=="/>
+							</div>
+							<div class='input-field col s12 m6 l6 mt-br'>
+								<input class='validate' type='text' name='comp_name' id='comp_name' placeholder="@McDonalds" onblur="validateData(this.value, this.id, 'companies','CompanyName')" validate required />
+								<label for='comp_name'>Company Name</label>
+							</div>
+							<div class='input-field col s12 m6 l6 mt-br'>
+								<input class='validate' type='text' name='comp_address' id='comp_address' placeholder="@#24 St. City" required />
+								<label for='comp_address'> Company Address</label>
+							</div>
+						</div>
+						<div class="col s12">
+							<h5>Account Information</h5>
+						</div>
+						<div class="col s12 mt-br">
+							<div class='input-field col s12 m6 l6'>
+								<input class='validate' type='email' name='comp_email' id='comp_email' placeholder="@johndoe@gmail.com" onblur="validateData(this.value, this.id, 'companies','Email')" required />
+								<label for='comp_email'>Email</label>
+							</div>
+							<div class='input-field col s12 m6 l6'>
+								<input class='validate' type='password' name='comp_pass' id='comp_pass' placeholder="Password must be atleast 8 characters" pattern=".{8,}" title="8 characters minimum" required/>
+								<label for='comp_pass'>Password</label>
+							</div>
+							<div class='input-field col s12 m6 l6'>
+								<input class='validate' type='password' name='comp_pass' id='conf_pass' placeholder="@21john23" required />
+								<label for='conf_pass'>Confirm Password</label>
+							</div>
+						</div>
+						<div class="col s12">
+							<h5>Contact Information</h5>
+						</div>
+						<div class="col s12 mt-br">
+							<div class='input-field col s12 m6 l6'>
+								<input class='validate' type='number' name='comp_contactno' id='comp_contactno' placeholder="@09012341234" required />
+								<label for='comp_contactno'>Contact No.</label>
+							</div>
+							<div class='input-field col s12 m6 l6'>
+								<input class='validate' type='text' name='comp_faxno' id='comp_faxno' placeholder="@2222-4444-444" />
+								<label for='comp_faxno'>Fax No.</label>
+							</div>
+							<div class='input-field col s12 m6 l6'>
+								<input class='validate' type='text' name='comp_website' id='comp_website' placeholder="@www.johndoe.com" />
+								<label for='comp_website'>Website</label>
+							</div>
+						</div>
+					</div>
+					<div class='center mt-1'>
+						<button type='submit' name='btn_login' class='col s12 btn green waves-effect '>Register as Company</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/materialize.min.js"></script>
+	<script type="text/javascript" src="js/func.js"></script>
 </body>
 
 </html>
