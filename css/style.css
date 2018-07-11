@@ -18,6 +18,19 @@ html,body {
 body {
 	display: block;
 }
+th {
+	font-size: large;
+	font-weight: 700;
+}
+tbody>tr>td {
+	font-weight: 500;
+}
+.sidenav>li>a {
+	font-weight: 600;
+}
+#comp_name_sidenav {
+	font-weight: 600;
+}
 .primary {
 	background-color: var(--primary-color);
 }
@@ -37,7 +50,7 @@ body {
 	color: var(--secondary-color);
 }
 .font-weight-low {
-	font-weight: 400;
+	font-weight: 600;
 }
 .font-capital {
 	text-transform: capitalize;
@@ -91,7 +104,7 @@ blockquote {
 	border-left: 5px solid var(--primary-color)!important;
 }
 .hero {
-	background-image: url('../image/Quepal.jpg');
+	background-color: darkturquoise;
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
