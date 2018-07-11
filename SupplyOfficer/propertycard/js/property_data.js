@@ -166,15 +166,19 @@ function equiptable_unassigned(){
 				longstring += "</tr>";
 			}
 			if (data.length) {
+				$("#newcount").attr('class', 'new badge right red');
 				document.getElementById("newcount").innerHTML=data.length;
 				M.toast({html: data.length+' New Unassigned Property/Equipment'})
 			}else{
-				document.getElementById("newcount").innerHTML=0;
+			$("#newcount").attr('class', '');
+			document.getElementById("newcount").innerHTML="";
 			}
 			
 			$("#equiptabledata_unassigned").html(longstring);
 
 		}).fail(function(){
+			$("#newcount").attr('class', '');
+			document.getElementById("newcount").innerHTML="";
 			M.toast({html: 'No Unassigned Equipment/Property'});
 		});
 		
