@@ -50,7 +50,7 @@ $('#form_request').submit(function (e) {
 });
 
 function sendEmail(eadd, val) {
-    $.post("http://localhost" + "/pems/apis/emailverif/", {
+    $.post(myurls +"pems/apis/emailverif/", {
         eadd: eadd,
         vcode: val
     }, function (data) {
@@ -93,6 +93,7 @@ $('#emp_form').submit(function (e) {
     window.alert("Employee Succesfully Added!");
     window.location.assign("emplist.html");
     selectCompanyEmply(localStorage.companyID);
+    selectCompanyEmplyInactive(localStorage.companyID)
 });
 
 
@@ -182,6 +183,16 @@ function validateEm(val) {
     });
 }
 
+function validateEmAdd(val) {
+    $.getJSON(myurls + "pems/apis/myapi/select/tbl_companies/fldEmail/" + val, function (data) {
+        if (data.length == 0) {
+            window.alert("Invalid Email Address");
+            $("#emailAdd").val("");
+            $("#emailAdd").focus();
+        }
+    });
+}
+
 function validateDataDept(val, valid, tbl, datafld) {
     tbl = "tbl_" + tbl;
 
@@ -208,16 +219,38 @@ function selectCompanyEmply(val) {
         var ls = "";
 
         for (var i = 0; i < data.length; i++) {
-            ls += "<tr>"
-            ls += "<td>" + data[i].fldUserID + "</td>";
-            ls += "<td>" + data[i].fldFname + " " + data[i].fldLname + "</td>";
-            ls += "<td>" + data[i].fldRole + "</td>";
-            ls += "<td>" + data[i].fldDepartment + "</td>";
-            ls += '<td><a class="modal-trigger" href="#editmodal" onclick="editmodal_data(' + data[i].fldUserID + ')"><i class="fa fa-pencil"></i></a> | <a class="red-text" onclick="delete_data(' + data[i].fldUserID + ')"><i class="fa fa-trash"></i></a> | <a class="red-text" onclick="archive_data(' + data[i].fldUserID + ')"><i class="fa fa-archive"></i></a></td>';
-            ls += "</tr>";
+            if(data[i].fldRole != "Inactive"){
+                ls += "<tr>"
+                ls += "<td>" + data[i].fldUserID + "</td>";
+                ls += "<td>" + data[i].fldFname + " " + data[i].fldLname + "</td>";
+                ls += "<td>" + data[i].fldRole + "</td>";
+                ls += "<td>" + data[i].fldDepartment + "</td>";
+                ls += '<td><a class="modal-trigger" href="#editmodal" onclick="editmodal_data(' + data[i].fldUserID + ')"><i class="fa fa-pencil"></i></a> | <a class="red-text" onclick="delete_data(' + data[i].fldUserID + ')"><i class="fa fa-trash"></i></a> | <a class="red-text" onclick="archive_data(' + data[i].fldUserID + ')"><i class="fa fa-archive"></i></a></td>';
+                ls += "</tr>";                
+            }
         }
 
         $("#proptabledata").html(ls);
+    });
+}
+
+function selectCompanyEmplyInactive(val) {
+    $.getJSON(myurls + "pems/apis/myapi/select/tbl_user/fldCompanyID/" + val, function (data) {
+        var ls = "";
+
+        for (var i = 0; i < data.length; i++) {
+            if(data[i].fldRole == "Inactive"){            
+                ls += "<tr>"
+                ls += "<td>" + data[i].fldUserID + "</td>";
+                ls += "<td>" + data[i].fldFname + " " + data[i].fldLname + "</td>";
+                ls += "<td>" + data[i].fldRole + "</td>";
+                ls += "<td>" + data[i].fldDepartment + "</td>";
+                ls += '<td><a class="modal-trigger" href="#editmodal" onclick="editmodal_data(' + data[i].fldUserID + ')"><i class="fa fa-pencil"></i></a> | <a class="red-text" onclick="delete_data(' + data[i].fldUserID + ')"><i class="fa fa-trash"></i></a></td>';
+                ls += "</tr>";
+            }
+        }
+
+        $("#inact").html(ls);
     });
 }
 
@@ -271,6 +304,7 @@ function update_func() {
         update_action: update_action
     }, function (data) {
         selectCompanyEmply(localStorage.companyID);
+        selectCompanyEmplyInactive(localStorage.companyID);
         M.toast({
             html: 'Employee Details Updated'
         });
@@ -313,6 +347,7 @@ function archive_data(val) {
                     html: 'Employee Archived'
                 });
                 selectCompanyEmply(localStorage.companyID);
+                selectCompanyEmplyInactive(localStorage.companyID);
             }).fail(function () {
                 M.toast({
                     html: 'Process Failed'
@@ -339,6 +374,7 @@ function delete_data(val) {
                     html: 'Employee Deleted Permanently'
                 });
                 selectCompanyEmply(localStorage.companyID);
+                selectCompanyEmplyInactive(localStorage.companyID)
             }).fail(function () {
                 M.toast({
                     html: 'Process Failed'
@@ -408,6 +444,27 @@ function resetPass() {
 
 }
 
+function resendVerif() {
+    var thval = Math.random().toString(36).slice(2);
+    var email = $("#emailAdd").val()
+    thval = thval.substring(0, 6);
+    validateEmAdd($("#emailAdd").val());
+
+
+    setTimeout(function () {
+        if ($("#emailAdd").val() != "") {
+            updateCode(email, thval);
+            sendVerif(email, thval);
+            window.alert("Verification Code has been resend, please check your E-mail address");
+            window.location.assign("index.html");            
+
+        } else {
+            window.alert("Please enter a valid Email-address");
+        }
+    }, 1000);
+
+}
+
 
 function updateCode(val, vcode) {
     $.post(myurls + "pems/apis/myapi/update/tbl_companies/fldEmail/" + val, JSON.stringify([{
@@ -419,6 +476,15 @@ function updateCode(val, vcode) {
 
 function sendCode(eadd, val) {
     $.post(myurls + "pems/apis/emailverif/forgotpass.php", {
+        eadd: eadd,
+        vcode: val
+    }, function (data) {
+        console.log(data);
+    });
+}
+
+function sendVerif(eadd, val) {
+    $.post(myurls + "pems/apis/emailverif/resendverif.php", {
         eadd: eadd,
         vcode: val
     }, function (data) {

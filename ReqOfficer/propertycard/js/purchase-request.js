@@ -206,3 +206,23 @@ $(document).ready(function () {
         window.location.assign("purchase-list.html");*/
     })
 });
+
+
+var myfile="";
+
+$('#fileBtn').click(function( e ) {
+    e.preventDefault();
+    $('#myFile').trigger('click');
+});
+
+$('#myFile').on( 'change', function() {
+   myfile= $( this ).val();
+   var ext = myfile.split('.').pop();
+   if(ext=="pdf" || ext=="docx" || ext=="doc"){
+       return true;
+
+   } else{
+       alert("Your file extension is invalid, Make sure your file is in PDF format");
+       return false;
+   }
+});

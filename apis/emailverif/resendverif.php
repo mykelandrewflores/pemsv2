@@ -7,20 +7,25 @@ require 'vendor/phpmailer/phpmailer/src/PHPMailer.php';
 require 'vendor/phpmailer/phpmailer/src/SMTP.php';
 
 
-$vcode = $_POST['vcode'];
 $eadd = $_POST['eadd'];
 $val = '
 <h4>Welcome to PEMS!</h4>    
     
 <p>Dear Sir/Mam,</p>
     
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Welcome user! You can now reset your password by click the link Below: </p>;
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Welcome to PEMS. You can now verify your account by clicking the link below and enter the verifcation code: </p>
+<p>Verification Code:</p>
+<h1>';
 
+$val .= $_POST['vcode'];
 
-<a href="http://localhost/pems/resetpassword.html?vcode='.$vcode.'">Click the link Here</a>
-
-';
-
+$val .= '</h1>
+<a href="http://localhost/pems/verify.html">Enter Verification Code Here</a>
+    
+<p>We are happy that youre part of the family now!</p>
+<p>Sincerely,</p>
+<br><br>
+<p>Pems Dev Team</p>';
 
 $mail = new PHPMailer(); // create a new object
 $mail->IsSMTP(); // enable SMTP
@@ -33,7 +38,7 @@ $mail->IsHTML(true);
 $mail->Username = "macionmart@gmail.com";
 $mail->Password = "kiljkki123";
 $mail->SetFrom("martToPare@gmail.com");
-$mail->Subject = "Password Reset - Pems";
+$mail->Subject = "Welcome to Pems!";
 $mail->Body = $val;
 $mail->AddAddress($eadd);
 

@@ -186,8 +186,8 @@
                 <div class="input-field col l6 m6 s12">
                     <select id="editemp_role" required onchange="roleCheckModal(this.value)">
 							<option value="" disabled selected>Choose your option</option>
-							<option value="Requisition">Requisition</option>
-							<option value="Supply">Supply</option>
+							<option value="Requisition">Requisitioning Officer</option>
+							<option value="Supply">Supply Officer</option>
 						</select>
                     <label>Role</label>
                 </div>
@@ -216,8 +216,11 @@
             selectCompany(id)
         });
         selectCompanyEmply(localStorage.companyID);
+        selectCompanyEmplyInactive(localStorage.companyID);
         var companyId = localStorage.companyID;
-
+        selDept();
+        roleCheckModal("Supply");
+        roleCheck("Supply");
 
         function selDept() {
 

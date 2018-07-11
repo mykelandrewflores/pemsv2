@@ -1,6 +1,6 @@
 let PurNo = '';
 function getAllData() {
-	$.getJSON(myUrl + '/pems/apis/purchaseorderapi/index.php?action=getAllPR',function(data){
+	$.getJSON(myUrl + '/purchaseorderapi/index.php?action=getAllPR',function(data){
 		let longString = '';
 		// console.log(data);
 		for(let i=0; i<data.length; i++){
@@ -27,7 +27,7 @@ function getAllData() {
 }
 
 function getAllPendingData() {
-	$.getJSON(myUrl + '/pems/apis/purchaseorderapi/index.php?action=getAllPendingPR',function(data){
+	$.getJSON(myUrl + '/purchaseorderapi/index.php?action=getAllPendingPR',function(data){
 		let longString = '';
 		for(let i=0; i<data.length; i++){
 			if (data[i].fldCompanyID == localStorage.companyID) {
@@ -47,7 +47,7 @@ function getAllPendingData() {
 }
 
 function getAllOrderedData() {
-	$.getJSON(myUrl + '/pems/apis/purchaseorderapi/index.php?action=getAllOrderedPR',function(data){
+	$.getJSON(myUrl + '/purchaseorderapi/index.php?action=getAllOrderedPR',function(data){
 		let longString = '';
 		for(let i=0; i<data.length; i++){
 			if (data[i].fldCompanyID == localStorage.companyID) {
@@ -83,7 +83,7 @@ function viewPO(pr_no) {
     today = mm + '/' + dd + '/' + yyyy;
     let date = today;
 
-	$.getJSON(myUrl + '/pems/apis/purchaseorderapi/index.php?action=getAllPRitems&pr_no=' + pr_no + '',function(data){		
+	$.getJSON(myUrl + '/purchaseorderapi/index.php?action=getAllPRitems&pr_no=' + pr_no + '',function(data){		
 	    let longString = "";
         let totalcost = '';
         let POno = '';
@@ -111,7 +111,7 @@ function viewPO(pr_no) {
 	    $('#POno2').html(POno);
 	    $('#dateToday2').html(date);
 	});
-	$.getJSON(myUrl + '/pems/apis/purchaseorderapi/index.php?action=getAllPRitemsdetails&pr_no=' + pr_no + '',function(data){		
+	$.getJSON(myUrl + '/purchaseorderapi/index.php?action=getAllPRitemsdetails&pr_no=' + pr_no + '',function(data){		
 	    let supplier = '';
 	    let address = '';
 	    let pod = '';
@@ -158,7 +158,7 @@ function getPRitems(pr_no) {
     today = mm + '/' + dd + '/' + yyyy;
     let date = today;
 
-	$.getJSON(myUrl + '/pems/apis/purchaseorderapi/index.php?action=getAllPRitems&pr_no=' + pr_no + '',function(data){		
+	$.getJSON(myUrl + '/purchaseorderapi/index.php?action=getAllPRitems&pr_no=' + pr_no + '',function(data){		
 	    let longString = "";
         let totalcost = '';
         let POno = '';
@@ -227,7 +227,7 @@ function setDetails(elem){
     let date = today;
     let comID = localStorage.companyID;
 	$.ajax({
-		url: myUrl + '/pems/apis/purchaseorderapi/index.php?action=savePO',
+		url: myUrl + '/purchaseorderapi/index.php?action=savePO',
 		method:'POST',
 		data:{
 			prNo:CurrItem,
