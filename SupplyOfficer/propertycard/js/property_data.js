@@ -539,9 +539,9 @@ function pcdata(){
 }
 
 function pcdata_reqofficer(){
+		var url=myUrl+"/propertycard/propertyapi/where3and/tbl_property_dispose/tbl_lccalives/fldPNum/"+localStorage.selected_id_reqofficer+"/fldIarNo/"+localStorage.selected_iarno_reqofficer+"/fldRecID/"+localStorage.selected_recid_reqofficer+"/fldAgency/"+localStorage.companyID+"/fldProdID";
 	$(function(){
 
-		url=myUrl+"/propertycard/propertyapi/where3and/tbl_property_dispose/tbl_lccalives/fldPNum/"+localStorage.selected_id_reqofficer+"/fldIarNo/"+localStorage.selected_iarno_reqofficer+"/fldRecID/"+localStorage.selected_recid_reqofficer+"/fldAgency/"+localStorage.companyID+"/fldProdID";
 		
 		$.getJSON(url,function(data){
 			let longstring = "";
