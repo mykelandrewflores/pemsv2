@@ -40,8 +40,10 @@ $('#form_request').submit(function (e) {
 
         window.alert("We've already sent an email for your verification code please check your email now");
 
-        setTimeout(function(){ window.location.assign("verify.html"); }, 2000);
-        
+        setTimeout(function () {
+            window.location.assign("verify.html");
+        }, 2000);
+
     } else {
         window.alert("Password didn't Match");
     }
@@ -147,8 +149,8 @@ $('#login_user').submit(function (e) {
             localStorage.companyFaxNo = data.fldFax;
             localStorage.companyWeb = data.fldWebsite;
             localStorage.companyLogo = data.fldLogo;
-            
-            
+
+
             window.location.assign("CompAdmin/");
         } else {
             window.alert("Login Failed");
@@ -221,19 +223,19 @@ function selectCompanyEmply(val) {
 
 function selectCompany(val) {
     console.log(val);
-        $("#comp_name").html(localStorage.companyName);
-        $("#comp_name_sidenav").html(localStorage.companyName + '/PEMS');
-        $("#comp_name_navbar").html(localStorage.companyName + '/PEMS');
-        $("#comp_name_card").html(localStorage.companyName + '/PEMS');
-        $("#det_em").html(localStorage.companyEmail);
-        $("#dept_em").html(localStorage.companyEmail);
-        $("#det_address").html(localStorage.companyAddress);
-        $("#det_contact").html(localStorage.companyContactNo);
-        $("#det_faxno").html(localStorage.companyFaxNo);
-        $("#det_website").html(localStorage.companyWeb);
-        $("#comp_logo").attr("src", localStorage.companyLogo);
-        $("#sidepanel_bg").attr("src", localStorage.companyLogo);
-        $("#company_logo_nav").attr("src", localStorage.companyLogo);
+    $("#comp_name").html(localStorage.companyName);
+    $("#comp_name_sidenav").html(localStorage.companyName + '/PEMS');
+    $("#comp_name_navbar").html(localStorage.companyName + '/PEMS');
+    $("#comp_name_card").html(localStorage.companyName + '/PEMS');
+    $("#det_em").html(localStorage.companyEmail);
+    $("#dept_em").html(localStorage.companyEmail);
+    $("#det_address").html(localStorage.companyAddress);
+    $("#det_contact").html(localStorage.companyContactNo);
+    $("#det_faxno").html(localStorage.companyFaxNo);
+    $("#det_website").html(localStorage.companyWeb);
+    $("#comp_logo").attr("src", localStorage.companyLogo);
+    $("#sidepanel_bg").attr("src", localStorage.companyLogo);
+    $("#company_logo_nav").attr("src", localStorage.companyLogo);
 
 }
 
@@ -306,36 +308,49 @@ function archive_data(val) {
     $(function () {
 
         if (confirm('Are you sure you want to archive this record?')) {
-            $.post(myurls+"pems/apis/propertycard/propertyapi/delete/tbl_user_archive/"+val,function(data){
-                M.toast({html: 'Employee Archived'});
+            $.post(myurls + "pems/apis/propertycard/propertyapi/delete/tbl_user_archive/" + val, function (data) {
+                M.toast({
+                    html: 'Employee Archived'
+                });
                 selectCompanyEmply(localStorage.companyID);
-            }).fail(function(){
-                M.toast({html: 'Process Failed'});
+            }).fail(function () {
+                M.toast({
+                    html: 'Process Failed'
+                });
             });
         } else {
-                M.toast({html: 'Cancelled'});
+            M.toast({
+                html: 'Cancelled'
+            });
         }
 
-          
+
 
     });
 }
+
 function delete_data(val) {
 
     $(function () {
 
         if (confirm('Are you sure you want to delete this record permanently?')) {
-            $.post(myurls+"pems/apis/propertycard/propertyapi/delete/tbl_user/"+val,function(data){
-                M.toast({html: 'Employee Deleted Permanently'});
+            $.post(myurls + "pems/apis/propertycard/propertyapi/delete/tbl_user/" + val, function (data) {
+                M.toast({
+                    html: 'Employee Deleted Permanently'
+                });
                 selectCompanyEmply(localStorage.companyID);
-            }).fail(function(){
-                M.toast({html: 'Process Failed'});
+            }).fail(function () {
+                M.toast({
+                    html: 'Process Failed'
+                });
             });
         } else {
-                M.toast({html: 'Delete Cancelled'});
+            M.toast({
+                html: 'Delete Cancelled'
+            });
         }
 
-          
+
 
     });
 }
@@ -377,15 +392,20 @@ function resetPass() {
     var thval = Math.random().toString(36).slice(2);
     var email = $("#email").val()
     thval = thval.substring(0, 6);
+    validateEm($("#email").val());
 
-    if (email != undefined) {
-        updateCode(email, thval);
-        sendCode(email, thval);
-        window.alert("Password has been reset please check your E-mail address");
-        window.location.assign("index.html");
-    } else {
-        window.alert("Please enter your email address");
-    }
+
+    setTimeout(function () {
+        if ($("#email").val() != "") {
+            updateCode(email, thval);
+            sendCode(email, thval);
+            window.alert("Password has been reset please check your E-mail address");
+            window.location.assign("index.html");
+        } else {
+            window.alert("Please enter a valid Email-address");
+        }
+    }, 1000);
+
 }
 
 
