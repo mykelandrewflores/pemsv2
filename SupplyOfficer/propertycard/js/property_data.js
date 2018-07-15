@@ -498,15 +498,21 @@ function pcdata(){
 			var url=myUrl+"/propertycard/propertyapi/where3and/tbl_property_dispose/tbl_lccalives/fldPNum/"+localStorage.selected_id+"/fldIarNo/"+localStorage.selected_iarno+"/fldRecID/"+localStorage.selected_recid+"/fldAgency/"+localStorage.companyID+"/fldProdID";
 
 	$(function(){
-
-		
-		$.getJSON(url,function(data){
 			let longstring = "";
 			let sel_name = "";
 			let sel_desc ="";
 			let sel_pnum  = "";
 			let sel_dept = "";
 			let sel_agncy = "";
+
+		$.getJSON(myUrl+"/propertycard/propertyapi/tbl_companies/fldCompanyID/"+localStorage.companyID,function(data){
+			console.log(data);
+			sel_agncy=data[0].fldCompanyName;	
+			document.getElementById("propertyAgency").innerHTML=sel_agncy;
+		});
+
+		
+		$.getJSON(url,function(data){
 			console.log(data);
 
 			for (let i = 0; i < data.length; i++) {
@@ -514,7 +520,6 @@ function pcdata(){
 			sel_desc=data[i].fldPropertyCategory;
 			sel_pnum=data[i].fldRecID;
 			sel_dept=data[i].fldDept;
-			sel_agncy=data[i].fldAgency;
 
 			longstring += "<tr>";
 			longstring += "<td>"+data[i].fldDate+"</td>";
@@ -528,7 +533,6 @@ function pcdata(){
 			document.getElementById("propertyDesc").innerHTML=sel_desc;
 			document.getElementById("propertyNo").innerHTML=sel_pnum;
 			document.getElementById("propertyDept").innerHTML=sel_dept;
-			document.getElementById("propertyAgency").innerHTML=sel_agncy;
 			$("#propertyList").html(longstring);
 
 		}).fail(function(){

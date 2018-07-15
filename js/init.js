@@ -55,10 +55,12 @@ function userLoginCheck(){
 
 //EDIT DELETE EMPLOYEE --END--
 function logOut() {
-	alertify.okBtn("Accept").cancelBtn("Deny").confirm("Are you sure you want to logout?", function (ev) {
-		ev.preventDefault();
-			localStorage.removeItem("userID");
-			localStorage.removeItem("companyID");
-			window.location.assign("../../index.html");
-	});
+	var r = confirm("Are you sure you want to logout?");
+	if (r == true) {
+		localStorage.removeItem("userID");
+		localStorage.removeItem("companyID");
+		window.location.assign("../../index.html");
+	} else {
+
+	}
 }
