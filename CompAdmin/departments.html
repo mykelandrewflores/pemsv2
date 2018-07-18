@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -15,13 +15,13 @@
 				<div class="nav-wrapper">
 					<ul class="left">
 						<li><a id="toggleNav"  style="display: block" class="sidenav-trigger grey-text waves-effect" data-target="slide-out"><i class="fa fa-bars" aria-hidden="true"></i></a></li>
-						<li><span class="deafult-text dtime-now" id="">Date/Time</span></li>
+						<li><span class="deafult-text dtime-now">Date/Time</span></li>
 						<li><span class="deafult-text hide" id="comp_name_navbar">Company/PEMS</span></li>
 					</ul>
 					<div class="container nav-container">
 						<ul class="right">
 							<li><a ><i class="fa fa-bell grey-text"></i></a></li>
-							<li><a ><img src="../image/avatar.jpg" id="usersideavatar" class="circle" style="margin-top:15px" width="30" /></a></li>
+							<li><a ><img src="../image/avatar.jpg" alt="avatar" id="usersideavatar" class="circle" style="margin-top:15px" width="30" /></a></li>
 						</ul>
 					</div>
 				</div>
@@ -31,9 +31,9 @@
 			<li class="z-depth-2 white center" id="toggle_header_sidenav" style="height: 64px;font-size: 20px;"><span class="deafult-text" id="comp_name_sidenav">Company/PEMS</span></li>
 			<li><div class="user-view">
 				<div class="background primary">
-					<img src="" class="responsive-img"  style="opacity: 0.1;margin-top:0px;" id="sidepanel_bg" />
+					<img src="../image/bg.jpg" alt="bg-logo" class="responsive-img"  style="opacity: 0.1;margin-top:0px;" id="sidepanel_bg" />
 				</div>
-				<a href="#user"><img class="circle" id="useravatar" src="../image/avatar.jpg"></a>
+				<a href="#user"><img class="circle" id="useravatar" alt="avatar-next" src="../image/avatar.jpg"></a>
 				<a href="#name"><span class="white-text name" id="comp_name">Company Name</span></a>
 				<a href="#email"><span class="white-text email" id="det_em">Email Compnay</span></a>
 			</div></li>
@@ -47,17 +47,17 @@
 	</header>
 	<main class="mt-1">
 		<div class="container">
-			<h4 class="deafult-text"><blockquote>Departments</blockquote></h4>
+			<blockquote><h4 class="deafult-text">Departments</h4></blockquote>
 			<div class="row">
 				<div class="card col s12 m5  l5 p-trbl">
 					<h5>Add Department: </h5>
 					<form class="mt-br" id="insert_dept">
 						<div class='input-field col s12'>
-							<input class='validate' onblur="validateDataDept(this.value, this.id, 'departments','FullDeptName')" type='text' name=''  id='deptName' placeholder="@Purchase & Equipment Management Solution" required/>
+							<input class='validate' onblur="validateDataDept(this.value, this.id, 'departments','FullDeptName')" type='text' name='deptName'  id='deptName' placeholder="@Purchase & Equipment Management Solution" required/>
 							<label for='deptName'>Department Name</label>
 						</div>
 						<div class='input-field col s12'>
-							<input class='validate' type='text' name='' onblur="validateDataDept(this.value, this.id, 'departments','DepartmentName')" id='deptCode' placeholder='@e.g (PEMS)' required/>
+							<input class='validate' type='text' name='deptCode' onblur="validateDataDept(this.value, this.id, 'departments','DepartmentName')" id='deptCode' placeholder='@e.g (PEMS)' required/>
 							<label for='deptCode'>Department Code</label>
 						</div>                            
 						<div class="col s12 l12 center-align">
@@ -99,9 +99,8 @@
 	<script src="../js/changing_color.js"></script>
 	<script src="../js/func.js"></script>
 	<script src="js/userimg.js"></script>
-	<script type="text/javascript">
-			selectCompany(id)
-		
+	<script>
+		selectCompany(id)
 		$('#insert_dept').submit(function (e) {
 			e.preventDefault();
 			var companyId = localStorage.companyID;

@@ -79,7 +79,9 @@ tbody>tr>td {
 .font-bold {
 	font-weight: 600;
 }
-
+.md-font {
+	font-size: 25px;
+}
 header, main, footer {
 	padding-left: 250px;
 }
