@@ -201,9 +201,8 @@
 		</div>
 		<table class="tablee">
 			<b><tr>
-				<th>Unit</th>
 				<th>Description</th>
-				<th>Quantity</th>
+				<th>Department</th>
 			</tr></b>
 			<tbody id="tabledata">
 				
@@ -245,10 +244,17 @@
 </div>
 </body>
 <script src="../../js/jquery.min.js"></script>
+	<script src="../../js/init.js"></script>
 <script src="js/iar.js"></script>
 <script type="text/javascript">
 	function printdata(id){
-    var url = myurl + "/iar_api/select.php?IARhistory=" + id;
+
+    var url = myUrl + "/iar_api/select.php?IARhistory=" + id;
+
+    $.getJSON(myUrl+"/propertycard/propertyapi/tbl_companies/fldCompanyID/"+localStorage.companyID,function(data){
+		console.log(data);
+		document.getElementById("propertyAgency").innerHTML=data[0].fldCompanyName;
+	});
     $.getJSON(url, function (data) {
         var longstring = "";
         var today = new Date();
@@ -258,9 +264,8 @@
         var currentdate = month + year;
         for (var i = 0; i < data.length; i++) {
             longstring += "<tr>";
-            longstring += "<td>" + data[i].fldUnit + "</td>";
             longstring += "<td>" + data[i].fldPurpose + "</td>";
-            longstring += "<td>" + data[i].fldQty + "</td>";
+            longstring += "<td>" + data[i].fldDept + "</td>";
             longstring += "</tr>";
         }
         $('#tabledata').html(longstring);
@@ -274,6 +279,7 @@
 
 
     });
+
 }
 
 	printdata(localStorage.selectedprintid);

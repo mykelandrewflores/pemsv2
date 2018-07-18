@@ -55,7 +55,12 @@ function userLoginCheck(){
 
 //EDIT DELETE EMPLOYEE --END--
 function logOut() {
-	localStorage.removeItem("userID");
-	localStorage.removeItem("companyID");
-	window.location.assign("../../index.html");
+	var r = confirm("Are you sure you want to logout?");
+	if (r == true) {
+		localStorage.removeItem("userID");
+		localStorage.removeItem("companyID");
+		window.location.assign("../../index.html");
+	} else {
+
+	}
 }

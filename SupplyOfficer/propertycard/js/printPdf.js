@@ -1,14 +1,14 @@
 function print(){
-    var doc = new jsPDF('l','mm',[300,210]);
+    var doc = new jsPDF('1','mm',[300,300]);
     doc.addHTML($('#mybody')[0], 15, 15, {
       'background': '#fff',
     }, function() {    
     doc.addFont('fonts/calibri.ttf', 'Calibri', 'normal');
     doc.setFont('Calibri');
-    doc.setFontType("bold");
-    doc.setFontSize(40);
-    doc.save('sample-file.pdf');
+    doc.setFontType("Regular");
+    doc.setFontSize(10);
+    doc.save('Property_Card.pdf');
     });
 }
 
-setTimeout(function(){print();},2000);
+setTimeout(function(){print();},5000);
