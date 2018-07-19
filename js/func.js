@@ -50,7 +50,7 @@ $('#form_request').submit(function (e) {
 });
 
 function sendEmail(eadd, val) {
-    $.post(myurls +"pems/apis/emailverif/", {
+    $.post(myurls + "pems/apis/emailverif/", {
         eadd: eadd,
         vcode: val
     }, function (data) {
@@ -60,40 +60,45 @@ function sendEmail(eadd, val) {
 
 $('#emp_form').submit(function (e) {
     e.preventDefault();
-    var un = $("#emp_username").val();
     var pwd = $("#emp_pass").val();
     var cpwd = $("#emp_cpass").val();
-    var fname = $("#emp_fname").val();
-    var lname = $("#emp_lname").val();
-    var mname = $("#emp_mname").val();
-    var role = $("#emp_role").val();
-    var dept = $("#emp_dept").val();
-    var coid = localStorage.companyID;
-
-
     if (pwd == cpwd) {
+        var un = $("#emp_username").val();
 
-    }
-    $.post(myurls + "pems/apis/myapi/insert/tbl_user",
-        JSON.stringify([{
-            cn: un,
-            ca: pwd,
-            cnum: fname,
-            cmail: lname,
-            cfax: mname,
-            clogo: role,
-            cweb: dept,
-            cpwd: coid,
+        var fname = $("#emp_fname").val();
+        var lname = $("#emp_lname").val();
+        var mname = $("#emp_mname").val();
+        var role = $("#emp_role").val();
+        var dept = $("#emp_dept").val();
+        var coid = localStorage.companyID;
+
+
+
+        $.post(myurls + "pems/apis/myapi/insert/tbl_user",
+            JSON.stringify([{
+                cn: un,
+                ca: pwd,
+                cnum: fname,
+                cmail: lname,
+                cfax: mname,
+                clogo: role,
+                cweb: dept,
+                cpwd: coid,
         }]),
-        function (data) {
-            console.log(data);
-        });
+            function (data) {
+                console.log(data);
+            });
 
 
-    window.alert("Employee Succesfully Added!");
-    window.location.assign("emplist.html");
-    selectCompanyEmply(localStorage.companyID);
-    selectCompanyEmplyInactive(localStorage.companyID)
+        window.alert("Employee Succesfully Added!");
+        window.location.assign("emplist.html");
+        selectCompanyEmply(localStorage.companyID);
+        selectCompanyEmplyInactive(localStorage.companyID)
+
+    } else {
+        window.alert("Employee password didn't Mach");
+    }
+
 });
 
 
@@ -219,14 +224,14 @@ function selectCompanyEmply(val) {
         var ls = "";
 
         for (var i = 0; i < data.length; i++) {
-            if(data[i].fldRole != "Inactive"){
+            if (data[i].fldRole != "Inactive") {
                 ls += "<tr>"
                 ls += "<td>" + data[i].fldUserID + "</td>";
                 ls += "<td>" + data[i].fldFname + " " + data[i].fldLname + "</td>";
                 ls += "<td>" + data[i].fldRole + "</td>";
                 ls += "<td>" + data[i].fldDepartment + "</td>";
                 ls += '<td><a class="modal-trigger" href="#editmodal" onclick="editmodal_data(' + data[i].fldUserID + ')"><i class="fa fa-pencil"></i></a> | <a class="red-text" onclick="delete_data(' + data[i].fldUserID + ')"><i class="fa fa-trash"></i></a> | <a class="red-text" onclick="archive_data(' + data[i].fldUserID + ')"><i class="fa fa-archive"></i></a></td>';
-                ls += "</tr>";                
+                ls += "</tr>";
             }
         }
 
@@ -239,7 +244,7 @@ function selectCompanyEmplyInactive(val) {
         var ls = "";
 
         for (var i = 0; i < data.length; i++) {
-            if(data[i].fldRole == "Inactive"){            
+            if (data[i].fldRole == "Inactive") {
                 ls += "<tr>"
                 ls += "<td>" + data[i].fldUserID + "</td>";
                 ls += "<td>" + data[i].fldFname + " " + data[i].fldLname + "</td>";
@@ -456,7 +461,7 @@ function resendVerif() {
             updateCode(email, thval);
             sendVerif(email, thval);
             window.alert("Verification Code has been resend, please check your E-mail address");
-            window.location.assign("index.html");            
+            window.location.assign("index.html");
 
         } else {
             window.alert("Please enter a valid Email-address");
