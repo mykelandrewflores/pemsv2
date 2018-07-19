@@ -1,9 +1,9 @@
 var myUrl = "http://gordoncollegeccs-ssite.net/pems/apis";
- $(document).ready(function(){
-    $('select').formSelect();
-  });
+$(document).ready(function(){
+	$('select').formSelect();
+});
 function mySidenav(x) {
-	if (x.matches) { 
+	if (x.matches) {
 		$('header').removeClass('padded');
 		$('#toggle_header_sidenav').addClass('hide');
 		$('#comp_name_navbar').removeClass('hide');
@@ -16,11 +16,11 @@ function mySidenav(x) {
 	}
 }
 var x = window.matchMedia("(max-width: 989px)")
-mySidenav(x) 
+mySidenav(x)
 x.addListener(mySidenav);
 setInterval(function() {
-	var x = new Date(); 
-	var hours = x.getHours(); 
+	var x = new Date();
+	var hours = x.getHours();
 	var minutes = x.getMinutes();
 	var ampm = hours >= 12 ? 'PM' : 'AM';
 	hours = hours % 12;
@@ -31,7 +31,7 @@ setInterval(function() {
 function formDNow(date) {
 	var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 	var day = date.getDate();
-	var monthIndex = date.getMonth(); 
+	var monthIndex = date.getMonth();
 	var year = date.getFullYear();
 	var date = new Date(date * 1000);
 	return monthNames[monthIndex] + ' ' + day + ', ' + year;
@@ -55,9 +55,12 @@ function userLoginCheck(){
 
 //EDIT DELETE EMPLOYEE --END--
 function logOut() {
-	localStorage.removeItem("userID");
-	localStorage.removeItem("companyID");
-	window.location.assign("../../index.html");
+	var r = confirm("Are you sure you want to logout?");
+	if (r == true) {
+		localStorage.removeItem("userID");
+		localStorage.removeItem("companyID");
+		window.location.assign("../../index.html");
+	} else {
+
+	}
 }
-
-

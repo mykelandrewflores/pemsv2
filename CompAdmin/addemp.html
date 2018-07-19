@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -21,93 +21,83 @@
 				<div class="background green darken-3">
 
 				</div>
-				<a href="#user"><img class="circle" src="image/avatar.jpg"></a>
+				<a href="#user"><img class="circle" src="image/avatar.jpg" alt="avatar"></a>
 				<a href="#name"><span class="white-text name">Mykel Andrew Flores</span></a>
 				<a href="#email"><span class="white-text email">mykelandrww@gmail.com</span></a>
 			</div></li>
-            <li class="bold"><a href="departments.html" class="collapsible-header">Departments</a></li>                
+			<li class="bold"><a href="departments.html" class="collapsible-header">Departments</a></li>                
 			<li class="bold"><a href="index.html" class="collapsible-header">Edit Company Details</a></li>
-            <li class="bold active">
-                <a class="collapsible-header waves-effect waves-teal">Employee Mgmt.</a>
-              <div class="collapsible-body" style="">
-                <ul>
-                  <li class=""><a href="addemp.html">Add Employee</a></li>
-                  <li><a href="emplist.html">Employee List</a></li>
-                </ul>
-              </div>
-            </li>    
+			<li class="bold active">
+				<a class="collapsible-header waves-effect waves-teal">Employee Mgmt.</a>
+				<div class="collapsible-body" style="">
+					<ul>
+						<li class=""><a href="addemp.html">Add Employee</a></li>
+						<li><a href="emplist.html">Employee List</a></li>
+					</ul>
+				</div>
+			</li>    
 			<li class="bold"><a href="" class="collapsible-header">Logout</a></li>         
-      
-          
+
+
 		</ul>
 	</header>
 
 	<main class="ml300">
 		<h4 class="deafult-text pl-05 font-weight-low">Add Employee</h4>
-				<hr>
-		    <center>
+		<hr>
 
-      <div class="container">
-      	<br>
-        <div class="z-depth-1 grey lighten-4 row" style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
+		<div class="container">
+			<br>
+			<div class="z-depth-1 grey lighten-4 row" style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
 
-          <form class="col s12" id="emp_form">
+				<form class="col s12" id="emp_form">
 
-            <div class='row'>
-              <div class='input-field col s12 m4 l4'>
-                <input class='validate' type='text' name='emp_fname' id='emp_fname' required/>
-                <label for='emp_fname'>FirstName</label>
-              </div>
-              <div class='input-field col s12 m4 l4'>
-                <input class='validate' type='text' name='emp_lname' id='emp_lname' required/>
-                <label for='emp_lname'>LastName</label>
-              </div>
-              <div class='input-field col s12 m4 l4'>
-                <input class='validate' type='text' name='emp_fname' id='emp_mname' required/>
-                <label for='emp_mname'>MiddleName</label>
-              </div>
-                <div class="input-field col s6">
-				    <select id="emp_role" required>
-				      <option value="" disabled selected>Choose your option</option>
-				      <option value="Requisition">Requisitioning Officer</option>
-				      <option value="Supply">Supply Officer</option>
-				    </select>
-				    <label>Role</label>
-				</div>
-                <div class="input-field col s6">
-				    <select id="emp_dept" class="browser-default" required>
-				      <option value="" disabled selected>Choose your option</option>
-				      <option value="Requisition">Requisition</option>
-				      <option value="Supply">Supply</option>
-				    </select>
-				</div>
-				<div class='input-field col s12'><input class='validate' type='text' name='emp_username' id='emp_username' required/>
-                <label for='emp_username'>Username</label>
-              </div>
-
-              <div class='input-field col s6'>
-                <input class='validate' type='password' name='emp_pass' id='emp_pass' pattern=".{8,}"   required title="8 characters minimum"/>
-                <label for='emp_pass'>Password</label>
-              </div>
-                
-                
-              <div class='input-field col s6'>
-                <input class='validate' type='password' name='emp_cpass' id='emp_cpass' required/>
-                <label for='emp_cpass'>Confirm Password</label>
-              </div>                
-                            
-                
-              
-            </div>
-            <center>
-              <div class='row'>
-                <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect indigo'>Add Employee</button>
-              </div>
-            </center>
-          </form>
-        </div>
-      </div>
-    </center>
+					<div class='row'>
+						<div class='input-field col s12 m4 l4'>
+							<input class='validate' type='text' name='emp_fname' id='emp_fname' required/>
+							<label for='emp_fname'>FirstName</label>
+						</div>
+						<div class='input-field col s12 m4 l4'>
+							<input class='validate' type='text' name='emp_lname' id='emp_lname' required/>
+							<label for='emp_lname'>LastName</label>
+						</div>
+						<div class='input-field col s12 m4 l4'>
+							<input class='validate' type='text' name='emp_fname' id='emp_mname' required/>
+							<label for='emp_mname'>MiddleName</label>
+						</div>
+						<div class="input-field col s6">
+							<select id="emp_role" required>
+								<option value="" disabled selected>Choose your option</option>
+								<option value="Requisition">Requisitioning Officer</option>
+								<option value="Supply">Supply Officer</option>
+							</select>
+							<label>Role</label>
+						</div>
+						<div class="input-field col s6">
+							<select id="emp_dept" class="browser-default" required>
+								<option value="" disabled selected>Choose your option</option>
+								<option value="Requisition">Requisition</option>
+								<option value="Supply">Supply</option>
+							</select>
+						</div>
+						<div class='input-field col s12'><input class='validate' type='text' name='emp_username' id='emp_username' required/>
+							<label for='emp_username'>Username</label>
+						</div>
+						<div class='input-field col s6'>
+							<input class='validate' type='password' name='emp_pass' id='emp_pass' pattern=".{8,}"   required title="8 characters minimum"/>
+							<label for='emp_pass'>Password</label>
+						</div>
+						<div class='input-field col s6'>
+							<input class='validate' type='password' name='emp_cpass' id='emp_cpass' required/>
+							<label for='emp_cpass'>Confirm Password</label>
+						</div>                
+					</div>
+					<div class='row'>
+						<button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect indigo'>Add Employee</button>
+					</div>
+				</form>
+			</div>
+		</div>
 	</main>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/materialize.min.js"></script>

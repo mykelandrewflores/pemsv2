@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -17,13 +17,13 @@
                 <div class="nav-wrapper">
                     <ul class="left">
                         <li><a id="toggleNav" style="display: block" class="sidenav-trigger grey-text waves-effect" data-target="slide-out"><i class="fa fa-bars" aria-hidden="true"></i></a></li>
-                        <li><span class="deafult-text dtime-now" id="">Date/Time</span></li>
+                        <li><span class="deafult-text dtime-now">Date/Time</span></li>
                         <li><span class="deafult-text hide" id="comp_name_navbar">Company/PEMS</span></li>
                     </ul>
                     <div class="container nav-container">
                         <ul class="right">
                             <li><a><i class="fa fa-bell grey-text"></i></a></li>
-                            <li><a><img src="../image/avatar.jpg" id="usersideavatar" class="circle" style="margin-top:15px" width="30" /></a></li>
+                            <li><a><img src="../image/avatar.jpg" id="usersideavatar" alt="avatar" class="circle" style="margin-top:15px" width="30" /></a></li>
                         </ul>
                     </div>
                 </div>
@@ -34,9 +34,9 @@
             <li>
                 <div class="user-view">
                     <div class="background primary">
-                        <img src="" class="responsive-img" style="opacity: 0.1;margin-top:0px;" id="sidepanel_bg" />
+                        <img src="../image/bg.jpg" class="responsive-img" alt="bg-logo" style="opacity: 0.1;margin-top:0px;" id="sidepanel_bg" />
                     </div>
-                    <a href="#user"><img class="circle" id="useravatar" src="../image/avatar.jpg"></a>
+                    <a href="#user"><img class="circle" id="useravatar" src="../image/avatar.jpg" alt="avatar-next"></a>
                 <a href="#name"><span class="white-text name" id="comp_name">Company Name</span></a>
                 <a href="#email"><span class="white-text email" id="det_em">Email Compnay</span></a>
                 </div>
@@ -51,19 +51,17 @@
     </header>
     <main class="mt-1">
         <div class="container">
-            <h4 class="deafult-text">
-                <blockquote>Company Settings</blockquote>
-            </h4>
+             <blockquote><h4 class="deafult-text">Company Settings</h4></blockquote>
             <div class="row  mt-br">
                 <div class="col s12">
                     <div class="card mt-br">
                         <div class="p-trbl">
                             <div class="row">
                                 <div class="col s12 m4  l4 right-align mt-br">
-                                    <img src="" class="responsive-img" id="comp_logo">
+                                    <img src="../image/avatar.jpg" class="responsive-img" id="comp_logo" alt="company-logo">
                                 </div>
                                 <div class="col s12 m8 l8 left-align mt-br pl-1">
-                                    <h5 id="comp_name_card" class="deafult-text"></h5>
+                                    <h5 id="comp_name_card" class="deafult-text">...</h5>
                                     <div class="divider"></div>
                                     <h6><span class="font-bold">Company Email: </span><span id="dept_em"></span></h6>
                                     <h6><span class="font-bold">Address: </span><span id="det_address"></span></h6>
@@ -139,11 +137,6 @@
     <script src="js/property_data.js"></script>
     <script src="../js/func.js"></script>
     <script src="js/userimg.js"></script>
-    <script type="text/javascript">
-
-
-    </script>
-
     <script>
         $("#cname").val(localStorage.companyName);
         $("#cadd").val(localStorage.companyAddress);

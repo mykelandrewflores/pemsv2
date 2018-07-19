@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -15,13 +15,13 @@
 				<div class="nav-wrapper">
 					<ul class="left">
 						<li><a id="toggleNav"  style="display: block" class="sidenav-trigger grey-text waves-effect" data-target="slide-out"><i class="fa fa-bars" aria-hidden="true"></i></a></li>
-						<li><span class="deafult-text dtime-now" id="">Date/Time</span></li>
+						<li><span class="deafult-text dtime-now">Date/Time</span></li>
 						<li><span class="deafult-text hide" id="comp_name_navbar">Company/PEMS</span></li>
 					</ul>
 					<div class="container nav-container">
 						<ul class="right">
 							<li><a ><i class="fa fa-bell grey-text"></i></a></li>
-							<li><a ><img src="../../image/avatar.jpg" class="circle" style="margin-top:15px" width="30" /></a></li>
+							<li><a ><img src="../../image/avatar.jpg" alt="avatar" class="circle" style="margin-top:15px" width="30" /></a></li>
 						</ul>
 					</div>
 				</div>
@@ -31,11 +31,11 @@
 			<li class="z-depth-2 white center" id="toggle_header_sidenav" style="height: 64px;font-size: 20px;"><span class="deafult-text" id="comp_name_sidenav">Company/PEMS</span></li>
 			<li><div class="user-view">
 				<div class="background primary">
-					<img src="../../image/bg.jpg" class="responsive-img"  style="opacity: 0.1;margin-top:-55px;" id="sidepanel_bg" />
+					<img src="../../image/bg.jpg" class="responsive-img" alt="bg-logo"  style="opacity: 0.1;margin-top:-55px;" id="sidepanel_bg" />
 				</div>
-				<a href="#user"><img class="circle" src="../../image/avatar.jpg"></a>
-                    <a href="#name"><span class="white-text name" id="name">Employee Name</span></a>
-                    <a href="#email"><span class="white-text email" id="dept">Department</span></a>
+				<a href="#user"><img class="circle" src="../../image/avatar.jpg" alt="avatar-next"></a>
+				<a href="#name"><span class="white-text name" id="name">Employee Name</span></a>
+				<a href="#email"><span class="white-text email" id="dept">Department</span></a>
 			</div></li>
 			<li><a class="subheader">Functions</a></li>
 			<li><a href="../IAR/index.html"><i class="fa fa-file-text-o" aria-hidden="true"></i> Inspection and Acceptance</a></li>
@@ -46,7 +46,7 @@
 	</header>
 	<main>
 		<div class="container mt-1">
-			<h4 class="deafult-text font-weight-low"><blockquote class="default-text">Property & Equipment Management</blockquote></h4>
+			<blockquote class="default-text"><h4 class="deafult-text font-weight-low">Property & Equipment Management</h4></blockquote>
 			<p class="deafult-text font-weight-low">LIST OF COMPANY PROPERTY & EQUIPMENTS</p>
 			<div class="row mt-br">
 				<div class="col s12">
@@ -63,25 +63,29 @@
 				<div id="test1" class="col s12 mt-br" >
 					<table class="table bordered responsive-table centered">
 						<thead>
-							<th class="font-weight-low">Property No.</th>
-							<th class="font-weight-low">Name</th>
-							<th class="font-weight-low">Category</th>
-							<th class="font-weight-low">Department</th>
-							<th class="font-weight-low">Remarks</th>
-							<th class="font-weight-low">History</th>
-							<th class="font-weight-low">Transfer/Disposal</th>
+							<tr>
+								<th class="font-weight-low">Property No.</th>
+								<th class="font-weight-low">Name</th>
+								<th class="font-weight-low">Category</th>
+								<th class="font-weight-low">Department</th>
+								<th class="font-weight-low">Remarks</th>
+								<th class="font-weight-low">History</th>
+								<th class="font-weight-low">Transfer/Disposal</th>
+							</tr>
 						</thead>
-						<tbody id="equiptabledata"><tr><td colspan="5">No Data</td></tr></tbody>
+						<tbody id="equiptabledata"><tr><td colspan="7">No Data</td></tr></tbody>
 					</table>
 				</div>
 				<div id="test2" class="col s12 mt-br" >
 					<table class="table bordered responsive-table centered">
 						<thead>
-							<th class="font-weight-low">Property No.</th>
-							<th class="font-weight-low">Product ID</th>
-							<th class="font-weight-low">Name</th>
-							<th class="font-weight-low">Department</th>
-							<th class="font-weight-low">History</th>
+							<tr>
+								<th class="font-weight-low">Property No.</th>
+								<th class="font-weight-low">Product ID</th>
+								<th class="font-weight-low">Name</th>
+								<th class="font-weight-low">Department</th>
+								<th class="font-weight-low">History</th>
+							</tr>
 						</thead>
 						<tbody id="equiptabledata_assigned"><tr><td colspan="5">No Data</td></tr></tbody>
 					</table>
@@ -89,19 +93,21 @@
 				<div id="test4" class="col s12 mt-br" >
 					<table class="table bordered responsive-table centered">
 						<thead>
-							<th class="font-weight-low">Property No.</th>
-							<th class="font-weight-low">Name</th>
-							<th class="font-weight-low">IAR No.</th>
-							<th class="font-weight-low">Action</th>
+							<tr>
+								<th class="font-weight-low">Property No.</th>
+								<th class="font-weight-low">Name</th>
+								<th class="font-weight-low">IAR No.</th>
+								<th class="font-weight-low">Action</th>
+							</tr>
 						</thead>
-						<tbody id="equiptabledata_unassigned"><tr><td colspan="5">No Data</td></tr></tbody>
+						<tbody id="equiptabledata_unassigned"><tr><td colspan="4">No Data</td></tr></tbody>
 					</table>
 				</div>
 			</div>
 		</div>
 		<div id="modal1" class="modal">
 			<div class="modal-content">
-				<h4 class="deafult-text font-weight-low"><blockquote>Add Property</blockquote></h4>
+				<blockquote><h4 class="deafult-text font-weight-low">Add Property</h4></blockquote>
 				<div class="row mt-br">
 					<div class='input-field col s12' id="prodlcca_select"></div>
 					<div class='input-field col s12' id="deptlcca_select"></div>
@@ -118,16 +124,18 @@
 		</div>
 		<div id="modal2" class="modal">
 			<div class="modal-content">
-				<h4 class="deafult-text font-weight-low"><blockquote>Assign Property</blockquote></h4>
+				<blockquote><h4 class="deafult-text font-weight-low">Assign Property</h4></blockquote>
 				<div class="row mt-br">
 					<table class="table bordered responsive-table centered">
 						<thead>
-							<th class="font-weight-low">PC No.</th>
-							<th class="font-weight-low">Name</th>
-							<th class="font-weight-low">Dept.</th>
-							<th class="font-weight-low">Receipt Qty.</th>
+							<tr>
+								<th class="font-weight-low">PC No.</th>
+								<th class="font-weight-low">Name</th>
+								<th class="font-weight-low">Dept.</th>
+								<th class="font-weight-low">Receipt Qty.</th>
+							</tr>
 						</thead>
-						<tbody id="assign_table"><tr><td colspan="6">No Data</td></tr></tbody>
+						<tbody id="assign_table"><tr><td colspan="4">No Data</td></tr></tbody>
 					</table>
 					<div class='input-field col s6' id="testing"></div>
 				</div>
@@ -139,18 +147,20 @@
 		</div>
 		<div id="modal3" class="modal">
 			<div class="modal-content">
-				<h4 class="deafult-text font-weight-low"><blockquote>Transfer Property</blockquote></h4>
+				<blockquote><h4 class="deafult-text font-weight-low">Transfer Property</h4></blockquote>
 				<div class="row mt-br">
 					<table class="table bordered responsive-table centered">
 						<thead>
-							<th class="font-weight-low">PC No.</th>
-							<th class="font-weight-low">Name</th>
-							<th class="font-weight-low">Dept.</th>
-							<th class="font-weight-low">Receipt Qty.</th>
+							<tr>
+								<th class="font-weight-low">PC No.</th>
+								<th class="font-weight-low">Name</th>
+								<th class="font-weight-low">Dept.</th>
+								<th class="font-weight-low">Receipt Qty.</th>
+							</tr>
 						</thead>
-						<tbody id="transfer_table"><tr><td colspan="6">No Data</td></tr></tbody>
+						<tbody id="transfer_table"><tr><td colspan="4">No Data</td></tr></tbody>
 					</table>
-					  <div class="input-field col s12 l6 offset-l3" id="testing2" ></div>
+					<div class="input-field col s12 l6 offset-l3" id="testing2" ></div>
 				</div>
 			</div>
 			<div class="modal-footer">
@@ -160,16 +170,18 @@
 		</div>
 		<div id="modal4" class="modal">
 			<div class="modal-content">
-				<h4 class="deafult-text font-weight-low"><blockquote>Dispose Property</blockquote></h4>
+				<blockquote><h4 class="deafult-text font-weight-low">Dispose Property</h4></blockquote>
 				<div class="row mt-br">
 					<table class="table bordered responsive-table centered">
 						<thead>
-							<th class="font-weight-low">PC No.</th>
-							<th class="font-weight-low">Name</th>
-							<th class="font-weight-low">Dept.</th>
-							<th class="font-weight-low">Receipt Qty.</th>
+							<tr>
+								<th class="font-weight-low">PC No.</th>
+								<th class="font-weight-low">Name</th>
+								<th class="font-weight-low">Dept.</th>
+								<th class="font-weight-low">Receipt Qty.</th>
+							</tr>
 						</thead>
-						<tbody id="disposal_table"><tr><td colspan="6">No Data</td></tr></tbody>
+						<tbody id="disposal_table"><tr><td colspan="4">No Data</td></tr></tbody>
 					</table>
 					<div class='input-field col s6' id="testing3"></div>
 				</div>
@@ -184,7 +196,7 @@
 	<script src="../../js/materialize.min.js"></script>
 	<script src="../../js/init.js"></script>
 	<script src="js/property_data.js"></script>
-		<script>
+	<script>
 		fetch_departments();
 		fetch_departments2();
 		fetch_departments3();
@@ -201,6 +213,5 @@
 		});
 	</script>
 	<script src="../../js/changing_color.js"></script>
-
 </body>
 </html>

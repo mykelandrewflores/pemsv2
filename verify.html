@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<link rel="stylesheet" href="css/materialize.min.css">
 	<link rel="stylesheet" href="class/font-awesome.min.css">
 	<link rel="stylesheet" href="css/style.css">
+	<script src="js/checkLogin.js"></script>
 	<title>Verify your Account</title>
 </head>
-<script src="js/checkLogin.js"></script>
 <body>
 	<div class="hero hero-dusk">
 		<div class="hero-caption">			
@@ -21,25 +21,24 @@
 							<input type="text" class="form-control grey-text text-darken-2 custom-input" id="vcode" name="username" placeholder="Enter Verification Code">
 							<span class="bar"></span>
 
-					       <br><button class="btn btn-lg primary right" onclick="verifyCode()" >Submit Verification Code</button>
+							<br><button class="btn btn-lg primary right" onclick="verifyCode()" >Submit Verification Code</button>
 						</div>
 					</div>
-					<div align="right">
-                        <br>
-                        <br>
-                        <a href="enteremail.html" class="blue-text">Resend Verification Code</a>        
-                        <br>
+					<div class="right-align">
+						<br>
+						<br>
+						<a href="enteremail.html" class="blue-text">Resend Verification Code</a>        
+						<br>
 						<a href="index.html" class="blue-text">Back</a>
 					</div>
 				</div>
-					<div class="clearfix"></div>
+				<div class="clearfix"></div>
 			</div>
 		</div>
 	</div>
-</body>
-<script src="js/jquery.min.js"></script>
-<script src="js/materialize.min.js"></script>
-<script src="js/init.js"></script>
-<script src="js/func.js"></script>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/materialize.min.js"></script>
+	<script src="js/init.js"></script>
+	<script src="js/func.js"></script>
 </body>
 </html>
