@@ -68,6 +68,7 @@ function insertAsset() {
 
     jsonObj = JSON.parse('{ "assetType":"' + aType + '", "noLifeCycle":"' + nLC + '"}');
     datas[0].assets.push(jsonObj);
+    console.log(datas[0].assets);
     console.log(datas);
     viewAssets();
     saveData();

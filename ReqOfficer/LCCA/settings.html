@@ -251,13 +251,6 @@
                     async: false
                 });
 
-                $.getJSON("http://localhost/pems/apis/myapi/select/tbl_lccalives/", function(data) {
-                    for (let i = 0; i < data.length; i++) {
-                        let jsonObj;
-                        jsonObj = JSON.parse('{ "assetType":"' + data[i].fldProdName + '", "noLifeCycle":"' + data[i].fldYears + '"}');
-                        datas[0].assets.push(jsonObj);
-                    }
-                });
 
 
                 for (let i = 0; i < datas[0].assets.length; i++) {

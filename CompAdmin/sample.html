@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    
+</head>
+<body>
+    
+    
+			<div id="responce">
+				
+			</div><!-- // response -->
+			
+			<input type="file" id="fileSelected"/>
+			<button id="btnUpload">Upload</button>
+    
+    
+    <script src="../js/jquery.min.js"></script>
+    <script>
+		var reader_offset = 0;		//current reader offset position
+			var buffer_size = 1024;		//
+			var pending_content = '';
+			
+			/**
+			* Read a chunk of data from current offset.
+			*/
+			function readAndSendChunk()
+			{
+				var reader = new FileReader();
+				var file = $('#fileSelected')[0].files[0];
+				reader.onloadend = function(evt){
+					
+					//check for end of file
+					if(evt.loaded == 0) return;
+					
+					//increse offset value
+					reader_offset += evt.loaded;
+					
+					//check for only complete line
+					var last_line_end = evt.target.result.lastIndexOf('\n');
+					var content = pending_content + evt.target.result.substring(0, last_line_end);
+					
+					pending_content = evt.target.result.substring(last_line_end+1, evt.target.result.length);
+					
+					//upload data
+					send(content);
+				};
+				var blob = file.slice(reader_offset, reader_offset + buffer_size);
+				reader.readAsText(blob);
+			}
+        
+			function send(data_chank)
+			{
+				$.ajax({
+					url: "service.php",
+					method: 'POST',
+					data: data_chank
+				}).done(function(response) {
+				
+					//show responce message received from server
+					$( '#responce' ).append(response);
+					
+					//try for next chank
+				});
+			}
+        
+			$(function(){
+				$('#btnUpload').click(function(){
+					reader_offset = 0;
+					pending_content = '';
+					readAndSendChunk();
+				});
+			});        
+			    
+    </script>
+</body>
+</html>

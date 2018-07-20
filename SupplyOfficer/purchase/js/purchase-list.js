@@ -17,9 +17,16 @@
             for (let i = 0; i < data.length; i++) {
 
                 if (data[i].fldCompanyID == localStorage.companyID) {
-
-
-                    longString += '<tr>';
+                    
+                    if(data[i].fldPurchaseRemarks == "Done"){
+                       longString += '<tr class="green white-text">';
+                    } else if(data[i].fldPurchaseRemarks == "For Order"){
+                       longString += '<tr class="grey darken-2 white-text">';
+                    } else if(data[i].fldPurchaseRemarks == "Decline"){
+                       longString += '<tr class="red darken-2 white-text">';
+                    } else {
+                       longString += '<tr>';
+                    }
                     longString += '<td>' + data[i].fldPrNo + '</td>';
                     longString += '<td>' + data[i].fldDept + '</td>';
                     longString += '<td>' + formDNow(new Date(data[i].fldDate)) + '</td>';
@@ -89,6 +96,8 @@
                 longString += "<tr style='text-align:right' id='btnConf'><td><button class='btn btn-large blue modal-trigger' href='#modal1' type='button'><i class='fa fa-send'></i> Generate Purchase Order</button></td><tr>";         
                 $("#items").html(longString);
             });
+            $("#pdfFile").attr("src", myUrl + "/lccafiles/"+val+".pdf");
+            $("#attch").css("display", "block");
         }
 
         function getitemApproved(val) {

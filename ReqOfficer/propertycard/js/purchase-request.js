@@ -6,7 +6,7 @@ var req_item = [];
 $("#company_id").val(localStorage.companyID);
 $("#user_id").val(localStorage.userID);
 
-function formatDate(date) {
+function formatDate(date, lval) {
     var d = new Date(date),
     month = '' + (d.getMonth() + 1),
     day = '' + d.getDate(),
@@ -14,9 +14,10 @@ function formatDate(date) {
     if (month.length < 2) month = '0' + month;
     if (day.length < 2) day = '0' + day;
 
-    var val = Math.floor((Math.random() * 1000) + 1);
-
-    return [year + '-' + month + '-' + val];
+    var mval = parseInt(lval)+1;
+    
+    console.log(mval);
+    return [year + '-' + month + '-' + mval];
 }
 
 function setData() {
@@ -26,9 +27,14 @@ function setData() {
     method: 'GET',
     dataType: 'JSON',
     success: function (data) {
+        var lastVal = ";"
         data.forEach(function(i) {
-            $('#curdate_request').val(formatDate(new Date) + i.fldTransactionNo)     
+            lastVal = i.fldPrNo;
         });
+        
+        console.log(lastVal);
+        var splVal = lastVal.split("-");
+        $('#curdate_request').val(formatDate(new Date, splVal[2]));     
     }
 });
 }
@@ -176,7 +182,6 @@ $(document).ready(function () {
                 M.toast({
                     html: 'Succefully Request!'
                 });     
-                setData();
                 $('#request_purpose').val('');
                 req_item = [];
                 getItems();
@@ -202,8 +207,9 @@ $(document).ready(function () {
                 console.log(data);
             }
         });
-        /*
-        window.location.assign("purchase-list.html");*/
+        
+        setData();
+        window.location.assign("purchase-list.html");
     })
 });
 
