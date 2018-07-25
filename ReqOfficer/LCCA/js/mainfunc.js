@@ -78,10 +78,10 @@ function getDataItems() {
     $.ajaxSetup({
         async: false
     });
-    $.getJSON("http://localhost/pems/apis/myapi/select/tbl_lccalives/", function (data) {
+    $.getJSON("http://gordoncollegeccs-ssite.net/pems/apis/myapi/select/tbl_lccasset/fldUserID/"+localStorage.companyID, function (data) {
         for (let i = 0; i < data.length; i++) {
             let jsonObj;
-            jsonObj = JSON.parse('{ "assetType":"' + data[i].fldProdName + '", "noLifeCycle":"' + data[i].fldYears + '"}');
+            jsonObj = JSON.parse('{ "assetType":"' + data[i].fldAssetType + '", "noLifeCycle":"' + data[i].fldYrs + '"}');
             datas[0].assets.push(jsonObj);
         }
     });
