@@ -669,7 +669,7 @@ function DeleteEquipData(equipid){
            $('#upload_csv').on("submit", function(e){  
                 e.preventDefault(); //form will not submitted  
                 $.ajax({  
-                     url:"js/import.php",  
+                     url:myUrl+"/propertycard/propertyapi/import.php",  
                      method:"POST",  
                      data:new FormData(this),  
                      contentType:false,          // The content type used when sending data to the server.  
