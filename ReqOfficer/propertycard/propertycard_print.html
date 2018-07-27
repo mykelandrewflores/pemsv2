@@ -1,161 +1,187 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title></title>
-	<style type="text/css">
-		.summary-container{
-			font-family: calibri;
-			width: 90%;
-			margin: 0 auto;
-			border: 2px solid black;
-			text-align: left;
-		}
-		.summary-container h1 {
-			font-size: 25px;
-		}
-		.summary-container h2 {
-			font-size: 22px;
-		}
-		.summary-container h3 {
-			font-size: 19px;
-		}
-		.summary-container h4 {
-			font-size: 16px;
-		}
-		.summary-container h5 {
-			font-size: 13px;
-		}
-		.summary-container h6 {
-			font-size: 10px;
-		}
-		.summary-header{
-			height: 100px;
-			border-bottom: 2px solid black;
-			text-align: center;
-		}
-		.summary-header h1, .summary-header h6{
-			margin: 0;
-			margin-top: 1px;
-		}
-		.summary-header .propertyAgency{
-			border-bottom: 1px solid black;
-			width: 70%;
-			margin: 0 auto;
-			margin-top: 5px;
-		}
-		.summary-details {
-			width: 100%;
-			height: 80px;
-			padding: 0 2px;
-			padding-top: 10px;
-		}
-		.summary-details h3{
-			margin: 0;
-		}
-		.summary-details .department-details{
-			width: 50%;
-			float: left;
-		}
-		.summary-details .order-details{
-			width: 40%;
-			float: left;
-			/*border-left: 1px solid black;*/
-			padding-left: 10px;
-
-		}
-		.summary-details .indent{
-			padding-left: 20px;
-			font-size: 16px;
-		}
-		.summary-details .date{
-			width: 20%;
-			float: left;
-		}
-		.tablee {
-			width: 100%;
-			margin: 0 auto;
-		}
-		.tablee, th, td {
-		    border: 1px solid black;
-		    border-collapse: collapse;
-		}
-		.tablee th, td {
-		    /*padding: 15px;*/
-		}
-		.summary-purpose {
-			width: 100%;
-			height: 90px;
-			padding: 0 2px;
-			padding-top: 10px;
-		}
-		.summary-purpose h3{
-			margin: 0;	
-		}
-		.summary-purpose .purpose {
-			text-decoration: underline;
-		}
-		.summary-by {
-			height: 90px;
-			padding: 0 2px;
-			border-top: 2px solid black;
-			text-align: center;
-		}
-		.summary-by .signature, .summary-by .requestedBy, .summary-by .approvedBy {
-			width: 33%;
-			float: left;
-			margin: 0;
-		}
-		.summary-by .person {
-			width: 90%;
-			border-bottom: 1px solid black;
-			margin: 0 auto;
-			font-size: 14px;
-		}
-		.summary-by .person span{
-			font-size: 10px;
-		}
-	</style>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="shortcut icon" href="../../image/LOGO.png" />
+	<link rel="stylesheet" href="../../css/materialize.min.css">
+	<link rel="stylesheet" href="../../css/font-awesome.min.css">
+	<link rel="stylesheet" href="../../css/style.css">
+	<title>Property Card</title>
 </head>
-<body>
-<div id="mybody">
-	<div class="summary-container">
-		<div class="summary-header">
-			<b><h1>Property Card</h1></b>
-			<h2 id="propertyAgency" class="propertyAgency"></h2>
-			<b><h6>AGENCY</h6></b>
+<body class="cloudy">
+	<header class="padded">
+		<div class="navbar-fixed">
+			<nav class="white">
+				<div class="nav-wrapper">
+					<ul class="left">
+						<li><a id="toggleNav"  style="display: block" class="sidenav-trigger grey-text waves-effect" data-target="slide-out"><i class="fa fa-bars" aria-hidden="true"></i></a></li>
+						<li><span class="deafult-text dtime-now">Date/Time</span></li>
+						<li><span class="deafult-text hide" id="comp_name_navbar">Company/PEMS</span></li>
+					</ul>
+					<div class="container nav-container">
+						<ul class="right">
+							<li><a ><i class="fa fa-bell grey-text"></i></a></li>
+							<li><a ><img src="../../image/avatar.jpg" alt="avatar" class="circle" style="margin-top:15px" width="30" /></a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
 		</div>
-		<div class="summary-details">
-			<div class="department-details">
-				<h3><b>Property,Plant and Equipment:</b> <br> <span id="propertyName" class="indent"></span></h3>
-				<br>
-				<h3><b>Description:</b> <br> <span id="propertyDesc" class="indent"></span></h3>
-			</div>
-			<div class="order-details">
-				<h3><b>Property Number:</b> <br> <span id="propertyNo" class="indent"></span></h3>
-				<br>
-				<h3>Department: <br> <span class="indent" id="propertyDept"></span></h3>
+		<ul class="sidenav sidenav-fixed" id="slide-out">
+			<li class="z-depth-2 white center" id="toggle_header_sidenav" style="height: 64px;font-size: 20px;"><span class="deafult-text" id="comp_name_sidenav">Company/PEMS</span></li>
+			<li><div class="user-view">
+				<div class="background primary">
+					<img src="../../image/bg.jpg" class="responsive-img" alt="bg-logo"  style="opacity: 0.1;margin-top:-55px;" id="sidepanel_bg" />
+				</div>
+				<a href="#user"><img class="circle" src="../../image/avatar.jpg" alt="avatar-next"></a>
+				<a href="#name"><span class="white-text name" id="name">Employee Name</span></a>
+				<a href="#email"><span class="white-text email" id="dept">Department</span></a>
+			</div></li>
+			<li><a class="subheader">Functions</a></li>
+			<li><a href="../IAR/index.html"><i class="fa fa-file-text-o" aria-hidden="true"></i> Inspection and Acceptance</a></li>
+			<li  class="active active-link"><a href="#!"><i class="fa fa-file-o" aria-hidden="true"></i> Property Management</a></li>
+			<li ><a href="../purchase/purchaselist.html"><i class="fa fa-file" aria-hidden="true"></i> Purchase Management</a></li>
+			<li onclick="logOut()"><a href="#"><i class="fa fa-power-off" aria-hidden="true"></i> Log-out</a></li>
+		</ul>
+	</header>
+	<div id="modal1" class="modal modal-fixed-footer">
+		<div class="modal-content">
+			<blockquote><h4 class="deafult-text font-weight-low">Add Property Data</h4></blockquote>
+			<div class="row mt-br">
+				<div class="input-field col s12 m6 l6">
+					<input id="pc_agency" type="text" class="validate" placeholder="@John Doe Agency">
+					<label for="pc_agency">Agency Name</label>
+				</div>
+				<div class="input-field col s12  m6 l6">
+					<input id="pc_dept" type="text" class="validate" placeholder="@ e.g (MIS, HR)">
+					<label for="pc_dept">Department</label>
+				</div>
+				<div class="input-field col s12  m6 l6">
+					<input id="pc_date" type="text" class="validate" placeholder="@Month/Day/Year">
+					<label for="pc_date">Date</label>
+				</div>
+				<div class="input-field col s12 m6 l6">
+					<input id="pc_refno" type="text" class="validate" placeholder="@INV14223">
+					<label for="pc_refno">Reference No.</label>
+				</div>
+				<div class="input-field col s12 m6 l6">
+					<input id="pc_rcptqty" type="text" class="validate" placeholder="@2">
+					<label for="pc_rcptqty">Receipt Qty.</label>
+				</div>
+				<div class="input-field col s12 m6 l6">
+					<input id="pc_tdqty" type="text" class="validate" placeholder="@5">
+					<label for="pc_tdqty">Transfer/Disposal Qty.</label>
+				</div>
+				<div class="input-field col s12 m6 l6">
+					<input id="pc_office" type="text" class="validate" placeholder="@John Doe Office">
+					<label for="pc_office">Office</label>
+				</div>
+				<div class="input-field col s12 m6 l6">
+					<input id="pc_balqty" type="text" class="validate" placeholder="@4">
+					<label for="pc_balqty">Balance Qty.</label>
+				</div>
 			</div>
 		</div>
-		<table class="tablee">
-			<b><tr>
-				<th>Date</th>
-				<th>Reference</th>
-				<th>Receipt Qty.</th>
-				<th>Transfer/Disposal Qty.</th>
-				<th>Transfer/Disposal Office</th>
-			</tr></b>
-			<tbody id="propertyList"></tbody>
-		</table>
+		<div class="modal-footer">
+			<button class="btn green" onclick="AddPropData()">Add Property Data</button>
+			<a href="#!" class="modal-close waves-effect btn-flat">Cancel</a>
+		</div>
 	</div>
-</div>
-</body>
-<script src="../../js/jquery.min.js"></script>
-<script src="../../js/init.js"></script>
-<script src="../../SupplyOfficer/propertycard/js/property_data.js"></script>
-<script type="text/javascript">
-	pcdata_reqofficer();
-</script>
-<script type="text/javascript" src="../../SupplyOfficer/propertycard/js/jspdf.min.js"></script>
-<script type="text/javascript" src="../../SupplyOfficer/propertycard/js/printPdf.js"></script>
 
-</html>
+	<div id="modal2" class="modal">
+		<div class="modal-content">
+			<h4 class="deafult-text font-weight-low">Transfer Property</h4>
+			<div class="row">
+				<div class="input-field col s12">
+					<input id="pc_agency" type="text" class="validate">
+					<label for="pc_agency">Agency Name</label>
+				</div>
+				<div class="input-field col s12">
+					<input id="pc_dept" type="text" class="validate">
+					<label for="pc_dept">Department</label>
+				</div>
+				<div class="input-field col s12">
+					<input id="pc_date" type="text" class="validate">
+					<label for="pc_date">Date</label>
+				</div>
+				<div class="input-field col s12">
+					<input id="pc_refno" type="text" class="validate">
+					<label for="pc_refno">Reference No.</label>
+				</div>
+				<div class="input-field col s12">
+					<input id="pc_rcptqty" type="text" class="validate">
+					<label for="pc_rcptqty">Receipt Qty.</label>
+				</div>
+				<div class="input-field col s12">
+					<input id="pc_tdqty" type="text" class="validate">
+					<label for="pc_tdqty">Transfer/Disposal Qty.</label>
+				</div>
+				<div class="input-field col s12">
+					<input id="pc_office" type="text" class="validate">
+					<label for="pc_office">Office</label>
+				</div>
+				<div class="input-field col s12">
+					<input id="pc_balqty" type="text" class="validate">
+					<label for="pc_balqty">Balance Qty.</label>
+				</div>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<button class="btn  darken-3" onclick="AddPropData()">Add Property Data</button>
+			<a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+		</div>
+	</div>
+	<main>
+		<div class="container mt-1">
+			<span class="deafult-text font-weight-low">
+				<blockquote class="default-text"><h4>Property  
+					<span id="sel_name"></span></h4>
+					<h5>IAR No. <span id="sel_iarno">00000</span><br><span>Property No. <span id="sel_recid">000</span></span>
+						</>
+					</blockquote>
+				</span>
+				<div class="row">
+					<div class="col s12">
+						<a class="btn waves-effect waves-light left btn-flat white-text modal-trigger" href="index.html"><i class="fa fa-arrow-left fa-small"></i> Back</a>
+					</div>                    
+					<div class="col s12">
+						<a class="waves-effect waves-light right btn-flat blue-text modal-trigger" href="propertycard_print.html"><i class="fa fa-print left"></i>Print Preview</a>
+						<a class="waves-effect waves-light right btn-flat green-text modal-trigger" href="#modal1"><i class="fa fa-plus left"></i>Add Data</a>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col s12">
+						<table class="table centered responsive-table">
+							<thead>
+								<tr>
+									<th class="font-weight-low">Date</th>
+									<th class="font-weight-low">Ref No.</th>
+									<th class="font-weight-low">Receipt Qty</th>
+									<th class="font-weight-low">Brand</th>
+									<th class="font-weight-low">Department</th>
+									<th class="font-weight-low">Remarks</th>
+									<th class="font-weight-low">Action</th>
+								</tr>
+							</thead>
+							<tbody id="proptabledata"></tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</main>
+		<script src="../../js/jquery.min.js"></script>
+		<script src="../../js/materialize.min.js"></script>
+		<script src="../../js/init.js"></script>
+		<script src="../../js/changing_color.js"></script>
+		<script src="../../SupplyOfficer/propertycard/js/property_data.js"></script>
+		<script>
+			userLoginCheck();   
+			$.getJSON(myUrl+"/myapi/select/tbl_user/fldUserID/" + localStorage.userID, function(data) {
+				document.getElementById('name').innerHTML = data[0].fldFname + " " + data[0].fldLname;
+				document.getElementById('dept').innerHTML = data[0].fldDepartment;
+			});
+			proptable();
+		</script>
+	</body>
+	</html>
