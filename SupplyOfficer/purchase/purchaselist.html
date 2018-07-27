@@ -69,7 +69,7 @@
 			</div>
 			<div id="attch" style="display: none">
 				<blockquote class="default-text"><h4 class="deafult-text font-weight-low">Attachment</h4></blockquote>
-				<embed src="#" id="pdfFile" width="800px" height="400px" />
+				<embed src="#" id="pdfFile" width="800" height="400" />
 			</div>    
 		</div>
 	</main>
@@ -83,9 +83,9 @@
 						<div class="left-con" style="float: left; width: 45%; margin-right: 5px;">
 							<h6 class="font-weight-low">ORDER DETAILS</h6><br>
 							<input placeholder="Placeholder" id="supplier" type="text" class="validate" required>
-							<label for="first_name">Supplier</label>
+							<label for="supplier">Supplier</label>
 							<input placeholder="Placeholder" id="address" type="text" class="validate" required>
-							<label for="first_name">Address</label>
+							<label for="address">Address</label>
 							<div class="input-field col s12">
 								<select required id="modeOfProcurement">
 									<option value="" disabled selected>Choose your option</option>
@@ -102,9 +102,9 @@
 						<div class="right-con" style="float: left; width: 45%; margin-left: 5px;">
 							<h6 class="font-weight-low">DELIVERY DETAILS</h6><br>
 							<input placeholder="Placeholder" id="placeOfDelivery" type="text" class="validate" required>
-							<label for="first_name">Place of Delivery</label>
+							<label for="placeOfDelivery">Place of Delivery</label>
 							<input type="date" id="dateOfDelivery" required>
-							<label for="first_name">Date of Delivery</label>
+							<label for="dateOfDelivery">Date of Delivery</label>
 							<div class="input-field col s12">
 								<select required id="deliveryTerm">
 									<option value="" disabled selected>Choose your option</option>
@@ -121,7 +121,7 @@
 									<option value="Cost, Insurance and Freight">Cost, Insurance and Freight</option>
 								</select>
 							</div>
-							<label for="first_name">Delivery Term</label>
+							<label>Delivery Term</label>
 							<div class="input-field col s12">
 								<select required id="paymentTerm">
 									<option value="" disabled selected>Choose your option</option>
@@ -148,7 +148,7 @@
 									<option value="Stage Payment">Stage Payment</option>
 								</select>
 							</div>
-							<label for="first_name">Payment Term</label>
+							<label for="paymentTerm">Payment Term</label>
 						</div>
 					</form>
 				</div>
@@ -198,14 +198,12 @@
 			</div>
 			<table class="table responsive-table centered">
 				<tr>
-					<b>
-						<th>PR No</th>
-						<th>Unit</th>
-						<th>Item Description</th>
-						<th>Quantity</th>
-						<th>Unit Cost</th>
-						<th>Total Cost</th>
-					</b>
+					<th>PR No</th>
+					<th>Unit</th>
+					<th>Item Description</th>
+					<th>Quantity</th>
+					<th>Unit Cost</th>
+					<th>Total Cost</th>
 				</tr>
 				<tbody id="itemsList2">
 
@@ -214,19 +212,18 @@
 			<div class="summary-details-3">
 				<h3>&nbsp;&nbsp;In case of failure to make the full delivery within the time specified above, a penalty of one-tenth (1/10) for every day of delay shall be imposed.</h3>
 				<div class="supplier-signature">
-					<b><h3>Conforme:</h3></b>
+					<h3><b>Conforme:</b></h3>
 					<h3 class="person"><span>SIGNATURE OVER PRINTED NAME OF SUPPLIER</span></h3>
 					<h3 class="person"><span>DATE</span></h3>
 				</div>
 				<div class="official-signature">
-					<b><h3>Very truly yours,</h3></b>
-					<!-- <div class="margin"></div>  -->
+					<h3><b>Very truly yours,</b></h3>
 					<h3 class="person"><span>SIGNATURE OVER PRINTED NAME</span></h3>
 				</div>
 			</div>
 			<div class="summary-by">
 				<div class="funds-available">
-					<b><h3>Funds Available:</h3></b><br>
+					<h3><b>Funds Available:</b></h3><br>
 					<h3 class="person"><span>CHIEF ACCOUNTANT</span></h3>
 				</div>
 				<div class="alobs">
@@ -238,9 +235,9 @@
 	</div>        
 	<div class="summary-container" id="printDiv" style="margin: 10px auto; display: none;">
 		<div class="summary-header">
-			<b><h1>PURCHASE ORDER</h1></b>
+			<h1><b>PURCHASE ORDER</b></h1>
 			<h2 id="purchaseAgency">SAMPLE AGENCY</h2>
-			<b><h6>AGENCY</h6></b>
+			<h6><b>AGENCY</b></h6>
 		</div>
 		<div class="summary-details">
 			<div class="supplier-details-1">
@@ -268,34 +265,31 @@
 			</div>
 		</div>
 		<table class="table responsive-table centered">
-			<b><tr>
+			<tr>
 				<th>PR No</th>
 				<th>Unit</th>
 				<th>Item Description</th>
 				<th>Quantity</th>
 				<th>Unit Cost</th>
 				<th>Total Cost</th>
-			</tr></b>
-			<tbody id="itemsList">
-
-			</tbody>
+			</tr>
+			<tbody id="itemsList"></tbody>
 		</table>
 		<div class="summary-details-3">
 			<h3>&nbsp;&nbsp;In case of failure to make the full delivery within the time specified above, a penalty of one-tenth (1/10) for every day of delay shall be imposed.</h3>
 			<div class="supplier-signature">
-				<b><h3>Conforme:</h3></b>
+				<h3><b>Conforme:</b></h3>
 				<h3 class="person"><span>SIGNATURE OVER PRINTED NAME OF SUPPLIER</span></h3>
 				<h3 class="person"><span>DATE</span></h3>
 			</div>
 			<div class="official-signature">
-				<b><h3>Very truly yours,</h3></b>
-				<!-- <div class="margin"></div>  -->
+				<h3><b>Very truly yours,</b></h3>
 				<h3 class="person"><span>SIGNATURE OVER PRINTED NAME</span></h3>
 			</div>
 		</div>
 		<div class="summary-by">
 			<div class="funds-available">
-				<b><h3>Funds Available:</h3></b><br>
+				<h3><b>Funds Available:</b></h3><br>
 				<h3 class="person"><span>CHIEF ACCOUNTANT</span></h3>
 			</div>
 			<div class="alobs">
