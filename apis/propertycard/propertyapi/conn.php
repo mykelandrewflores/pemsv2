@@ -90,12 +90,12 @@ class con{
 		return $this;
 	}
 	function durationmy($tblone,$tbltwo,$idone,$idtwo,$idthree,$value1){
-		$this->string="SELECT * FROM $tblone,$tbltwo WHERE $tblone.$idone = $tbltwo.$idtwo AND $tbltwo.$idthree = $value1";
+		$this->string="SELECT * FROM $tblone,$tbltwo WHERE $tblone.$idone = $tbltwo.$idtwo AND $tbltwo.$idthree = $value1 ORDER BY $tbltwo.fldRecID DESC";
 		return $this;
 	}
 	function duration1($tblone,$tbltwo,$idone,$idtwo,$idthree,$value1,$idfour,$value2){
 	
-		$this->string="SELECT * FROM $tblone,$tbltwo WHERE $tblone.$idone = $tbltwo.$idtwo AND $tbltwo.$idthree = $value1 AND $tbltwo.$idfour = '$value2'";
+		$this->string="SELECT * FROM $tblone,$tbltwo WHERE $tblone.$idone = $tbltwo.$idtwo AND $tbltwo.$idthree = $value1 AND $tbltwo.$idfour = '$value2'  ORDER BY $tbltwo.fldRecID DESC";
 		return $this;
 	}
 	function UACtable($tblone,$tbltwo,$tblthree,$idone,$idtwo,$idthree,$position,$module){
