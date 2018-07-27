@@ -1,4 +1,6 @@
 var myUrl = "http://gordoncollegeccs-ssite.net/pems/apis";
+// var myUrl = "http://localhost/pems/apis";
+
 $(document).ready(function(){
 	$('select').formSelect();
 });

@@ -15,7 +15,7 @@ function fetch_lccaprod(){
 	url=myUrl+"/propertycard/propertyapi/tbl_lccalives";
 	$.getJSON(url,function(data){
 			var body = ''
-			body+='<select id="lccaprod_select"> <option value="" disabled selected>Choose Product Name</option>';
+			body+='<select id="lccaprod_select" class="browser-default"> <option value="" disabled selected>Choose Product Name</option>';
 			for(var i = 0; i<data.length; i++) {
 				body+='<option value="'+data[i].fldProdID+'">'+data[i].fldProdName+'</option>';
 			}
@@ -31,7 +31,7 @@ function fetch_lccadepartments(){
 	url=myUrl+"/propertycard/propertyapi/tbl_departments/fldCompanyID/"+localStorage.companyID;
 	$.getJSON(url,function(data){
 			var body = ''
-			body+='<select id="lccadept_select" browser-default> <option value="" disabled selected>Choose Department</option>';
+			body+='<select id="lccadept_select" class="browser-default"> <option value="" disabled selected>Choose Department</option>';
 			for(var i = 0; i<data.length; i++) {
 				body+='<option value="'+data[i].fldDepartmentName+'">'+data[i].fldDepartmentName+'</option>';
 			}
@@ -665,8 +665,35 @@ function DeleteEquipData(equipid){
 
 }
 
+      $(document).ready(function(){  
+           $('#upload_csv').on("submit", function(e){  
+                e.preventDefault(); //form will not submitted  
+                $.ajax({  
+                     url:myUrl+"/propertycard/propertyapi/import.php",  
+                     method:"POST",  
+                     data:new FormData(this),  
+                     contentType:false,          // The content type used when sending data to the server.  
+                     cache:false,                // To unable request pages to be cached  
+                     processData:false,          // To send DOMDocument or non processed data file it is set to false  
+                     success: function(data){  
+                     	M.toast({html: 'CSV Import Successful'});
+						equiptable();
+						equiptable_assigned();
+						equiptable_unassigned();
+                     }  
+                })  
+           });  
+      }); 
+
 
 function AddEquipData(){
+
+	if( document.getElementById("employee_file").files.length == 0 ){
+    console.log("no files selected");
+
+	}else{
+
+	}
 
 	let fldIarNo = "IAR00000";
 	let fldAgency = localStorage.companyID;
@@ -691,6 +718,8 @@ function AddEquipData(){
 	equiptable_assigned();
 	equiptable_unassigned();
 }
+
+
 
 function AddPropData(){
 

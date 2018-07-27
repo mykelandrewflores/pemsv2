@@ -1,9 +1,10 @@
 <?php 	
+header('Access-Control-Allow-Origin: *');
 $content = file_get_contents('php://input');
 $lines = explode("\n", $content);
 $db = mysqli_connect("localhost", "u687158084_arnie", "", "u687158084_pems");
 $userid = $_GET['user'];
-$tblnme = $_GET['tbl'];
+$tblnme = $_GET['tblnme'];
 foreach($lines as $line){
     $csv_row = str_getcsv($line);
     //save data into database
@@ -14,13 +15,14 @@ foreach($lines as $line){
     	$longString .= "'" .$lne . "'";
  		$longString .= ", ";
     }
-    $longString .= "$userid";
+
+    $longString .= $userid;
     if($tblnme == "tbl_lccasset"){
-    	$sql = "INSERT INTO $tblnme (fldAssetType, fldYrs, fldUserID) VALUES ($longString)";
+    	$sql = "INSERT INTO " . $tblnme . "(fldAssetType, fldYrs, fldUserID) VALUES ($longString)";
     } else {
-    	$sql = "INSERT INTO $tblnme (fldCostName, fldCostType, fldCostValue, fldUserID) VALUES ($longString)";
+    	$sql = "INSERT INTO " . $tblnme . "(fldCostName, fldCostType, fldCostValue, fldUserID) VALUES ($longString)";
     }
-    $db->query($sql);
+    echo $sql;
 }
 file_put_contents("filename.txt", $longString);
 echo $longString;

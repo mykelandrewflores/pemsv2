@@ -1,4 +1,6 @@
 <?php 	
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Headers: *');
 $content = file_get_contents('php://input');
 $lines = explode("\n", $content);
 $db = mysqli_connect("localhost", "u687158084_arnie", "", "u687158084_pems");

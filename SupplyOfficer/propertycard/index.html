@@ -108,20 +108,39 @@
 		</div>
 		<div id="modal1" class="modal">
 			<div class="modal-content">
-				<blockquote><h4 class="deafult-text font-weight-low">Add Property</h4></blockquote>
-				<div class="row mt-br">
-					<div class='input-field col s12' id="prodlcca_select"></div>
-					<div class='input-field col s12' id="deptlcca_select"></div>
+				<blockquote><h5 class="deafult-text font-weight-low">Import Property CSV File</h5></blockquote>
+				<!-- <div class="row">
+					<div class='input-field col s12 m6 l6' id="prodlcca_select"></div>
+					<div class='input-field col s12 m6 l6' id="deptlcca_select"></div>
 					<div class="input-field col s12">
 						<input id="lccarecqty" type="number" min="0">
 						<label for="lccarecqty">Receipt/Received Qty</label>
 					</div>
+				</div> -->
+				<div class="divider"></div>
+				<div class="row">
+					<!-- <blockquote ><h6 class="deafult-text font-weight-low">Import Property CSV File</h6></blockquote> -->
+				    <form id="upload_csv" method="post" enctype="multipart/form-data"> 
+                     <!-- <div class="col-md-4">  
+                          <input type="file" name="employee_file" style="margin-top:15px;" />  
+                     </div>   -->
+                     <div class="file-field input-field col s12">
+					      <div class="btn">
+					        <span>CSV FILE</span>
+					        <input type="file" name="employee_file" id="employee_file">
+					      </div>
+					      <div class="file-path-wrapper">
+					        <input class="file-path validate" type="text">
+					      </div>
+					    </div>
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button class="btn red" onclick="AddEquipData()">Add Property</button>
+				<!-- <button class="btn red" onclick="AddEquipData()">Add Property</button> -->
+				<input type="submit" name="upload" id="upload" value="Upload" style="margin-top:10px;" class="btn" />  
 				<a href="#!" class="modal-close waves-effect waves-black btn-flat">Cancel</a>
 			</div>
+                </form>  
 		</div>
 		<div id="modal2" class="modal">
 			<div class="modal-content">

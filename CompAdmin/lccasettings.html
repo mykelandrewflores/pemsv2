@@ -145,9 +145,9 @@
                     <div class="center col s12">
                         <h6><i class="fa fa-cogs"></i> Upload your Costs</h6>
                                 <small><strong>*Only accepts .csv format</strong></small><br>
-								<button id="fileBtn" class="btn center"><i class="fa fa-upload"></i> Upload</button>
+								<button id="fileBtnC" class="btn center"><i class="fa fa-upload"></i> Upload</button>
 							<div class="file-field input-field">
-								<input type="file" id="myFile" accept=".csv">
+								<input type="file" id="myFileC" accept=".csv">
 								<div class="btn green" style="display:none;">
 									<span>Attacment</span>
 								</div>
@@ -387,7 +387,7 @@
         
             $('#fileBtnC').click(function( e ) {
                 e.preventDefault();
-                $('#myFile').trigger('click');
+                $('#myFileC').trigger('click');
             });
 
             $('#myFileC').on( 'change', function() {
@@ -416,7 +416,8 @@
 			function readAndSendChunk(val)
 			{
 				var reader = new FileReader();
-				var file = $('#myFile')[0].files[0];
+
+				var file = (val == "tbl_lccacosts" ? $('#myFileC')[0].files[0] : $('#myFileC')[0].files[0]);
 				reader.onloadend = function(evt){
 					
 					//check for end of file
@@ -441,13 +442,14 @@
 			function send(data_chank, val)
 			{
 				$.ajax({
-					url: myUrl + "/mservice.php?user="+localStorage.companyID+"&tblnme="+val,
+					url: myUrl + "/service.php?user="+localStorage.companyID+"&tblnme="+val,
 					method: 'POST',
 					data: data_chank
 				}).done(function(response) {
 				
 					getData();
 					//try for next chank
+                    window.location.assign("lccasettings.html");
 				});
                 
 			}
