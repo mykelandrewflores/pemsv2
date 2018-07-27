@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<title>PEMS Company Register</title>
 	<meta charset="UTF-8">
@@ -9,21 +9,23 @@
 	<link rel="stylesheet" type="text/css" href="css/materialize.min.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<script src="js/checkLogin.js"></script>
-</head>
-<style>
-.bg-register {
-	background: #00c9ff;
-	background: -webkit-linear-gradient(to right, #00c9ff, #92fe9d);
-	background: linear-gradient(to right, #00c9ff, #92fe9d);
-}
+	<style>
+	.bg-register {
+		background: #00c9ff;
+		background: -webkit-linear-gradient(to right, #00c9ff, #92fe9d);
+		background: linear-gradient(to right, #00c9ff, #92fe9d);
+	}
 </style>
+</head>
 <body>
 	<div class="bg-register">
 		<div class="container">
 			<div class="z-depth-1 grey lighten-4" style="padding: 30px 35px">
-				<h4 class="deafult-text mt-br">
-					<blockquote><b>Register your Company</b></blockquote>
-				</h4>
+				<blockquote>
+					<h4 class="deafult-text mt-br">
+						<b>Register your Company</b>
+					</h4>
+				</blockquote>
 				<form id="form_request">
 					<div class='row mt-1'>
 						<div class="col s12">
@@ -40,10 +42,10 @@
 								</div>
 							</div>
 							<div class="col s6 m3 l3 offset-s3 ">
-								<img id="comp_logo" class="responsive-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIGlkPSJMYXllcl8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDUwOS4yODcgNTA5LjI4NyIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTA5LjI4NyA1MDkuMjg3OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiIGNsYXNzPSIiPjxnPjxjaXJjbGUgc3R5bGU9ImZpbGw6IzRGNTU2NSIgY3g9IjI1NC42NDQiIGN5PSIyNTQuNjQ0IiByPSIyNTQuNjQ0IiBkYXRhLW9yaWdpbmFsPSIjRjA1ODJGIiBjbGFzcz0iYWN0aXZlLXBhdGgiIGRhdGEtb2xkX2NvbG9yPSIjRjA1ODJGIj48L2NpcmNsZT48cGF0aCBzdHlsZT0iZmlsbDojRkNGQ0ZEOyIgZD0iTTQwNC41MTQsNzguMzI2aC0yOTkuNzRjLTE0LjU4LDAtMjYuNDQ4LDExLjg2OC0yNi40NDgsMjYuNDQ4djI5OS43NCAgYzAsMTQuNTgsMTEuODY4LDI2LjQ0OCwyNi40NDgsMjYuNDQ4aDI5OS43NGMxNC41OCwwLDI2LjQ0OC0xMS44NjgsMjYuNDQ4LTI2LjQ0OHYtMjk5Ljc0ICBDNDMwLjk2Miw5MC4xOTMsNDE5LjA5NCw3OC4zMjYsNDA0LjUxNCw3OC4zMjZ6IiBkYXRhLW9yaWdpbmFsPSIjRkNGQ0ZEIiBjbGFzcz0iIj48L3BhdGg+PHBvbHlnb24gc3R5bGU9ImZpbGw6IzZFQjFFMTsiIHBvaW50cz0iMjQ5LjIxOSwyNjMuMTIxIDMzMi45NywxNzkuMDMgMzk4LjA3MiwyNDQuMTMyIDM5OC4wNzIsMTA3LjgyNSAxMTEuMjE2LDEwNy44MjUgICAxMTEuMjE2LDI3NS42NjYgMTg2LjQ5LDIwMC4zOTIgIiBkYXRhLW9yaWdpbmFsPSIjNkVCMUUxIj48L3BvbHlnb24+PHBvbHlnb24gc3R5bGU9ImZpbGw6IzRGNTU2NTsiIHBvaW50cz0iMzMyLjk3LDE3OS4wMyAyNDkuMjE5LDI2My4xMjEgMTg2LjQ5LDIwMC4zOTIgMTExLjIxNiwyNzUuNjY2IDExMS4yMTYsMzUwLjYwMSAgIDM5OC4wNzIsMzUwLjYwMSAzOTguMDcyLDI0NC4xMzIgIiBkYXRhLW9yaWdpbmFsPSIjNEY1NTY1IiBjbGFzcz0iIj48L3BvbHlnb24+PGNpcmNsZSBzdHlsZT0iZmlsbDojRkZGRkZDIiBjeD0iMjUyLjI3IiBjeT0iMTY2LjQ4NSIgcj0iMjUuMDkxIiBkYXRhLW9yaWdpbmFsPSIjRkZGRkZDIiBjbGFzcz0iIj48L2NpcmNsZT48L2c+IDwvc3ZnPg=="/>
+								<img id="comp_logo" alt="logo" class="responsive-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIGlkPSJMYXllcl8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDUwOS4yODcgNTA5LjI4NyIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTA5LjI4NyA1MDkuMjg3OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiIGNsYXNzPSIiPjxnPjxjaXJjbGUgc3R5bGU9ImZpbGw6IzRGNTU2NSIgY3g9IjI1NC42NDQiIGN5PSIyNTQuNjQ0IiByPSIyNTQuNjQ0IiBkYXRhLW9yaWdpbmFsPSIjRjA1ODJGIiBjbGFzcz0iYWN0aXZlLXBhdGgiIGRhdGEtb2xkX2NvbG9yPSIjRjA1ODJGIj48L2NpcmNsZT48cGF0aCBzdHlsZT0iZmlsbDojRkNGQ0ZEOyIgZD0iTTQwNC41MTQsNzguMzI2aC0yOTkuNzRjLTE0LjU4LDAtMjYuNDQ4LDExLjg2OC0yNi40NDgsMjYuNDQ4djI5OS43NCAgYzAsMTQuNTgsMTEuODY4LDI2LjQ0OCwyNi40NDgsMjYuNDQ4aDI5OS43NGMxNC41OCwwLDI2LjQ0OC0xMS44NjgsMjYuNDQ4LTI2LjQ0OHYtMjk5Ljc0ICBDNDMwLjk2Miw5MC4xOTMsNDE5LjA5NCw3OC4zMjYsNDA0LjUxNCw3OC4zMjZ6IiBkYXRhLW9yaWdpbmFsPSIjRkNGQ0ZEIiBjbGFzcz0iIj48L3BhdGg+PHBvbHlnb24gc3R5bGU9ImZpbGw6IzZFQjFFMTsiIHBvaW50cz0iMjQ5LjIxOSwyNjMuMTIxIDMzMi45NywxNzkuMDMgMzk4LjA3MiwyNDQuMTMyIDM5OC4wNzIsMTA3LjgyNSAxMTEuMjE2LDEwNy44MjUgICAxMTEuMjE2LDI3NS42NjYgMTg2LjQ5LDIwMC4zOTIgIiBkYXRhLW9yaWdpbmFsPSIjNkVCMUUxIj48L3BvbHlnb24+PHBvbHlnb24gc3R5bGU9ImZpbGw6IzRGNTU2NTsiIHBvaW50cz0iMzMyLjk3LDE3OS4wMyAyNDkuMjE5LDI2My4xMjEgMTg2LjQ5LDIwMC4zOTIgMTExLjIxNiwyNzUuNjY2IDExMS4yMTYsMzUwLjYwMSAgIDM5OC4wNzIsMzUwLjYwMSAzOTguMDcyLDI0NC4xMzIgIiBkYXRhLW9yaWdpbmFsPSIjNEY1NTY1IiBjbGFzcz0iIj48L3BvbHlnb24+PGNpcmNsZSBzdHlsZT0iZmlsbDojRkZGRkZDIiBjeD0iMjUyLjI3IiBjeT0iMTY2LjQ4NSIgcj0iMjUuMDkxIiBkYXRhLW9yaWdpbmFsPSIjRkZGRkZDIiBjbGFzcz0iIj48L2NpcmNsZT48L2c+IDwvc3ZnPg=="/>
 							</div>
 							<div class='input-field col s12 m6 l6 mt-br'>
-								<input class='validate' type='text' name='comp_name' id='comp_name' placeholder="@Company Name" onblur="validateData(this.value, this.id, 'companies','CompanyName')" validate required />
+								<input class='validate' type='text' name='comp_name' id='comp_name' placeholder="@Company Name" onblur="validateData(this.value, this.id, 'companies','CompanyName')"  required />
 								<label for='comp_name'>Company Name</label>
 							</div>
 							<div class='input-field col s12 m6 l6 mt-br'>
@@ -93,9 +95,8 @@
 			</div>
 		</div>
 	</div>
-	<script type="text/javascript" src="js/jquery.min.js"></script>
-	<script type="text/javascript" src="js/materialize.min.js"></script>
-	<script type="text/javascript" src="js/func.js"></script>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/materialize.min.js"></script>
+	<script src="js/func.js"></script>
 </body>
-
 </html>
