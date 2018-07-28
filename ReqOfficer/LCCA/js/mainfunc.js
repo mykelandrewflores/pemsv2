@@ -85,6 +85,14 @@ function getDataItems() {
             datas[0].assets.push(jsonObj);
         }
     });
+    
+    $.getJSON("http://gordoncollegeccs-ssite.net/pems/apis/myapi/select/tbl_lccacosts/fldUserID/"+localStorage.companyID, function (data) {
+        for (let i = 0; i < data.length; i++) {
+            let jsonObj;
+            jsonObj = JSON.parse('{ "costName":"' + data[i].fldCostName + '", "costType":"' + data[i].fldCostType + '"}');
+            datas[1].costs.push(jsonObj);
+        }
+    });    
 
     for (var i = 0; i < datas[0].assets.length; i++) {
         $('#assetAndYear').append($('<option>', {

@@ -222,14 +222,14 @@
             }
 
             function getData() {
-                $.getJSON(myUrl+ "/myapi/select/tbl_lccasset?ORDERBY=fldStngNO DESC", function(data){
+                $.getJSON(myUrl+ "/myapi/select/tbl_lccasset/fldUserID/"+localStorage.companyID+"?ORDERBY=fldStngNO DESC", function(data){
                     for(let i = 0; i < data.length; i++){
                         jsonObj = JSON.parse('{ "assetType":"' + data[i].fldAssetType + '", "noLifeCycle":"' + data[i].fldYrs + '", "companyID":"' + data[i].fldUserID + '"}');
                         datas[0].assets.push(jsonObj);                        
                     }
                     viewAssets();
                 });
-                $.getJSON(myUrl+ "/myapi/select/tbl_lccacosts?ORDERBY=fldStngNO DESC", function(data){
+                $.getJSON(myUrl+ "/myapi/select/tbl_lccacosts/fldUserID/"+localStorage.companyID+"?ORDERBY=fldStngNO DESC", function(data){
                     for(let i = 0; i < data.length; i++){
                       if (data[i].fldCostType == "Recurring Cost") {
                             jsonObj = JSON.parse('{ "costName":"' + data[i].fldCostName + '", "costType":"' + data[i].fldCostType + '", "escalationRate": "' + data[i].fldCostValue + '", "companyID":"' + data[i].fldUserID + '"}');
@@ -240,7 +240,7 @@
                     }
                     viewCosts();
                 });
-                $.getJSON(myUrl+ "/myapi/select/tbl_lccarate?ORDERBY=fldStngNo DESC&LIMIT=1", function(data){
+                $.getJSON(myUrl+ "/myapi/select/tbl_lccarate/fldUserID/"+localStorage.companyID+"?ORDERBY=fldStngNo DESC&LIMIT=1", function(data){
                     for(let i = 0; i < data.length; i++){
                         jsonObj = JSON.parse('{ "discountRate":"' + data[i].fldRateValue + '", "companyID":"' + data[i].fldRateValue + '"}');
                         datas[2].rates = jsonObj;                
