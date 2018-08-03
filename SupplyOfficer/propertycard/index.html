@@ -107,40 +107,32 @@
 			</div>
 		</div>
 		<div id="modal1" class="modal">
-			<div class="modal-content">
-				<blockquote><h5 class="deafult-text font-weight-low">Import Property CSV File</h5></blockquote>
-				<!-- <div class="row">
-					<div class='input-field col s12 m6 l6' id="prodlcca_select"></div>
-					<div class='input-field col s12 m6 l6' id="deptlcca_select"></div>
-					<div class="input-field col s12">
-						<input id="lccarecqty" type="number" min="0">
-						<label for="lccarecqty">Receipt/Received Qty</label>
+			<form id="upload_csv" method="post" enctype="multipart/form-data">
+				<div class="modal-content">
+					<blockquote><h5 class="deafult-text font-weight-low">Import Property CSV File</h5></blockquote>
+					<div class="row">
+	                	<div class="file-field input-field col s12 m12 l12">
+						 	<div class="btn">
+						    	<span>CSV FILE</span>
+						    	<input type="file" name="employee_file" id="employee_file">
+						  	</div>
+						  	<div class="file-path-wrapper">
+						    	<input class="file-path validate" type="text">
+						  	</div>
+						</div>
+						<div class="col s12 m10 l10 offset-l1 offset-m1 container center">
+							<h6 class="deafult-text font-weight-low">Property Card CSV File Format:</h6>
+							<p>*Include Commas ( , )</p>
+							<p class="">IAR Number,Product Number,Brand,Agency,Department,Reference Number,Receipt Qty,Transfer Qty,Remarks</p>
+							<a class="waves-effect waves-light btn"><i class="fa fa-cloud-download"></i> CSV Template</a>
+						</div>
 					</div>
-				</div> -->
-				<div class="divider"></div>
-				<div class="row">
-					<!-- <blockquote ><h6 class="deafult-text font-weight-low">Import Property CSV File</h6></blockquote> -->
-				    <form id="upload_csv" method="post" enctype="multipart/form-data"> 
-                     <!-- <div class="col-md-4">  
-                          <input type="file" name="employee_file" style="margin-top:15px;" />  
-                     </div>   -->
-                     <div class="file-field input-field col s12">
-					      <div class="btn">
-					        <span>CSV FILE</span>
-					        <input type="file" name="employee_file" id="employee_file">
-					      </div>
-					      <div class="file-path-wrapper">
-					        <input class="file-path validate" type="text">
-					      </div>
-					    </div>
 				</div>
-			</div>
-			<div class="modal-footer">
-				<!-- <button class="btn red" onclick="AddEquipData()">Add Property</button> -->
-				<input type="submit" name="upload" id="upload" value="Upload" style="margin-top:10px;" class="btn" />  
-				<a href="#!" class="modal-close waves-effect waves-black btn-flat">Cancel</a>
-			</div>
-                </form>  
+				<div class="modal-footer">
+					<input type="submit" name="upload" id="upload" value="Upload" class="btn" />
+					<a href="#!" class="modal-close waves-effect waves-black btn-flat">Cancel</a>
+				</div>
+			</form>
 		</div>
 		<div id="modal2" class="modal">
 			<div class="modal-content">
