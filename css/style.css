@@ -81,6 +81,9 @@ tbody>tr>td {
 .padd-10px{
 	padding: 10px !important;
 }
+.m5px{
+	margin: 2px;
+}
 .mb-0{
 	margin-bottom: 0%;
 }

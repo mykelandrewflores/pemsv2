@@ -59,23 +59,24 @@
 					</ul>
 					<br>
 				</div>        
-				<div class="col s12 m9 l9">
-			    	<div class="card">
+				<div class="col s12 m12 l12">
+			    	<div class="collection">
 			        	<div class="card-content black-text padd-10px">
 			          		<div class="row mb-0">
-			          			<div class="input-field col s12 m4 l4 mb-0">
-			      					<input id="search_PropName" type="text" class="validate" onkeyup="searchPC()">
+			          			<div class="input-field col s12 m4 l3 mb-0">
+			      					<input id="search_PropName" type="text" class="validate">
 			      					<label class="active" for="search_PropName">Property Name</label>
 			    				</div>
-								<div class='input-field col s12 m4 l4' id="search_lccacateg"></div>
-								<div class='input-field col s12 m4 l4' id="search_lccadept"></div>
+								<div class='input-field col s12 m4 l3' id="search_lccacateg"></div>
+								<div class='input-field col s12 m4 l3' id="search_lccadept"></div>
+								<div class="input-field col s12 m4 l3 center">
+									<a class="waves-effect waves-light green btn m5px" onclick="searchPC()">Search</a>
+									<a class="waves-effect waves-light green btn modal-trigger m5px" href="#modal1">Add Property</a>
+								</div>
 			          		</div>
 			        	</div>
 			      	</div>
 			    </div>
-				<div class="col s12 m3 l3 valign-wrapper">
-					<a class="waves-effect waves-light right green valign-wrapper btn modal-trigger mt-1" href="#modal1">Add Property</a>
-				</div>
 				<div id="test1" class="col s12 mt-br" >
 					<table class="table bordered responsive-table centered">
 						<thead>

@@ -15,7 +15,7 @@ function fetch_lccacateg(){
 	url=myUrl+"/propertycard/propertyapi/lccacateg/tbl_lccalives";
 	$.getJSON(url,function(data){
 			var body = ''
-			body+='<select id="lccaprod_select" class="browser-default"> <option value="" disabled selected>Product Category</option>';
+			body+='<select id="lccacateg_search" class="browser-default"> <option value="" disabled selected>Product Category</option>';
 			for(var i = 0; i<data.length; i++) {
 				body+='<option value="'+data[i].fldPropertyCategory+'">'+data[i].fldPropertyCategory+'</option>';
 			}
@@ -31,7 +31,7 @@ function fetch_lccadepartmentssearch(){
 	url=myUrl+"/propertycard/propertyapi/tbl_departments/fldCompanyID/"+localStorage.companyID;
 	$.getJSON(url,function(data){
 			var body = ''
-			body+='<select id="lccadept_select" class="browser-default"> <option value="" disabled selected>Choose Department</option>';
+			body+='<select id="lccadept_search" class="browser-default"> <option value="" disabled selected>Choose Department</option>';
 			for(var i = 0; i<data.length; i++) {
 				body+='<option value="'+data[i].fldDepartmentName+'">'+data[i].fldDepartmentName+'</option>';
 			}
@@ -123,15 +123,19 @@ function fetch_departments3(){
 }
 
 function searchPC(){
-	let search_dept = document.getElementById("search_lccadept").value;
-	let search_propname = document.getElementById("search_PropName").value;
-	let search_categ = document.getElementById("search_lccacateg").value;
+	let search_dept = " ";
+	let search_propname = " ";
+	let search_categ = " ";
 
-	if (search_dept == null && search_categ == null) {
+	search_dept = document.getElementById("lccadept_search").value;
+	search_propname = document.getElementById("search_PropName").value;
+ 	search_categ = document.getElementById("lccacateg_search").value;
+
+	if (search_dept == '' && search_categ == '') {
 		console.log('search propname');
-	}else if(search_dept == null){
+	}else if(search_dept == ''){
 		console.log('search propname + categ');
-	}else if(search_categ == null){
+	}else if(search_categ == ''){
 		console.log('search propname + dept');
 	}else{
 		console.log('search all' + search_dept + search_categ);
