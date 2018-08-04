@@ -119,7 +119,7 @@ class con{
 			}
 		}
 		else{
-			header('HTTP/1.0 403 Forbidden');
+			header("HTTP/1.0 404 Not Found");
 			$data=["status" => "404","message"=> "No Data Found"];
 		}
 		echo json_encode($data);
@@ -286,6 +286,8 @@ class delete{
 			$delete="DELETE FROM $tblname WHERE fldFoodID = '$id'";
 		}elseif ($tblname =='tbl_user') {
 			$delete="DELETE FROM $tblname WHERE fldUserID = '$id'";
+		}elseif ($tblname =='tbl_property') {
+			$delete="DELETE FROM $tblname WHERE fldRecID = '$id'";
 		}
 		else{
 			$info= array("status" =>"No table Found");

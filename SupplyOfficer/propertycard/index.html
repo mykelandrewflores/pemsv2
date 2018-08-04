@@ -52,14 +52,29 @@
 			<div class="row mt-br">
 				<div class="col s12">
 					<ul class="tabs tabs-fixed-width " style="background-color: transparent;">
-						<li class="tab col s4"><a class="active" href="#test1">ALL</a></li>
-						<li class="tab col s4"><a href="#test2">Assigned</a></li>
-						<li class="tab col s4"><a href="#test4">Unassigned <span class="" id="newcount"></span></a></li>
+						<li class="tab col s2"><a class="active" href="#test1">ALL<span class="badge" id="allcount"></span></a></li>
+						<li class="tab col s3"><a href="#test2">Assigned<span class="badge" id="asscount"></span></a></li>
+						<li class="tab col s3"><a href="#test4">Unassigned <span class="" id="newcount"></span></a></li>
+						<li class="tab col s3"><a href="#test3">Disposed<span class="badge" id="dispcount"></span></a></li>
 					</ul>
 					<br>
-				</div> 
-				<div class="col s12">
-					<a class="waves-effect waves-light right green  btn modal-trigger" href="#modal1">Add Property</a>
+				</div>        
+				<div class="col s12 m9 l9">
+			    	<div class="card">
+			        	<div class="card-content black-text padd-10px">
+			          		<div class="row mb-0">
+			          			<div class="input-field col s12 m4 l4 mb-0">
+			      					<input id="search_PropName" type="text" class="validate" onkeyup="searchPC()">
+			      					<label class="active" for="search_PropName">Property Name</label>
+			    				</div>
+								<div class='input-field col s12 m4 l4' id="search_lccacateg"></div>
+								<div class='input-field col s12 m4 l4' id="search_lccadept"></div>
+			          		</div>
+			        	</div>
+			      	</div>
+			    </div>
+				<div class="col s12 m3 l3 valign-wrapper">
+					<a class="waves-effect waves-light right green valign-wrapper btn modal-trigger mt-1" href="#modal1">Add Property</a>
 				</div>
 				<div id="test1" class="col s12 mt-br" >
 					<table class="table bordered responsive-table centered">
@@ -104,6 +119,20 @@
 						<tbody id="equiptabledata_unassigned"><tr><td colspan="4">No Data</td></tr></tbody>
 					</table>
 				</div>
+				<div id="test3" class="col s12 mt-br" >
+					<table class="table bordered responsive-table centered">
+						<thead>
+							<tr>
+								<th class="font-weight-low">Property No.</th>
+								<th class="font-weight-low">Product ID</th>
+								<th class="font-weight-low">Name</th>
+								<th class="font-weight-low">Department</th>
+								<th class="font-weight-low">Action</th>
+							</tr>
+						</thead>
+						<tbody id="equiptabledata_disposed"><tr><td colspan="5">No Data</td></tr></tbody>
+					</table>
+				</div>
 			</div>
 		</div>
 		<div id="modal1" class="modal">
@@ -124,7 +153,7 @@
 							<h6 class="deafult-text font-weight-low">Property Card CSV File Format:</h6>
 							<p>*Include Commas ( , )</p>
 							<p class="">IAR Number,Product Number,Brand,Agency,Department,Reference Number,Receipt Qty,Transfer Qty,Remarks</p>
-							<a class="waves-effect waves-light btn"><i class="fa fa-cloud-download"></i> CSV Template</a>
+							<a class="waves-effect waves-light btn" href="http://gordoncollegeccs-ssite.net/pems/apis/propertycard/propertyapi/savetemplate/downloadcsv.php?file=PropertyCardCSVTemplate.csv"><i class="fa fa-cloud-download"></i> CSV Template</a>
 						</div>
 					</div>
 				</div>
@@ -209,6 +238,8 @@
 	<script src="../../js/init.js"></script>
 	<script src="js/property_data.js"></script>
 	<script>
+		fetch_lccacateg();
+		fetch_lccadepartmentssearch();
 		fetch_departments();
 		fetch_departments2();
 		fetch_departments3();
@@ -217,7 +248,7 @@
 		equiptable();
 		equiptable_assigned();
 		equiptable_unassigned();
-
+		equiptable_disposed();
 		userLoginCheck();
 		$.getJSON(myUrl+"/myapi/select/tbl_user/fldUserID/" + localStorage.userID, function(data) {
 			document.getElementById('name').innerHTML = data[0].fldFname + " " + data[0].fldLname;
