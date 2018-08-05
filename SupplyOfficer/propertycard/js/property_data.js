@@ -141,7 +141,29 @@ function searchPC(){
 		url=myUrl+"/propertycard/propertyapi/tbl_lccalives_searchall/tbl_lccalives/tbl_property/fldProdID/fldPNum/fldAgency/"+localStorage.companyID+"/fldBrand/"+search_propname+"/fldDept/"+search_dept+"/fldPropertyCategory/"+search_categ;
 	}
 	$.getJSON(url,function(data){
-		console.log(data);
+		let longstring = "";
+			for (let i = 0; i < data.length; i++) {
+				longstring += "<tr>";
+				longstring += "<td>"+data[i].fldRecID+"</td>";
+				longstring += "<td>"+data[i].fldBrand+"</td>";
+				longstring += "<td>"+data[i].fldProdName+"</td>";
+				longstring += "<td>"+data[i].fldDept+"</td>";
+				longstring += "<td>"+data[i].fldRemarks+"</td>";
+				if (data[i].fldRemarks == 'Assigned') {
+					longstring += "<td class=''><a class='blue-text darken-1' href='./propertycard.html?prodid="+data[i].fldProdID+"' onclick='setselected("+data[i].fldProdID+","+'"'+data[i].fldIarNo+'"'+","+data[i].fldRecID+")'><i class='fa fa-eye'></i></a> </td>";
+					longstring += "<td class=''><a class='waves-effect waves-light blue-text darken-1 modal-trigger' href='#modal3' onclick='transfer_tabledata("+data[i].fldRecID+")'><i class='fa fa-send'></i></a> | <a class='waves-effect waves-light red-text darken-3  modal-trigger' href='#modal4' onclick='disposal_tabledata("+data[i].fldRecID+")'><i class='fa fa-trash'></i></a> | <a class='waves-effect waves-light red-text darken-3  modal-trigger' onclick='permaDelete("+data[i].fldRecID+")'><i class='fa fa-close'></i></a></td>";
+				}else if(data[i].fldRemarks == 'Unassigned'){
+					longstring += "<td class=''><a class='waves-effect waves-light  blue-text darken-3  modal-trigger' href='#modal2' onclick='assign_tabledata("+data[i].fldRecID+")'><i class='fa fa-plus'></i></a></td>";
+					longstring += "<td><a class='waves-effect waves-light red-text darken-3  modal-trigger' onclick='permaDelete("+data[i].fldRecID+")'><i class='fa fa-close'></i></a></td>";
+				}else if(data[i].fldRemarks == 'Dispose'){
+					longstring += "<td class=''>- - -</td>";
+					longstring += "<td><a class='waves-effect waves-light red-text darken-3  modal-trigger' onclick='permaDelete("+data[i].fldRecID+")'><i class='fa fa-close'></i></a></td>";
+				}
+
+				
+				longstring += "</tr>";
+			}
+			$("#equiptabledata").html(longstring);
 	}).fail(function(){
 		M.toast({html: 'No Equipment/Property Found'});
 	});
