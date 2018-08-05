@@ -132,14 +132,19 @@ function searchPC(){
  	search_categ = document.getElementById("lccacateg_search").value;
 
 	if (search_dept == '' && search_categ == '') {
-		console.log('search propname');
+		url=myUrl+"/propertycard/propertyapi/tbl_lccalives_searchpropname/tbl_lccalives/tbl_property/fldProdID/fldPNum/fldAgency/"+localStorage.companyID+"/fldBrand/"+search_propname;
 	}else if(search_dept == ''){
-		console.log('search propname + categ');
-	}else if(search_categ == ''){
-		console.log('search propname + dept');
+		url=myUrl+"/propertycard/propertyapi/tbl_lccalives_searchnamecateg/tbl_lccalives/tbl_property/fldProdID/fldPNum/fldAgency/"+localStorage.companyID+"/fldBrand/"+search_propname+"/fldPropertyCategory/"+search_categ;
+	}else if(search_categ == ''){		
+		url=myUrl+"/propertycard/propertyapi/tbl_lccalives_searchnamedept/tbl_lccalives/tbl_property/fldProdID/fldPNum/fldAgency/"+localStorage.companyID+"/fldBrand/"+search_propname+"/fldDept/"+search_dept;
 	}else{
-		console.log('search all' + search_dept + search_categ);
+		url=myUrl+"/propertycard/propertyapi/tbl_lccalives_searchall/tbl_lccalives/tbl_property/fldProdID/fldPNum/fldAgency/"+localStorage.companyID+"/fldBrand/"+search_propname+"/fldDept/"+search_dept+"/fldPropertyCategory/"+search_categ;
 	}
+	$.getJSON(url,function(data){
+		console.log(data);
+	}).fail(function(){
+		M.toast({html: 'No Equipment/Property Found'});
+	});
 }
 
 function equiptable(){
@@ -240,7 +245,8 @@ function equiptable_unassigned(){
 	$(function(){
 
 		url=myUrl+"/propertycard/propertyapi/tbl_lccalives_filter/tbl_lccalives/tbl_property/fldProdID/fldPNum/fldAgency/"+localStorage.companyID+"/fldRemarks/Unassigned";
-		
+
+
 		$.getJSON(url,function(data){
 			let longstring = "";
 			for (let i = 0; i < data.length; i++) {
@@ -250,6 +256,7 @@ function equiptable_unassigned(){
 				longstring += "<td>"+data[i].fldIarNo+"</td>";
 				longstring += "<td class=''><a class='waves-effect waves-light  green-text darken-3 modal-trigger' href='#modal2' onclick='assign_tabledata("+data[i].fldRecID+")'><i class='fa fa-plus left'></i></a></td>";
 				longstring += "</tr>";
+
 			}
 			if (data.length) {
 				$("#newcount").attr('class', 'new badge right red');

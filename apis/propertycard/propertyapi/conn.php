@@ -98,6 +98,25 @@ class con{
 		$this->string="SELECT * FROM $tblone,$tbltwo WHERE $tblone.$idone = $tbltwo.$idtwo AND $tbltwo.$idthree = $value1 AND $tbltwo.$idfour = '$value2'  ORDER BY $tbltwo.fldRecID DESC";
 		return $this;
 	}
+	function searchall($tblone,$tbltwo,$idone,$idtwo,$idthree,$value1,$idfour,$value2,$idfive,$value3,$idsix,$value4){
+	
+		$this->string="SELECT * FROM $tblone,$tbltwo WHERE $tblone.$idone = $tbltwo.$idtwo AND $tbltwo.$idthree = $value1 AND $tbltwo.$idfour = '$value2' AND $tbltwo.$idfive = '$value3' AND $tblone.$idsix = '$value4' ORDER BY $tbltwo.fldRecID DESC";
+		return $this;
+	}
+	function searchpropname($tblone,$tbltwo,$idone,$idtwo,$idthree,$value1,$idfour,$value2){
+	
+		$this->string="SELECT * FROM $tblone,$tbltwo WHERE $tblone.$idone = $tbltwo.$idtwo AND $tbltwo.$idthree = $value1 AND $tbltwo.$idfour = '$value2' ORDER BY $tbltwo.fldRecID DESC";
+		return $this;
+	}
+	function searchnamecateg($tblone,$tbltwo,$idone,$idtwo,$idthree,$value1,$idfour,$value2,$idfive,$value3){
+	
+		$this->string="SELECT * FROM $tblone,$tbltwo WHERE $tblone.$idone = $tbltwo.$idtwo AND $tbltwo.$idthree = $value1 AND $tbltwo.$idfour = '$value2' AND $tblone.$idfive = '$value3' ORDER BY $tbltwo.fldRecID DESC";
+		return $this;
+	}function searchnamedept($tblone,$tbltwo,$idone,$idtwo,$idthree,$value1,$idfour,$value2,$idfive,$value3){
+	
+		$this->string="SELECT * FROM $tblone,$tbltwo WHERE $tblone.$idone = $tbltwo.$idtwo AND $tbltwo.$idthree = $value1 AND $tbltwo.$idfour = '$value2' AND $tbltwo.$idfive = '$value3' ORDER BY $tbltwo.fldRecID DESC";
+		return $this;
+	}
 	function UACtable($tblone,$tbltwo,$tblthree,$idone,$idtwo,$idthree,$position,$module){
 		$this->string="SELECT $tblone.*,$tbltwo.$position,$tblthree.$module FROM $tblone,$tbltwo,tblmodule WHERE $tblone.$idone=$tbltwo.$idtwo AND $tblone.$idthree = $tblthree.$idthree ";
 		return $this;
