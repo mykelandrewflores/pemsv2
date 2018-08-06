@@ -57,10 +57,14 @@ function userLoginCheck(){
 }
 
 function setCompName(){
-	if (localStorage.companyName == null) {
+	if (document.getElementById("comp_name_sidenav")) {
+		if (localStorage.companyName == null) {
 		document.getElementById("comp_name_sidenav").innerHTML ='Company/PEMS';
+		}else{
+			document.getElementById("comp_name_sidenav").innerHTML = localStorage.companyName + '/PEMS';
+		}
 	}else{
-		document.getElementById("comp_name_sidenav").innerHTML = localStorage.companyName + '/PEMS';
+		
 	}
 }
 
