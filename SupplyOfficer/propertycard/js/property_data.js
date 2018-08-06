@@ -193,7 +193,7 @@ function searchPCreq(){
 				if (data[i].fldAgency == localStorage.companyID && data[i].fldDept == localStorage.userDept) {
 					longstring += "<tr>";
 					longstring += "<td>"+data[i].fldRecID+"</td>";
-					longstring += "<td>"+data[i].fldProdName+"</td>";
+					longstring += "<td>"+data[i].fldBrand+"</td>";
 					longstring += "<td>"+data[i].fldDept+"</td>";
 					longstring += "<td>"+data[i].fldRemarks+"</td>";
 					longstring += "<td class=''><a class='blue-text ni-jags' href='./propertycard.html' onclick='setselected_reqofficer("+data[i].fldProdID+","+'"'+data[i].fldIarNo+'"'+","+data[i].fldRecID+")'><i class='fa fa-eye'></i></a></td>";
@@ -351,7 +351,7 @@ function equiptable_reqofficer(){
 				if (data[i].fldAgency == localStorage.companyID && data[i].fldDept == localStorage.userDept) {
 					longstring += "<tr>";
 					longstring += "<td>"+data[i].fldRecID+"</td>";
-					longstring += "<td>"+data[i].fldProdName+"</td>";
+					longstring += "<td>"+data[i].fldBrand+"</td>";
 					longstring += "<td>"+data[i].fldDept+"</td>";
 					longstring += "<td>"+data[i].fldRemarks+"</td>";
 					longstring += "<td class=''><a class='blue-text ni-jags' href='./propertycard.html' onclick='setselected_reqofficer("+data[i].fldProdID+","+'"'+data[i].fldIarNo+'"'+","+data[i].fldRecID+")'><i class='fa fa-eye'></i></a></td>";
@@ -383,7 +383,7 @@ function equiptable_reqofficer_assigned(){
 				if (data[i].fldAgency == localStorage.companyID && data[i].fldDept == localStorage.userDept) {
 					longstring += "<tr>";
 					longstring += "<td>"+data[i].fldRecID+"</td>";
-					longstring += "<td>"+data[i].fldProdName+"</td>";
+					longstring += "<td>"+data[i].fldBrand+"</td>";
 					longstring += "<td>"+data[i].fldDept+"</td>";
 					longstring += "<td>"+data[i].fldRemarks+"</td>";
 					longstring += "<td class=''><a class='blue-text ni-jags' href='./propertycard.html' onclick='setselected_reqofficer("+data[i].fldProdID+","+'"'+data[i].fldIarNo+'"'+","+data[i].fldRecID+")'><i class='fa fa-eye'></i></a></td>";
@@ -415,7 +415,7 @@ function equiptable_reqofficer_unassigned(){
 				if (data[i].fldAgency == localStorage.companyID && data[i].fldDept == localStorage.userDept) {
 					longstring += "<tr>";
 					longstring += "<td>"+data[i].fldRecID+"</td>";
-					longstring += "<td>"+data[i].fldProdName+"</td>";
+					longstring += "<td>"+data[i].fldBrand+"</td>";
 					longstring += "<td>"+data[i].fldDept+"</td>";
 					longstring += "<td>"+data[i].fldRemarks+"</td>";
 					longstring += "<td class=''><a class='blue-text ni-jags' href='./propertycard.html' onclick='setselected_reqofficer("+data[i].fldProdID+","+'"'+data[i].fldIarNo+'"'+","+data[i].fldRecID+")'><i class='fa fa-eye'></i></a></td>";

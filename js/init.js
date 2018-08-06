@@ -57,14 +57,24 @@ function userLoginCheck(){
 }
 
 function setCompName(){
-	if (document.getElementById("comp_name_sidenav")) {
-		if (localStorage.companyName == null) {
-		document.getElementById("comp_name_sidenav").innerHTML ='Company/PEMS';
+	if (localStorage.companyID != null) {
+		url=myUrl+"/propertycard/propertyapi/tbl_companies/fldCompanyID/"+localStorage.companyID;
+		$.getJSON(url,function(data){
+			for(var i = 0; i<data.length; i++) {
+				localStorage.setItem('companyName',data[i].fldCompanyName);
+			}			
+		}).fail(function(){
+			M.toast({html: 'No Comp data found'});
+		});
+		if (document.getElementById("comp_name_sidenav")) {
+			if (localStorage.companyName == null) {
+			document.getElementById("comp_name_sidenav").innerHTML ='Company/PEMS';
+			}else{
+				document.getElementById("comp_name_sidenav").innerHTML = localStorage.companyName + '/PEMS';
+			}
 		}else{
-			document.getElementById("comp_name_sidenav").innerHTML = localStorage.companyName + '/PEMS';
+
 		}
-	}else{
-		
 	}
 }
 
