@@ -169,6 +169,44 @@ function searchPC(){
 	});
 }
 
+function searchPCreq(){
+	let search_dept = " ";
+	let search_propname = " ";
+	let search_categ = " ";
+
+	search_dept = document.getElementById("lccadept_search").value;
+	search_propname = document.getElementById("search_PropName").value;
+ 	search_categ = document.getElementById("lccacateg_search").value;
+
+	if (search_dept == '' && search_categ == '') {
+		url=myUrl+"/propertycard/propertyapi/tbl_lccalives_searchpropname/tbl_lccalives/tbl_property/fldProdID/fldPNum/fldAgency/"+localStorage.companyID+"/fldBrand/"+search_propname;
+	}else if(search_dept == ''){
+		url=myUrl+"/propertycard/propertyapi/tbl_lccalives_searchnamecateg/tbl_lccalives/tbl_property/fldProdID/fldPNum/fldAgency/"+localStorage.companyID+"/fldBrand/"+search_propname+"/fldPropertyCategory/"+search_categ;
+	}else if(search_categ == ''){		
+		url=myUrl+"/propertycard/propertyapi/tbl_lccalives_searchnamedept/tbl_lccalives/tbl_property/fldProdID/fldPNum/fldAgency/"+localStorage.companyID+"/fldBrand/"+search_propname+"/fldDept/"+search_dept;
+	}else{
+		url=myUrl+"/propertycard/propertyapi/tbl_lccalives_searchall/tbl_lccalives/tbl_property/fldProdID/fldPNum/fldAgency/"+localStorage.companyID+"/fldBrand/"+search_propname+"/fldDept/"+search_dept+"/fldPropertyCategory/"+search_categ;
+	}
+	$.getJSON(url,function(data){
+		let longstring = "";
+			for (let i = 0; i < data.length; i++) {
+				if (data[i].fldAgency == localStorage.companyID && data[i].fldDept == localStorage.userDept) {
+					longstring += "<tr>";
+					longstring += "<td>"+data[i].fldRecID+"</td>";
+					longstring += "<td>"+data[i].fldProdName+"</td>";
+					longstring += "<td>"+data[i].fldDept+"</td>";
+					longstring += "<td>"+data[i].fldRemarks+"</td>";
+					longstring += "<td class=''><a class='blue-text ni-jags' href='./propertycard.html' onclick='setselected_reqofficer("+data[i].fldProdID+","+'"'+data[i].fldIarNo+'"'+","+data[i].fldRecID+")'><i class='fa fa-eye'></i></a></td>";
+					longstring += "</tr>";
+				}
+			
+			}
+			$("#equiptabledata_reqofficer").html(longstring);
+	}).fail(function(){
+		M.toast({html: 'No Equipment/Property Found'});
+	});
+}
+
 function equiptable(){
 
 	$(function(){
@@ -308,6 +346,7 @@ function equiptable_reqofficer(){
 		
 		$.getJSON(url,function(data){
 			let longstring = "";
+			let cnt = 0;
 			for (let i = 0; i < data.length; i++) {
 				if (data[i].fldAgency == localStorage.companyID && data[i].fldDept == localStorage.userDept) {
 					longstring += "<tr>";
@@ -317,13 +356,79 @@ function equiptable_reqofficer(){
 					longstring += "<td>"+data[i].fldRemarks+"</td>";
 					longstring += "<td class=''><a class='blue-text ni-jags' href='./propertycard.html' onclick='setselected_reqofficer("+data[i].fldProdID+","+'"'+data[i].fldIarNo+'"'+","+data[i].fldRecID+")'><i class='fa fa-eye'></i></a></td>";
 					longstring += "</tr>";
+					cnt++;
 				}
 			
 			}
+			document.getElementById("allcount").innerHTML=cnt;
 			$("#equiptabledata_reqofficer").html(longstring);
 
 		}).fail(function(){
 			window.alert("No Equipment Found in Requisitioning");
+		});
+		
+	});
+}
+
+function equiptable_reqofficer_assigned(){
+
+	$(function(){
+
+		url=myUrl+"/propertycard/propertyapi/tbl_lccalives_filter/tbl_lccalives/tbl_property/fldProdID/fldPNum/fldAgency/"+localStorage.companyID+"/fldRemarks/Assigned";
+		
+		$.getJSON(url,function(data){
+			let longstring = "";
+			let cnt = 0;
+			for (let i = 0; i < data.length; i++) {
+				if (data[i].fldAgency == localStorage.companyID && data[i].fldDept == localStorage.userDept) {
+					longstring += "<tr>";
+					longstring += "<td>"+data[i].fldRecID+"</td>";
+					longstring += "<td>"+data[i].fldProdName+"</td>";
+					longstring += "<td>"+data[i].fldDept+"</td>";
+					longstring += "<td>"+data[i].fldRemarks+"</td>";
+					longstring += "<td class=''><a class='blue-text ni-jags' href='./propertycard.html' onclick='setselected_reqofficer("+data[i].fldProdID+","+'"'+data[i].fldIarNo+'"'+","+data[i].fldRecID+")'><i class='fa fa-eye'></i></a></td>";
+					longstring += "</tr>";
+					cnt++;
+				}
+			
+			}
+			document.getElementById("asscount").innerHTML=cnt;
+			$("#reqequiptabledata_assigned").html(longstring);
+
+		}).fail(function(){
+			window.alert("No Assigned Equipment Found in Requisitioning");
+		});
+		
+	});
+}
+
+function equiptable_reqofficer_unassigned(){
+
+	$(function(){
+
+		url=myUrl+"/propertycard/propertyapi/tbl_lccalives_filter/tbl_lccalives/tbl_property/fldProdID/fldPNum/fldAgency/"+localStorage.companyID+"/fldRemarks/Unassigned";
+		
+		$.getJSON(url,function(data){
+			let longstring = "";
+			let cnt = 0;
+			for (let i = 0; i < data.length; i++) {
+				if (data[i].fldAgency == localStorage.companyID && data[i].fldDept == localStorage.userDept) {
+					longstring += "<tr>";
+					longstring += "<td>"+data[i].fldRecID+"</td>";
+					longstring += "<td>"+data[i].fldProdName+"</td>";
+					longstring += "<td>"+data[i].fldDept+"</td>";
+					longstring += "<td>"+data[i].fldRemarks+"</td>";
+					longstring += "<td class=''><a class='blue-text ni-jags' href='./propertycard.html' onclick='setselected_reqofficer("+data[i].fldProdID+","+'"'+data[i].fldIarNo+'"'+","+data[i].fldRecID+")'><i class='fa fa-eye'></i></a></td>";
+					longstring += "</tr>";
+					cnt++;
+				}
+			
+			}
+			document.getElementById("newcount").innerHTML=cnt;
+			$("#reqequiptabledata_unassigned").html(longstring);
+
+		}).fail(function(){
+			window.alert("No Unassigned Equipment Found in Requisitioning");
 		});
 		
 	});

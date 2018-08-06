@@ -3,6 +3,7 @@ var myUrl = "http://gordoncollegeccs-ssite.net/pems/apis";
 
 $(document).ready(function(){
 	$('select').formSelect();
+	setCompName();
 });
 function mySidenav(x) {
 	if (x.matches) {
@@ -52,6 +53,14 @@ $(document).ready(function(){
 function userLoginCheck(){
 	if(localStorage.userID == null){
 		window.location.assign("../../index.html");
+	}
+}
+
+function setCompName(){
+	if (localStorage.companyName == null) {
+		document.getElementById("comp_name_sidenav").innerHTML ='Company/PEMS';
+	}else{
+		document.getElementById("comp_name_sidenav").innerHTML = localStorage.companyName + '/PEMS';
 	}
 }
 
