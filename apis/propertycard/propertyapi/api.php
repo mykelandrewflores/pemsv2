@@ -27,9 +27,18 @@ switch($_SERVER['REQUEST_METHOD']){
 		$db->durationmy($res[1],$res[2],$res[3],$res[4],$res[5],$res[6]);
 	}elseif ($res[0]=='tbl_lccalives_filter') {
 		$db->duration1($res[1],$res[2],$res[3],$res[4],$res[5],$res[6],$res[7],$res[8]);
+	}elseif ($res[0]=='tbl_lccalives_searchall') {
+		$db->searchall($res[1],$res[2],$res[3],$res[4],$res[5],$res[6],$res[7],$res[8],$res[9],$res[10],$res[11],$res[12]);
+	}elseif ($res[0]=='tbl_lccalives_searchpropname') {
+		$db->searchpropname($res[1],$res[2],$res[3],$res[4],$res[5],$res[6],$res[7],$res[8]);
+	}elseif ($res[0]=='tbl_lccalives_searchnamecateg') {
+		$db->searchnamecateg($res[1],$res[2],$res[3],$res[4],$res[5],$res[6],$res[7],$res[8],$res[9],$res[10]);
+	}elseif ($res[0]=='tbl_lccalives_searchnamedept') {
+		$db->searchnamedept($res[1],$res[2],$res[3],$res[4],$res[5],$res[6],$res[7],$res[8],$res[9],$res[10]);
 	}elseif ($res[0]=='where3and') {
-		$db->select('*')->from($res[1])->fromtbl2($res[2])->where($res[3],$res[4])->clause('AND')->whereand($res[5],$res[6])->clause('AND')->whereand($res[7],$res[8])->clause('AND')->whereand($res[9],$res[10])->clause('AND')->andjointable($res[1],$res[3],$res[2],$res[11]);	
-
+		$db->select('*')->from($res[1])->fromtbl2($res[2])->where($res[3],$res[4])->clause('AND')->whereand($res[5],$res[6])->clause('AND')->whereand($res[7],$res[8])->clause('AND')->whereand($res[9],$res[10])->clause('AND')->andjointable($res[1],$res[3],$res[2],$res[11]);
+	}elseif($res[0]=='lccacateg'){	
+		$db->select('DISTINCT(fldPropertyCategory)')->from($res[1]);
 	}
 	
 	$db->querys();

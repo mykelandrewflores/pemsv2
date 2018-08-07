@@ -143,7 +143,7 @@ $('#login_user').submit(function (e) {
             localStorage.userDept = data.fldDept;
 
             if (data.fldRole == "Supply") {
-                window.location.assign("SupplyOfficer/purchase/purchaselist.html");
+                window.location.assign("SupplyOfficer/propertycard/");
             } else {
                 window.location.assign("ReqOfficer/propertycard/");
             }

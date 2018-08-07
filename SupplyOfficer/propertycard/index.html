@@ -52,16 +52,32 @@
 			<div class="row mt-br">
 				<div class="col s12">
 					<ul class="tabs tabs-fixed-width " style="background-color: transparent;">
-						<li class="tab col s4"><a class="active" href="#test1">ALL</a></li>
-						<li class="tab col s4"><a href="#test2">Assigned</a></li>
-						<li class="tab col s4"><a href="#test4">Unassigned <span class="" id="newcount"></span></a></li>
+						<li class="tab col s2"><a class="active" href="#test1">ALL<span class="badge" id="allcount"></span></a></li>
+						<li class="tab col s3"><a href="#test2">Assigned<span class="badge" id="asscount"></span></a></li>
+						<li class="tab col s3"><a href="#test4">Unassigned <span class="" id="newcount"></span></a></li>
+						<li class="tab col s3"><a href="#test3">Disposed<span class="badge" id="dispcount"></span></a></li>
 					</ul>
-					<br>
-				</div> 
-				<div class="col s12">
-					<a class="waves-effect waves-light right green  btn modal-trigger" href="#modal1">Add Property</a>
-				</div>
+				</div>        
 				<div id="test1" class="col s12 mt-br" >
+					<div class="col s12 m12 l12">
+				    	<div class="collection">
+				        	<div class="card-content black-text padd-10px">
+				          		<div class="row mb-0">
+				          			<div class="input-field col s12 m4 l3 mb-0">
+				      					<input id="search_PropName" type="text" class="validate">
+				      					<label class="active" for="search_PropName">Property Name</label>
+				    				</div>
+									<div class='input-field col s12 m4 l3' id="search_lccacateg"></div>
+									<div class='input-field col s12 m4 l3' id="search_lccadept"></div>
+									<div class="input-field col s12 m4 l3 center">
+										<a class="waves-effect waves-light green btn m5px" onclick="searchPC()">Search</a>
+										<a class="btn-flat waves-effect waves-light m5px" onclick="equiptable()"><i class="fa fa-repeat fa-lg"></i></a>
+										<a class="waves-effect waves-light green btn modal-trigger m5px" href="#modal1">Add Property</a>
+									</div>
+				          		</div>
+				        	</div>
+				      	</div>
+			    	</div>
 					<table class="table bordered responsive-table centered">
 						<thead>
 							<tr>
@@ -104,43 +120,49 @@
 						<tbody id="equiptabledata_unassigned"><tr><td colspan="4">No Data</td></tr></tbody>
 					</table>
 				</div>
+				<div id="test3" class="col s12 mt-br" >
+					<table class="table bordered responsive-table centered">
+						<thead>
+							<tr>
+								<th class="font-weight-low">Property No.</th>
+								<th class="font-weight-low">Product ID</th>
+								<th class="font-weight-low">Name</th>
+								<th class="font-weight-low">Department</th>
+								<th class="font-weight-low">Action</th>
+							</tr>
+						</thead>
+						<tbody id="equiptabledata_disposed"><tr><td colspan="5">No Data</td></tr></tbody>
+					</table>
+				</div>
 			</div>
 		</div>
 		<div id="modal1" class="modal">
-			<div class="modal-content">
-				<blockquote><h5 class="deafult-text font-weight-low">Import Property CSV File</h5></blockquote>
-				<!-- <div class="row">
-					<div class='input-field col s12 m6 l6' id="prodlcca_select"></div>
-					<div class='input-field col s12 m6 l6' id="deptlcca_select"></div>
-					<div class="input-field col s12">
-						<input id="lccarecqty" type="number" min="0">
-						<label for="lccarecqty">Receipt/Received Qty</label>
+			<form id="upload_csv" method="post" enctype="multipart/form-data">
+				<div class="modal-content">
+					<blockquote><h5 class="deafult-text font-weight-low">Import Property CSV File</h5></blockquote>
+					<div class="row">
+	                	<div class="file-field input-field col s12 m12 l12">
+						 	<div class="btn">
+						    	<span>CSV FILE</span>
+						    	<input type="file" name="employee_file" id="employee_file">
+						  	</div>
+						  	<div class="file-path-wrapper">
+						    	<input class="file-path validate" type="text">
+						  	</div>
+						</div>
+						<div class="col s12 m10 l10 offset-l1 offset-m1 container center">
+							<h6 class="deafult-text font-weight-low">Property Card CSV File Format:</h6>
+							<p>*Include Commas ( , )</p>
+							<p class="">IAR Number,Product Number,Brand,Agency,Department,Reference Number,Receipt Qty,Transfer Qty,Remarks</p>
+							<a class="waves-effect waves-light btn" href="http://gordoncollegeccs-ssite.net/pems/apis/propertycard/propertyapi/savetemplate/downloadcsv.php?file=PropertyCardCSVTemplate.csv"><i class="fa fa-cloud-download"></i> CSV Template</a>
+						</div>
 					</div>
-				</div> -->
-				<div class="divider"></div>
-				<div class="row">
-					<!-- <blockquote ><h6 class="deafult-text font-weight-low">Import Property CSV File</h6></blockquote> -->
-				    <form id="upload_csv" method="post" enctype="multipart/form-data"> 
-                     <!-- <div class="col-md-4">  
-                          <input type="file" name="employee_file" style="margin-top:15px;" />  
-                     </div>   -->
-                     <div class="file-field input-field col s12">
-					      <div class="btn">
-					        <span>CSV FILE</span>
-					        <input type="file" name="employee_file" id="employee_file">
-					      </div>
-					      <div class="file-path-wrapper">
-					        <input class="file-path validate" type="text">
-					      </div>
-					    </div>
 				</div>
-			</div>
-			<div class="modal-footer">
-				<!-- <button class="btn red" onclick="AddEquipData()">Add Property</button> -->
-				<input type="submit" name="upload" id="upload" value="Upload" style="margin-top:10px;" class="btn" />  
-				<a href="#!" class="modal-close waves-effect waves-black btn-flat">Cancel</a>
-			</div>
-                </form>  
+				<div class="modal-footer">
+					<input type="submit" name="upload" id="upload" value="Upload" class="btn" />
+					<a href="#!" class="modal-close waves-effect waves-black btn-flat">Cancel</a>
+				</div>
+			</form>
 		</div>
 		<div id="modal2" class="modal">
 			<div class="modal-content">
@@ -217,6 +239,8 @@
 	<script src="../../js/init.js"></script>
 	<script src="js/property_data.js"></script>
 	<script>
+		fetch_lccacateg();
+		fetch_lccadepartmentssearch();
 		fetch_departments();
 		fetch_departments2();
 		fetch_departments3();
@@ -225,7 +249,7 @@
 		equiptable();
 		equiptable_assigned();
 		equiptable_unassigned();
-
+		equiptable_disposed();
 		userLoginCheck();
 		$.getJSON(myUrl+"/myapi/select/tbl_user/fldUserID/" + localStorage.userID, function(data) {
 			document.getElementById('name').innerHTML = data[0].fldFname + " " + data[0].fldLname;
