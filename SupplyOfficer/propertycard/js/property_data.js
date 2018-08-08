@@ -11,6 +11,38 @@ function setselected_reqofficer(prodid,iarno,recid){
 	localStorage.setItem("selected_recid_reqofficer",recid);
 }
 
+function fetch_lccacateg(){
+	url=myUrl+"/propertycard/propertyapi/lccacateg/tbl_lccalives";
+	$.getJSON(url,function(data){
+			var body = ''
+			body+='<select id="lccacateg_search" class="browser-default"> <option value="" disabled selected>Product Category</option>';
+			for(var i = 0; i<data.length; i++) {
+				body+='<option value="'+data[i].fldPropertyCategory+'">'+data[i].fldPropertyCategory+'</option>';
+			}
+			body+='</select>';
+			$('#search_lccacateg').html(body);
+
+
+		}).fail(function(){
+			M.toast({html: 'No lcca data found'});
+		});
+}
+function fetch_lccadepartmentssearch(){
+	url=myUrl+"/propertycard/propertyapi/tbl_departments/fldCompanyID/"+localStorage.companyID;
+	$.getJSON(url,function(data){
+			var body = ''
+			body+='<select id="lccadept_search" class="browser-default"> <option value="" disabled selected>Choose Department</option>';
+			for(var i = 0; i<data.length; i++) {
+				body+='<option value="'+data[i].fldDepartmentName+'">'+data[i].fldDepartmentName+'</option>';
+			}
+			body+='</select>';
+			$('#search_lccadept').html(body);
+
+
+		}).fail(function(){
+			M.toast({html: 'No deparments found'});
+		});
+}
 function fetch_lccaprod(){
 	url=myUrl+"/propertycard/propertyapi/tbl_lccalives";
 	$.getJSON(url,function(data){
@@ -90,6 +122,91 @@ function fetch_departments3(){
 		});
 }
 
+function searchPC(){
+	let search_dept = " ";
+	let search_propname = " ";
+	let search_categ = " ";
+
+	search_dept = document.getElementById("lccadept_search").value;
+	search_propname = document.getElementById("search_PropName").value;
+ 	search_categ = document.getElementById("lccacateg_search").value;
+
+	if (search_dept == '' && search_categ == '') {
+		url=myUrl+"/propertycard/propertyapi/tbl_lccalives_searchpropname/tbl_lccalives/tbl_property/fldProdID/fldPNum/fldAgency/"+localStorage.companyID+"/fldBrand/"+search_propname;
+	}else if(search_dept == ''){
+		url=myUrl+"/propertycard/propertyapi/tbl_lccalives_searchnamecateg/tbl_lccalives/tbl_property/fldProdID/fldPNum/fldAgency/"+localStorage.companyID+"/fldBrand/"+search_propname+"/fldPropertyCategory/"+search_categ;
+	}else if(search_categ == ''){		
+		url=myUrl+"/propertycard/propertyapi/tbl_lccalives_searchnamedept/tbl_lccalives/tbl_property/fldProdID/fldPNum/fldAgency/"+localStorage.companyID+"/fldBrand/"+search_propname+"/fldDept/"+search_dept;
+	}else{
+		url=myUrl+"/propertycard/propertyapi/tbl_lccalives_searchall/tbl_lccalives/tbl_property/fldProdID/fldPNum/fldAgency/"+localStorage.companyID+"/fldBrand/"+search_propname+"/fldDept/"+search_dept+"/fldPropertyCategory/"+search_categ;
+	}
+	$.getJSON(url,function(data){
+		let longstring = "";
+			for (let i = 0; i < data.length; i++) {
+				longstring += "<tr>";
+				longstring += "<td>"+data[i].fldPcID+"</td>";
+				longstring += "<td>"+data[i].fldBrand+"</td>";
+				longstring += "<td>"+data[i].fldProdName+"</td>";
+				longstring += "<td>"+data[i].fldDept+"</td>";
+				longstring += "<td>"+data[i].fldRemarks+"</td>";
+				if (data[i].fldRemarks == 'Assigned') {
+					longstring += "<td class=''><a class='blue-text darken-1' href='./propertycard.html?prodid="+data[i].fldProdID+"' onclick='setselected("+data[i].fldProdID+","+'"'+data[i].fldIarNo+'"'+","+data[i].fldRecID+")'><i class='fa fa-eye'></i></a> </td>";
+					longstring += "<td class=''><a class='waves-effect waves-light blue-text darken-1 modal-trigger' href='#modal3' onclick='transfer_tabledata("+data[i].fldRecID+")'><i class='fa fa-send'></i></a> | <a class='waves-effect waves-light red-text darken-3  modal-trigger' href='#modal4' onclick='disposal_tabledata("+data[i].fldRecID+")'><i class='fa fa-trash'></i></a> | <a class='waves-effect waves-light red-text darken-3  modal-trigger' onclick='permaDelete("+data[i].fldRecID+")'><i class='fa fa-close'></i></a></td>";
+				}else if(data[i].fldRemarks == 'Unassigned'){
+					longstring += "<td class=''><a class='waves-effect waves-light  blue-text darken-3  modal-trigger' href='#modal2' onclick='assign_tabledata("+data[i].fldRecID+")'><i class='fa fa-plus'></i></a></td>";
+					longstring += "<td><a class='waves-effect waves-light red-text darken-3  modal-trigger' onclick='permaDelete("+data[i].fldRecID+")'><i class='fa fa-close'></i></a></td>";
+				}else if(data[i].fldRemarks == 'Dispose'){
+					longstring += "<td class=''>- - -</td>";
+					longstring += "<td><a class='waves-effect waves-light red-text darken-3  modal-trigger' onclick='permaDelete("+data[i].fldRecID+")'><i class='fa fa-close'></i></a></td>";
+				}
+
+				
+				longstring += "</tr>";
+			}
+			$("#equiptabledata").html(longstring);
+	}).fail(function(){
+		M.toast({html: 'No Equipment/Property Found'});
+	});
+}
+
+function searchPCreq(){
+	let search_dept = " ";
+	let search_propname = " ";
+	let search_categ = " ";
+
+	search_dept = document.getElementById("lccadept_search").value;
+	search_propname = document.getElementById("search_PropName").value;
+ 	search_categ = document.getElementById("lccacateg_search").value;
+
+	if (search_dept == '' && search_categ == '') {
+		url=myUrl+"/propertycard/propertyapi/tbl_lccalives_searchpropname/tbl_lccalives/tbl_property/fldProdID/fldPNum/fldAgency/"+localStorage.companyID+"/fldBrand/"+search_propname;
+	}else if(search_dept == ''){
+		url=myUrl+"/propertycard/propertyapi/tbl_lccalives_searchnamecateg/tbl_lccalives/tbl_property/fldProdID/fldPNum/fldAgency/"+localStorage.companyID+"/fldBrand/"+search_propname+"/fldPropertyCategory/"+search_categ;
+	}else if(search_categ == ''){		
+		url=myUrl+"/propertycard/propertyapi/tbl_lccalives_searchnamedept/tbl_lccalives/tbl_property/fldProdID/fldPNum/fldAgency/"+localStorage.companyID+"/fldBrand/"+search_propname+"/fldDept/"+search_dept;
+	}else{
+		url=myUrl+"/propertycard/propertyapi/tbl_lccalives_searchall/tbl_lccalives/tbl_property/fldProdID/fldPNum/fldAgency/"+localStorage.companyID+"/fldBrand/"+search_propname+"/fldDept/"+search_dept+"/fldPropertyCategory/"+search_categ;
+	}
+	$.getJSON(url,function(data){
+		let longstring = "";
+			for (let i = 0; i < data.length; i++) {
+				if (data[i].fldAgency == localStorage.companyID && data[i].fldDept == localStorage.userDept) {
+					longstring += "<tr>";
+					longstring += "<td>"+data[i].fldPcID+"</td>";
+					longstring += "<td>"+data[i].fldBrand+"</td>";
+					longstring += "<td>"+data[i].fldDept+"</td>";
+					longstring += "<td>"+data[i].fldRemarks+"</td>";
+					longstring += "<td class=''><a class='blue-text ni-jags' href='./propertycard.html' onclick='setselected_reqofficer("+data[i].fldProdID+","+'"'+data[i].fldIarNo+'"'+","+data[i].fldRecID+")'><i class='fa fa-eye'></i></a></td>";
+					longstring += "</tr>";
+				}
+			
+			}
+			$("#equiptabledata_reqofficer").html(longstring);
+	}).fail(function(){
+		M.toast({html: 'No Equipment/Property Found'});
+	});
+}
+
 function equiptable(){
 
 	$(function(){
@@ -100,25 +217,30 @@ function equiptable(){
 			let longstring = "";
 			for (let i = 0; i < data.length; i++) {
 				longstring += "<tr>";
-				longstring += "<td>"+data[i].fldRecID+"</td>";
+				longstring += "<td>"+data[i].fldPcID+"</td>";
 				longstring += "<td>"+data[i].fldBrand+"</td>";
 				longstring += "<td>"+data[i].fldProdName+"</td>";
 				longstring += "<td>"+data[i].fldDept+"</td>";
 				longstring += "<td>"+data[i].fldRemarks+"</td>";
 				if (data[i].fldRemarks == 'Assigned') {
 					longstring += "<td class=''><a class='blue-text darken-1' href='./propertycard.html?prodid="+data[i].fldProdID+"' onclick='setselected("+data[i].fldProdID+","+'"'+data[i].fldIarNo+'"'+","+data[i].fldRecID+")'><i class='fa fa-eye'></i></a> </td>";
-					longstring += "<td class=''><a class='waves-effect waves-light blue-text darken-1 modal-trigger' href='#modal3' onclick='transfer_tabledata("+data[i].fldRecID+")'><i class='fa fa-send'></i></a> | <a class='waves-effect waves-light red-text darken-3  modal-trigger' href='#modal4' onclick='disposal_tabledata("+data[i].fldRecID+")'><i class='fa fa-trash'></i></a></td>";
-				}else{
+					longstring += "<td class=''><a class='waves-effect waves-light blue-text darken-1 modal-trigger' href='#modal3' onclick='transfer_tabledata("+data[i].fldRecID+")'><i class='fa fa-send'></i></a> | <a class='waves-effect waves-light red-text darken-3  modal-trigger' href='#modal4' onclick='disposal_tabledata("+data[i].fldRecID+")'><i class='fa fa-trash'></i></a> | <a class='waves-effect waves-light red-text darken-3  modal-trigger' onclick='permaDelete("+data[i].fldRecID+")'><i class='fa fa-close'></i></a></td>";
+				}else if(data[i].fldRemarks == 'Unassigned'){
 					longstring += "<td class=''><a class='waves-effect waves-light  blue-text darken-3  modal-trigger' href='#modal2' onclick='assign_tabledata("+data[i].fldRecID+")'><i class='fa fa-plus'></i></a></td>";
-					longstring += "<td>- - -</td>";
+					longstring += "<td><a class='waves-effect waves-light red-text darken-3  modal-trigger' onclick='permaDelete("+data[i].fldRecID+")'><i class='fa fa-close'></i></a></td>";
+				}else if(data[i].fldRemarks == 'Dispose'){
+					longstring += "<td class=''>- - -</td>";
+					longstring += "<td><a class='waves-effect waves-light red-text darken-3  modal-trigger' onclick='permaDelete("+data[i].fldRecID+")'><i class='fa fa-close'></i></a></td>";
 				}
+
 				
 				longstring += "</tr>";
 			}
+			document.getElementById("allcount").innerHTML=data.length;
 			$("#equiptabledata").html(longstring);
 
 		}).fail(function(){
-			window.alert("No Equipment Found");
+			M.toast({html: 'No Equipment/Property Found'});
 		});
 		
 	});
@@ -134,13 +256,14 @@ function equiptable_assigned(){
 			let longstring = "";
 			for (let i = 0; i < data.length; i++) {
 				longstring += "<tr>";
-				longstring += "<td>"+data[i].fldRecID+"</td>";
+				longstring += "<td>"+data[i].fldPcID+"</td>";
 				longstring += "<td>"+data[i].fldProdID+"</td>";
 				longstring += "<td>"+data[i].fldProdName+"</td>";
 				longstring += "<td>"+data[i].fldDept+"</td>";
 				longstring += "<td class=''><a class='blue-text darken-3' href='./propertycard.html?prodid="+data[i].fldProdID+"' onclick='setselected("+data[i].fldProdID+","+'"'+data[i].fldIarNo+'"'+","+data[i].fldRecID+")'><i class='fa fa-eye'></i></a> </td>";
 				longstring += "</tr>";
 			}
+			document.getElementById("asscount").innerHTML=data.length;
 			$("#equiptabledata_assigned").html(longstring);
 
 		}).fail(function(){
@@ -149,21 +272,51 @@ function equiptable_assigned(){
 		
 	});
 }
-function equiptable_unassigned(){
+
+function equiptable_disposed(){
 
 	$(function(){
 
-		url=myUrl+"/propertycard/propertyapi/tbl_lccalives_filter/tbl_lccalives/tbl_property/fldProdID/fldPNum/fldAgency/"+localStorage.companyID+"/fldRemarks/Unassigned";
+		url=myUrl+"/propertycard/propertyapi/tbl_lccalives_filter/tbl_lccalives/tbl_property/fldProdID/fldPNum/fldAgency/"+localStorage.companyID+"/fldRemarks/Dispose";
 		
 		$.getJSON(url,function(data){
 			let longstring = "";
 			for (let i = 0; i < data.length; i++) {
 				longstring += "<tr>";
-				longstring += "<td>"+data[i].fldRecID+"</td>";
+				longstring += "<td>"+data[i].fldPcID+"</td>";
+				longstring += "<td>"+data[i].fldProdID+"</td>";
+				longstring += "<td>"+data[i].fldProdName+"</td>";
+				longstring += "<td>"+data[i].fldDept+"</td>";
+				longstring += "<td class=''><a class='waves-effect waves-light red-text darken-3  modal-trigger' onclick='permaDelete("+data[i].fldRecID+")'><i class='fa fa-close'></i></a></td>";
+				longstring += "</tr>";
+			}
+			document.getElementById("dispcount").innerHTML=data.length;
+			$("#equiptabledata_disposed").html(longstring);
+
+		}).fail(function(){
+			M.toast({html: 'No Disposed Equipment/Property'});
+		});
+		
+	});
+}
+
+function equiptable_unassigned(){
+
+	$(function(){
+
+		url=myUrl+"/propertycard/propertyapi/tbl_lccalives_filter/tbl_lccalives/tbl_property/fldProdID/fldPNum/fldAgency/"+localStorage.companyID+"/fldRemarks/Unassigned";
+
+
+		$.getJSON(url,function(data){
+			let longstring = "";
+			for (let i = 0; i < data.length; i++) {
+				longstring += "<tr>";
+				longstring += "<td>"+data[i].fldPcID+"</td>";
 				longstring += "<td>"+data[i].fldProdName+"</td>";
 				longstring += "<td>"+data[i].fldIarNo+"</td>";
 				longstring += "<td class=''><a class='waves-effect waves-light  green-text darken-3 modal-trigger' href='#modal2' onclick='assign_tabledata("+data[i].fldRecID+")'><i class='fa fa-plus left'></i></a></td>";
 				longstring += "</tr>";
+
 			}
 			if (data.length) {
 				$("#newcount").attr('class', 'new badge right red');
@@ -193,22 +346,89 @@ function equiptable_reqofficer(){
 		
 		$.getJSON(url,function(data){
 			let longstring = "";
+			let cnt = 0;
 			for (let i = 0; i < data.length; i++) {
 				if (data[i].fldAgency == localStorage.companyID && data[i].fldDept == localStorage.userDept) {
 					longstring += "<tr>";
-					longstring += "<td>"+data[i].fldRecID+"</td>";
-					longstring += "<td>"+data[i].fldProdName+"</td>";
+					longstring += "<td>"+data[i].fldPcID+"</td>";
+					longstring += "<td>"+data[i].fldBrand+"</td>";
 					longstring += "<td>"+data[i].fldDept+"</td>";
 					longstring += "<td>"+data[i].fldRemarks+"</td>";
 					longstring += "<td class=''><a class='blue-text ni-jags' href='./propertycard.html' onclick='setselected_reqofficer("+data[i].fldProdID+","+'"'+data[i].fldIarNo+'"'+","+data[i].fldRecID+")'><i class='fa fa-eye'></i></a></td>";
 					longstring += "</tr>";
+					cnt++;
 				}
 			
 			}
+			document.getElementById("allcount").innerHTML=cnt;
 			$("#equiptabledata_reqofficer").html(longstring);
 
 		}).fail(function(){
 			window.alert("No Equipment Found in Requisitioning");
+		});
+		
+	});
+}
+
+function equiptable_reqofficer_assigned(){
+
+	$(function(){
+
+		url=myUrl+"/propertycard/propertyapi/tbl_lccalives_filter/tbl_lccalives/tbl_property/fldProdID/fldPNum/fldAgency/"+localStorage.companyID+"/fldRemarks/Assigned";
+		
+		$.getJSON(url,function(data){
+			let longstring = "";
+			let cnt = 0;
+			for (let i = 0; i < data.length; i++) {
+				if (data[i].fldAgency == localStorage.companyID && data[i].fldDept == localStorage.userDept) {
+					longstring += "<tr>";
+					longstring += "<td>"+data[i].fldPcID+"</td>";
+					longstring += "<td>"+data[i].fldBrand+"</td>";
+					longstring += "<td>"+data[i].fldDept+"</td>";
+					longstring += "<td>"+data[i].fldRemarks+"</td>";
+					longstring += "<td class=''><a class='blue-text ni-jags' href='./propertycard.html' onclick='setselected_reqofficer("+data[i].fldProdID+","+'"'+data[i].fldIarNo+'"'+","+data[i].fldRecID+")'><i class='fa fa-eye'></i></a></td>";
+					longstring += "</tr>";
+					cnt++;
+				}
+			
+			}
+			document.getElementById("asscount").innerHTML=cnt;
+			$("#reqequiptabledata_assigned").html(longstring);
+
+		}).fail(function(){
+			window.alert("No Assigned Equipment Found in Requisitioning");
+		});
+		
+	});
+}
+
+function equiptable_reqofficer_unassigned(){
+
+	$(function(){
+
+		url=myUrl+"/propertycard/propertyapi/tbl_lccalives_filter/tbl_lccalives/tbl_property/fldProdID/fldPNum/fldAgency/"+localStorage.companyID+"/fldRemarks/Unassigned";
+		
+		$.getJSON(url,function(data){
+			let longstring = "";
+			let cnt = 0;
+			for (let i = 0; i < data.length; i++) {
+				if (data[i].fldAgency == localStorage.companyID && data[i].fldDept == localStorage.userDept) {
+					longstring += "<tr>";
+					longstring += "<td>"+data[i].fldPcID+"</td>";
+					longstring += "<td>"+data[i].fldBrand+"</td>";
+					longstring += "<td>"+data[i].fldDept+"</td>";
+					longstring += "<td>"+data[i].fldRemarks+"</td>";
+					longstring += "<td class=''><a class='blue-text ni-jags' href='./propertycard.html' onclick='setselected_reqofficer("+data[i].fldProdID+","+'"'+data[i].fldIarNo+'"'+","+data[i].fldRecID+")'><i class='fa fa-eye'></i></a></td>";
+					longstring += "</tr>";
+					cnt++;
+				}
+			
+			}
+			document.getElementById("newcount").innerHTML=cnt;
+			$("#reqequiptabledata_unassigned").html(longstring);
+
+		}).fail(function(){
+			window.alert("No Unassigned Equipment Found in Requisitioning");
 		});
 		
 	});
@@ -431,7 +651,7 @@ function disposal_func(){
 	let fldRecID = document.getElementById("disposal_recid").innerHTML;
 	let fldTDQty = 1;
 	let fldDept = document.getElementById("department_select3").value;
-	let fldRemarks = "Unassigned";
+	let fldRemarks = "Dispose";
 	let tblname = "tbl_property";
 	let update_action = "update_propertydata";
 
@@ -490,8 +710,23 @@ function disposal_func(){
 		equiptable();
 		equiptable_assigned();
 		equiptable_unassigned();
-$('.modal').modal('close');
+		$('.modal').modal('close');
 	});
+}
+
+function permaDelete(recID){
+	var r = confirm("Are you sure to permanently delete this record?");
+	if (r == true) {
+		$.post(myUrl+"/propertycard/propertyapi/delete/tbl_property/"+recID,function(data){
+			M.toast({html: 'Property Deleted Permanently'});
+		    equiptable();
+		}).fail(function(){
+			M.toast({html: 'Property Not Deleted'});
+		    equiptable();
+		});
+	} else {
+
+	}
 }
 
 function pcdata(){

@@ -17,7 +17,7 @@ function formatDate(date, lval) {
     var mval = parseInt(lval)+1;
     
     console.log(mval);
-    return [year + '-' + month + '-' + mval];
+    return year + '-' + month + '-' + mval;
 }
 
 function setData() {
@@ -31,8 +31,10 @@ function setData() {
         data.forEach(function(i) {
             lastVal = i.fldPrNo;
         });
-        
-        console.log(lastVal);
+        var xplVal = lastVal.split("-");        
+        if(isNaN(xplVal[2]))    {
+            lastVal = formatDate(new Date, "100");
+        }
         var splVal = lastVal.split("-");
         $('#curdate_request').val(formatDate(new Date, splVal[2]));     
     }
@@ -209,7 +211,7 @@ $(document).ready(function () {
         });
         
         setData();
-        window.location.assign("purchase-list.html");
+        //window.location.assign("purchase-list.html");
     })
 });
 
