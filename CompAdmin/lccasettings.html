@@ -327,13 +327,17 @@
                 let aType = $("#assetType").val();
                 let nLC = $("#noLifeCycle").val();
                 let jsonObj;
-
+                
+                if(aType != "" && nLC != ""){
                 jsonObj = JSON.parse('{ "assetType":"' + aType + '", "noLifeCycle":"' + nLC + '", "companyID":"' + localStorage.companyID + '"}');
                 datas[0].assets.push(jsonObj);
                 console.log(datas);
                 viewAssets();
                 saveData();
                 saveAsset(jsonObj);
+                }  else {
+                    window.alert("Please make sure you've fill up every field");
+                }
             }
         
             function insertRate() {
@@ -354,18 +358,23 @@
                 let ocType = $("#otCostType option:selected").text();
                 let jsonObj;
 
+                if(cName != ""){
 
-                if (cType == "Recurring Cost") {
-                    jsonObj = JSON.parse('{ "costName":"' + cName + '", "costType":"' + cType + '", "escalationRate": "' + eRate + '", "companyID":"' + localStorage.companyID + '"}');
+
+                    if (cType == "Recurring Cost") {
+                        jsonObj = JSON.parse('{ "costName":"' + cName + '", "costType":"' + cType + '", "escalationRate": "' + eRate + '", "companyID":"' + localStorage.companyID + '"}');
+                    } else {
+                        jsonObj = JSON.parse('{ "costName":"' + cName + '", "costType":"' + cType + '", "oneTimeCostType": "' + ocType + '", "companyID":"' + localStorage.companyID + '"}');
+                    }
+
+                    datas[1].costs.push(jsonObj);
+                    console.log(datas);
+                    viewCosts();
+                    saveData();
+                    saveCost(jsonObj);
                 } else {
-                    jsonObj = JSON.parse('{ "costName":"' + cName + '", "costType":"' + cType + '", "oneTimeCostType": "' + ocType + '", "companyID":"' + localStorage.companyID + '"}');
+                    window.alert("Please make sure you've fill up every field");
                 }
-
-                datas[1].costs.push(jsonObj);
-                console.log(datas);
-                viewCosts();
-                saveData();
-                saveCost(jsonObj);
             }
         
             var myfile="";
