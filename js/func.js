@@ -36,14 +36,12 @@ $('#form_request').submit(function (e) {
                 console.log(data);
             });
 
-
         sendEmail(cmail, thval);
-
-        window.alert("We've already sent an email for your verification code please check your email now");
-
-        setTimeout(function () {
-            window.location.assign("verify.html");
-        }, 2000);
+        swal("Resgister Succesfully", "We've already sent an email for your verification code please check your email now", "success").then(function() {
+            setTimeout(function () {
+                window.location.assign("verify.html");
+            }, 2000);
+        });
 
     } else {
         window.alert("Password didn't Match");
@@ -85,7 +83,7 @@ $('#emp_form').submit(function (e) {
                 clogo: role,
                 cweb: dept,
                 cpwd: coid,
-        }]),
+            }]),
             function (data) {
                 console.log(data);
             });
@@ -132,37 +130,39 @@ $('#login_user').submit(function (e) {
     e.preventDefault();
     var un = $("#username").val();
     var pw = $("#password").val();
-    $.post(myurls + "pems/apis/myapi/login/", {
-        un: un,
-        pw: pw
-    }, function (data) {
-        if (data.Authorize == "User") {
+    $.ajax({
+        url: myurls + "pems/apis/myapi/login/",
+        type: "POST",
+        data: {un: un,pw: pw},
+        dataType: "JSON",
+    }).done(function(data) {
+     if (data.Authorize == "User") {
 
-            localStorage.companyID = data.fldCompanyID;
-            localStorage.userID = data.fldUserID;
-            localStorage.userDept = data.fldDept;
+        localStorage.companyID = data.fldCompanyID;
+        localStorage.userID = data.fldUserID;
+        localStorage.userDept = data.fldDept;
 
-            if (data.fldRole == "Supply") {
-                window.location.assign("SupplyOfficer/propertycard/");
-            } else {
-                window.location.assign("ReqOfficer/propertycard/");
-            }
-        } else if (data.Authorize == "Company") {
-            localStorage.companyID = data.fldCompanyID;
-            localStorage.companyName = data.fldCompanyName;
-            localStorage.companyEmail = data.fldEmail;
-            localStorage.companyAddress = data.fldAddress;
-            localStorage.companyContactNo = data.fldContactNo;
-            localStorage.companyFaxNo = data.fldFax;
-            localStorage.companyWeb = data.fldWebsite;
-            localStorage.companyLogo = data.fldLogo;
-
-
-            window.location.assign("CompAdmin/");
+        if (data.fldRole == "Supply") {
+            window.location.assign("SupplyOfficer/propertycard/");
         } else {
-            window.alert("Login Failed");
+            window.location.assign("ReqOfficer/propertycard/");
         }
-    });
+    } else if (data.Authorize == "Company") {
+        localStorage.companyID = data.fldCompanyID;
+        localStorage.companyName = data.fldCompanyName;
+        localStorage.companyEmail = data.fldEmail;
+        localStorage.companyAddress = data.fldAddress;
+        localStorage.companyContactNo = data.fldContactNo;
+        localStorage.companyFaxNo = data.fldFax;
+        localStorage.companyWeb = data.fldWebsite;
+        localStorage.companyLogo = data.fldLogo;
+
+
+        window.location.assign("CompAdmin/");
+    } else {
+        window.alert("Login Failed");
+    }
+});
 });
 
 
@@ -261,7 +261,6 @@ function selectCompanyEmplyInactive(val) {
 }
 
 function selectCompany(val) {
-    console.log(val);
     $("#comp_name").html(localStorage.companyName);
     $("#comp_name_sidenav").html(localStorage.companyName + '/PEMS');
     $("#comp_name_navbar").html(localStorage.companyName + '/PEMS');
@@ -403,15 +402,15 @@ function verifyCode() {
         $.getJSON(myurls + "pems/apis/myapi/select/tbl_companies/fldVerify/" + val, function (data) {
             if (data.length > 0) {
                 updateData(val);
-                window.alert("Account already verified please login now!");
-                window.location.assign("index.html");
-
+                swal("Verify Succesfully", "Account already verify please login now!", "success").then(function() {
+                    window.location.assign("index.html");  
+                });
             } else {
-                window.alert("Invalid Verification Code");
+                swal("Invalid!", "Invalid Verification Code. Resend or Check to your email address", "error");
             }
         });
     } else {
-        window.alert("Please enter Verification Code");
+        swal("Enter a Code", "Fields are required", "error");
     }
 }
 
@@ -441,10 +440,11 @@ function resetPass() {
         if ($("#email").val() != "") {
             updateCode(email, thval);
             sendCode(email, thval);
-            window.alert("Password has been reset please check your E-mail address");
-            window.location.assign("index.html");
+            swal("Send Succesfully", "Check your email!", "success").then(function() {
+                window.location.assign("verify.html");  
+            });
         } else {
-            window.alert("Please enter a valid Email-address");
+                swal("Fields Required!", "Field are required", "error");
         }
     }, 1000);
 
@@ -508,7 +508,7 @@ function updatePass() {
         $.post(myurls + "pems/apis/myapi/update/tbl_companies/fldVerify/" + myx, JSON.stringify([{
             fldVerify: "Active",
             fldPassword: pwd
-            }]), function (data) {
+        }]), function (data) {
 
         });
         window.alert("Password has been reset, Please login to continue");

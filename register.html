@@ -1,102 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<title>PEMS Company Register</title>
+<head>	
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<link rel="shortcut icon" href="image/LOGO.png" />
 	<link href="css/font-awesome.min.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="css/materialize.min.css">
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link href="css/animate.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/materialize.min.css">
+	<link rel="stylesheet" href="css/style.css">
+	<title>PEMS Company Register</title>
 	<script src="js/checkLogin.js"></script>
 	<style>
-	.bg-register {
-		background: #00c9ff;
-		background: -webkit-linear-gradient(to right, #00c9ff, #92fe9d);
-		background: linear-gradient(to right, #00c9ff, #92fe9d);
+	.card-register {
+		padding: 100px;
+	}
+	@media only screen and (max-width : 768px) {
+		.card-register {
+			padding: 0;
+		}
 	}
 </style>
 </head>
 <body>
-	<div class="bg-register">
-		<div class="container">
-			<div class="z-depth-1 grey lighten-4" style="padding: 30px 35px">
-				<blockquote>
-					<h4 class="deafult-text mt-br">
-						<b>Register your Company</b>
-					</h4>
-				</blockquote>
+	<div class="container">
+		<div class="row card-register">
+			<div class="col s12 l4 center">
+				<a href="index.html"><h3 class="gradient-text" style="letter-spacing: 10px"><b>PEMS</b></h3></a>
+			</div>
+			<div class="col s12 l8">
+				<div class="register-content">
+					<h4>Let's Get Started</h4>
+					<p>Fill up the fields to access in Inventory Management to monitor and track your receive orders. You can use the LCCA tool to make a good decision.</p>
+				</div>
+			</div>
+			<div class="col s12">
 				<form id="form_request">
-					<div class='row mt-1'>
-						<div class="col s12">
-							<h5>Company Information</h5>
+					<div class="row mt-1">
+						<div class="col s12 center" style="margin-bottom: 15px">
+							<img src="image/insert_logo.png" id="comp_logo_r" alt="comany logo" class="responsive-img circle" style="width: 20%;" />
 						</div>
-						<div class="col s12 mt-br">
-							<div class="file-field input-field col s12 m6 l6">
-								<div class="btn">
+						<div class="col s12 l9">
+							<div class="input-field col s12">
+								<i class="fa fa-sitemap prefix"></i>
+								<input  id="comp_name" name="comp_name" type="text" class="validate" onblur="validateData(this.value, this.id, 'companies','CompanyName')" autofocus required>
+								<label class="active" for="comp_name">Company Name</label>
+								<span class="helper-text" data-error="Fields are required" data-success="">Enter the Company name</span>
+							</div>
+						</div>
+						<div class="col s12 l3">
+							<div class="file-field input-field">
+								<div class="btn" style="text-transform: capitalize;width: 90%">
 									<span>Logo</span>
-									<input id="inp" type="file" onchange="document.getElementById('comp_logo').src = window.URL.createObjectURL(this.files[0]); readFile(this.file)" required>
+									<input id="inp" type="file" onchange="document.getElementById('comp_logo_r').src = window.URL.createObjectURL(this.files[0]); readFile(this.file); document.getElementById('comp_logo_r').className='animated bounceIn'" required>
 								</div>
 								<div class="file-path-wrapper">
-									<input class="file-path validate" placeholder="@e.g(.png .jpg .gif)" type="text">
+									<input class="file-path validate" type="text">
 								</div>
 							</div>
-							<div class="col s6 m3 l3 offset-s3 ">
-								<img id="comp_logo" alt="logo" class="responsive-img" src="" />
-							</div>
-							<div class='input-field col s12 m6 l6 mt-br'>
-								<input class='validate' type='text' name='comp_name' id='comp_name' placeholder="@Company Name" onblur="validateData(this.value, this.id, 'companies','CompanyName')"  required />
-								<label for='comp_name'>Company Name</label>
-							</div>
-							<div class='input-field col s12 m6 l6 mt-br'>
-								<input class='validate' type='text' name='comp_address' id='comp_address' placeholder="@#24 St. City" required />
-								<label for='comp_address'> Company Address</label>
+						</div>
+						<div class="col s12 l12">
+							<div class="input-field col s12">
+								<i class="fa fa-map-marker prefix"></i>
+								<textarea id="comp_address" name="comp_address" class="materialize-textarea" data-length="120" style="height: 100px;"  required></textarea>
+								<label for="comp_address">Company Address</label>
+								<span class="helper-text" data-error="Fields are required" data-success="">Enter the Company Address</span>
 							</div>
 						</div>
-						<div class="col s12">
+						<div class="col s12 mt-br" style="margin-bottom: 5px">
 							<h5>Account Information</h5>
 						</div>
+						<div class="col s12 l12">
+							<div class="input-field col s12">
+								<i class="fa fa-envelope-o prefix"></i>
+								<input  id="comp_email" name="comp_email" type="email" class="validate"  onblur="validateData(this.value, this.id, 'companies','Email')" required>
+								<label class="active" for="comp_email" >Email</label>
+								<span class="helper-text" data-error="Fields are required" data-success="">Enter Company Email</span>
+							</div>
+						</div>
+						<div class="col s12 l6">
+							<div class="input-field col s12">
+								<i class="fa fa-unlock-alt prefix"></i>
+								<input  id="comp_pass" type="password" class="validate" pattern=".{8,}" title="8 characters minimum" required>
+								<label class="active" for="comp_pass">Password</label>
+								<span class="helper-text" data-error="8 characters minimum" data-success="">8 characters minimum</span>
+							</div>
+						</div>
+						<div class="col s12 l6">
+							<div class="input-field col s12">
+								<i class="fa fa-unlock-alt prefix"></i>
+								<input  id="conf_pass" name="comp_pass" type="password" class="validate" required>
+								<label class="active" for="conf_pass">Confirm Password</label>
+								<span class="helper-text" data-error="Password Not Match" data-success="">Confirm the Pasword</span>
+							</div>
+						</div>
 						<div class="col s12 mt-br">
-							<div class='input-field col s12 m6 l6'>
-								<input class='validate' type='email' name='comp_email' id='comp_email' placeholder="@johndoe@gmail.com" onblur="validateData(this.value, this.id, 'companies','Email')" required />
-								<label for='comp_email'>Email</label>
+							<h5>Contact Information</h5>
+						</div>
+						<div class="col s12 l6">
+							<div class='input-field '>
+								<i class="fa fa-mobile prefix"></i>
+								<input class="validate" type="number" name="comp_contactno" id="comp_contactno"  required />
+								<label for="comp_contactno">Contact No.</label><span class="helper-text" data-error="Fields are required" data-success="">Enter the Contact No.</span>
 							</div>
-							<div class='input-field col s12 m6 l6'>
-								<input class='validate' type='password' name='comp_pass' id='comp_pass' placeholder="Password must be atleast 8 characters" pattern=".{8,}" title="8 characters minimum" required/>
-								<label for='comp_pass'>Password</label>
+						</div>
+						<div class="col s12 l6">
+							<div class='input-field '>
+								<i class="fa fa-phone prefix"></i>
+								<input class="validate" type="number" name="comp_faxno" id="comp_faxno"  required />
+								<label for="comp_faxno">Fax No.</label><span class="helper-text" data-error="Fields are required" data-success="">Enter the Fax No.</span>
 							</div>
-							<div class='input-field col s12 m6 l6'>
-								<input class='validate' type='password' name='comp_pass' id='conf_pass' placeholder="@21john23" required />
-								<label for='conf_pass'>Confirm Password</label>
+						</div>
+						<div class="col s12 l6">
+							<div class='input-field '>
+								<i class="fa fa-globe prefix"></i>
+								<input class="validate" type="url" name="comp_website" id="comp_website"  required />
+								<label for="comp_website">Website</label><span class="helper-text" data-error="Field must be http://example.com" data-success="">Enter the Website. http://example.com</span>
 							</div>
 						</div>
 						<div class="col s12">
-							<h5>Contact Information</h5>
+							<div class="right  z-depth-2"><button class="btn-flat waves-effect blue-text">Register</button></div>
 						</div>
-						<div class="col s12 mt-br">
-							<div class='input-field col s12 m6 l6'>
-								<input class='validate' type='number' name='comp_contactno' id='comp_contactno' placeholder="@09012341234" required />
-								<label for='comp_contactno'>Contact No.</label>
-							</div>
-							<div class='input-field col s12 m6 l6'>
-								<input class='validate' type='text' name='comp_faxno' id='comp_faxno' placeholder="@2222-4444-444" />
-								<label for='comp_faxno'>Fax No.</label>
-							</div>
-							<div class='input-field col s12 m6 l6'>
-								<input class='validate' type='text' name='comp_website' id='comp_website' placeholder="@www.johndoe.com" />
-								<label for='comp_website'>Website</label>
-							</div>
-						</div>
-					</div>
-					<div class='center mt-1'>
-						<button type='submit' name='btn_login' class='col s12 btn green waves-effect '>Register as Company</button>
-					</div>
+					</div>	
 				</form>
 			</div>
 		</div>
 	</div>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/materialize.min.js"></script>
+	<script src="js/alert.min.js"></script>
 	<script src="js/func.js"></script>
 </body>
 </html>

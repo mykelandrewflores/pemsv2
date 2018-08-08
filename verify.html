@@ -1,45 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head>	
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<link rel="shortcut icon" href="image/LOGO.png" />
+	<link href="css/font-awesome.min.css" rel="stylesheet">
+	<link href="css/animate.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="css/materialize.min.css">
-	<link rel="stylesheet" href="class/font-awesome.min.css">
 	<link rel="stylesheet" href="css/style.css">
+	<title>PEMS Verify Register</title>
 	<script src="js/checkLogin.js"></script>
-	<title>Verify your Account</title>
+	<style>
+	.verify-card {
+		padding: 0 250px 0 250px!important;
+	}
+	@media only screen and (max-width : 768px) {
+		.verify-card {
+			padding: 0!important;
+		}
+	}
+</style>
 </head>
 <body>
-	<div class="hero hero-dusk">
-		<div class="hero-caption">			
-			<div class="card youtube-side">
-				<p class="my-0">&nbsp;</p>
-				<div class="ribbon primary py-2 z-depth-2 center"><h5 class="white-text login-title">Verification Code</h5></div>
-				<div class="card-content white-text">
-					<div class="input-field container">
-						<div class="form-group group">
-							<input type="text" class="form-control grey-text text-darken-2 custom-input" id="vcode" name="username" placeholder="Enter Verification Code">
-							<span class="bar"></span>
-
-							<br><button class="btn btn-lg primary right" onclick="verifyCode()" >Submit Verification Code</button>
-						</div>
-					</div>
-					<div class="right-align">
-						<br>
-						<br>
-						<a href="enteremail.html" class="blue-text">Resend Verification Code</a>        
-						<br>
-						<a href="index.html" class="blue-text">Back</a>
+	<div class="container mt-3">
+		<div class="row" style="margin-bottom: 100px">
+			<a href="index.html"><h3 class="gradient-text center" style="letter-spacing: 10px"><b>PEMS</b></h3></a>
+			<h5 class="center">Verify Account</h5>
+			<div class="col s12 mt-br verify-card">
+				<div class="input-field col s12">
+					<i class="fa fa-unlock-alt prefix"></i>
+					<input  id="vcode"  type="text" class="validate"  autofocus required>
+					<label class="active" for="vcode">Verification Code</label>
+					<span class="helper-text" data-error="Fields are required" data-success="">Enter the verification code</span>
+				</div>
+				<div class="col s12">
+					<div class="right  z-depth-2"><button class="btn-flat white blue-text waves-effect" onclick="verifyCode()">Submit</button></div>
+				</div>
+				<div class="col s12">
+					<div class="right-align mt-br">
+						<a href="enteremail.html" class="blue-text">Resend Verification Code</a> 
 					</div>
 				</div>
-				<div class="clearfix"></div>
 			</div>
 		</div>
 	</div>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/materialize.min.js"></script>
-	<script src="js/init.js"></script>
+	<script src="js/alert.min.js"></script>
 	<script src="js/func.js"></script>
 </body>
 </html>

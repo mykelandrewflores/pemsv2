@@ -1,6 +1,9 @@
 :root {
 	--primary-color: #424242;
 	--secondary-color: #616161;
+    --dark-blue: #264e86;
+    --blue: #0074e4;
+    --light-blue: #74dbef;
 }
 @font-face {
 	font-family: Roboto;
@@ -16,6 +19,7 @@ html,body {
 	background-image: linear-gradient(120deg, #fdfbfb 0%, #f5f5f5 100%);
 }
 body {
+	height: 100%;
 	display: block;
 }
 th {
@@ -93,11 +97,32 @@ tbody>tr>td {
 .pl-2 {
 	padding-left: 100px!important;
 }
+.pl-3 {
+	padding-left: 150px!important;
+}
 .padded {
 	padding-left: 300px;
 }
 .font-bold {
 	font-weight: 600;
+}
+.xsm-logo {
+	width: 10%;
+	height: auto;
+}
+
+.sm-logo {
+	width: 20%;
+	height: auto;
+}
+
+.md-logo {
+	width: 40%;
+	height: auto;
+}
+
+.md-width {
+	width: 50%;
 }
 .md-font {
 	font-size: 25px;
@@ -143,6 +168,13 @@ blockquote {
 	left: 0;
 	background-image: -webkit-linear-gradient(left top, rgba(4843,67,82,1), rgba(215,210,204,0.5));
 }
+
+.gradient-text {
+    background: -webkit-linear-gradient(left top, var(--dark-blue), var(--light-blue));
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
+
 .bg-form {
 	position: relative;
 	background: url('../image/bg-form.jpeg');
