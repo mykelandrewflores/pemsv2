@@ -144,7 +144,7 @@ function searchPC(){
 		let longstring = "";
 			for (let i = 0; i < data.length; i++) {
 				longstring += "<tr>";
-				longstring += "<td>"+data[i].fldRecID+"</td>";
+				longstring += "<td>"+data[i].fldPcID+"</td>";
 				longstring += "<td>"+data[i].fldBrand+"</td>";
 				longstring += "<td>"+data[i].fldProdName+"</td>";
 				longstring += "<td>"+data[i].fldDept+"</td>";
@@ -192,7 +192,7 @@ function searchPCreq(){
 			for (let i = 0; i < data.length; i++) {
 				if (data[i].fldAgency == localStorage.companyID && data[i].fldDept == localStorage.userDept) {
 					longstring += "<tr>";
-					longstring += "<td>"+data[i].fldRecID+"</td>";
+					longstring += "<td>"+data[i].fldPcID+"</td>";
 					longstring += "<td>"+data[i].fldBrand+"</td>";
 					longstring += "<td>"+data[i].fldDept+"</td>";
 					longstring += "<td>"+data[i].fldRemarks+"</td>";
@@ -217,7 +217,7 @@ function equiptable(){
 			let longstring = "";
 			for (let i = 0; i < data.length; i++) {
 				longstring += "<tr>";
-				longstring += "<td>"+data[i].fldRecID+"</td>";
+				longstring += "<td>"+data[i].fldPcID+"</td>";
 				longstring += "<td>"+data[i].fldBrand+"</td>";
 				longstring += "<td>"+data[i].fldProdName+"</td>";
 				longstring += "<td>"+data[i].fldDept+"</td>";
@@ -256,7 +256,7 @@ function equiptable_assigned(){
 			let longstring = "";
 			for (let i = 0; i < data.length; i++) {
 				longstring += "<tr>";
-				longstring += "<td>"+data[i].fldRecID+"</td>";
+				longstring += "<td>"+data[i].fldPcID+"</td>";
 				longstring += "<td>"+data[i].fldProdID+"</td>";
 				longstring += "<td>"+data[i].fldProdName+"</td>";
 				longstring += "<td>"+data[i].fldDept+"</td>";
@@ -283,7 +283,7 @@ function equiptable_disposed(){
 			let longstring = "";
 			for (let i = 0; i < data.length; i++) {
 				longstring += "<tr>";
-				longstring += "<td>"+data[i].fldRecID+"</td>";
+				longstring += "<td>"+data[i].fldPcID+"</td>";
 				longstring += "<td>"+data[i].fldProdID+"</td>";
 				longstring += "<td>"+data[i].fldProdName+"</td>";
 				longstring += "<td>"+data[i].fldDept+"</td>";
@@ -311,7 +311,7 @@ function equiptable_unassigned(){
 			let longstring = "";
 			for (let i = 0; i < data.length; i++) {
 				longstring += "<tr>";
-				longstring += "<td>"+data[i].fldRecID+"</td>";
+				longstring += "<td>"+data[i].fldPcID+"</td>";
 				longstring += "<td>"+data[i].fldProdName+"</td>";
 				longstring += "<td>"+data[i].fldIarNo+"</td>";
 				longstring += "<td class=''><a class='waves-effect waves-light  green-text darken-3 modal-trigger' href='#modal2' onclick='assign_tabledata("+data[i].fldRecID+")'><i class='fa fa-plus left'></i></a></td>";
@@ -350,7 +350,7 @@ function equiptable_reqofficer(){
 			for (let i = 0; i < data.length; i++) {
 				if (data[i].fldAgency == localStorage.companyID && data[i].fldDept == localStorage.userDept) {
 					longstring += "<tr>";
-					longstring += "<td>"+data[i].fldRecID+"</td>";
+					longstring += "<td>"+data[i].fldPcID+"</td>";
 					longstring += "<td>"+data[i].fldBrand+"</td>";
 					longstring += "<td>"+data[i].fldDept+"</td>";
 					longstring += "<td>"+data[i].fldRemarks+"</td>";
@@ -382,7 +382,7 @@ function equiptable_reqofficer_assigned(){
 			for (let i = 0; i < data.length; i++) {
 				if (data[i].fldAgency == localStorage.companyID && data[i].fldDept == localStorage.userDept) {
 					longstring += "<tr>";
-					longstring += "<td>"+data[i].fldRecID+"</td>";
+					longstring += "<td>"+data[i].fldPcID+"</td>";
 					longstring += "<td>"+data[i].fldBrand+"</td>";
 					longstring += "<td>"+data[i].fldDept+"</td>";
 					longstring += "<td>"+data[i].fldRemarks+"</td>";
@@ -414,7 +414,7 @@ function equiptable_reqofficer_unassigned(){
 			for (let i = 0; i < data.length; i++) {
 				if (data[i].fldAgency == localStorage.companyID && data[i].fldDept == localStorage.userDept) {
 					longstring += "<tr>";
-					longstring += "<td>"+data[i].fldRecID+"</td>";
+					longstring += "<td>"+data[i].fldPcID+"</td>";
 					longstring += "<td>"+data[i].fldBrand+"</td>";
 					longstring += "<td>"+data[i].fldDept+"</td>";
 					longstring += "<td>"+data[i].fldRemarks+"</td>";

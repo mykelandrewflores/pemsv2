@@ -58,8 +58,8 @@ function userLoginCheck(){
 
 function setCompName(){
 	if (localStorage.companyID != null) {
-		url=myUrl+"/propertycard/propertyapi/tbl_companies/fldCompanyID/"+localStorage.companyID;
-		$.getJSON(url,function(data){
+		let urlcomp=myUrl+"/propertycard/propertyapi/tbl_companies/fldCompanyID/"+localStorage.companyID;
+		$.getJSON(urlcomp,function(data){
 			for(var i = 0; i<data.length; i++) {
 				localStorage.setItem('companyName',data[i].fldCompanyName);
 			}			
