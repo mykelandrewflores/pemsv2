@@ -149,12 +149,24 @@ $('#login_user').submit(function (e) {
 			localStorage.userDept = data.fldDept;
 
 			if (data.fldRole == "Supply") {
-				swal("Succesfully Login", "Redirecting", "success").then(function() {
+				swal({
+					title: "Succesfully Login",
+					text: "Redirecting",
+					icon: "success",
+					buttons: false,
+					timer: 1900
+				}).then(function() {
 					window.location.assign("SupplyOfficer/propertycard/");
 				});
 			} else {
-				swal("Succesfully Login", "Redirecting", "success").then(function() {
-					window.location.assign("ReqOfficer/propertycard/");
+				swal({
+					title: "Succesfully Login",
+					text: "Redirecting",
+					icon: "success",
+					buttons: false,
+					timer: 1900
+				}).then(function() {
+					window.location.assign("SupplyOfficer/propertycard/");
 				});
 			}
 		} else if (data.Authorize == "Company") {
