@@ -42,12 +42,12 @@
 	</header>
 	<main>
 		<div class="container mt-1">
-			<span class="deafult-text font-weight-low">
-				<blockquote class="default-text"><h4>Property  
-					<span id="sel_name"></span></h4>
-					<h5>IAR No. <span id="sel_iarno">00000</span><br><span>Property No. <span id="sel_recid">000</span></span></>
-					</blockquote>
-				</span>
+			<div class="deafult-text font-weight-low">
+				<blockquote class="default-text">
+					<h4>Property<span id="sel_name"></span></h4>
+					<h5>IAR No. <span id="sel_iarno">00000</span><br><span>Property No. <span id="sel_recid">000</span></span></h5>
+				</blockquote>
+			</div>
 				<div class="row mt-br">
 					<div class="col s12">
 						<a class="btn waves-effect waves-light left btn-flat white-text modal-trigger" href="index.html"><i class="fa fa-arrow-left fa-small"></i> Back</a>
@@ -58,14 +58,20 @@
 					<div class="col s12 mt-br">
 						<table class="table bordered responsive-table centered">
 							<thead>
-								<th class="font-weight-low">Date</th>
-								<th class="font-weight-low">Ref No.</th>
-								<th class="font-weight-low">Receipt Qty</th>
-								<th class="font-weight-low">Brand</th>
-								<th class="font-weight-low">Department</th>
-								<th class="font-weight-low">Remarks</th>
+								<tr>
+									<th class="font-weight-low">Date</th>
+									<th class="font-weight-low">Ref No.</th>
+									<th class="font-weight-low">Receipt Qty</th>
+									<th class="font-weight-low">Brand</th>
+									<th class="font-weight-low">Department</th>
+									<th class="font-weight-low">Remarks</th>
+								</tr>
 							</thead>
-							<tbody id="proptabledata_reqofficer"><tr><td colspan="4">No Data</td></tr></tbody>
+							<tbody id="proptabledata_reqofficer">
+								<tr>
+									<td colspan="6">No Data</td>
+								</tr>
+							</tbody>
 						</table>
 					</div>
 				</div>
