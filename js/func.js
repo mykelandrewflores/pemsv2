@@ -166,7 +166,7 @@ $('#login_user').submit(function (e) {
 					buttons: false,
 					timer: 1900
 				}).then(function() {
-					window.location.assign("SupplyOfficer/propertycard/");
+					window.location.assign("ReqOfficer/propertycard/");
 				});
 			}
 		} else if (data.Authorize == "Company") {
