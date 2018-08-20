@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		.summary-container{
+			font-family: calibri;
+			width: 90%;
+			margin: 0 auto;
+			/*border: 2px solid black;*/
+			text-align: left;
+		}
+		.summary-container h1 {
+			font-size: 25px;
+		}
+		.summary-container h2 {
+			font-size: 22px;
+		}
+		.summary-container h3 {
+			font-size: 19px;
+		}
+		.summary-container h4 {
+			font-size: 16px;
+		}
+		.summary-container h5 {
+			font-size: 13px;
+		}
+		.summary-container h6 {
+			font-size: 10px;
+		}
+		.summary-header{
+			height: 70px;
+			/*border-bottom: 2px solid black;*/
+			text-align: center;
+		}
+		.summary-header h1, .summary-header h6{
+			margin: 0;
+			margin-top: 1px;
+		}
+		.summary-header .propertyAgency{
+			border-bottom: 1px solid black;
+			width: 70%;
+			margin: 0 auto;
+			margin-top: 5px;
+		}
+		.summary-details {
+			width: 100%;
+			height: 80px;
+			padding: 0 2px;
+			padding-top: 10px;
+		}
+		.summary-details h3{
+			margin: 0;
+		}
+		.summary-details .department-details{
+			width: 50%;
+			float: left;
+		}
+		.summary-details .order-details{
+			width: 40%;
+			float: left;
+			/*border-left: 1px solid black;*/
+			padding-left: 10px;
+
+		}
+		.summary-details .indent{
+			padding-left: 20px;
+			font-size: 16px;
+		}
+		.summary-details .date{
+			width: 20%;
+			float: left;
+		}
+		.tablee {
+			width: 100%;
+			margin: 0 auto;
+		}
+		.tablee, th, td {
+		    border: 1px solid black;
+		    border-collapse: collapse;
+		}
+		.tablee th, td {
+		    /*padding: 15px;*/
+		}
+		.summary-purpose {
+			width: 100%;
+			height: 90px;
+			padding: 0 2px;
+			padding-top: 10px;
+		}
+		.summary-purpose h3{
+			margin: 0;	
+		}
+		.summary-purpose .purpose {
+			text-decoration: underline;
+		}
+		.summary-by {
+			height: 90px;
+			padding: 0 2px;
+			border-top: 2px solid black;
+			text-align: center;
+		}
+		.summary-by .signature, .summary-by .requestedBy, .summary-by .approvedBy {
+			width: 33%;
+			float: left;
+			margin: 0;
+		}
+		.summary-by .person {
+			width: 90%;
+			border-bottom: 1px solid black;
+			margin: 0 auto;
+			font-size: 14px;
+		}
+		.summary-by .person span{
+			font-size: 10px;
+		}
+	</style>
+</head>
+<body id="mybody">
+<div >
+	<div class="summary-container">
+		<div class="summary-header">
+			<b><h3 style="margin-bottom: 0px;" id="CompName">JS Enterprise</h3></b>
+			<b><h2 style="margin-top: 5px; margin-bottom: 5px;">Annual Procurement Plan for FY 2017</h2></b>
+		</div>
+		<table class="tablee" style="width: 100%!important">
+			<b><tr>
+				<th align="center">Procurement Program/Project</th>
+				<th align="center">Mode of Procurement</th>
+				<th align="center">Payment Term</th>
+				<th align="center">Total</th>
+				<th align="center">MODE</th>
+				<th align="center">Remarks</th>
+			</tr></b>
+			<tbody id="propertyList" style="width: 100%!important">
+
+			</tbody>
+		</table>
+		<div class="summary-total" style="max-width: 70%; padding-left: 5%;">
+			<b style="margin:0px;"><h4 style="margin:0px;">GRAND TOTAL:  <span id="grandtotal" style="float:right;">PHP 0,000.00</span></h4></b>
+			<b style="margin:0px;"><h4 style="margin:0px;">TOTAL WITH 10% ADDITIONAL PROVISION FOR INFLATION:  <span id="inflation" style="float:right;">PHP 0,000.00</span></h4></b>
+			<b style="margin:0px;"><h4 style="margin:0px;">APPROVE BUDGET: <span id="appbudget" style="float:right;">PHP 0,000.00</span></h4></b>
+		</div>
+		<div class="summary-by">
+	        <div class="signature">
+	            <h3 class="margin-bot-1"><b>Prepared By:</b> <span id="date"  class="indent"></span></h3>
+				<br>
+	            <h3 class="person"><span>SIGNATURE OVER PRINTED NAME</span></h3>
+	            <p style="text-align: center; margin-top: 0px;">Supply Officer</p>
+	        </div>
+	        <div class="requestedBy" style="border-left: 2px solid black; padding-left: 0px;">
+	            <h3><b>Recommending Approval:</b> <span id="date"  class="indent"></span></h3>
+				<br>
+	            <h3 class="person"><span>SIGNATURE OVER PRINTED NAME</span></h3>
+	            <p style="text-align: center; margin-top: 0px;">Agency Director</p>
+	        </div>
+	        <div class="requestedBy">
+	            <h3><b></b> <span id="date"  class="indent"></span></h3>
+	            <p style="text-align: center; margin-top: 5px;">[ &nbsp; ] Approved</p>
+	            <p style="text-align: center; margin-top: 5px;">[ &nbsp; ] Disapproved</p>
+	            <br>
+	        </div>
+    	</div>
+	</div>
+</div>
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/init.js"></script>
+<script src="js/property_data.js"></script>
+<script type="text/javascript">
+	appyear(localStorage.companyID);
+</script>
+<script type="text/javascript" src="js/jspdf.min.js"></script>
+<script type="text/javascript" src="js/printPdf.js"></script>
+
+</html>
