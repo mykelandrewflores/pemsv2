@@ -1,9 +1,9 @@
 :root {
 	--primary-color: #424242;
 	--secondary-color: #616161;
-    --dark-blue: #264e86;
-    --blue: #0074e4;
-    --light-blue: #74dbef;
+	--dark-blue: #264e86;
+    	--blue: #0074e4;
+    	--light-blue: #74dbef;
 }
 @font-face {
 	font-family: Roboto;
