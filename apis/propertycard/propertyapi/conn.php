@@ -127,6 +127,11 @@ class con{
 		return $this;
 	}
 
+	function APPYEAR($compid,$dept){
+		$this->string="SELECT * FROM tbl_purchaserequest b, tbl_purchaseorder d, tbl_purchaseitems e, tbl_lccalives f WHERE b.fldPrNo = d.fldPoNo AND d.fldPoNo = e.fldPrNo AND e.fldRemarks='Approved' AND e.fldPNum = f.fldProdID AND b.fldCompanyID = $compid AND b.fldDept= '$dept'";
+		return $this;
+	}
+
 	
 	function querys(){
 		$result=mysqli_query($this->conn,$this->string);

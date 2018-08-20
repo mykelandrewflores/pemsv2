@@ -13,7 +13,7 @@ switch($_SERVER['REQUEST_METHOD']){
 	case "GET":
 	if(count($res)==1){	
 		$db->select('*')->from($res[0]);
-	}elseif(count($res)==3){
+	}elseif(count($res)==3 AND $res[0] != 'appyear'){
 		$db->select('*')->from($res[0])->where($res[1], $res[2]);
 	}elseif(count($res)==5){
 		$db->select('*')->from($res[0])->where($res[1], $res[2])->clause('AND')->whereand($res[3],$res[4]);
@@ -39,6 +39,8 @@ switch($_SERVER['REQUEST_METHOD']){
 		$db->select('*')->from($res[1])->fromtbl2($res[2])->where($res[3],$res[4])->clause('AND')->whereand($res[5],$res[6])->clause('AND')->whereand($res[7],$res[8])->clause('AND')->whereand($res[9],$res[10])->clause('AND')->andjointable($res[1],$res[3],$res[2],$res[11]);
 	}elseif($res[0]=='lccacateg'){	
 		$db->select('DISTINCT(fldPropertyCategory)')->from($res[1]);
+	}elseif ($res[0]=='appyear') {
+		$db->APPYEAR($res[1],$res[2]);
 	}
 	
 	$db->querys();

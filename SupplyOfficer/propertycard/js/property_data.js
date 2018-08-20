@@ -11,6 +11,8 @@ function setselected_reqofficer(prodid,iarno,recid){
 	localStorage.setItem("selected_recid_reqofficer",recid);
 }
 
+
+
 function fetch_lccacateg(){
 	url=myUrl+"/propertycard/propertyapi/lccacateg/tbl_lccalives";
 	$.getJSON(url,function(data){
@@ -244,6 +246,52 @@ function equiptable(){
 		});
 		
 	});
+}
+
+function appyear(compid){
+	document.getElementById("CompName").innerHTML = localStorage.companyName;
+	let longstring = "";
+	let grandtotal = 0;
+	let appbudget = 0;
+	let inflation = 0;
+	let urlDept = myUrl+"/propertycard/propertyapi/tbl_departments/fldCompanyID/"+compid;
+	$.getJSON(urlDept,function(data){
+		for (let i = 0; i < data.length; i++) {
+			url=myUrl+"/propertycard/propertyapi/appyear/"+compid+"/"+data[i].fldDepartmentName;
+			$.getJSON(url,function(res){
+				console.log(data[i].fldDepartmentName);
+				longstring += "<tr>";
+					longstring += "<td><b>"+data[i].fldDepartmentName+"</b>";
+				for(let j = 0; j < res.length; j++){
+					if (j >= 1) {
+						longstring += "<td><p style='text-indent: 20px; margin: 4px; font-size: 13px;'><p style='text-indent: 20px; margin: 4px; font-size: 13px;'>"+res[j].fldPurpose+"</p></td>";
+					}else{
+						longstring += "<p style='text-indent: 20px; margin: 4px; font-size: 13px;'><p style='text-indent: 20px; margin: 4px; font-size: 13px;'>"+res[j].fldPurpose+"</p></td>";
+					}
+					
+					longstring +="<td style=' font-size: 13px;'>"+res[j].fldModeOfProcurement+"</td>";
+					longstring +="<td style=' font-size: 13px;'>"+res[j].fldPaymentTerm+"</td>";
+					longstring +="<td align='right' style=' font-size: 13px;'>PHP "+(parseInt(res[j].fldTotalCost)).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')+"</td>";
+					longstring +="<td align='right' style=' font-size: 13px;'>PHP "+(parseInt(res[j].fldTotalCost)).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')+"</td>";
+					longstring +="<td style=' font-size: 13px;'></td>";
+					console.log(res[j].fldPurpose);
+					longstring += "</tr>";
+					grandtotal += parseInt(res[j].fldTotalCost);
+					inflation = parseInt(grandtotal * .10);
+					appbudget = parseInt(grandtotal+inflation);
+				}
+			$("#propertyList").html(longstring);
+			document.getElementById("grandtotal").innerHTML ="PHP "+ (parseInt(grandtotal)).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+			document.getElementById("inflation").innerHTML = "PHP "+ (parseInt(inflation)).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+			document.getElementById("appbudget").innerHTML = "PHP "+ (parseInt(appbudget)).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+			}).fail(function(){
+				M.toast({html: 'No each PR data found'});
+			});
+		}
+
+	}).fail(function(){
+		M.toast({html: 'No PR data found'});
+	});	
 }
 
 function equiptable_assigned(){

@@ -1,5 +1,5 @@
 function print(){
-    var doc = new jsPDF('1','mm',[300,300]);
+    var doc = new jsPDF('1','mm',[200,200]);
     doc.addHTML($('#mybody')[0], 15, 15, {
       'background': '#fff',
     }, function() {    
