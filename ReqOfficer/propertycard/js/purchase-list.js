@@ -103,9 +103,11 @@ $.ajaxSetup({
 
 function getPrint(val) {
     localStorage.idData = val;
-    var ls = "";
+    /*var ls = "";
     $.get("purchase_pdf.html", function (data) {
         ls = data;
     });
-    Popup(ls);
+    Popup(ls);*/
+    var win = window.open('purchase_pdf.html', '_blank');
+    win.focus();
 }

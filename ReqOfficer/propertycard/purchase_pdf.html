@@ -52,28 +52,32 @@
 
     .summary-details {
         width: 100%;
-        height: 80px;
+        height: 50px;
         padding: 0 2px;
         padding-top: 10px;
     }
 
     .summary-details h3 {
         margin: 0;
+        margin-bottom: 0px;
     }
 
     .summary-details .department-details {
-        width: 50%;
+        width: 30%;
         float: left;
+        margin-bottom: 0px;
     }
 
     .summary-details .order-details {
         width: 30%;
         float: left;
+        margin-bottom: 0px;
     }
 
     .summary-details .date {
-        width: 20%;
+        width: 30%;
         float: left;
+        margin-bottom: 0px;
     }
 
     .tablee {
@@ -144,8 +148,7 @@
     </div>
     <div class="summary-details">
         <div class="department-details">
-            <h3><b>Department:</b> <span id="purchaseDept"></span></h3> <br>
-            <h3><b>Section:</b> <span id="purchaseSect"></span></h3>
+            <h3><b>Department:</b> <span id="purchaseDept"></span></h3>
         </div>
         <div class="order-details">
             <h3><b>PR No:</b> <span id="PRno"></span></h3> <br>
@@ -181,31 +184,30 @@
         <div class="requestedBy">
             <b><h3>Requested By:</h3></b>
             <div class="margin"></div>
-            <h3 class="person"><span id="requestedBy"></span></h3>
+            <h3 class="person"><span id="userrequestedBy"></span><span>SIGNATURE OVER PRINTED NAME</span></h3>
         </div>
         <div class="approvedBy">
             <b><h3>Approved By:</h3></b>
             <div class="margin"></div>
-            <h3 class="person"><span id="approvedby"></span><br><span>SIGNATURE OVER PRINTED NAME</span></h3>
+            <h3 class="person"><span id="approvedby"></span><span>SIGNATURE OVER PRINTED NAME</span></h3>
         </div>
     </div>
 
 </div>
 <script src="js/jquery-3.2.1.min.js"></script>
-<script src="../propertycard/js/jspdf.min.js"></script>
-<script src="../propertycard/js/printPdf.js"></script>
 <script>
-    $.getJSON("http://localhost/myapi/select/tbl_purchaserequest/fldPrNo/" + localStorage.idData, function(data) {
-        $("#purchaseDept").html(data[0].fldDept);
-        $("#PRno").html(data[0].fldPrNo);
-        $("#date").html(data[0].fldDate);
-        $("#requestedBy").html(data[0].fldRequestedByID);
-        $("#requestedBy").html(data[0].fldApprovedByID);
-        $("#purpose").html(data[0].fldPurpose);
+    document.getElementById('purchaseAgency').innerHTML= localStorage.companyName;
+    $.getJSON("http://www.gordoncollegeccs-ssite.net/pems/apis/myapi/select/tbl_purchaserequest/fldPrNo/" + localStorage.idData, function(res) {
+        $("#purchaseDept").html(res[0].fldDept);
+        $("#PRno").html(res[0].fldPrNo);
+        $("#date").html(res[0].fldDate);
+        // $("#userrequestedBy").html(res[0].fldRequestedByID);
+        // console.log(res[0].fldRequestedByID);
+        $("#purpose").html(res[0].fldPurpose);
     });
 
     var longString = "";
-    $.getJSON("http://localhost/myapi/select/tbl_purchaseitems/fldPrNo/" + localStorage.idData, function(data) {
+    $.getJSON("http://www.gordoncollegeccs-ssite.net/pems/apis/myapi/select/tbl_purchaseitems/fldPrNo/" + localStorage.idData, function(data) {
 
 
         for (let i = 0;i < data.length; i++) {
@@ -214,10 +216,10 @@
             if (data[i].fldRemarks == "Pending") {
                 longString += '<tr>';
                 longString += '<td>' + data[i].fldUnit + '</td>';
-                longString += '<td>' + data[i].fldPNum + '</td>';
+                longString += '<td>' + data[i].fldBrand + '</td>';
                 longString += '<td>' + data[i].fldQty + '</td>';
-                longString += '<td>' + data[i].fldUnitCost + '</td>';
-                longString += '<td>' + data[i].fldTotalCost + '</td>';
+                longString += '<td align="right">PHP ' + (parseInt(data[i].fldUnitCost)).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + '</td>';
+                longString += '<td align="right">PHP ' + (parseInt(data[i].fldTotalCost)).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + '</td>';
                 longString += '<tr>';
             }
 
@@ -230,3 +232,5 @@
     });
 
 </script>
+<script src="../propertycard/js/jspdf.min.js"></script>
+<script src="../propertycard/js/printPdf.js"></script>
