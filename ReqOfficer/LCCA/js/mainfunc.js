@@ -160,6 +160,7 @@ function selectYear(val) {
 function noItems(val) {
     let longString = "";
     itemCount = val;
+    localStorage.noItems = val;
     for (let i = 0; i < val; i++) {
         longString += "<br><div class='cardforms row'>";
         longString += '<label class="grey-text" for="item_no' + i + '">Item Number: ' + (i + 1) + '</label>';
@@ -167,6 +168,7 @@ function noItems(val) {
         longString += '</div><br>';
     }
     $('#myitems').html(longString);
+    suggestAsset();
 }
 
 function insertItem(val) {
