@@ -97,7 +97,7 @@ function getDataItems() {
     for (var i = 0; i < datas[0].assets.length; i++) {
         $('#assetAndYear').append($('<option>', {
             value: datas[0].assets[i].noLifeCycle,
-            text: datas[0].assets[i].assetType + " - " + datas[0].assets[i].noLifeCycle
+            text: datas[0].assets[i].assetType + "-" + datas[0].assets[i].noLifeCycle
         }));
     }
 

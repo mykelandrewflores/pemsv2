@@ -117,11 +117,11 @@
                                     <h1></h1>
                                     <select class="mdb-select" id="assetAndYear" onchange="selectYear(this.value)">
 
-                                        </select>
+                                    </select>
                                 </div>
                                 <div class="col-md-12">
                                     <button class="btn blue btn-rounded prevBtn-2" type="button">Previous</button>
-                                    <button class="btn green btn-rounded nextBtn-2" type="button">Next</button>
+                                    <button class="btn green btn-rounded nextBtn-2" type="button" onclick="suggestAsset()">Next</button>
                                 </div>
                             </div>
                             <!-- Third Step -->
@@ -135,6 +135,16 @@
                                             <option value="3">3</option>
                                         </select>
                                 </div>
+
+                                <div class="col-sm-12">
+                                    <h4>Suggested Items</h4>
+                                    <hr>
+                                </div>
+
+                                <div class="row" id="suggesteds">
+
+                                </div>
+
 
                                 <div id="myitems">
 
@@ -283,6 +293,31 @@
     <script type="text/javascript" src="js/stepper.js"></script>
     <script type="text/javascript" src="js/jspdf.min.js"></script>
     <script type="text/javascript" src="js/mainfunc.js"></script>
+
+    <script>
+        function suggestAsset() {
+            let xAsset = $("#assetAndYear option:selected").text();
+
+            xAsset = xAsset.split("-");
+
+            fetch("http://www.gordoncollegeccs-ssite.net/Search2/api/phprice.php?q=" + xAsset[0]).then((resp) => resp.json()).then(function(data) {
+                console.log(data);
+                
+                let ls = "";
+                
+                for(let i = 0; i < 9; i++){
+                    ls += '<div class="col-sm-4"><div class="card"><div class="view overlay">';
+                    ls += '<img class="card-img-top" src="'+data[i].img+'" alt="Card image cap">';
+                    ls += '<a href="#!"><div class="mask rgba-white-slight"></div></a></div><div class="card-body"><p class="card-text">';
+                    ls += data[i].name + " - " + data[i].price;
+                    ls += '</p><a href="#" class="btn btn-primary">Add to List</a></div></div></div>';
+                }
+                $("#suggesteds").html(ls);
+            });
+        }
+
+    </script>
+
     <script>
         // SideNav Initialization
         $(".button-collapse").sideNav();
