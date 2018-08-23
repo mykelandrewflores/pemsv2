@@ -2,151 +2,189 @@
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<link rel="shortcut icon" href="../../image/LOGO.png" />
-	<link rel="stylesheet" href="../../css/materialize.min.css">
-	<link rel="stylesheet" href="../../css/font-awesome.min.css">
-	<link rel="stylesheet" href="../../css/style.css">
-	<title>Purchase Request</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="../../image/LOGO.png" />
+    <link rel="stylesheet" href="../../css/materialize.min.css">
+    <link rel="stylesheet" href="../../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Purchase Request</title>
 </head>
-<body class="cloudy">
-	<header class="padded">
-		<div class="navbar-fixed">
-			<nav class="white">
-				<div class="nav-wrapper">
-					<ul class="left">
-						<li><a id="toggleNav"  style="display: block" class="sidenav-trigger grey-text waves-effect" data-target="slide-out"><i class="fa fa-bars" aria-hidden="true"></i></a></li>
-						<li><span class="deafult-text dtime-now">Date/Time</span></li>
-						<li><span class="deafult-text hide-on-large-only" id="comp_name_navbar">Company/PEMS</span></li>
-					</ul>
-				</div>
-			</nav>
-		</div>
-		<ul class="sidenav sidenav-fixed" id="slide-out">
-			<li class="z-depth-2 white center" id="toggle_header_sidenav" style="height: 64px;font-size: 20px;"><span class="deafult-text" id="comp_name_sidenav">Company/PEMS</span></li>
-			<li><div class="user-view">
-				<div class="background primary">
-					<img src="../../image/bg.jpg" class="responsive-img"  alt="bg-logo" style="opacity: 0.1;margin-top:-55px;" id="sidepanel_bg" />
-				</div>
-				<a href="#user"><img class="circle" src="../../image/avatar.jpg" alt="vatar-next"></a>
-				<a href="#name"><span class="white-text name" id="name">Employee Name</span></a>
-				<a href="#email"><span class="white-text email" id="dept">Department</span></a>
-			</div></li>
-			<li><a class="subheader">Functions</a></li>
-			<li><a href="index.html"><i class="fa fa-file-text-o" aria-hidden="true"></i> Property List</a></li>
-			<li class="active active-link"><a href="#!"><i class="fa fa-plus-square-o" aria-hidden="true"></i> New Purchase Request</a></li>
-			<li><a href="purchase-list.html"><i class="fa fa-file-text" aria-hidden="true"></i> Purchase Request List</a></li>
-			<li><a href="../LCCA/index.html"><i class="fa fa-wrench" aria-hidden="true"></i> LCCA Tool</a></li>
-			<li onclick="logOut()"><a href="#"><i class="fa fa-power-off" aria-hidden="true"></i> Log-out</a></li>
-		</ul>
-	</header>
-	<main>
-		<div class="container mt-1">
-			<blockquote><h4 class="deafult-text font-weight-low">Purchase Request</h4></blockquote>
-			<div class="row mt-br">
-				<div class="col s12 ">
-					<div class="row">
-						<div class="col s12 l6">
-							<div class="file-field input-field">
-								<button id="fileBtn" class="btn">Upload</button>
-								<input type="file" id="myFile" accept="application/pdf">
-								<div class="btn green" style="display:none;">
-									<span>Attacment</span>
-								</div>
-								<div class="input-field file-path-wrapper">
-									<input class="file-path" type="text" placeholder="@ e.g (.pdf)">
-								</div>
-							</div>
-						</div>
-						<div class="input-field col s12 l6" style="margin-top: 15px;">
-							<input type="text" id="unit"  placeholder="@John SuperBox" />
-							<label for="unit">Unit</label>
-						</div>                        
-					</div>
-					<div class="row">
-						<div class="col s12 l6">
-							<div class="input-field col s12" id="testingtwo" ></div>
-						</div>
-						<div class="input-field col s12 l6">
-							<div class="input-field col s12" id="testing" style="margin-top:0"></div>
-						</div>
-						<div class="input-field col s12 l4">
-							<input type="text" id="bname"  placeholder="@John Doe Bench" />
-							<label for="bname">Brand Name:</label>
-						</div>                
-						<div class="input-field col  s12 l4">
-							<input type="number" id="qty"  placeholder="@2" />
-							<label for="qty">Quantity</label>
-						</div>
-						<div class="input-field col s12 l4">
-							<input type="number" id="cost"  placeholder="@ P 1000.00" />
-							<label for="cost">Cost</label>
-						</div>
-						<div class="row center">
-							<div class="col s12 l12">
-								<a href="#!" class="btn btn-floating red right tooltipped" data-position="top" data-tooltip="Add Item" onclick="addDataSet()"><b>+</b></a>
-							</div>
-						</div>
-					</div>
-					<table class="table responsive-table centered">
-						<thead>
-							<tr>
-								<th>Unit</th>
-								<th>Equipment</th>
-								<th>Quantity</th>
-								<th>Cost</th>
-								<th>Total</th>
-								<th>Action</th>
-							</tr>
-						</thead>
-						<tbody id="add_data_set">
-							<tr>
-								<td colspan="6">No Equipment Added</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-				<div class="col s12 mt-1">
-					<form id="form_request">
-						<input type="hidden" id="depts" name="dept">
-						<input type="hidden" id="company_id" name="company_id">
-						<input type="hidden" id="user_id" name="user_id">
-						<div class="col s12">
-							<div class="input-field col m6 s12">
-								<input  id="curdate_request" name="curdate_request" type="hidden" />
-							</div>
-							<div class="input-field col m12 s12">
-								<textarea  placeholder="@Lorem ipsum ipsum" class="materialize-textarea" id="request_purpose" name="request_purpose" style="height: 100px" required></textarea>
-								<label for="request_purpose">Request Purpose</label>
-							</div>
-								<div class="col s12 center-align" >
-									<button class="btn green" id="submitting">Submit</button>
-									<input type="hidden" name="request_form" />
-								</div>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-		</main>
-		<script src="../../js/jquery.min.js"></script>
-		<script src="../../js/materialize.min.js"></script>
-		<script src="../../js/init.js"></script>
-		<script src="../../js/changing_color.js"></script>
-		<script src="js/purchase-request.js"></script>
-		<script>
-			$.getJSON(myUrl+"/myapi/select/tbl_user/fldUserID/" + localStorage.userID, function(data) {
-				document.getElementById('name').innerHTML = data[0].fldFname + " " + data[0].fldLname;
-				document.getElementById('dept').innerHTML = data[0].fldDepartment;
-			});
-			$("#depts").val(localStorage.userDept);
-			$("#company_id").val(localStorage.companyID);
-			$("#user_id").val(localStorage.userID);
-			userLoginCheck();
-            
-           
-		</script>
-	</body>
 
-	</html>
+<body class="cloudy">
+    <header class="padded">
+        <div class="navbar-fixed">
+            <nav class="white">
+                <div class="nav-wrapper">
+                    <ul class="left">
+                        <li><a id="toggleNav" style="display: block" class="sidenav-trigger grey-text waves-effect" data-target="slide-out"><i class="fa fa-bars" aria-hidden="true"></i></a></li>
+                        <li><span class="deafult-text dtime-now">Date/Time</span></li>
+                        <li><span class="deafult-text hide-on-large-only" id="comp_name_navbar">Company/PEMS</span></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <ul class="sidenav sidenav-fixed" id="slide-out">
+            <li class="z-depth-2 white center" id="toggle_header_sidenav" style="height: 64px;font-size: 20px;"><span class="deafult-text" id="comp_name_sidenav">Company/PEMS</span></li>
+            <li>
+                <div class="user-view">
+                    <div class="background primary">
+                        <img src="../../image/bg.jpg" class="responsive-img" alt="bg-logo" style="opacity: 0.1;margin-top:-55px;" id="sidepanel_bg" />
+                    </div>
+                    <a href="#user"><img class="circle" src="../../image/avatar.jpg" alt="vatar-next"></a>
+                    <a href="#name"><span class="white-text name" id="name">Employee Name</span></a>
+                    <a href="#email"><span class="white-text email" id="dept">Department</span></a>
+                </div>
+            </li>
+            <li><a class="subheader">Functions</a></li>
+            <li><a href="index.html"><i class="fa fa-file-text-o" aria-hidden="true"></i> Property List</a></li>
+            <li class="active active-link"><a href="#!"><i class="fa fa-plus-square-o" aria-hidden="true"></i> New Purchase Request</a></li>
+            <li><a href="purchase-list.html"><i class="fa fa-file-text" aria-hidden="true"></i> Purchase Request List</a></li>
+            <li><a href="../LCCA/index.html"><i class="fa fa-wrench" aria-hidden="true"></i> LCCA Tool</a></li>
+            <li onclick="logOut()"><a href="#"><i class="fa fa-power-off" aria-hidden="true"></i> Log-out</a></li>
+        </ul>
+    </header>
+    <main>
+        <div class="container mt-1">
+            <blockquote>
+                <h4 class="deafult-text font-weight-low">Purchase Request</h4>
+            </blockquote>
+            <div class="row mt-br">
+                <div class="col s12 ">
+                    <div class="row">
+                        <div class="col s12">
+                            <div id="attch" style="display: none">
+                                <blockquote class="default-text">
+                                    <h4 class="deafult-text font-weight-low">Attachment</h4>
+                                </blockquote>
+                                <embed src="#" id="pdfFile" width="800" height="400" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 l6">
+                            <div class="file-field input-field">
+                                <button id="fileBtn" class="btn">Upload</button>
+                                <input type="file" id="myFile" accept="application/pdf">
+                                <div class="btn green" style="display:none;">
+                                    <span>Attacment</span>
+                                </div>
+                                <div class="input-field file-path-wrapper">
+                                    <input class="file-path" type="text" placeholder="@ e.g (.pdf)" id="uFile">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-field col s12 l6" style="margin-top: 15px;">
+                            <input type="text" id="unit" placeholder="@John SuperBox" />
+                            <label for="unit">Unit</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 l6">
+                            <div class="input-field col s12" id="testingtwo"></div>
+                        </div>
+                        <div class="input-field col s12 l6">
+                            <div class="input-field col s12" id="testing" style="margin-top:0"></div>
+                        </div>
+                        <div class="input-field col s12 l4">
+                            <input type="text" id="bname" placeholder="@John Doe Bench" />
+                            <label for="bname">Brand Name:</label>
+                        </div>
+                        <div class="input-field col  s12 l4">
+                            <input type="number" id="qty" placeholder="@2" />
+                            <label for="qty">Quantity</label>
+                        </div>
+                        <div class="input-field col s12 l4">
+                            <input type="number" id="cost" placeholder="@ P 1000.00" />
+                            <label for="cost">Cost</label>
+                        </div>
+                        <div class="row center">
+                            <div class="col s12 l12">
+                                <a href="#!" class="btn btn-floating red right tooltipped" data-position="top" data-tooltip="Add Item" onclick="addDataSet()"><b>+</b></a>
+                            </div>
+                        </div>
+                    </div>
+                    <table class="table responsive-table centered">
+                        <thead>
+                            <tr>
+                                <th>Unit</th>
+                                <th>Equipment</th>
+                                <th>Quantity</th>
+                                <th>Cost</th>
+                                <th>Total</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="add_data_set">
+                            <tr>
+                                <td colspan="6">No Equipment Added</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col s12 mt-1">
+                    <form id="form_request">
+                        <input type="hidden" id="depts" name="dept">
+                        <input type="hidden" id="company_id" name="company_id">
+                        <input type="hidden" id="user_id" name="user_id">
+                        <div class="col s12">
+                            <div class="input-field col m6 s12">
+                                <input id="curdate_request" name="curdate_request" type="hidden" />
+                            </div>
+                            <div class="input-field col m12 s12">
+                                <textarea placeholder="@Lorem ipsum ipsum" class="materialize-textarea" id="request_purpose" name="request_purpose" style="height: 100px" required></textarea>
+                                <label for="request_purpose">Request Purpose</label>
+                            </div>
+                            <div class="col s12 center-align">
+                                <button class="btn green" id="submitting">Submit</button>
+                                <input type="hidden" name="request_form" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="../../js/jquery.min.js"></script>
+    <script src="../../js/materialize.min.js"></script>
+    <script src="../../js/init.js"></script>
+    <script src="../../js/changing_color.js"></script>
+    <script src="js/purchase-request.js"></script>
+    <script>
+        $.getJSON(myUrl + "/myapi/select/tbl_user/fldUserID/" + localStorage.userID, function(data) {
+            document.getElementById('name').innerHTML = data[0].fldFname + " " + data[0].fldLname;
+            document.getElementById('dept').innerHTML = data[0].fldDepartment;
+        });
+        $("#depts").val(localStorage.userDept);
+        $("#company_id").val(localStorage.companyID);
+        $("#user_id").val(localStorage.userID);
+        userLoginCheck();
+
+
+        function b64toBlob(dataURI) {
+
+            var byteString = atob(dataURI.split(',')[1]);
+            var ab = new ArrayBuffer(byteString.length);
+            var ia = new Uint8Array(ab);
+
+            for (var i = 0; i < byteString.length; i++) {
+                ia[i] = byteString.charCodeAt(i);
+            }
+            return new Blob([ab], {
+                type: 'application/pdf'
+            });
+        }
+
+        if (typeof localStorage.mBlob !== "undefined") {
+            var xblob = b64toBlob(localStorage.mBlob);
+            var fileURL = URL.createObjectURL(xblob);
+            $("#myFile").attr('value', fileURL);
+            $("#uFile").attr('value', "Generated PDF");
+            $("#pdfFile").attr('src', fileURL);
+            $("#attch").css("display", "block");
+        }
+
+    </script>
+</body>
+
+</html>

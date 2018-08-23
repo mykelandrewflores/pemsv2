@@ -54,9 +54,10 @@
 			<div class="row mt-br">
 				<div class="col s12">
 					<ul class="tabs tabs-fixed-width " style="background-color: transparent;">
-						<li class="tab col s4"><a  class="active" href="#test1"><i class="fa fa-truck"></i>  &nbsp;Assets</a></li>
-						<li class="tab col s4"><a  href="#test2"><i class="fa fa-money"></i>  &nbsp;Cost</a></li>
-						<li class="tab col s4"><a href="#test3"><i class="fa fa-percent"></i>  &nbsp;Rates</a></li>
+						<li class="tab col s3"><a  class="active" href="#test1"><i class="fa fa-truck"></i>  &nbsp;Assets</a></li>
+						<li class="tab col s3"><a  href="#test2"><i class="fa fa-money"></i>  &nbsp;Cost</a></li>
+						<li class="tab col s3"><a href="#test3"><i class="fa fa-percent"></i>  &nbsp;Rates</a></li>
+						<li class="tab col s3"><a href="#test4"><i class="fa fa-cog"></i>  &nbsp;PR Categories</a></li>
 					</ul>
 				</div>
 				<div id="test1" class="col s12">
@@ -191,6 +192,55 @@
 						<button type="button" class="right waves-effect btn  tooltipped" data-position="top" data-tooltip="Insert Cost" onclick="insertRate()">Save Rate</button>
 					</div>
 				</div>
+
+				<div id="test4" class="col s12">
+					<h5 class="mt-1 center">Category and Type of Category</h5>                 
+					<div class="col s12 mt-1">
+						<div class="col l6 m6 s12">
+							<div class="input-field col s12">
+								<input id="categName" type="text" class="validate" placeholder="@Motor and Other Vehicles">
+								<label for="categName">Category Name</label>
+							</div>
+						</div>
+						<div class="col l4 m4 s12">
+							<div class="input-field col s12">
+								<input id="categType" type="text" class="validate" placeholder="@Gasoline/Mobile">
+								<label for="categType">Category Type</label>
+							</div>
+						</div>
+						<div class="col l2 m2 s12" style="margin-top:15px;">
+							<button type="button" class="right waves-effect btn btn-floating tooltipped" onclick="sendPropertyList()" data-position="top" data-tooltip="Insert Category"><b>+</b></button>
+						</div>
+                        <br><br>
+					</div>
+                    <div class="center col s12">
+                        <h6><i class="fa fa-cogs"></i> Upload your Assets</h6>
+                                <small><strong>*Only accepts .csv format</strong></small><br>
+                                <a href="Asset.csv">Download Sample CSV File</a><br>
+                                <br>
+								<button id="fileBtn" class="btn center"><i class="fa fa-upload"></i> Upload</button>
+							<div class="file-field input-field">
+								<input type="file" id="myFile" accept=".csv">
+								<div class="btn green" style="display:none;">
+									<span>Attacment</span>
+								</div>
+								<div class="input-field file-path-wrapper col s6" style="display:none">
+									<input class="file-path" type="text" placeholder="@ e.g (.pdf)">
+								</div>
+							</div>  
+                    </div>
+					<div class="col s12 mt-br">
+						<table class="table responsive-table centered">
+							<thead>
+								<th>Category Name Type</th>
+								<th>Category Type</th>
+								<th>Action</th>
+							</thead>
+							<tbody id="categList">
+							</tbody>
+						</table>
+					</div>
+				</div>             
 			</div>
 		</div>
 	</main>
@@ -201,6 +251,46 @@
     <script src="js/property_data.js"></script>
     <script src="../js/func.js"></script>
     <script src="js/userimg.js"></script>
+    
+    <script>
+    
+        getPropertyList();
+        function getPropertyList(){
+            $.getJSON(myUrl + "/myapi/select/tbl_lccalives/fldUserID/"+ localStorage.companyID+"?ORDERBY=fldPropertyCategory DESC", function(data){
+                let ls = "";
+
+                for(let i = 0; i < data.length;i++){
+                    ls += '<tr>';
+                    ls += '<td>' + data[i].fldPropertyCategory + '</td>';
+                    ls += '<td>' + data[i].fldProdName + '</td>';
+                    ls += "<td><button type='button' class='btn red white-text'><i class='fa fa-remove'></i></td>";                
+                    ls += '</tr>';
+                }
+
+                $("#categList").html(ls);
+            });            
+        }
+        
+        function sendPropertyList(){
+            let jsonObj = "";
+            let cName = $("#categName").val();
+            let cType = $("#categType").val();
+            
+            
+            jsonObj = JSON.parse('{ "aRate":"' + cType + '", "bRate":"' + cName + '", "cRate":"' + localStorage.companyID + '", "dRate":"1"}');            
+            $.post(myUrl + "/myapi/insert/tbl_lccalives", JSON.stringify([jsonObj]));
+            
+            getPropertyList();
+        }
+        
+        function delPropertyList(){
+            
+        }
+        
+        
+    </script>
+    
+    
 	<script>
             let datas = [JSON.parse('{"assets": [] }'), JSON.parse('{"costs": [] }'), JSON.parse('{"rates": [] }'), JSON.parse('{"items": [] }')];
             getData();

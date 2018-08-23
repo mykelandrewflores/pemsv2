@@ -120,7 +120,9 @@ function fetchEquipments(val) {
             var body = ''
             body += '<select id="equipement_select" class="browser-default"> <option value="" disabled selected>Item Type</option>';
             for (var i = 0; i < data.length; i++) {
-                body += '<option value="' + data[i].fldProdID + '">' + data[i].fldProdName + '</option>';
+                if(data[i].fldUserID == localStorage.companyID){                
+                    body += '<option value="' + data[i].fldProdID + '">' + data[i].fldProdName + '</option>';
+                }
             }
             body += '</select>';
             $('#testing').html(body)

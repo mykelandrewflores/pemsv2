@@ -58,7 +58,35 @@ function getData() {
     }
 }
 
+function suggestAsset() {
+    let xAsset = $("#assetAndYear option:selected").text();
 
+    xAsset = xAsset.split("-");
+
+    fetch("http://www.gordoncollegeccs-ssite.net/Search2/api/phprice.php?q=" + xAsset[0]).then((resp) => resp.json()).then(function (data) {
+        console.log(data);
+
+        let ls = "";
+
+        for (let i = 0; i < 9; i++) {
+            ls += '<div class="col-sm-4"><div class="card"><div class="view overlay">';
+            ls += '<img class="card-img-top" src="' + data[i].img + '" alt="Card image cap">';
+            ls += '<a href="#!"><div class="mask rgba-white-slight"></div></a></div><div class="card-body"><p class="card-text">';
+            ls += data[i].name + " - " + data[i].price;
+            ls += '</p>';
+            ls += '<div class="btn-group"><button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Add to Items</button>';
+
+            ls += '<div class="dropdown-menu">';
+            for (let j = 0; j < localStorage.noItems; j++) {
+
+                ls += '<a class="dropdown-item" onclick="callItem(\'' + data[i].name + '\', ' + j + ')">Item # ' + (j + 1) + '</a>';
+            }
+            ls += '</div>';
+            ls += '</div></div></div></div>';
+        }
+        $("#suggesteds").html(ls);
+    });
+}
 
 
 function insertAsset() {
@@ -78,21 +106,37 @@ function getDataItems() {
     $.ajaxSetup({
         async: false
     });
-    $.getJSON("http://gordoncollegeccs-ssite.net/pems/apis/myapi/select/tbl_lccasset/fldUserID/"+localStorage.companyID, function (data) {
+    $.getJSON("http://gordoncollegeccs-ssite.net/pems/apis/myapi/select/tbl_lccasset/fldUserID/" + localStorage.companyID, function (data) {
         for (let i = 0; i < data.length; i++) {
             let jsonObj;
             jsonObj = JSON.parse('{ "assetType":"' + data[i].fldAssetType + '", "noLifeCycle":"' + data[i].fldYrs + '"}');
             datas[0].assets.push(jsonObj);
         }
     });
-    
-    $.getJSON("http://gordoncollegeccs-ssite.net/pems/apis/myapi/select/tbl_lccacosts/fldUserID/"+localStorage.companyID, function (data) {
+
+    $.getJSON("http://gordoncollegeccs-ssite.net/pems/apis/myapi/select/tbl_lccacosts/fldUserID/" + localStorage.companyID, function (data) {
         for (let i = 0; i < data.length; i++) {
             let jsonObj;
-            jsonObj = JSON.parse('{ "costName":"' + data[i].fldCostName + '", "costType":"' + data[i].fldCostType + '"}');
+
+
+            if (data[i].fldCostType == "Recurring Cost") {
+                jsonObj = JSON.parse('{ "costName":"' + data[i].fldCostName + '", "costType":"' + data[i].fldCostType + '", "escalationRate": "' + data[i].fldCostValue + '"}');
+            } else {
+                jsonObj = JSON.parse('{ "costName":"' + data[i].fldCostName + '", "costType":"' + data[i].fldCostType + '", "oneTimeCostType": "' + data[i].fldCostValue + '"}');
+            }
+
             datas[1].costs.push(jsonObj);
         }
-    });    
+    });
+
+    $.getJSON("http://gordoncollegeccs-ssite.net/pems/apis/myapi/select/tbl_lccarate/fldUserID/" + localStorage.companyID, function (data) {
+        for (let i = 0; i < data.length; i++) {
+            let jsonObj;
+            jsonObj = JSON.parse('{ "discountRate":"' + data[i].fldRateValue + '"}');
+            datas[2].rates = jsonObj;
+        }
+    });
+
 
     for (var i = 0; i < datas[0].assets.length; i++) {
         $('#assetAndYear').append($('<option>', {
@@ -157,6 +201,7 @@ function selectYear(val) {
     console.log(yearlyCost);
 }
 
+var myCount = 0;
 function noItems(val) {
     let longString = "";
     itemCount = val;
@@ -164,12 +209,16 @@ function noItems(val) {
     for (let i = 0; i < val; i++) {
         longString += "<br><div class='cardforms row'>";
         longString += '<label class="grey-text" for="item_no' + i + '">Item Number: ' + (i + 1) + '</label>';
-        longString += '<input class="form-control" type="text" id="item_no' + i + '" placeholder="" onfocusout="insertItem(' + i + ')">';
+        longString += '<input class="form-control" type="text" id="item_no' + i + '" placeholder="">';
         longString += '</div><br>';
     }
     $('#myitems').html(longString);
-    suggestAsset();
+    if(myCount < 1){
+        suggestAsset();
+    }
+    myCount += 1;
 }
+
 
 function insertItem(val) {
     let myStr = "#item_no" + val;
@@ -417,8 +466,8 @@ function Popup(data) {
     mywindow.document.write('');
     mywindow.document.write('</body></html>');
     mywindow.focus();
-    
-    
+
+
     window.location.assign("../propertycard/purchase-request.html");
     return true;
 

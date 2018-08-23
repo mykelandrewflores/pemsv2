@@ -12,7 +12,20 @@
     doc.save('sample-file.pdf');
         
 	var file_data = doc.output('blob');
+
+    var reader = new window.FileReader();
+    reader.readAsDataURL(file_data);
+        
+    reader.onloadend = function () {
+        base64data = reader.result;
+        localStorage.mBlob = base64data;
+    }        
+    
+
+        
 	var form_data = new FormData();
+        
+    
 
 	form_data.append('file', file_data);
 	$.ajax({

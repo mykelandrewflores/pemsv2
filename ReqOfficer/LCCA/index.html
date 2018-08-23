@@ -152,7 +152,7 @@
 
                                 <div class="col-md-12">
                                     <button class="btn blue btn-rounded prevBtn-2" type="button">Previous</button>
-                                    <button class="btn green btn-rounded nextBtn-2" type="button">Next</button>
+                                    <button class="btn green btn-rounded nextBtn-2" type="button" onclick="insertAllItems()">Next</button>
                                 </div>
                             </div>
 
@@ -295,41 +295,19 @@
     <script type="text/javascript" src="js/mainfunc.js"></script>
 
     <script>
-        function suggestAsset() {
-            let xAsset = $("#assetAndYear option:selected").text();
 
-            xAsset = xAsset.split("-");
-
-            fetch("http://www.gordoncollegeccs-ssite.net/Search2/api/phprice.php?q=" + xAsset[0]).then((resp) => resp.json()).then(function(data) {
-                console.log(data);
-                
-                let ls = "";
-                
-                for(let i = 0; i < 9; i++){
-                    ls += '<div class="col-sm-4"><div class="card"><div class="view overlay">';
-                    ls += '<img class="card-img-top" src="'+data[i].img+'" alt="Card image cap">';
-                    ls += '<a href="#!"><div class="mask rgba-white-slight"></div></a></div><div class="card-body"><p class="card-text">';
-                    ls += data[i].name + " - " + data[i].price;
-                    ls += '</p>';
-                    ls += '<div class="btn-group"><button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Add to Items</button>';
-                    
-                    ls += '<div class="dropdown-menu">';
-                        for(let j = 0; j < localStorage.noItems; j++){
-                            
-                            ls += '<a class="dropdown-item" onclick="callItem(\'' +data[i].name+ '\', '+j+')">Item # ' + (j+1) + '</a>';
-                        }
-                    ls+= '</div>';
-                    ls += '</div></div></div></div>';
-                }
-                $("#suggesteds").html(ls);
-            });
-        }
         
         function callItem(val, val2){
             window.alert("Item Added");
             $("#item_no"+val2).val(val);
         }
 
+
+function insertAllItems(){
+    for(let i = 0; i < localStorage.noItems;i++){
+        insertItem(i);
+    }
+}
     </script>
 
     <script>
