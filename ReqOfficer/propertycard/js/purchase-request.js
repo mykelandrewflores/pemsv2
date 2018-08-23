@@ -98,7 +98,7 @@ let testArr = [];
 fetchEquipments("Office Equipment");
 
 function getEquipCateg() {
-    $.getJSON(myUrl+"/purchase_api/select.php?lcca_livesdis", function (data) {
+    $.getJSON(myUrl+"/purchase_api/select.php?lcca_livesdis&cID="+localStorage.companyID, function (data) {
 
         var body = ''
         body += '<select onchange="fetchEquipments(this.value)"> <option value="" disabled selected>Choose your Option</option>';
