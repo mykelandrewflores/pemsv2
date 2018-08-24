@@ -53,6 +53,7 @@
 								<th class="font-weight-low">Department</th>
 								<th class="font-weight-low">Date</th>
 								<th class="font-weight-low">Purpose</th>
+								<th class="font-weight-low">Requestor</th>
 								<th class="font-weight-low">Remarks</th>
 								<th class="font-weight-low">Action</th>
 							</tr>
@@ -161,7 +162,7 @@
 		<div class="summary-container" style="margin: 10px auto;" id="myDiv">
 			<div class="summary-header">
 				<h1><b>PURCHASE ORDER</b></h1>
-				<h2 id="purchaseAgency">SAMPLE AGENCY</h2>
+				<h2>JMI</h2>
 				<h6><b>AGENCY</b></h6>
 			</div>
 			<div class="summary-details">
@@ -230,7 +231,7 @@
 	<div class="summary-container" id="printDiv" style="margin: 10px auto; display: none;">
 		<div class="summary-header">
 			<h1><b>PURCHASE ORDER</b></h1>
-			<h2 id="purchaseAgency">SAMPLE AGENCY</h2>
+			<h2 id="purchaseAgency" ></h2>
 			<h6><b>AGENCY</b></h6>
 		</div>
 		<div class="summary-details">
@@ -293,6 +294,9 @@
 		</div>
 	</div>    
 	<script src="../../js/jquery.min.js"></script>
+	<script>
+		
+	</script>
 	<script src="../../js/materialize.min.js"></script>
 	<script src="../../js/init.js"></script>
 	<script src="../../js/changing_color.js"></script>
@@ -300,11 +304,12 @@
 	<script src="js/scriptonite.js"></script>
 	<script>
 		userLoginCheck();
-        
+
             $.getJSON(myUrl+"/myapi/select/tbl_companies/fldCompanyID/"+localStorage.companyID, function(data){
                 $("#purchaseAgency").html(data[0].fldCompanyName);
                 console.log(data[0].fldCompanyName);
             });
+
         
         
 		$.getJSON(myUrl+"/myapi/select/tbl_user/fldUserID/" + localStorage.userID, function(data) {
