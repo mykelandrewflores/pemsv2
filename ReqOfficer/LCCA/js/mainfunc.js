@@ -72,8 +72,7 @@ function suggestAsset() {
             ls += '<img class="card-img-top" src="' + data[i].img + '" alt="Card image cap">';
             ls += '<a href="#!"><div class="mask rgba-white-slight"></div></a></div><div class="card-body"><p class="card-text">';
             ls += data[i].name + " - " + data[i].price;
-            ls += '<a href="'+ data[i].name + '"> </a>';
-            ls += '</p';
+            ls += '</p><br><a href="'+data[i].link+'">Visit Website</a>';
             ls += '<div class="btn-group"><button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Add to Items</button>';
 
             ls += '<div class="dropdown-menu">';
@@ -84,7 +83,48 @@ function suggestAsset() {
             ls += '</div>';
             ls += '</div></div></div></div>';
         }
-        $("#suggesteds").html(ls);
+        $("#suggestedsF").html(ls);
+        
+        
+        ls = "";
+
+        for (let i = 9; i < 18; i++) {
+            ls += '<div class="col-sm-4"><div class="card"><div class="view overlay">';
+            ls += '<img class="card-img-top" src="' + data[i].img + '" alt="Card image cap">';
+            ls += '<a href="#!"><div class="mask rgba-white-slight"></div></a></div><div class="card-body"><p class="card-text">';
+            ls += data[i].name + " - " + data[i].price;
+            ls += '</p><br><a href="'+data[i].link+'">Visit Website</a>';
+            ls += '<div class="btn-group"><button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Add to Items</button>';
+
+            ls += '<div class="dropdown-menu">';
+            for (let j = 0; j < localStorage.noItems; j++) {
+
+                ls += '<a class="dropdown-item" onclick="callItem(\'' + data[i].name + '\', ' + j + ')">Item # ' + (j + 1) + '</a>';
+            }
+            ls += '</div>';
+            ls += '</div></div></div></div>';
+        }
+        $("#suggestedsS").html(ls);        
+        
+        ls = "";
+
+        for (let i = 18; i < 27; i++) {
+            ls += '<div class="col-sm-4"><div class="card"><div class="view overlay">';
+            ls += '<img class="card-img-top" src="' + data[i].img + '" alt="Card image cap">';
+            ls += '<a href="#!"><div class="mask rgba-white-slight"></div></a></div><div class="card-body"><p class="card-text">';
+            ls += data[i].name + " - " + data[i].price;
+            ls += '</p><br><a href="'+data[i].link+'">Visit Website</a>';
+            ls += '<div class="btn-group"><button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Add to Items</button>';
+
+            ls += '<div class="dropdown-menu">';
+            for (let j = 0; j < localStorage.noItems; j++) {
+
+                ls += '<a class="dropdown-item" onclick="callItem(\'' + data[i].name + '\', ' + j + ')">Item # ' + (j + 1) + '</a>';
+            }
+            ls += '</div>';
+            ls += '</div></div></div></div>';
+        }
+        $("#suggestedsT").html(ls);        
     });
 }
 
@@ -215,6 +255,7 @@ function noItems(val) {
     $('#myitems').html(longString);
     if(myCount < 1){
         suggestAsset();
+        changeView(1);
     }
     myCount += 1;
 }

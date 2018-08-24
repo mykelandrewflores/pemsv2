@@ -139,11 +139,33 @@
                                 <div class="col-sm-12">
                                     <h4>Suggested Items</h4>
                                     <hr>
+                                    <nav>
+                                        <ul class="pagination pg-dark flex-center">
+
+
+                                            <!--Numbers-->
+                                            <li class="page-item active" id="btn1" onclick='changeView(1)'><a class="page-link">1</a></li>
+                                            <li class="page-item" id="btn2" onclick='changeView(2)'><a class="page-link">2</a></li>
+                                            <li class="page-item" id="btn3" onclick='changeView(3)'><a class="page-link">3</a></li>
+                                            <li class="page-item"><a class="page-link"></a></li>
+
+                                            <!--Arrow right-->
+
+                                        </ul>
+                                    </nav>
                                 </div>
 
-                                <div class="row" id="suggesteds">
+                                <div class="row" id="suggestedsF">
 
                                 </div>
+                                
+                                <div class="row" id="suggestedsS">
+
+                                </div>                
+                                
+                                <div class="row" id="suggestedsT">
+
+                                </div>                                
 
 
                                 <div id="myitems">
@@ -295,19 +317,45 @@
     <script type="text/javascript" src="js/mainfunc.js"></script>
 
     <script>
-
-        
-        function callItem(val, val2){
+        function callItem(val, val2) {
             window.alert("Item Added");
-            $("#item_no"+val2).val(val);
+            $("#item_no" + val2).val(val);
         }
 
 
-function insertAllItems(){
-    for(let i = 0; i < localStorage.noItems;i++){
-        insertItem(i);
-    }
-}
+        function insertAllItems() {
+            for (let i = 0; i < localStorage.noItems; i++) {
+                insertItem(i);
+            }
+        }
+        
+        function changeView(val){
+            if(val == 1){
+                $("#btn1").addClass('active');
+                $("#btn2").removeClass('active');
+                $("#btn3").removeClass('active');
+                $("#suggestedsF").css("display", "flex");
+                $("#suggestedsS").css("display", "none");
+                $("#suggestedsT").css("display", "none");
+            }
+            if(val == 2){
+                $("#btn2").addClass('active');
+                $("#btn1").removeClass('active');
+                $("#btn3").removeClass('active');  
+                $("#suggestedsS").css("display", "flex");
+                $("#suggestedsF").css("display", "none");
+                $("#suggestedsT").css("display", "none");                
+            }
+            if(val == 3){
+                $("#btn3").addClass('active');
+                $("#btn2").removeClass('active');
+                $("#btn1").removeClass('active');
+                $("#suggestedsT").css("display", "flex");
+                $("#suggestedsS").css("display", "none");
+                $("#suggestedsF").css("display", "none");                
+            }
+        }
+
     </script>
 
     <script>
