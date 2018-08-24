@@ -13,6 +13,7 @@ $('#form_request').submit(function (e) {
 	var cpwd = $("#comp_pass").val()
 	var cpwd_t = $("#conf_pass").val()
 	var thval = Math.random().toString(36).slice(2);
+	var cini = $("#comp_ini").val()
 	thval = thval.substring(0, 6);
 
 
@@ -29,7 +30,8 @@ $('#form_request').submit(function (e) {
 				clogo: clogo,
 				cweb: cweb,
 				cpwd: cpwd,
-				vcode: thval
+				vcode: thval,
+				cini: cini
 
 			}]),
 			function (data) {
@@ -62,7 +64,7 @@ $('#emp_form').submit(function (e) {
 	var pwd = $("#emp_pass").val();
 	var cpwd = $("#emp_cpass").val();
 	if (pwd == cpwd) {
-		var un = $("#emp_username").val();
+		var un = localStorage.companyInitials + "_" + $("#emp_username").val();
 
 		var fname = $("#emp_fname").val();
 		var lname = $("#emp_lname").val();
@@ -178,6 +180,7 @@ $('#login_user').submit(function (e) {
 			localStorage.companyFaxNo = data.fldFax;
 			localStorage.companyWeb = data.fldWebsite;
 			localStorage.companyLogo = data.fldLogo;
+			localStorage.companyInitials = data.fldCompanyInitials;
 
 
 			window.location.assign("CompAdmin/");

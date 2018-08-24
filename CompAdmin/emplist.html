@@ -130,7 +130,14 @@
                                   <option value="" disabled selected>Choose your Department</option>
                               </select>
                           </div>
-                          <div class='input-field col s12 m12 l12'>
+                                
+                          <div class="col s12">
+                                
+                          </div>
+                          <div class="col s1 m1 l1 right-align">
+                            <p style="margin-top: 33px; font-weight: 800; font-size: 18px"><span id="comp_ini">INI</span>_</p>      
+                          </div>
+                          <div class='input-field col s11 m11 l11'>
                             <input class='validate' type='text' name='emp_username' id='emp_username' placeholder="@johndoe123" required />
                             <label for='emp_username'>Username</label>
                         </div>
@@ -214,6 +221,11 @@
 <script src="../js/func.js"></script>
 <script src="js/userimg.js"></script>
 <script>
+    
+    let cIni = localStorage.companyInitials;
+    
+    
+    $("#comp_ini").html(cIni);
     $(document).ready(function() {
         var id = localStorage.companyID;
         selectCompany(id)

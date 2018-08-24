@@ -54,16 +54,21 @@
 			<div class="row mt-br">
 				<div class="col s12">
 					<ul class="tabs tabs-fixed-width " style="background-color: transparent;">
-						<li class="tab col s3"><a  class="active" href="#test1"><i class="fa fa-truck"></i>  &nbsp;Assets</a></li>
-						<li class="tab col s3"><a  href="#test2"><i class="fa fa-money"></i>  &nbsp;Cost</a></li>
-						<li class="tab col s3"><a href="#test3"><i class="fa fa-percent"></i>  &nbsp;Rates</a></li>
-						<li class="tab col s3"><a href="#test4"><i class="fa fa-cog"></i>  &nbsp;PR Categories</a></li>
+						<li class="tab col s4"><a  class="active" href="#test1"><i class="fa fa-truck"></i>  &nbsp;Assets</a></li>
+						<li class="tab col s4"><a  href="#test2"><i class="fa fa-money"></i>  &nbsp;Cost</a></li>
+						<li class="tab col s4"><a href="#test3"><i class="fa fa-percent"></i>  &nbsp;Rates</a></li>
 					</ul>
 				</div>
 				<div id="test1" class="col s12">
 					<h5 class="mt-1 center">Assets & No. of Life Cycle Year</h5>                 
 					<div class="col s12 mt-1">
-						<div class="col l6 m6 s12">
+						<div class="col l3 m6 s12">
+							<div class="input-field col s12">
+								<input id="assetCateg" type="text" class="validate" placeholder="@Gas/Mobile">
+								<label for="assetCateg">Asset Category</label>
+							</div>
+						</div>                        
+						<div class="col l3 m6 s12">
 							<div class="input-field col s12">
 								<input id="assetType" type="text" class="validate" placeholder="@Gas/Mobile">
 								<label for="assetType">Asset Type</label>
@@ -129,7 +134,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="col l4 m4 s12" style="margin-top: -15px">
+						<div class="col l3 m4 s12" style="margin-top: -15px">
 							<div class="input-field col s12">
 								<div id="myOtCost" class="input-field col s12">
                                     <select class="mdb-select" id="otCostType">
@@ -145,6 +150,9 @@
 							</div>
                             
 						</div>
+						<div class="col s1">
+							<button type="button" onclick="insertCost()" class="right waves-effect btn btn-floating tooltipped" data-position="top" data-tooltip="Insert Cost"><b>+</b></button>
+						</div>                        
                     <div class="center col s12">
                         <h6><i class="fa fa-cogs"></i> Upload your Costs</h6>
                                 <small><strong>*Only accepts .csv format</strong></small><br>
@@ -161,9 +169,7 @@
 								</div>
 							</div>  
                     </div>                        
-						<div class="col s12" style="margin-top: -15px">
-							<button type="button" onclick="insertCost()" class="right waves-effect btn btn-floating tooltipped" data-position="top" data-tooltip="Insert Cost"><b>+</b></button>
-						</div>
+
 						<div class="col s12">
 							<table class="table responsive-table centered">
 								<thead>
@@ -192,55 +198,7 @@
 						<button type="button" class="right waves-effect btn  tooltipped" data-position="top" data-tooltip="Insert Cost" onclick="insertRate()">Save Rate</button>
 					</div>
 				</div>
-
-				<div id="test4" class="col s12">
-					<h5 class="mt-1 center">Category and Type of Category</h5>                 
-					<div class="col s12 mt-1">
-						<div class="col l6 m6 s12">
-							<div class="input-field col s12">
-								<input id="categName" type="text" class="validate" placeholder="@Motor and Other Vehicles">
-								<label for="categName">Category Name</label>
-							</div>
-						</div>
-						<div class="col l4 m4 s12">
-							<div class="input-field col s12">
-								<input id="categType" type="text" class="validate" placeholder="@Gasoline/Mobile">
-								<label for="categType">Category Type</label>
-							</div>
-						</div>
-						<div class="col l2 m2 s12" style="margin-top:15px;">
-							<button type="button" class="right waves-effect btn btn-floating tooltipped" onclick="sendPropertyList()" data-position="top" data-tooltip="Insert Category"><b>+</b></button>
-						</div>
-                        <br><br>
-					</div>
-                    <div class="center col s12">
-                        <h6><i class="fa fa-cogs"></i> Upload your Assets</h6>
-                                <small><strong>*Only accepts .csv format</strong></small><br>
-                                <a href="Asset.csv">Download Sample CSV File</a><br>
-                                <br>
-								<button id="fileBtn" class="btn center"><i class="fa fa-upload"></i> Upload</button>
-							<div class="file-field input-field">
-								<input type="file" id="myFile" accept=".csv">
-								<div class="btn green" style="display:none;">
-									<span>Attacment</span>
-								</div>
-								<div class="input-field file-path-wrapper col s6" style="display:none">
-									<input class="file-path" type="text" placeholder="@ e.g (.pdf)">
-								</div>
-							</div>  
-                    </div>
-					<div class="col s12 mt-br">
-						<table class="table responsive-table centered">
-							<thead>
-								<th>Category Name Type</th>
-								<th>Category Type</th>
-								<th>Action</th>
-							</thead>
-							<tbody id="categList">
-							</tbody>
-						</table>
-					</div>
-				</div>             
+        
 			</div>
 		</div>
 	</main>
@@ -318,7 +276,7 @@
             function getData() {
                 $.getJSON(myUrl+ "/myapi/select/tbl_lccasset/fldUserID/"+localStorage.companyID+"?ORDERBY=fldStngNO DESC", function(data){
                     for(let i = 0; i < data.length; i++){
-                        jsonObj = JSON.parse('{ "assetType":"' + data[i].fldAssetType + '", "noLifeCycle":"' + data[i].fldYrs + '", "companyID":"' + data[i].fldUserID + '"}');
+                        jsonObj = JSON.parse('{ "assetCateg":"' + data[i].fldAssetCateg + '", "assetType":"' + data[i].fldAssetType + '", "noLifeCycle":"' + data[i].fldYrs + '", "companyID":"' + data[i].fldUserID + '"}');
                         datas[0].assets.push(jsonObj);                        
                     }
                     viewAssets();
@@ -372,6 +330,7 @@
 
                 for (let i = 0; i < datas[0].assets.length; i++) {
                     longString += "<tr>";
+                    longString += "<td>" + datas[0].assets[i].assetCateg + "</td>";
                     longString += "<td>" + datas[0].assets[i].assetType + "</td>";
                     longString += "<td>" + datas[0].assets[i].noLifeCycle + "</td>";
                     longString += "<td><button type='button' onclick='removeAsset(" + i + ")' class='btn red white-text'><i class='fa fa-remove'></i></td>";
@@ -414,12 +373,13 @@
             }        
 
             function insertAssets() {
+                let aCateg = $("#assetCateg").val();
                 let aType = $("#assetType").val();
                 let nLC = $("#noLifeCycle").val();
                 let jsonObj;
                 
                 if(aType != "" && nLC != ""){
-                jsonObj = JSON.parse('{ "assetType":"' + aType + '", "noLifeCycle":"' + nLC + '", "companyID":"' + localStorage.companyID + '"}');
+                jsonObj = JSON.parse('{ "assetCateg":"' + aCateg + '", "assetType":"' + aType + '", "noLifeCycle":"' + nLC + '", "companyID":"' + localStorage.companyID + '"}');
                 datas[0].assets.push(jsonObj);
                 console.log(datas);
                 viewAssets();

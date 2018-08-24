@@ -47,6 +47,7 @@
 								<span class="helper-text" data-error="Fields are required" data-success="">Enter the Company name</span>
 							</div>
 						</div>
+                        
 						<div class="col s12 l3">
 							<div class="file-field input-field">
 								<div class="btn" style="text-transform: capitalize;width: 90%">
@@ -58,6 +59,18 @@
 								</div>
 							</div>
 						</div>
+                        
+                        
+						<div class="col s12 l12">
+							<div class="input-field col s12">
+								<i class="fa fa-info prefix"></i>
+								<input  id="comp_ini" name="comp_ini" type="text" class="validate"  onblur="validateData(this.value, this.id, 'companies','CompanyInitials')" required>
+								<label for="comp_ini">Company Initials(E.g JCI, SBD, TNC)</label>
+								<span class="helper-text" data-error="Fields are required" data-success="">Enter the Company Address</span>
+							</div>
+						</div>                        
+                        
+                        
 						<div class="col s12 l12">
 							<div class="input-field col s12">
 								<i class="fa fa-map-marker prefix"></i>

@@ -98,14 +98,14 @@ let testArr = [];
 fetchEquipments("Office Equipment");
 
 function getEquipCateg() {
-    $.getJSON(myUrl+"/purchase_api/select.php?lcca_livesdis&cID="+localStorage.companyID, function (data) {
+    $.getJSON(myUrl+"/purchase_api/select.php?lcca_livesdis=1&userid="+localStorage.companyID, function (data) {
 
         var body = ''
-        body += '<select onchange="fetchEquipments(this.value)"> <option value="" disabled selected>Choose your Option</option>';
+        body += '<select onchange="fetchEquipments(this.value)" class="browser-default"> <option value="" disabled selected>Item Category</option>';
         for (var i = 0; i < data.length; i++) {
-            body += '<option value="' + data[i].fldPropertyCategory + '">' + data[i].fldPropertyCategory + '</option>';
+            body += '<option value="' + data[i].fldAssetCateg + '">' + data[i].fldAssetCateg + '</option>';
         }
-        body += '</select><label>Item Category</label>';
+        body += '</select>';
         $('#testingtwo').html(body)
 
     });
@@ -121,7 +121,7 @@ function fetchEquipments(val) {
             body += '<select id="equipement_select" class="browser-default"> <option value="" disabled selected>Item Type</option>';
             for (var i = 0; i < data.length; i++) {
                 if(data[i].fldUserID == localStorage.companyID){                
-                    body += '<option value="' + data[i].fldProdID + '">' + data[i].fldProdName + '</option>';
+                    body += '<option value="' + data[i].fldStngNo + '">' + data[i].fldAssetType + '</option>';
                 }
             }
             body += '</select>';

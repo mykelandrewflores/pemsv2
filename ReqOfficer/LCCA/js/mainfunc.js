@@ -51,7 +51,6 @@ function saveData() {
 
 function getData() {
     try {
-        var myDatas = JSON.parse(localStorage.myArr);
         datas = myDatas;
     } catch (err) {
 
@@ -73,7 +72,8 @@ function suggestAsset() {
             ls += '<img class="card-img-top" src="' + data[i].img + '" alt="Card image cap">';
             ls += '<a href="#!"><div class="mask rgba-white-slight"></div></a></div><div class="card-body"><p class="card-text">';
             ls += data[i].name + " - " + data[i].price;
-            ls += '</p>';
+            ls += '<a href="'+ data[i].name + '"> </a>';
+            ls += '</p';
             ls += '<div class="btn-group"><button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Add to Items</button>';
 
             ls += '<div class="dropdown-menu">';
