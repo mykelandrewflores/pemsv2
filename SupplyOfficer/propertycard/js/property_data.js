@@ -315,7 +315,7 @@ function equiptable_assigned(){
 			$("#equiptabledata_assigned").html(longstring);
 
 		}).fail(function(){
-			M.toast({html: 'No Assigned Equipment/Property'});
+			// M.toast({html: 'No Assigned Equipment/Property'});
 		});
 		
 	});
@@ -342,7 +342,7 @@ function equiptable_disposed(){
 			$("#equiptabledata_disposed").html(longstring);
 
 		}).fail(function(){
-			M.toast({html: 'No Disposed Equipment/Property'});
+			// M.toast({html: 'No Disposed Equipment/Property'});
 		});
 		
 	});
@@ -380,7 +380,7 @@ function equiptable_unassigned(){
 		}).fail(function(){
 			$("#newcount").attr('class', '');
 			document.getElementById("newcount").innerHTML="";
-			M.toast({html: 'No Unassigned Equipment/Property'});
+			// M.toast({html: 'No Unassigned Equipment/Property'});
 		});
 		
 	});
@@ -412,7 +412,7 @@ function equiptable_reqofficer(){
 			$("#equiptabledata_reqofficer").html(longstring);
 
 		}).fail(function(){
-			window.alert("No Equipment Found in Requisitioning");
+			M.toast({html: 'No Equipment/Property Found'});
 		});
 		
 	});
@@ -444,7 +444,7 @@ function equiptable_reqofficer_assigned(){
 			$("#reqequiptabledata_assigned").html(longstring);
 
 		}).fail(function(){
-			window.alert("No Assigned Equipment Found in Requisitioning");
+
 		});
 		
 	});
@@ -471,12 +471,19 @@ function equiptable_reqofficer_unassigned(){
 					cnt++;
 				}
 			
+			}if (data.length) { 
+				$("#newcount").attr('class', 'new badge right red');
+				document.getElementById("newcount").innerHTML=data.length;
+				M.toast({html: data.length+' New Unassigned Property/Equipment'})
+			}else{
+			$("#newcount").attr('class', '');
+			document.getElementById("newcount").innerHTML="";
 			}
-			document.getElementById("newcount").innerHTML=cnt;
 			$("#reqequiptabledata_unassigned").html(longstring);
 
 		}).fail(function(){
-			window.alert("No Unassigned Equipment Found in Requisitioning");
+			$("#newcount").attr('class', '');
+			document.getElementById("newcount").innerHTML="";
 		});
 		
 	});
