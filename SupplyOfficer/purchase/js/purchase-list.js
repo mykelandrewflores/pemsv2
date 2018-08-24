@@ -31,7 +31,6 @@
                     longString += '<td>' + data[i].fldDept + '</td>';
                     longString += '<td>' + formDNow(new Date(data[i].fldDate)) + '</td>';
                     longString += '<td>' + data[i].fldPurpose + '</td>';
-                    longString += '<td>' + data[i].fldRequestByID + '</td>';
                     longString += '<td>' + data[i].fldPurchaseRemarks + '</td>';
                     if (data[i].fldPurchaseRemarks != "Pending") {
                         longString += '<td><a href="#!" class="" onclick="getitemApproved(\'' + data[i].fldPrNo + '\'); viewPO(\'' + data[i].fldPrNo + '\')"><i class="fa fa-eye"></i></a></td>';
