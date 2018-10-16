@@ -89,16 +89,34 @@
                         <h6><i class="fa fa-cogs"></i> Upload your Assets</h6>
                                 <small><strong>*Only accepts .csv format</strong></small><br>
                                 <br>
-								<button id="fileBtn" class="btn center"><i class="fa fa-upload"></i> Upload</button>
+
+                       <!--  <form action="importcsvdata.php" method="post" enctype="multipart/form-data" id="importFrm">
+							<button id="fileBtn" class="btn-flat center"><i class="fa fa-upload"></i> Upload File</button>
 							<div class="file-field input-field">
-								<input type="file" id="myFile" accept=".csv">
+								<input type="file" id="myCSVFile" accept=".csv">
 								<div class="btn green" style="display:none;">
 									<span>Attacment</span>
 								</div>
 								<div class="input-field file-path-wrapper col s6" style="display:none">
 									<input class="file-path" type="text" placeholder="@ e.g (.pdf)">
 								</div>
-							</div>  
+							</div>
+
+                            <input type="submit" class="btn" name="importSubmit" value="IMPORT">
+                        </form>   -->
+
+                        <form action="importcsvdata.php" method="post" enctype="multipart/form-data" id="importFrm">
+                            <div class="file-field input-field ">
+                                <div class="btn-flat">
+                                    <span><i class="fa fa-upload"></i> Choose file to upload</span>
+                                    <input type="file" name="file" accept=".csv">
+                                </div>
+                                <div class="file-path-wrapper col s6" style="display: none;">
+                                    <input class="file-path validate" type="text" placeholder="Upload your file">
+                                </div>
+                            </div>
+                            <input type="submit" class="btn " name="importSubmit" value="IMPORT">
+                        </form>
                     </div>
 					<div class="col s12 mt-br">
 						<table class="table responsive-table centered">
@@ -432,9 +450,8 @@
                 e.preventDefault();
                 $('#myFile').trigger('click');
             });
-
             $('#myFile').on( 'change', function() {
-               myfile= $( this ).val();
+               myfile= $(this).val();
                var ext = myfile.split('.').pop();
                if(ext=="csv"){
                     reader_offset = 0;
@@ -445,8 +462,6 @@
                    return false;
                }
             }); 
-        
-        
             $('#fileBtnC').click(function( e ) {
                 e.preventDefault();
                 $('#myFileC').trigger('click');
@@ -479,7 +494,7 @@
 			{
 				var reader = new FileReader();
 
-				var file = (val == "tbl_lccacosts" ? $('#myFileC')[0].files[0] : $('#myFileC')[0].files[0]);
+				var file = (val == "tbl_lccacosts" ? $('#myFile')[0].files[0] : $('#myFile')[0].files[0]);
 				reader.onloadend = function(evt){
 					
 					//check for end of file
