@@ -6,6 +6,8 @@ var req_item = [];
 $("#company_id").val(localStorage.companyID);
 $("#user_id").val(localStorage.userID);
 
+
+//SET DATE FORMAT
 function formatDate(date, lval) {
     var d = new Date(date),
     month = '' + (d.getMonth() + 1),
@@ -20,6 +22,8 @@ function formatDate(date, lval) {
     return year + '-' + month + '-' + mval;
 }
 
+
+//SET LATEST PURCHASE NUMBER
 function setData() {
    var url = myUrl + "/iar_api/select.php?purchase_no";
    $.ajax({
@@ -41,6 +45,8 @@ function setData() {
 });
 }
 
+
+// INSERT DATA TO JSON FORMAT
 function addDataSet() {
     var curdate_request = $('#curdate_request').val();
     
@@ -93,10 +99,13 @@ function addDataSet() {
 $.ajaxSetup({
     async: false
 });
-getEquipCateg();
-let testArr = [];
-fetchEquipments("Office Equipment");
 
+getEquipCateg();//SET CATEGORY OPTIONS
+let testArr = [];
+fetchEquipments("Office Equipment");//SET EQUIPMENT OPTIONS
+
+
+//GET EQUIP CATEGS
 function getEquipCateg() {
     $.getJSON(myUrl+"/purchase_api/select.php?lcca_livesdis=1&userid="+localStorage.companyID, function (data) {
 
@@ -111,6 +120,8 @@ function getEquipCateg() {
     });
 }
 
+
+//GET EQUIPMENTS
 function fetchEquipments(val) {
     $.ajax({
         url: myUrl+'/purchase_api/select.php?fetch_equipments_data=' + val,
@@ -130,6 +141,8 @@ function fetchEquipments(val) {
     });
 }
 
+
+//SHOW ITEMS ON TABLE
 function getItems() {
     var body = '';
     for (var i = 0; i < req_item.length; i++) {
@@ -150,11 +163,13 @@ function getItems() {
     $('#add_data_set').html(body);
 }
 
+//REMOVE ITEM ON TABLE
 function removeItem(id) {
     req_item.splice(id, 1);
     getItems();
 }
 
+//INSERT REQUESTS
 function requestUnits() {
     $.ajax({
         url: myUrl+'/purchase_api/insert_json.php',
@@ -163,6 +178,8 @@ function requestUnits() {
         success: function (data) {}
     });
 }
+
+
 $(document).ready(function () {
     $('#form_request').submit(function (e) {
         e.preventDefault();

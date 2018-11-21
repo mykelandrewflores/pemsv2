@@ -106,7 +106,7 @@
                             <input type="submit" class="btn" name="importSubmit" value="IMPORT">
                         </form>   -->
 
-                        <form action="importcsvdata.php" method="post" enctype="multipart/form-data" id="importFrm">
+                        <form action="../apis/importcsvdata.php" method="post" enctype="multipart/form-data" id="importFrm">
                             <div class="file-field input-field ">
                                 <div class="btn-flat">
                                     <span><i class="fa fa-upload"></i> Choose file to upload</span>
@@ -116,6 +116,7 @@
                                     <input class="file-path validate" type="text" placeholder="Upload your file">
                                 </div>
                             </div>
+                            <input type="text" name="compid" id="asstcompid" style="display: none;">
                             <input type="submit" class="btn " name="importSubmit" value="IMPORT">
                         </form>
                     </div>
@@ -176,7 +177,7 @@
                                 <small><strong>*Only accepts .csv format</strong></small><br>
                                 <a href="Cost.csv">Download Sample CSV File</a><br>
                                 <br>
-								<button id="fileBtnC" class="btn center"><i class="fa fa-upload"></i> Upload</button>
+								<!-- <button id="fileBtnC" class="btn center"><i class="fa fa-upload"></i> Upload</button>
 							<div class="file-field input-field">
 								<input type="file" id="myFileC" accept=".csv">
 								<div class="btn green" style="display:none;">
@@ -185,7 +186,21 @@
 								<div class="input-field file-path-wrapper col s6" style="display:none">
 									<input class="file-path" type="text" placeholder="@ e.g (.pdf)">
 								</div>
-							</div>  
+							</div>  --> 
+                            <form action="../apis/importcostdata.php" method="post" enctype="multipart/form-data" id="importcostFrm">
+                            <div class="file-field input-field ">
+                                <div class="btn-flat">
+                                    <span><i class="fa fa-upload"></i> Choose file to upload</span>
+                                    <input type="file" name="file1" accept=".csv">
+                                </div>
+                                <div class="file-path-wrapper col s6" style="display: none;">
+                                    <input class="file-path validate" type="text" placeholder="Upload your file">
+                                </div>
+                            </div>
+
+                            <input type="text" name="costcompid" id="costcompid" style="display: none;">
+                            <input type="submit" class="btn " name="importcostSubmit" value="IMPORT">
+                        </form>
                     </div>                        
 
 						<div class="col s12">
@@ -229,6 +244,9 @@
     <script src="js/userimg.js"></script>
     
     <script>
+
+        document.getElementById("asstcompid").value = localStorage.companyID;
+        document.getElementById("costcompid").value = localStorage.companyID;
     
         getPropertyList();
         function getPropertyList(){
