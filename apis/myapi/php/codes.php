@@ -100,7 +100,7 @@ class dbConn{
 
 
     public function join($tbl_one, $id_one, $tbl_two, $id_two){
-        $this->sql = "SELECT * FROM ".$tbl_one.", ".$tbl_two." WHERE ".$tbl_one.".".$id_one." = ".$tbl_two.".".$id_two."";
+        $this->sql .= " FROM ".$tbl_one.", ".$tbl_two." WHERE ".$tbl_one.".".$id_one." = ".$tbl_two.".".$id_two."";
         return $this;
     }
 
