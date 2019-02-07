@@ -11,7 +11,7 @@ elseif(isset($_GET['fetch_equipments'])) {
 	$sql = mysqli_query($db,"SELECT * FROM tbl_equipment WHERE fldCompanyID = '$data'");
 } elseif(isset($_GET['fetch_equipments_data'])) {
 	$data = $_GET['fetch_equipments_data'];
-	$sql = mysqli_query($db,"SELECT * FROM tbl_lccalives WHERE fldPropertyCategory = '$data'");
+	$sql = mysqli_query($db,"SELECT * FROM tbl_lccasset WHERE fldAssetCateg = '$data'");
 } elseif(isset($_GET['fetch_pr_list'])) {
 	$sql = mysqli_query($db,"SELECT * FROM tbl_purchaserequest ORDER BY fldTransactionNo DESC");
 } elseif(isset($_GET['fetch_pr_equipment'])) {
@@ -20,7 +20,8 @@ elseif(isset($_GET['fetch_equipments'])) {
 }
 
 elseif(isset($_GET['lcca_livesdis'])) {
-	$sql = mysqli_query($db,"SELECT DISTINCT(fldPropertyCategory) FROM tbl_lccalives ");
+	$xid = $_GET['userid'];
+	$sql = mysqli_query($db,"SELECT DISTINCT(fldAssetCateg) FROM tbl_lccasset WHERE fldUserID = '$xid'");
 }
 
 while($data = mysqli_fetch_assoc($sql)) {

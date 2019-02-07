@@ -283,7 +283,6 @@ function getCostDetails(val) {
         }
     }
 }
-
 function showTable() {
     let ArrTotal = [];
     for (let x = 0; x < datas[3].items.length; x++) {
@@ -293,16 +292,15 @@ function showTable() {
     for (let i = 0; i < yearlyCost.length; i++) {
         document.getElementById("YearlyHead").innerHTML += "<th>Year" + (i + 1) + "</th>";
         for (let k = 0; k < yearlyCost[i].Items.length; k++) {
-            document.getElementById("itemNo" + (k + 1)).innerHTML += "<td>" + yearlyCost[i].Items[k].TotalCost + ".00</td>";
+            document.getElementById("itemNo" + (k + 1)).innerHTML += "<td>" + parseFloat(yearlyCost[i].Items[k].TotalCost).toFixed(2) + "</td>";
             ArrTotal[k] += parseInt(yearlyCost[i].Items[k].TotalCost);
         }
     }
 
     document.getElementById("YearlyHead").innerHTML += "<th>Total</th>";
 
-
-
 }
+
 
 function showChart() {
     let myJsonObj = "";
@@ -339,7 +337,7 @@ function showChart() {
             lowestkey = j;
         }
 
-        document.getElementById("itemNo" + (j + 1)).innerHTML += "<td><strong>" + ArrTotal[j] + ".00</strong></td>";
+        document.getElementById("itemNo" + (j + 1)).innerHTML += "<td><strong>" + parseFloat(ArrTotal[j]).toFixed(2) + "</strong></td>";
     }
 
     for (let z = 0; z < datas[3].items.length; z++) {
@@ -394,7 +392,7 @@ function summarizeForms() {
         stpFourString += "<tr><th>Item Number" + (k + 1) + ": <strong>" + document.getElementById("item_no" + k).value + "</strong><br>Cost List</th></tr>";
         for (let l = 0; l < costUsed.length; l++) {
             let myString = 'itemNo_(' + (k + 1) + '_costNumber_' + l + ')';
-            stpFourString += "<tr><td>" + costUsed[l].costName + "</td><td> " + document.getElementById(myString).value + ".00</td></tr>";
+            stpFourString += "<tr><td>" + costUsed[l].costName + "</td><td> " + document.getElementById(myString).value + "</td></tr>";
         }
     }
 
@@ -414,36 +412,46 @@ function getFormsVal() {
             yearlyCost[i].Items.push(jsonObj);
             for (let k = 0; k < costUsed.length; k++) {
                 var strVar = "#form_" + j + "_" + k;
-                console.log(strVar);
-                console.log(yearlyCost);
                 let parsedJSON = $(strVar).serializemyObject();
                 let escalatedVal = 0;
                 if (parsedJSON.costType == "EscalationValue" && (i + 1) > 1) {
-                    escalatedVal = (((parseFloat(parsedJSON.EscalationValue).toFixed(2) / 100) * parseInt(parsedJSON.costValue)) * i) + parseInt(parsedJSON.costValue);
+                    let pos = () =>{
+                        for(let z = 0; z < yearlyCost[i-1].Items[j].Costs.length; z++){
+                            if(parsedJSON.costName == yearlyCost[i-1].Items[j].Costs[z].costName){
+                                return parseFloat(yearlyCost[i-1].Items[j].Costs[z].costRecValue)
+                            }
+                        }
+                    }
+                    console.log(pos());
+                    escalatedVal = ((parseFloat(parsedJSON.EscalationValue).toFixed(2) / 100) * pos()) + pos();
+                    parsedJSON.costRecValue = escalatedVal;
                     escalatedVal = getRecurringCost(escalatedVal, (i + 1));
                     parsedJSON.costValue = escalatedVal;
                     yearlyCost[i].Items[j].Costs.push(parsedJSON);
-                    parsedJSON.costValue = parseInt(parsedJSON.costValue);
-                    totalCost += parsedJSON.costValue;
+                    parsedJSON.costValue = parsedJSON.costValue;
+                    totalCost += parseFloat(parsedJSON.costValue);
                 } else if (parsedJSON.costType == "EscalationValue" && i == 0) {
-                    parsedJSON.costValue = parseFloat(parsedJSON.costValue).toFixed(2);
+                    parsedJSON.costValue = parseFloat(parsedJSON.costValue);
+                    parsedJSON.costRecValue = parseFloat(parsedJSON.costValue);
                     yearlyCost[i].Items[j].Costs.push(parsedJSON);
-                    parsedJSON.costValue = parseInt(parsedJSON.costValue);
-                    totalCost += parseInt(parsedJSON.costValue);
+                    parsedJSON.costValue = parsedJSON.costValue;
+                    totalCost += parsedJSON.costValue;
                 } else {
                     if (parsedJSON.OneTimeValue == "Initial Year") {
                         if (i == 0) {
                             parsedJSON.costValue = parseInt(parsedJSON.costValue);
                             yearlyCost[i].Items[j].Costs.push(parsedJSON);
                             parsedJSON.costValue = parseInt(parsedJSON.costValue);
-                            totalCost += parsedJSON.costValue;
+                            totalCost += parseFloat(parsedJSON.costValue);
+                            console.log(totalCost);
                         }
                     } else {
                         if (i == (yearlyCost.length - 1)) {
-                            parsedJSON.costValue = getOneTimeCost(parsedJSON.costValue);
+                            parsedJSON.costValue = getOneTimeCost(parsedJSON.costValue, (i+1));
                             yearlyCost[i].Items[j].Costs.push(parsedJSON);
                             parsedJSON.costValue = parseInt(parsedJSON.costValue);
-                            totalCost += parsedJSON.costValue;
+                            totalCost += parseFloat(parsedJSON.costValue);
+                            console.log(totalCost);
                         }
                     }
                 }
@@ -459,8 +467,9 @@ function getFormsVal() {
 }
 
 
-function getOneTimeCost(val) {
-    let total = val / (1 + (datas[2].rates.discountRate / 100));
+
+function getOneTimeCost(val,year) {
+    let total = val*(1/Math.pow(1+(datas[2].rates.discountRate/100),year));
     return parseFloat(total).toFixed(2);
 }
 
@@ -468,7 +477,7 @@ function getRecurringCost(val, year) {
     if (year == 1) {
         return val;
     } else {
-        let total = (val * Math.pow(1 + (datas[2].rates.discountRate / 100), year)) / ((datas[2].rates.discountRate / 100) * Math.pow((1 + (datas[2].rates.discountRate / 100)), year));
+        let total = val*(((Math.pow((1+(datas[2].rates.discountRate/100)),year)-1)/((datas[2].rates.discountRate/100)*(Math.pow(1+(datas[2].rates.discountRate/100),year)))))
         return parseFloat(total).toFixed(2);
     }
 }

@@ -3,6 +3,7 @@ header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Origin-Method: *');
 header("Content-Type: application/json; charset=UTF-8");
 
+
 class dbConnect {
 	// private $servername	= "192.168.11.3";
 	// private $servername = "192.168.11.15";
@@ -13,8 +14,8 @@ class dbConnect {
 	private $dbName		= "db_arnie";
 
 	public function connect() {
-		// $connect = mysqli_connect("localhost", "u687158084_arnie", "123456ab", "u687158084_pems");
-		$connect = mysqli_connect("localhost", "root", "", "db_arnie");
+		$connect = mysqli_connect("localhost", "u687158084_arnie", "123456ab", "u687158084_pems");
+		// $connect = mysqli_connect("localhost", "root", "", "db_arnie");
 		if ($connect) {
 			return $connect;
 		} else {

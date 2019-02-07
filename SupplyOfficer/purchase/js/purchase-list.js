@@ -8,7 +8,7 @@
             async: false
         });
 
-        $.getJSON(url+"/myapi/select/tbl_lccalives", function(data) {
+        $.getJSON(url+"/myapi/select/tbl_lccasset", function(data) {
             equipData = data;
         });
 
@@ -47,7 +47,7 @@
 
         function getPurchaseData(val) {
             for (let i = 0; i < equipData.length; i++) {
-                if (val == equipData[i].fldProdID) {
+                if (val == equipData[i].fldStngNo) {
                     return equipData[i];
                 }
             }
@@ -82,7 +82,8 @@
                         longString += '<td id="mPrNo' + (i + 1) + '">' + data[i].fldPrNo + '</td>';
                         longString += '<td id="mUnit' + (i + 1) + '">' + data[i].fldUnit + '</td>';
                         longString += '<td style="display:none" id="mitemNo' + (i + 1) + '">' + data[i].fldPNum + '</td>';
-                        longString += '<td>' + getPurchaseData(data[i].fldPNum).fldProdName + '</td>';
+                        // longString += '<td>' + getPurchaseData(data[i].fldPNum).fldAssetType + '</td>';
+                        longString += '<td>' + data[i].fldAssetType + '</td>';
                         longString += '<td id="mitemBrand' + ( i + 1 ) + '">' + data[i].fldBrand + '</td>';                        
                         longString += '<td><input type="text" value="' + data[i].fldQty + '" style="width: 30px; text-align:center" id="mQty' + (i + 1) + '"></td>';
                         longString += '<td id="mUnitCost' + (i + 1) + '">' + data[i].fldUnitCost + '</td>';
@@ -119,7 +120,7 @@
                         longString += '<td id="PrNo' + (i + 1) + '">' + data[i].fldPrNo + '</td>';
                         longString += '<td id="Unit' + (i + 1) + '">' + data[i].fldUnit + '</td>';
                         longString += '<td style="display:none" id="itemNo' + (i + 1) + '">' + data[i].fldPNum + '</td>';
-                        longString += '<td>' + getPurchaseData(data[i].fldPNum).fldProdName + '</td>';
+                        longString += '<td>' + getPurchaseData(data[i].fldPNum).fldAssetType + '</td>';
                         longString += '<td id="ItemBrand' + ( i + 1 ) + '">' + data[i].fldBrand + '</td>';    
                         longString += '<td>' + (i + 1) + '</td>';
                         longString += '<td id="UnitCost' + (i + 1) + '">' + data[i].fldUnitCost + '</td>';

@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   <link rel="shortcut icon" href="../image/LOGO.png" />
-	<link rel="stylesheet" href="../css/materialize.min.css">
-	<link rel="stylesheet" href="../css/font-awesome.min.css">
-	<link rel="stylesheet" href="../css/style.css">
-	<title>LCCA Settings</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="../image/LOGO.png" />
+    <link rel="stylesheet" href="../css/materialize.min.css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>LCCA Settings</title>
 </head>
+
 <body class="cloudy">
     <header class="padded">
         <div class="navbar-fixed">
@@ -36,8 +38,8 @@
                         <img src="" class="responsive-img" style="opacity: 0.1;margin-top:0px;" id="sidepanel_bg" />
                     </div>
                     <a href="#user"><img class="circle" id="useravatar" src="../image/avatar.jpg"></a>
-				<a href="#name"><span class="white-text name" id="comp_name">Company Name</span></a>
-				<a href="#email"><span class="white-text email" id="det_em">Email Compnay</span></a>
+                    <a href="#name"><span class="white-text name" id="comp_name">Company Name</span></a>
+                    <a href="#email"><span class="white-text email" id="det_em">Email Compnay</span></a>
                 </div>
             </li>
             <li><a class="subheader">Functions</a></li>
@@ -48,192 +50,244 @@
             <li onclick="logOut()"><a href="../index.html" class="collapsible-header" onclick="logOut()"><i class="fa fa-power-off" aria-hidden="true"></i> Logout</a></li>
         </ul>
     </header>
-	<main>
-		<div class="container mt-1">
-			<h4 class="deafult-text font-weight-low"><blockquote class="default-text">Life Cycle Cost Analysis Tool</blockquote></h4>
-			<div class="row mt-br">
-				<div class="col s12">
-					<ul class="tabs tabs-fixed-width " style="background-color: transparent;">
-						<li class="tab col s4"><a  class="active" href="#test1"><i class="fa fa-truck"></i>  &nbsp;Assets</a></li>
-						<li class="tab col s4"><a  href="#test2"><i class="fa fa-money"></i>  &nbsp;Cost</a></li>
-						<li class="tab col s4"><a href="#test3"><i class="fa fa-percent"></i>  &nbsp;Rates</a></li>
-					</ul>
-				</div>
-				<div id="test1" class="col s12">
-					<h5 class="mt-1 center">Assets & No. of Life Cycle Year</h5>                 
-					<div class="col s12 mt-1">
-						<div class="col l3 m6 s12">
-							<div class="input-field col s12">
-								<input id="assetCateg" type="text" class="validate" placeholder="@Gas/Mobile">
-								<label for="assetCateg">Asset Category</label>
-							</div>
-						</div>                        
-						<div class="col l3 m6 s12">
-							<div class="input-field col s12">
-								<input id="assetType" type="text" class="validate" placeholder="@Gas/Mobile">
-								<label for="assetType">Asset Type</label>
-							</div>
-						</div>
-						<div class="col l4 m4 s12">
-							<div class="input-field col s12">
-								<input id="noLifeCycle" type="number" class="validate" placeholder="@2018">
-								<label for="noyLifeCycle">No. of Life Cycle Year</label>
-							</div>
-						</div>
-						<div class="col l2 m2 s12" style="margin-top:15px;">
-							<button type="button" class="right waves-effect btn btn-floating tooltipped" onclick="insertAssets()" data-position="top" data-tooltip="Insert Asset"><b>+</b></button>
-						</div>
+    <main>
+        <div class="container mt-1">
+            <h4 class="deafult-text font-weight-low">
+                <blockquote class="default-text">Life Cycle Cost Analysis Tool</blockquote>
+            </h4>
+            <div class="row mt-br">
+                <div class="col s12">
+                    <ul class="tabs tabs-fixed-width " style="background-color: transparent;">
+                        <li class="tab col s4"><a class="active" href="#test1"><i class="fa fa-truck"></i> &nbsp;Assets</a></li>
+                        <li class="tab col s4"><a href="#test2"><i class="fa fa-money"></i> &nbsp;Cost</a></li>
+                        <li class="tab col s4"><a href="#test3"><i class="fa fa-percent"></i> &nbsp;Rates</a></li>
+                    </ul>
+                </div>
+                <div id="test1" class="col s12">
+                    <h5 class="mt-1 center">Assets & No. of Life Cycle Year</h5>
+                    <div class="col s12 mt-1">
+                        <div class="col l3 m6 s12">
+                            <div class="input-field col s12">
+                                <input id="assetCateg" type="text" class="validate" placeholder="@Gas/Mobile">
+                                <label for="assetCateg">Asset Category</label>
+                            </div>
+                        </div>
+                        <div class="col l3 m6 s12">
+                            <div class="input-field col s12">
+                                <input id="assetType" type="text" class="validate" placeholder="@Gas/Mobile">
+                                <label for="assetType">Asset Type</label>
+                            </div>
+                        </div>
+                        <div class="col l4 m4 s12">
+                            <div class="input-field col s12">
+
+
+                                <select id="noLifeCycle" class="browser-default">
+                                    <option value="1" selected disabled>No. of Life Cycle Year</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                    <option value="13">13</option>
+                                    <option value="14">14</option>
+                                    <option value="15">15</option>
+                                    <option value="16">16</option>
+                                    <option value="17">17</option>
+                                    <option value="18">18</option>
+                                    <option value="19">19</option>
+                                    <option value="20">20</option>
+                                    <option value="21">21</option>
+                                    <option value="22">22</option>
+                                    <option value="23">23</option>
+                                    <option value="24">24</option>
+                                    <option value="25">25</option>
+                                </select>
+                                <!--<input id="noLifeCycle" type="number" class="validate" placeholder="Max of 5">-->
+                            </div>
+                        </div>
+                        <div class="col l2 m2 s12" style="margin-top:15px;">
+                            <button type="button" class="right waves-effect btn btn-floating tooltipped" onclick="insertAssets()" data-position="top" data-tooltip="Insert Asset"><b>+</b></button>
+                        </div>
                         <br><br>
-					</div>
+                    </div>
                     <div class="center col s12">
                         <h6><i class="fa fa-cogs"></i> Upload your Assets</h6>
-                                <small><strong>*Only accepts .csv format</strong></small><br>
-                                <br>
-
-                       <!--  <form action="importcsvdata.php" method="post" enctype="multipart/form-data" id="importFrm">
-							<button id="fileBtn" class="btn-flat center"><i class="fa fa-upload"></i> Upload File</button>
-							<div class="file-field input-field">
-								<input type="file" id="myCSVFile" accept=".csv">
-								<div class="btn green" style="display:none;">
-									<span>Attacment</span>
-								</div>
-								<div class="input-field file-path-wrapper col s6" style="display:none">
-									<input class="file-path" type="text" placeholder="@ e.g (.pdf)">
-								</div>
-							</div>
-
-                            <input type="submit" class="btn" name="importSubmit" value="IMPORT">
-                        </form>   -->
-
-                        <form action="../apis/importcsvdata.php" method="post" enctype="multipart/form-data" id="importFrm">
-                            <div class="file-field input-field ">
-                                <div class="btn-flat">
-                                    <span><i class="fa fa-upload"></i> Choose file to upload</span>
-                                    <input type="file" name="file" accept=".csv">
-                                </div>
-                                <div class="file-path-wrapper col s6" style="display: none;">
-                                    <input class="file-path validate" type="text" placeholder="Upload your file">
+                        <small><strong>*Only accepts .csv format</strong></small><br>
+                        <a href="Asset.csv">Download Sample CSV File</a><br>
+                        <br>
+                        <button id="fileBtn" class="btn center"><i class="fa fa-upload"></i> Upload</button>
+                        <div class="file-field input-field">
+                            <input type="file" id="myFile" accept=".csv">
+                            <div class="btn green" style="display:none;">
+                                <span>Attacment</span>
+                            </div>
+                            <div class="input-field file-path-wrapper col s6" style="display:none">
+                                <input class="file-path" type="text" placeholder="@ e.g (.pdf)">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s12 mt-br">
+                        <table class="table responsive-table centered">
+                            <thead>
+                                <th>Asset Category</th>
+                                <th>Asset Type</th>
+                                <th>Life Cycle Year</th>
+                                <th>Action</th>
+                            </thead>
+                            <tbody id="assetList">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div id="test2" class="col s12">
+                    <h5 class="mt-1 center">Cost</h5>
+                    <div class="col s12 mt-br">
+                        <div class="col l4 m4 s12">
+                            <div class="input-field col s12">
+                                <input id="costName" type="text" class="validate" placeholder="@Gas/Mobile">
+                                <label for="">Cost Name</label>
+                            </div>
+                        </div>
+                        <div class="col l4 m4 s12" style="margin-top: -15px">
+                            <div class="input-field col s12">
+                                <div class="input-field col s12">
+                                    <select id="costType" onchange="CostTypeSel(this.value)">
+                                        <option value="" disabled selected>Choose your option</option>
+                                        <option value="otcost">One Time Cost</option>
+                                        <option value="rccost">Recurring Cost</option>
+                                    </select>
+                                    <label>Cost Type</label>
                                 </div>
                             </div>
-                            <input type="text" name="compid" id="asstcompid" style="display: none;">
-                            <input type="submit" class="btn " name="importSubmit" value="IMPORT">
-                        </form>
-                    </div>
-					<div class="col s12 mt-br">
-						<table class="table responsive-table centered">
-							<thead>
-								<th>Asset Type</th>
-								<th>Life Cycle Year</th>
-								<th>Action</th>
-							</thead>
-							<tbody id="assetList">
-							</tbody>
-						</table>
-					</div>
-				</div>
-				<div id="test2" class="col s12">
-					<h5 class="mt-1 center">Cost</h5>
-					<div class="col s12 mt-br">
-						<div class="col l4 m4 s12">
-							<div class="input-field col s12">
-								<input id="costName" type="text" class="validate" placeholder="@Gas/Mobile">
-								<label for="">Cost Name</label>
-							</div>
-						</div>
-						<div class="col l4 m4 s12" style="margin-top: -15px">
-							<div class="input-field col s12">
-								<div class="input-field col s12">
-									<select id="costType" onchange="CostTypeSel(this.value)">
-										<option value="" disabled selected>Choose your option</option>
-										<option value="otcost">One Time Cost</option>
-										<option value="rccost">Recurring Cost</option>
-									</select>
-									<label>Cost Type</label>
-								</div>
-							</div>
-						</div>
-						<div class="col l3 m4 s12" style="margin-top: -15px">
-							<div class="input-field col s12">
-								<div id="myOtCost" class="input-field col s12">
+                        </div>
+                        <div class="col l3 m4 s12" style="margin-top: -15px">
+                            <div class="input-field col s12">
+                                <div id="myOtCost" class="input-field col s12">
                                     <select class="mdb-select" id="otCostType">
                                         <option value="initialYear">Initial Year</option>
                                         <option value="lastYear">Last Year</option>
                                     </select>
-									<label>One Time Cost Type</label>
-								</div>                                
+                                    <label>One Time Cost Type</label>
+                                </div>
                                 <div class="input-field col s12" id="rcCostType">
                                     <input id="escalationRate" type="text" placeholder="@10">
                                     <label for="escalationRate" class="grey-text">Escalation Rate</label>
-                                </div>                                
-							</div>
-                            
-						</div>
-						<div class="col s1">
-							<button type="button" onclick="insertCost()" class="right waves-effect btn btn-floating tooltipped" data-position="top" data-tooltip="Insert Cost"><b>+</b></button>
-						</div>                        
-                    <div class="center col s12">
-                        <h6><i class="fa fa-cogs"></i> Upload your Costs</h6>
-                                <small><strong>*Only accepts .csv format</strong></small><br>
-                                <a href="Cost.csv">Download Sample CSV File</a><br>
-                                <br>
-								<!-- <button id="fileBtnC" class="btn center"><i class="fa fa-upload"></i> Upload</button>
-							<div class="file-field input-field">
-								<input type="file" id="myFileC" accept=".csv">
-								<div class="btn green" style="display:none;">
-									<span>Attacment</span>
-								</div>
-								<div class="input-field file-path-wrapper col s6" style="display:none">
-									<input class="file-path" type="text" placeholder="@ e.g (.pdf)">
-								</div>
-							</div>  --> 
-                            <form action="../apis/importcostdata.php" method="post" enctype="multipart/form-data" id="importcostFrm">
-                            <div class="file-field input-field ">
-                                <div class="btn-flat">
-                                    <span><i class="fa fa-upload"></i> Choose file to upload</span>
-                                    <input type="file" name="file1" accept=".csv">
-                                </div>
-                                <div class="file-path-wrapper col s6" style="display: none;">
-                                    <input class="file-path validate" type="text" placeholder="Upload your file">
                                 </div>
                             </div>
 
-                            <input type="text" name="costcompid" id="costcompid" style="display: none;">
-                            <input type="submit" class="btn " name="importcostSubmit" value="IMPORT">
-                        </form>
-                    </div>                        
+                        </div>
+                        <div class="col s1">
+                            <button type="button" onclick="insertCost()" class="right waves-effect btn btn-floating tooltipped" data-position="top" data-tooltip="Insert Cost"><b>+</b></button>
+                        </div>
+                        <div class="center col s12">
+                            <h6><i class="fa fa-cogs"></i> Upload your Costs</h6>
+                            <small><strong>*Only accepts .csv format</strong></small><br>
+                            <a href="Cost.csv">Download Sample CSV File</a><br>
+                            <br>
+                            <button id="fileBtnC" class="btn center"><i class="fa fa-upload"></i> Upload</button>
+                            <div class="file-field input-field">
+                                <input type="file" id="myFileC" accept=".csv">
+                                <div class="btn green" style="display:none;">
+                                    <span>Attacment</span>
+                                </div>
+                                <div class="input-field file-path-wrapper col s6" style="display:none">
+                                    <input class="file-path" type="text" placeholder="@ e.g (.pdf)">
+                                </div>
+                            </div>
+                        </div>
 
-						<div class="col s12">
-							<table class="table responsive-table centered">
-								<thead>
-									<th>Cost Name</th>
-									<th>Cost Type</th>
-									<th>Cost Value</th>
-									<th>Action</th>
-								</thead>
-								<tbody id="costsList">
-								</tbody>
-							</table>
-						</div>
-					</div>
-				</div>
-				<div id="test3" class="col s12">
-					<h5 class="mt-1 center">Rates</h5>
-					<div class="col s12 mt-br">
-						<div class="col l6 m6 s12">
-							<div class="input-field col s12">
-								<input id="discountRate" type="number" class="validate" placeholder="@100%">
-								<label for="discountRate">Discount Rate in Percent</label>
-							</div>
-						</div>
-					</div>
-					<div class="col s12">
-						<button type="button" class="right waves-effect btn  tooltipped" data-position="top" data-tooltip="Insert Cost" onclick="insertRate()">Save Rate</button>
-					</div>
-				</div>
-        
-			</div>
-		</div>
-	</main>
+                        <div class="col s12">
+                            <table class="table responsive-table centered">
+                                <thead>
+                                    <th>Cost Name</th>
+                                    <th>Cost Type</th>
+                                    <th>Cost Value</th>
+                                    <th>Action</th>
+                                </thead>
+                                <tbody id="costsList">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div id="test3" class="col s12">
+                    <h5 class="mt-1 center">Rates</h5>
+                    <div class="col s12 mt-br">
+                        <div class="col l6 m6 s12">
+                            <div class="input-field col s12">
+                                <input id="discountRate" type="number" class="validate" placeholder="@100%">
+                                <label for="discountRate">Discount Rate in Percent</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s12">
+                        <button type="button" class="right waves-effect btn  tooltipped" data-position="top" data-tooltip="Insert Cost" onclick="insertRate()">Save Rate</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+
+    <!-- Modal Structure -->
+    <div id="modalx" class="modal">
+        <div class="modal-content">
+            <div class="row">
+                <div class="input-field col s6">
+                    <input placeholder="Placeholder" id="aCateg" type="text" class="validate">
+                    <label for="aCateg">Asset Category</label>
+                </div>
+                <div class="input-field col s6">
+                    <input id="aType" type="text" class="validate">
+                    <label for="aType">Asset Type</label>
+                </div>
+                <div class="input-field col s6">
+                    <input id="aQty" type="text" class="validate">
+                    <label for="aQty">Asset Quantity</label>
+                </div>                
+            </div>
+        </div>   
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-red btn-flat">Close</a>            
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat" onclick="updateAsset()">Update</a>
+        </div>
+    </div>
+    
+    <div id="modalb" class="modal">
+        <div class="modal-content">
+            <div class="row">
+                <div class="input-field col s6">
+                    <input placeholder="Placeholder" id="aCateg" type="text" class="validate">
+                    <label for="aCateg">First Name</label>
+                </div>
+                <div class="input-field col s6">
+                    <input id="aType" type="text" class="validate">
+                    <label for="aType">Last Name</label>
+                </div>
+                <div class="input-field col s6">
+                    <input id="aQty" type="text" class="validate">
+                    <label for="aQty">Last Name</label>
+                </div>                
+            </div>
+        </div>
+        <div class="modal-footer">
+        </div>        
+        <div class="modal-footer">
+
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>            
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat btn green" onclick="updateCost()">Agree</a>
+        </div>
+    </div>    
+
     <script src="../js/jquery.min.js"></script>
     <script src="../js/materialize.min.js"></script>
     <script src="../js/init.js"></script>
@@ -241,320 +295,363 @@
     <script src="js/property_data.js"></script>
     <script src="../js/func.js"></script>
     <script src="js/userimg.js"></script>
-    
-    <script>
 
-        document.getElementById("asstcompid").value = localStorage.companyID;
-        document.getElementById("costcompid").value = localStorage.companyID;
-    
+    <script>
         getPropertyList();
-        function getPropertyList(){
-            $.getJSON(myUrl + "/myapi/select/tbl_lccalives/fldUserID/"+ localStorage.companyID+"?ORDERBY=fldPropertyCategory DESC", function(data){
+
+
+
+        $(document).ready(function() {
+            $('.modal').modal();
+        });
+
+
+        function getPropertyList() {
+            $.getJSON(myUrl + "/myapi/select/tbl_lccalives/fldUserID/" + localStorage.companyID + "?ORDERBY=fldPropertyCategory DESC", function(data) {
                 let ls = "";
 
-                for(let i = 0; i < data.length;i++){
+                for (let i = 0; i < data.length; i++) {
                     ls += '<tr>';
                     ls += '<td>' + data[i].fldPropertyCategory + '</td>';
                     ls += '<td>' + data[i].fldProdName + '</td>';
-                    ls += "<td><button type='button' class='btn red white-text'><i class='fa fa-remove'></i></td>";                
+                    ls += "<td><button type='button' class='btn red white-text'><i class='fa fa-remove'></i></td>";
                     ls += '</tr>';
                 }
 
                 $("#categList").html(ls);
-            });            
+            });
         }
-        
-        function sendPropertyList(){
+
+        function sendPropertyList() {
             let jsonObj = "";
             let cName = $("#categName").val();
             let cType = $("#categType").val();
-            
-            
-            jsonObj = JSON.parse('{ "aRate":"' + cType + '", "bRate":"' + cName + '", "cRate":"' + localStorage.companyID + '", "dRate":"1"}');            
+
+
+            jsonObj = JSON.parse('{ "aRate":"' + cType + '", "bRate":"' + cName + '", "cRate":"' + localStorage.companyID + '", "dRate":"1"}');
             $.post(myUrl + "/myapi/insert/tbl_lccalives", JSON.stringify([jsonObj]));
-            
+
             getPropertyList();
         }
+
+        function delPropertyList() {
+
+        }
+
+    </script>
+
+
+    <script>
+        let datas = [JSON.parse('{"assets": [] }'), JSON.parse('{"costs": [] }'), JSON.parse('{"rates": [] }'), JSON.parse('{"items": [] }')];
+        getData();
+
+        function saveData() {
+            localStorage.myArr = JSON.stringify(datas);
+
+        }
+
+        $.ajaxSetup({
+            asnync: false
+        });
+
+        function saveCost(val) {
+            $.post(myUrl + "/myapi/insert/tbl_lccacosts", JSON.stringify([val]));
+        }
+
+        function saveRate(val) {
+            $.post(myUrl + "/myapi/insert/tbl_lccarate", JSON.stringify([val]));
+        }
+
+        function saveAsset(val) {
+            $.post(myUrl + "/myapi/insert/tbl_lccasset", JSON.stringify([val]));
+        }
+
+        function updateAsset(){
+            let y = {
+                fldAssetCateg: $('#aCateg').val(),
+                fldAssetType: $('#aType').val(),
+                fldYrs: $('#aQty').val()
+            }
+            fetch(myUrl + "/myapi/update/tbl_lccasset/fldStngNo/"+sessionStorage.assetNo, {
+                method: "POST",
+                body: JSON.stringify([y])
+            }).then(x=>{
+                console.log(x);
+                window.alert("Update Successful");
+                window.location.assign("lccasettings.html");
+            })
+        }
         
-        function delPropertyList(){
-            
+        function getData() {
+            $.getJSON(myUrl + "/myapi/select/tbl_lccasset/fldUserID/" + localStorage.companyID + "?ORDERBY=fldStngNO DESC", function(data) {
+                for (let i = 0; i < data.length; i++) {
+                    jsonObj = JSON.parse('{ "assetCateg":"' + data[i].fldAssetCateg + '", "assetType":"' + data[i].fldAssetType + '", "noLifeCycle":"' + data[i].fldYrs + '", "companyID":"' + data[i].fldUserID + '", "assetNo": "' + data[i].fldStngNo + '"}');
+                    datas[0].assets.push(jsonObj);
+                }
+                viewAssets();
+            });
+            $.getJSON(myUrl + "/myapi/select/tbl_lccacosts/fldUserID/" + localStorage.companyID + "?ORDERBY=fldStngNO DESC", function(data) {
+                for (let i = 0; i < data.length; i++) {
+                    if (data[i].fldCostType == "Recurring Cost") {
+                        jsonObj = JSON.parse('{ "costName":"' + data[i].fldCostName + '", "costType":"' + data[i].fldCostType + '", "escalationRate": "' + data[i].fldCostValue + '", "companyID":"' + data[i].fldUserID + '", "costNo": "' + data[i].fldStngNo + '"}');
+                    } else {
+                        jsonObj = JSON.parse('{ "costName":"' + data[i].fldCostName + '", "costType":"' + data[i].fldCostType + '", "oneTimeCostType": "' + data[i].fldCostValue + '", "companyID":"' + data[i].fldUserID + '", "costNo": "' + data[i].fldStngNo + '"}');
+                    }
+                    datas[1].costs.push(jsonObj);
+                }
+                viewCosts();
+            });
+            $.getJSON(myUrl + "/myapi/select/tbl_lccarate/fldUserID/" + localStorage.companyID + "?ORDERBY=fldStngNo DESC&LIMIT=1", function(data) {
+                for (let i = 0; i < data.length; i++) {
+                    jsonObj = JSON.parse('{ "discountRate":"' + data[i].fldRateValue + '", "companyID":"' + data[i].fldRateValue + '"}');
+                    datas[2].rates = jsonObj;
+                }
+                viewRate();
+            });
+
+
+        }
+
+
+
+        CostTypeSel("otcost");
+
+
+        function checkYr(val) {
+            if (val > 20) {
+                window.alert("Please make sure year is not Greater than 20");
+                document.getElementById("noLifeCycle").value = "";
+            }
+        }
+
+        function CostTypeSel(val) {
+            if (val == "otcost") {
+                document.getElementById("myOtCost").style.display = "block";
+                document.getElementById("rcCostType").style.display = "none";
+            } else {
+                document.getElementById("myOtCost").style.display = "none";
+                document.getElementById("rcCostType").style.display = "block";
+            }
+        }
+
+        function viewAssets() {
+            let longString = "";
+
+            for (let i = 0; i < datas[0].assets.length; i++) {
+                longString += "<tr>";
+                longString += "<td>" + datas[0].assets[i].assetCateg + "</td>";
+                longString += "<td>" + datas[0].assets[i].assetType + "</td>";
+                longString += "<td>" + datas[0].assets[i].noLifeCycle + "</td>";
+                longString += '<td><a onClick="editAsset(' + datas[0].assets[i].assetNo + ', \''+ datas[0].assets[i].assetCateg  +'\', \''+ datas[0].assets[i].assetType  +'\', '+ datas[0].assets[i].noLifeCycle  +')" type="button" href="#modalx"  class="btn orange white-text  modal-trigger"><i class="fa fa-pencil"></i></a></td>';
+                longString += "<td><button type='button' onclick='removeAsset(" + i + ", " + datas[0].assets[i].assetNo + ")' class='btn red white-text'><i class='fa fa-remove'></i></button></td>";
+                longString += "</tr>";
+            }
+            $("#assetList").html(longString);
+        }
+        
+        function editAsset(val, val_t, val_w, val_f) {
+            sessionStorage.assetNo = val;
+            $('#aCateg').val(val_t);
+            $('#aType').val(val_w);
+            $('#aQty').val(val_f);
         }
         
         
-    </script>
-    
-    
-	<script>
-            let datas = [JSON.parse('{"assets": [] }'), JSON.parse('{"costs": [] }'), JSON.parse('{"rates": [] }'), JSON.parse('{"items": [] }')];
-            getData();
-            function saveData() {
-                localStorage.myArr = JSON.stringify(datas);
-  
-            }
-        
-            $.ajaxSetup({
-                asnync: false        
-            });
-        
-            function saveCost(val){
-                $.post(myUrl + "/myapi/insert/tbl_lccacosts", JSON.stringify([val]));
-            }
-        
-            function saveRate(val){
-                $.post(myUrl + "/myapi/insert/tbl_lccarate", JSON.stringify([val]));                
-            }
-        
-            function saveAsset(val){
-                $.post(myUrl + "/myapi/insert/tbl_lccasset", JSON.stringify([val]));                
-            }
 
-            function getData() {
-                $.getJSON(myUrl+ "/myapi/select/tbl_lccasset/fldUserID/"+localStorage.companyID+"?ORDERBY=fldStngNO DESC", function(data){
-                    for(let i = 0; i < data.length; i++){
-                        jsonObj = JSON.parse('{ "assetCateg":"' + data[i].fldAssetCateg + '", "assetType":"' + data[i].fldAssetType + '", "noLifeCycle":"' + data[i].fldYrs + '", "companyID":"' + data[i].fldUserID + '"}');
-                        datas[0].assets.push(jsonObj);                        
-                    }
-                    viewAssets();
-                });
-                $.getJSON(myUrl+ "/myapi/select/tbl_lccacosts/fldUserID/"+localStorage.companyID+"?ORDERBY=fldStngNO DESC", function(data){
-                    for(let i = 0; i < data.length; i++){
-                      if (data[i].fldCostType == "Recurring Cost") {
-                            jsonObj = JSON.parse('{ "costName":"' + data[i].fldCostName + '", "costType":"' + data[i].fldCostType + '", "escalationRate": "' + data[i].fldCostValue + '", "companyID":"' + data[i].fldUserID + '"}');
-                        } else {
-                            jsonObj = JSON.parse('{ "costName":"' + data[i].fldCostName + '", "costType":"' + data[i].fldCostType + '", "oneTimeCostType": "' + data[i].fldCostValue + '", "companyID":"' + data[i].fldUserID + '"}');
-                        }
-                        datas[1].costs.push(jsonObj);                     
-                    }
-                    viewCosts();
-                });
-                $.getJSON(myUrl+ "/myapi/select/tbl_lccarate/fldUserID/"+localStorage.companyID+"?ORDERBY=fldStngNo DESC&LIMIT=1", function(data){
-                    for(let i = 0; i < data.length; i++){
-                        jsonObj = JSON.parse('{ "discountRate":"' + data[i].fldRateValue + '", "companyID":"' + data[i].fldRateValue + '"}');
-                        datas[2].rates = jsonObj;                
-                    }
-                    viewRate();
-                });                
+        function removeAsset(val, val_t) {
+            datas[0].assets.splice(val, 1);
+            fetch(myUrl + "/myapi/delete/tbl_lccasset/fldStngNo/" + val_t).then(x => {
+                console.log(x);
+            })
 
 
-            }
-        
-            
-            
-            CostTypeSel("otcost");
+            viewAssets();
+            saveData();
+        }
 
-
-            function checkYr(val) {
-                if (val > 20) {
-                    window.alert("Please make sure year is not Greater than 20");
-                    document.getElementById("noLifeCycle").value = "";
-                }
-            }
-
-            function CostTypeSel(val) {
-                if (val == "otcost") {
-                    document.getElementById("myOtCost").style.display = "block";
-                    document.getElementById("rcCostType").style.display = "none";
+        function viewCosts() {
+            let longString = "";
+            for (let i = 0; i < datas[1].costs.length; i++) {
+                longString += "<tr>";
+                longString += "<td>" + datas[1].costs[i].costName + "</td>";
+                longString += "<td>" + datas[1].costs[i].costType + "</td>";
+                if (datas[1].costs[i].costType == "Recurring Cost") {
+                    longString += "<td>" + datas[1].costs[i].escalationRate + " %</td>";
                 } else {
-                    document.getElementById("myOtCost").style.display = "none";
-                    document.getElementById("rcCostType").style.display = "block";
+                    longString += "<td>" + datas[1].costs[i].oneTimeCostType + "</td>";
                 }
+                longString += "<td><button type='button' onclick='removeCost(" + i + ", " + datas[1].costs[i].costNo + ")' class='btn red white-text'><i class='fa fa-remove'></i></td>";
+                longString += "</tr>";
             }
+            $("#costsList").html(longString);
+        }
 
-            function viewAssets() {
-                let longString = "";
+        function removeCost(val, val_t) {
+            datas[1].costs.splice(val, 1);
 
-                for (let i = 0; i < datas[0].assets.length; i++) {
-                    longString += "<tr>";
-                    longString += "<td>" + datas[0].assets[i].assetCateg + "</td>";
-                    longString += "<td>" + datas[0].assets[i].assetType + "</td>";
-                    longString += "<td>" + datas[0].assets[i].noLifeCycle + "</td>";
-                    longString += "<td><button type='button' onclick='removeAsset(" + i + ")' class='btn red white-text'><i class='fa fa-remove'></i></td>";
-                    longString += "</tr>";
-                }
-                $("#assetList").html(longString);
-            }
+            fetch(myUrl + "/myapi/delete/tbl_lccacosts/fldStngNo/" + val_t).then(x => {
+                console.log(x);
+            })
+            viewCosts();
+            saveData();
+        }
 
-            function removeAsset(val) {
-                datas[0].assets.splice(val, 1);
-                viewAssets();
-                saveData();
-            }
+        function viewRate() {
+            document.getElementById("discountRate").value = datas[2].rates.discountRate;
+        }
 
-            function viewCosts() {
-                let longString = "";
-                for (let i = 0; i < datas[1].costs.length; i++) {
-                    longString += "<tr>";
-                    longString += "<td>" + datas[1].costs[i].costName + "</td>";
-                    longString += "<td>" + datas[1].costs[i].costType + "</td>";
-                        if (datas[1].costs[i].costType == "Recurring Cost") {
-                            longString += "<td>" + datas[1].costs[i].escalationRate + " %</td>";
-                        } else {
-                            longString += "<td>" + datas[1].costs[i].oneTimeCostType + "</td>";
-                        }                    
-                    longString += "<td><button type='button' onclick='removeCost(" + i + ")' class='btn red white-text'><i class='fa fa-remove'></i></td>";
-                    longString += "</tr>";
-                }
-                $("#costsList").html(longString);
-            }
+        function insertAssets() {
+            window.alert("Asset is added");
+            let aCateg = $("#assetCateg").val();
+            let aType = $("#assetType").val();
+            let nLC = $("#noLifeCycle").val();
+            let jsonObj;
 
-            function removeCost(val) {
-                datas[1].costs.splice(val, 1);
-                viewCosts();
-                saveData();
-            }
-
-            function viewRate() {
-                document.getElementById("discountRate").value = datas[2].rates.discountRate;
-            }        
-
-            function insertAssets() {
-                let aCateg = $("#assetCateg").val();
-                let aType = $("#assetType").val();
-                let nLC = $("#noLifeCycle").val();
-                let jsonObj;
-                
-                if(aType != "" && nLC != ""){
+            if (aType != "" && nLC != "") {
                 jsonObj = JSON.parse('{ "assetCateg":"' + aCateg + '", "assetType":"' + aType + '", "noLifeCycle":"' + nLC + '", "companyID":"' + localStorage.companyID + '"}');
                 datas[0].assets.push(jsonObj);
                 console.log(datas);
                 viewAssets();
                 saveData();
                 saveAsset(jsonObj);
-                }  else {
-                    window.alert("Please make sure you've fill up every field");
-                }
+            } else {
+                window.alert("Please make sure you've fill up every field");
             }
-        
-            function insertRate() {
-                let dRate = $("#discountRate").val();
-                let jsonObj;
+        }
 
-                jsonObj = JSON.parse('{ "discountRate":"' + dRate + '", "companyID":"' + localStorage.companyID + '"}');
-                datas[2].rates = jsonObj;
-                console.log(datas);
-                saveData();
-                saveRate(jsonObj);
-            }
-        
-            function insertCost() {
-                let cName = $("#costName").val();
-                let cType = $("#costType option:selected").text();
-                let eRate = $("#escalationRate").val();
-                let ocType = $("#otCostType option:selected").text();
-                let jsonObj;
+        function insertRate() {
+            let dRate = $("#discountRate").val();
+            let jsonObj;
 
-                if(cName != ""){
+            jsonObj = JSON.parse('{ "discountRate":"' + dRate + '", "companyID":"' + localStorage.companyID + '"}');
+            datas[2].rates = jsonObj;
+            console.log(datas);
+            saveData();
+            saveRate(jsonObj);
+        }
+
+        function insertCost() {
+            window.alert("Cost is added");
+            let cName = $("#costName").val();
+            let cType = $("#costType option:selected").text();
+            let eRate = $("#escalationRate").val();
+            let ocType = $("#otCostType option:selected").text();
+            let jsonObj;
+
+            if (cName != "") {
 
 
-                    if (cType == "Recurring Cost") {
-                        jsonObj = JSON.parse('{ "costName":"' + cName + '", "costType":"' + cType + '", "escalationRate": "' + eRate + '", "companyID":"' + localStorage.companyID + '"}');
-                    } else {
-                        jsonObj = JSON.parse('{ "costName":"' + cName + '", "costType":"' + cType + '", "oneTimeCostType": "' + ocType + '", "companyID":"' + localStorage.companyID + '"}');
-                    }
-
-                    datas[1].costs.push(jsonObj);
-                    console.log(datas);
-                    viewCosts();
-                    saveData();
-                    saveCost(jsonObj);
+                if (cType == "Recurring Cost") {
+                    jsonObj = JSON.parse('{ "costName":"' + cName + '", "costType":"' + cType + '", "escalationRate": "' + eRate + '", "companyID":"' + localStorage.companyID + '"}');
                 } else {
-                    window.alert("Please make sure you've fill up every field");
+                    jsonObj = JSON.parse('{ "costName":"' + cName + '", "costType":"' + cType + '", "oneTimeCostType": "' + ocType + '", "companyID":"' + localStorage.companyID + '"}');
                 }
+
+                datas[1].costs.push(jsonObj);
+                console.log(datas);
+                viewCosts();
+                saveData();
+                saveCost(jsonObj);
+            } else {
+                window.alert("Please make sure you've fill up every field");
             }
-        
-            var myfile="";
+        }
 
-            $('#fileBtn').click(function( e ) {
-                e.preventDefault();
-                $('#myFile').trigger('click');
+        var myfile = "";
+
+        $('#fileBtn').click(function(e) {
+            e.preventDefault();
+            $('#myFile').trigger('click');
+        });
+
+        $('#myFile').on('change', function() {
+            myfile = $(this).val();
+            var ext = myfile.split('.').pop();
+            if (ext == "csv") {
+                reader_offset = 0;
+                pending_content = '';
+                readAndSendChunk("tbl_lccasset");
+            } else {
+                alert("Your file extension is invalid, Make sure your file is in CSV format");
+                return false;
+            }
+        });
+
+
+        $('#fileBtnC').click(function(e) {
+            e.preventDefault();
+            $('#myFileC').trigger('click');
+        });
+
+        $('#myFileC').on('change', function() {
+            myfile = $(this).val();
+            var ext = myfile.split('.').pop();
+            if (ext == "csv") {
+                reader_offset = 0;
+                pending_content = '';
+                readAndSendChunk("tbl_lccacosts");
+            } else {
+                alert("Your file extension is invalid, Make sure your file is in CSV format");
+                return false;
+            }
+        });
+
+    </script>
+
+    <script>
+        var reader_offset = 0; //current reader offset position
+        var buffer_size = 1024; //
+        var pending_content = '';
+
+        /**
+         * Read a chunk of data from current offset.
+         */
+        function readAndSendChunk(val) {
+            var reader = new FileReader();
+            var file = (val == "tbl_lccacosts" ? $('#myFileC')[0].files[0] : $('#myFile')[0].files[0]);
+            reader.onloadend = function(evt) {
+                $("#uploadedCSV").html(reader.result);
+                //check for end of file
+                if (evt.loaded == 0) return;
+
+                //increse offset value
+                reader_offset += evt.loaded;
+                //check for only complete line
+                var last_line_end = evt.target.result.lastIndexOf('\n');
+                var content = pending_content + evt.target.result.substring(0, last_line_end);
+
+                pending_content = evt.target.result.substring(last_line_end + 1, evt.target.result.length);
+
+                console.log(content);
+                console.log(val);
+                send(content, val);
+            };
+
+            reader.readAsBinaryString(file);
+            var blob = file.slice(reader_offset, reader_offset + buffer_size);
+        }
+
+        function send(data_chank, val) {
+            console.log(data_chank);
+            $.ajax({
+                url: myUrl + "/service.php?user=" + localStorage.companyID + "&tblnme=" + val,
+                method: 'POST',
+                data: data_chank
+            }).done(function(response) {
+                window.location.assign("lccasettings.html");
+                getData();
+                //try for next chank
             });
-            $('#myFile').on( 'change', function() {
-               myfile= $(this).val();
-               var ext = myfile.split('.').pop();
-               if(ext=="csv"){
-                    reader_offset = 0;
-					pending_content = '';
-					readAndSendChunk("tbl_lccasset");
-               } else{
-                   alert("Your file extension is invalid, Make sure your file is in CSV format");
-                   return false;
-               }
-            }); 
-            $('#fileBtnC').click(function( e ) {
-                e.preventDefault();
-                $('#myFileC').trigger('click');
+
+        }
+
+        $(function() {
+            $('#btnUpload').click(function() {
+
             });
+        });
 
-            $('#myFileC').on( 'change', function() {
-               myfile= $( this ).val();
-               var ext = myfile.split('.').pop();
-               if(ext=="csv"){
-                    reader_offset = 0;
-					pending_content = '';
-					readAndSendChunk("tbl_lccacosts");
-               } else{
-                   alert("Your file extension is invalid, Make sure your file is in CSV format");
-                   return false;
-               }
-            });         
-	</script>
-    
-   <script>
-    
-		var reader_offset = 0;		//current reader offset position
-			var buffer_size = 1024;		//
-			var pending_content = '';
-			
-			/**
-			* Read a chunk of data from current offset.
-			*/
-			function readAndSendChunk(val)
-			{
-				var reader = new FileReader();
-
-				var file = (val == "tbl_lccacosts" ? $('#myFile')[0].files[0] : $('#myFile')[0].files[0]);
-				reader.onloadend = function(evt){
-					
-					//check for end of file
-					if(evt.loaded == 0) return;
-					
-					//increse offset value
-					reader_offset += evt.loaded;
-					
-					//check for only complete line
-					var last_line_end = evt.target.result.lastIndexOf('\n');
-					var content = pending_content + evt.target.result.substring(0, last_line_end);
-					
-					pending_content = evt.target.result.substring(last_line_end+1, evt.target.result.length);
-					
-					//upload data
-					send(content, val);
-				};
-				var blob = file.slice(reader_offset, reader_offset + buffer_size);
-				reader.readAsText(blob);
-			}
-        
-			function send(data_chank, val)
-			{
-				$.ajax({
-					url: myUrl + "/service.php?user="+localStorage.companyID+"&tblnme="+val,
-					method: 'POST',
-					data: data_chank
-				}).done(function(response) {
-				
-					getData();
-					//try for next chank
-                    window.location.assign("lccasettings.html");
-				});
-                
-			}
-        
-			$(function(){
-				$('#btnUpload').click(function(){
-					
-				});
-			});        
-			        
     </script>
 </body>
+
 </html>

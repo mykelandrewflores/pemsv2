@@ -8,7 +8,7 @@ if(isset($_POST['importSubmit'])){
     $csvMimes = array('text/x-comma-separated-values', 'text/comma-separated-values', 'application/octet-stream', 'application/vnd.ms-excel', 'application/x-csv', 'text/x-csv', 'text/csv', 'application/csv', 'application/excel', 'application/vnd.msexcel', 'text/plain');
     if(!empty($_FILES['file']['name']) && in_array($_FILES['file']['type'],$csvMimes)){
         if(is_uploaded_file($_FILES['file']['tmp_name'])){
-            $compid = $_POST['compid'];
+            
             //open uploaded csv file with read only mode
             $csvFile = fopen($_FILES['file']['tmp_name'], 'r');
             
@@ -16,7 +16,7 @@ if(isset($_POST['importSubmit'])){
             fgetcsv($csvFile);
             
             while(($line = fgetcsv($csvFile)) !== FALSE){
-                $db->query("INSERT INTO tbl_lccasset (fldStngNo, fldAssetCateg, fldAssetType, fldYrs, fldUserID) VALUES ('','".$line[0]."','".$line[1]."','".$line[2]."','".$compid."')");
+                $db->query("INSERT INTO tbl_lccasset (fldStngNo, fldAssetCateg, fldAssetType, fldYrs, fldUserID) VALUES ('','".$line[0]."','".$line[1]."','".$line[2]."','24')");
             }
             
             //close opened csv file
@@ -32,6 +32,6 @@ if(isset($_POST['importSubmit'])){
 }
 
 //redirect to the listing page
-header("Location: ../CompAdmin/lccasettings.html".$qstring);
+header("Location: lccasettings.html".$qstring);
 
 ?>

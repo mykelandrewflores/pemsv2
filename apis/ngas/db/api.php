@@ -6,8 +6,8 @@ define('SERVER','localhost');
 define('USERNAME','root');
 define('PASSWORD','');
 define('DB','db_arnie');	
-// $db=new con("localhost", "u687158084_arnie", "123456ab", "u687158084_pems");
-$db=new con(SERVER, USERNAME, PASSWORD, DB);
+$db=new con("localhost", "u687158084_arnie", "123456ab", "u687158084_pems");
+// $db=new con(SERVER, USERNAME, PASSWORD, DB);  
 ?>
 
 

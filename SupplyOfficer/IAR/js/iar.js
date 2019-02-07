@@ -13,7 +13,6 @@ function purchaselist() {
         var longstring = "";
         for (var i = 0; i < data.length; i++) {
             longstring += "<tr>";
-            longstring += "<td id='prodid' hidden>" + data[i].fldProdID + "</td>";
             longstring += "<td id='prnum'>" + data[i].fldPrNo + "</td>";
             longstring += "<td id='dept'>" + data[i].fldDept + "</td>";
             longstring += "<td>" + formatDate(new Date(data[i].fldDate)) + "</td>";
@@ -66,7 +65,7 @@ function stocklist(id, dept) {
             longstring += "<tr>";
             longstring += "<td id='unit" + data[i].fldTransactionID + "'>" + data[i].fldUnit + "</td>";
             longstring += "<td id='prodIdz" + data[i].fldTransactionID + "' style='display: none'>" + data[i].fldPNum + "</td>";
-            longstring += "<td id='prodName" + data[i].fldTransactionID + "'>" + getPurchaseData(data[i].fldPNum).fldProdName + "</td>";
+            longstring += "<td id='prodName" + data[i].fldTransactionID + "'>" + data[i].fldAssetType + "</td>";
             longstring += "<td id='brandName" + data[i].fldTransactionID + "'>" + data[i].fldBrand + "</td>";
             longstring += "<td>" + data[i].fldQty + "</td>";
             longstring += "<td>" + data[i].fldRecieve + "</td>";
@@ -237,14 +236,14 @@ $.ajaxSetup({
     async: false
 });
 
-$.getJSON(myUrl + "/myapi/select/tbl_lccalives", function (data) {
+$.getJSON(myUrl + "/myapi/select/tbl_lccasset", function (data) {
     equipData = data;
 });
 
 
 function getPurchaseData(val) {
     for (let i = 0; i < equipData.length; i++) {
-        if (val == equipData[i].fldProdID) {
+        if (val == equipData[i].fldStngNo) {
             return equipData[i];
         }
     }

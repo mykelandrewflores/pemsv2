@@ -9,8 +9,8 @@ class dbConn{
 
     //DB
 	public function __construct(){
-		// $this->db = mysqli_connect("localhost", "u687158084_arnie", "123456ab", "u687158084_pems");
-        $this->db = mysqli_connect("localhost", "root", "", "db_arnie");
+		$this->db = mysqli_connect("localhost", "u687158084_arnie", "123456ab", "u687158084_pems");
+        // $this->db = mysqli_connect("localhost", "root", "", "db_arnie");
 	}
 
     //CREATE
@@ -100,7 +100,7 @@ class dbConn{
 
 
     public function join($tbl_one, $id_one, $tbl_two, $id_two){
-        $this->sql .= " FROM ".$tbl_one.", ".$tbl_two." WHERE ".$tbl_one.".".$id_one." = ".$tbl_two.".".$id_two."";
+        $this->sql = "SELECT * FROM ".$tbl_one.", ".$tbl_two." WHERE ".$tbl_one.".".$id_one." = ".$tbl_two.".".$id_two."";
         return $this;
     }
 
@@ -207,8 +207,8 @@ class dbConn{
     }*/
 
     function login($un, $pw){
-        // $db = mysqli_connect("localhost", "u687158084_arnie", "123456ab", "u687158084_pems");
-        $db = mysqli_connect("localhost", "root", "", "db_arnie");
+        $db = mysqli_connect("localhost", "u687158084_arnie", "123456ab", "u687158084_pems");
+        // $db = mysqli_connect("localhost", "root", "", "db_arnie");
         $sql = "SELECT * FROM tbl_user WHERE fldUsername = '$un' AND fldPassword = '$pw'";
         $result = $db->query($sql);
         $count = mysqli_num_rows($result);
@@ -227,7 +227,6 @@ class dbConn{
 
             $rows = mysqli_fetch_assoc($result_two);
             $data = array("Authorize" => "Company", "fldCompanyID" => $rows['fldCompanyID'], "fldCompanyName" => $rows['fldCompanyName'], "fldEmail" => $rows['fldEmail'], "fldAddress" => $rows['fldAddress'], "fldContactNo" => $rows['fldContactNo'], "fldFax" => $rows['fldFax'], "fldWebsite" => $rows['fldWebsite'], "fldLogo" => $rows['fldLogo'], "fldCompanyInitials" => $rows['fldCompanyInitials']);
-
         } else {
             $data = array("Authorize" => "False");
         }

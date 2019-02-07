@@ -113,7 +113,7 @@
     }
 
     .summary-by {
-        height: 90px;
+        height: 100px;
         padding: 0 2px;
         border-top: 2px solid black;
         text-align: center;
@@ -130,6 +130,11 @@
     .summary-by .person {
         width: 90%;
         border-bottom: 1px solid black;
+        margin: 0 auto;
+        font-size: 14px;
+    }
+    .summary-by .person2 {
+        width: 90%;
         margin: 0 auto;
         font-size: 14px;
     }
@@ -184,7 +189,8 @@
         <div class="requestedBy">
             <b><h3>Requested By:</h3></b>
             <div class="margin"></div>
-            <h3 class="person"><span id="userrequestedBy"></span><span>SIGNATURE OVER PRINTED NAME</span></h3>
+            <h3 class="person span" id="reqofficer" style="text-transform: uppercase;"></h2>
+            <h3 class="person2"><span id="userrequestedBy"></span><span>SIGNATURE OVER PRINTED NAME</span></h3>
         </div>
         <div class="approvedBy">
             <b><h3>Approved By:</h3></b>
@@ -201,9 +207,12 @@
         $("#purchaseDept").html(res[0].fldDept);
         $("#PRno").html(res[0].fldPrNo);
         $("#date").html(res[0].fldDate);
-        // $("#userrequestedBy").html(res[0].fldRequestedByID);
-        // console.log(res[0].fldRequestedByID);
+        // $("#userrequestedBy").html(res[0].fldRequestByID);
+        console.log(res[0].fldRequestByID);
         $("#purpose").html(res[0].fldPurpose);
+        $.getJSON("http://gordoncollegeccs-ssite.net/pems/apis/propertycard/propertyapi/tbl_user/fldUserID/"+res[0].fldRequestByID, function(res2){
+            $('#reqofficer').html(res2[0].fldFname + ' ' + res2[0].fldMname + ' ' + res2[0].fldLname);
+        });
     });
 
     var longString = "";
@@ -233,4 +242,20 @@
 
 </script>
 <script src="../propertycard/js/jspdf.min.js"></script>
-<script src="../propertycard/js/printPdf.js"></script>
+<script type="text/javascript">
+    function print(){
+    var doc = new jsPDF('1','mm',[280,300]);
+    doc.addHTML($('#mybody')[0], 0, 0, {
+      'background': '#fff',
+    }, function() {    
+    doc.addFont('fonts/calibri.ttf', 'Calibri', 'normal');
+    doc.setFont('Calibri');
+    doc.setFontType("Regular");
+    doc.setFontSize(10);
+    doc.save('Purchase_Request.pdf');
+    });
+}
+
+setTimeout(function(){print();},5000);
+</script>
+<!-- <script src="../propertycard/js/printPdf.js"></script> -->

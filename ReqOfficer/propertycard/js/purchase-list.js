@@ -3,13 +3,13 @@ getRequest();
 myArr = [];
 
 
-$.getJSON(myUrl+"/myapi/select/tbl_lccalives", function(data){
+$.getJSON(myUrl+"/myapi/select/tbl_lccasset", function(data){
     myArr = data;
 });
 
 function getData(val){
     for(let i = 0; i < myArr.length; i++){
-        if(val == myArr[i].fldProdID){
+        if(val == myArr[i].fldStngNo){
             return myArr[i];
         }
     }
@@ -57,7 +57,7 @@ function getReqEquipment(pr_no) {
                 if (data[i].fldRemarks == "Pending") {
 
                     body += '<tr>';
-                    body += '<td>' + getData(data[i].fldPNum).fldProdName + '</td>';
+                    body += '<td>' + getData(data[i].fldPNum).fldAssetType + '</td>';
                     body += '<td>' + data[i].fldBrand + '</td>';                    
                     body += '<td>' + data[i].fldUnit + '</td>';
                     body += '<td>' + data[i].fldQty + '</td>';
@@ -83,7 +83,7 @@ function getReqEquipment(pr_no) {
                 if (data[i].fldRemarks != "Pending") {
                     $("#fldAccept").css("display", "block");
                     body += '<tr>';
-                    body += '<td>' + getData(data[i].fldPNum).fldProdName + '</td>'; 
+                    body += '<td>' + getData(data[i].fldPNum).fldAssetType + '</td>'; 
                     body += '<td>' + data[i].fldBrand + '</td>';                    
                     body += '<td>' + data[i].fldUnit + '</td>';
                     body += '<td>' + data[i].fldQty + '</td>';

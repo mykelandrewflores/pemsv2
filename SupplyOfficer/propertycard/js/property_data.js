@@ -51,7 +51,7 @@ function fetch_lccaprod(){
 			var body = ''
 			body+='<select id="lccaprod_select" class="browser-default"> <option value="" disabled selected>Choose Product Name</option>';
 			for(var i = 0; i<data.length; i++) {
-				body+='<option value="'+data[i].fldProdID+'">'+data[i].fldProdName+'</option>';
+				body+='<option value="'+data[i].fldStngNo+'">'+data[i].fldAssetType+'</option>';
 			}
 			body+='</select>';
 			$('#prodlcca_select').html(body);
@@ -134,13 +134,13 @@ function searchPC(){
  	search_categ = document.getElementById("lccacateg_search").value;
 
 	if (search_dept == '' && search_categ == '') {
-		url=myUrl+"/propertycard/propertyapi/tbl_lccalives_searchpropname/tbl_lccalives/tbl_property/fldProdID/fldPNum/fldAgency/"+localStorage.companyID+"/fldBrand/"+search_propname;
+		url=myUrl+"/propertycard/propertyapi/tbl_lccalives_searchpropname/tbl_lccasset/tbl_property/fldStngNo/fldPNum/fldAgency/"+localStorage.companyID+"/fldBrand/"+search_propname;
 	}else if(search_dept == ''){
-		url=myUrl+"/propertycard/propertyapi/tbl_lccalives_searchnamecateg/tbl_lccalives/tbl_property/fldProdID/fldPNum/fldAgency/"+localStorage.companyID+"/fldBrand/"+search_propname+"/fldPropertyCategory/"+search_categ;
+		url=myUrl+"/propertycard/propertyapi/tbl_lccalives_searchnamecateg/tbl_lccasset/tbl_property/fldStngNo/fldPNum/fldAgency/"+localStorage.companyID+"/fldBrand/"+search_propname+"/fldAssetCateg/"+search_categ;
 	}else if(search_categ == ''){		
-		url=myUrl+"/propertycard/propertyapi/tbl_lccalives_searchnamedept/tbl_lccalives/tbl_property/fldProdID/fldPNum/fldAgency/"+localStorage.companyID+"/fldBrand/"+search_propname+"/fldDept/"+search_dept;
+		url=myUrl+"/propertycard/propertyapi/tbl_lccalives_searchnamedept/tbl_lccasset/tbl_property/fldStngNo/fldPNum/fldAgency/"+localStorage.companyID+"/fldBrand/"+search_propname+"/fldDept/"+search_dept;
 	}else{
-		url=myUrl+"/propertycard/propertyapi/tbl_lccalives_searchall/tbl_lccalives/tbl_property/fldProdID/fldPNum/fldAgency/"+localStorage.companyID+"/fldBrand/"+search_propname+"/fldDept/"+search_dept+"/fldPropertyCategory/"+search_categ;
+		url=myUrl+"/propertycard/propertyapi/tbl_lccalives_searchall/tbl_lccasset/tbl_property/fldStngNo/fldPNum/fldAgency/"+localStorage.companyID+"/fldBrand/"+search_propname+"/fldDept/"+search_dept+"/fldAssetCateg/"+search_categ;
 	}
 	$.getJSON(url,function(data){
 		let longstring = "";
@@ -148,11 +148,11 @@ function searchPC(){
 				longstring += "<tr>";
 				longstring += "<td>"+data[i].fldPcID+"</td>";
 				longstring += "<td>"+data[i].fldBrand+"</td>";
-				longstring += "<td>"+data[i].fldProdName+"</td>";
+				longstring += "<td>"+data[i].fldAssetType+"</td>";
 				longstring += "<td>"+data[i].fldDept+"</td>";
 				longstring += "<td>"+data[i].fldRemarks+"</td>";
 				if (data[i].fldRemarks == 'Assigned') {
-					longstring += "<td class=''><a class='blue-text darken-1' href='./propertycard.html?prodid="+data[i].fldProdID+"' onclick='setselected("+data[i].fldProdID+","+'"'+data[i].fldIarNo+'"'+","+data[i].fldRecID+")'><i class='fa fa-eye'></i></a> </td>";
+					longstring += "<td class=''><a class='blue-text darken-1' href='./propertycard.html?prodid="+data[i].fldStngNo+"' onclick='setselected("+data[i].fldStngNo+","+'"'+data[i].fldIarNo+'"'+","+data[i].fldRecID+")'><i class='fa fa-eye'></i></a> </td>";
 					longstring += "<td class=''><a class='waves-effect waves-light blue-text darken-1 modal-trigger' href='#modal3' onclick='transfer_tabledata("+data[i].fldRecID+")'><i class='fa fa-send'></i></a> | <a class='waves-effect waves-light red-text darken-3  modal-trigger' href='#modal4' onclick='disposal_tabledata("+data[i].fldRecID+")'><i class='fa fa-trash'></i></a> | <a class='waves-effect waves-light red-text darken-3  modal-trigger' onclick='permaDelete("+data[i].fldRecID+")'><i class='fa fa-close'></i></a></td>";
 				}else if(data[i].fldRemarks == 'Unassigned'){
 					longstring += "<td class=''><a class='waves-effect waves-light  blue-text darken-3  modal-trigger' href='#modal2' onclick='assign_tabledata("+data[i].fldRecID+")'><i class='fa fa-plus'></i></a></td>";
@@ -181,13 +181,13 @@ function searchPCreq(){
  	search_categ = document.getElementById("lccacateg_search").value;
 
 	if (search_dept == '' && search_categ == '') {
-		url=myUrl+"/propertycard/propertyapi/tbl_lccalives_searchpropname/tbl_lccalives/tbl_property/fldProdID/fldPNum/fldAgency/"+localStorage.companyID+"/fldBrand/"+search_propname;
+		url=myUrl+"/propertycard/propertyapi/tbl_lccalives_searchpropname/tbl_lccasset/tbl_property/fldStngNo/fldPNum/fldAgency/"+localStorage.companyID+"/fldBrand/"+search_propname;
 	}else if(search_dept == ''){
-		url=myUrl+"/propertycard/propertyapi/tbl_lccalives_searchnamecateg/tbl_lccalives/tbl_property/fldProdID/fldPNum/fldAgency/"+localStorage.companyID+"/fldBrand/"+search_propname+"/fldPropertyCategory/"+search_categ;
+		url=myUrl+"/propertycard/propertyapi/tbl_lccalives_searchnamecateg/tbl_lccasset/tbl_property/fldStngNo/fldPNum/fldAgency/"+localStorage.companyID+"/fldBrand/"+search_propname+"/fldAssetCateg/"+search_categ;
 	}else if(search_categ == ''){		
-		url=myUrl+"/propertycard/propertyapi/tbl_lccalives_searchnamedept/tbl_lccalives/tbl_property/fldProdID/fldPNum/fldAgency/"+localStorage.companyID+"/fldBrand/"+search_propname+"/fldDept/"+search_dept;
+		url=myUrl+"/propertycard/propertyapi/tbl_lccalives_searchnamedept/tbl_lccasset/tbl_property/fldStngNo/fldPNum/fldAgency/"+localStorage.companyID+"/fldBrand/"+search_propname+"/fldDept/"+search_dept;
 	}else{
-		url=myUrl+"/propertycard/propertyapi/tbl_lccalives_searchall/tbl_lccalives/tbl_property/fldProdID/fldPNum/fldAgency/"+localStorage.companyID+"/fldBrand/"+search_propname+"/fldDept/"+search_dept+"/fldPropertyCategory/"+search_categ;
+		url=myUrl+"/propertycard/propertyapi/tbl_lccalives_searchall/tbl_lccasset/tbl_property/fldStngNo/fldPNum/fldAgency/"+localStorage.companyID+"/fldBrand/"+search_propname+"/fldDept/"+search_dept+"/fldAssetCateg/"+search_categ;
 	}
 	$.getJSON(url,function(data){
 		let longstring = "";
@@ -198,7 +198,7 @@ function searchPCreq(){
 					longstring += "<td>"+data[i].fldBrand+"</td>";
 					longstring += "<td>"+data[i].fldDept+"</td>";
 					longstring += "<td>"+data[i].fldRemarks+"</td>";
-					longstring += "<td class=''><a class='blue-text ni-jags' href='./propertycard.html' onclick='setselected_reqofficer("+data[i].fldProdID+","+'"'+data[i].fldIarNo+'"'+","+data[i].fldRecID+")'><i class='fa fa-eye'></i></a></td>";
+					longstring += "<td class=''><a class='blue-text ni-jags' href='./propertycard.html' onclick='setselected_reqofficer("+data[i].fldStngNo+","+'"'+data[i].fldIarNo+'"'+","+data[i].fldRecID+")'><i class='fa fa-eye'></i></a></td>";
 					longstring += "</tr>";
 				}
 			
@@ -213,7 +213,7 @@ function equiptable(){
 
 	$(function(){
 
-		url=myUrl+"/propertycard/propertyapi/tbl_lccalives_all/tbl_lccalives/tbl_property/fldProdID/fldPNum/fldAgency/"+localStorage.companyID+"/";
+		url=myUrl+"/propertycard/propertyapi/tbl_lccalives_all/tbl_lccasset/tbl_property/fldStngNo/fldPNum/fldAgency/"+localStorage.companyID+"/";
 		
 		$.getJSON(url,function(data){
 			let longstring = "";
@@ -221,11 +221,11 @@ function equiptable(){
 				longstring += "<tr>";
 				longstring += "<td>"+data[i].fldPcID+"</td>";
 				longstring += "<td>"+data[i].fldBrand+"</td>";
-				longstring += "<td>"+data[i].fldProdName+"</td>";
+				longstring += "<td>"+data[i].fldAssetType+"</td>";
 				longstring += "<td>"+data[i].fldDept+"</td>";
 				longstring += "<td>"+data[i].fldRemarks+"</td>";
 				if (data[i].fldRemarks == 'Assigned') {
-					longstring += "<td class=''><a class='blue-text darken-1' href='./propertycard.html?prodid="+data[i].fldProdID+"' onclick='setselected("+data[i].fldProdID+","+'"'+data[i].fldIarNo+'"'+","+data[i].fldRecID+")'><i class='fa fa-eye'></i></a> </td>";
+					longstring += "<td class=''><a class='blue-text darken-1' href='./propertycard.html?prodid="+data[i].fldStngNo+"' onclick='setselected("+data[i].fldStngNo+","+'"'+data[i].fldIarNo+'"'+","+data[i].fldRecID+")'><i class='fa fa-eye'></i></a> </td>";
 					longstring += "<td class=''><a class='waves-effect waves-light blue-text darken-1 modal-trigger' href='#modal3' onclick='transfer_tabledata("+data[i].fldRecID+")'><i class='fa fa-send'></i></a> | <a class='waves-effect waves-light red-text darken-3  modal-trigger' href='#modal4' onclick='disposal_tabledata("+data[i].fldRecID+")'><i class='fa fa-trash'></i></a> | <a class='waves-effect waves-light red-text darken-3  modal-trigger' onclick='permaDelete("+data[i].fldRecID+")'><i class='fa fa-close'></i></a></td>";
 				}else if(data[i].fldRemarks == 'Unassigned'){
 					longstring += "<td class=''><a class='waves-effect waves-light  blue-text darken-3  modal-trigger' href='#modal2' onclick='assign_tabledata("+data[i].fldRecID+")'><i class='fa fa-plus'></i></a></td>";
@@ -298,17 +298,17 @@ function equiptable_assigned(){
 
 	$(function(){
 
-		url=myUrl+"/propertycard/propertyapi/tbl_lccalives_filter/tbl_lccalives/tbl_property/fldProdID/fldPNum/fldAgency/"+localStorage.companyID+"/fldRemarks/Assigned";
+		url=myUrl+"/propertycard/propertyapi/tbl_lccalives_filter/tbl_lccasset/tbl_property/fldStngNo/fldPNum/fldAgency/"+localStorage.companyID+"/fldRemarks/Assigned";
 		
 		$.getJSON(url,function(data){
 			let longstring = "";
 			for (let i = 0; i < data.length; i++) {
 				longstring += "<tr>";
 				longstring += "<td>"+data[i].fldPcID+"</td>";
-				longstring += "<td>"+data[i].fldProdID+"</td>";
-				longstring += "<td>"+data[i].fldProdName+"</td>";
+				longstring += "<td>"+data[i].fldStngNo+"</td>";
+				longstring += "<td>"+data[i].fldAssetType+"</td>";
 				longstring += "<td>"+data[i].fldDept+"</td>";
-				longstring += "<td class=''><a class='blue-text darken-3' href='./propertycard.html?prodid="+data[i].fldProdID+"' onclick='setselected("+data[i].fldProdID+","+'"'+data[i].fldIarNo+'"'+","+data[i].fldRecID+")'><i class='fa fa-eye'></i></a> </td>";
+				longstring += "<td class=''><a class='blue-text darken-3' href='./propertycard.html?prodid="+data[i].fldStngNo+"' onclick='setselected("+data[i].fldStngNo+","+'"'+data[i].fldIarNo+'"'+","+data[i].fldRecID+")'><i class='fa fa-eye'></i></a> </td>";
 				longstring += "</tr>";
 			}
 			document.getElementById("asscount").innerHTML=data.length;
@@ -325,15 +325,15 @@ function equiptable_disposed(){
 
 	$(function(){
 
-		url=myUrl+"/propertycard/propertyapi/tbl_lccalives_filter/tbl_lccalives/tbl_property/fldProdID/fldPNum/fldAgency/"+localStorage.companyID+"/fldRemarks/Dispose";
+		url=myUrl+"/propertycard/propertyapi/tbl_lccalives_filter/tbl_lccasset/tbl_property/fldStngNo/fldPNum/fldAgency/"+localStorage.companyID+"/fldRemarks/Dispose";
 		
 		$.getJSON(url,function(data){
 			let longstring = "";
 			for (let i = 0; i < data.length; i++) {
 				longstring += "<tr>";
 				longstring += "<td>"+data[i].fldPcID+"</td>";
-				longstring += "<td>"+data[i].fldProdID+"</td>";
-				longstring += "<td>"+data[i].fldProdName+"</td>";
+				longstring += "<td>"+data[i].fldStngNo+"</td>";
+				longstring += "<td>"+data[i].fldAssetType+"</td>";
 				longstring += "<td>"+data[i].fldDept+"</td>";
 				longstring += "<td class=''><a class='waves-effect waves-light red-text darken-3  modal-trigger' onclick='permaDelete("+data[i].fldRecID+")'><i class='fa fa-close'></i></a></td>";
 				longstring += "</tr>";
@@ -352,7 +352,7 @@ function equiptable_unassigned(){
 
 	$(function(){
 
-		url=myUrl+"/propertycard/propertyapi/tbl_lccalives_filter/tbl_lccalives/tbl_property/fldProdID/fldPNum/fldAgency/"+localStorage.companyID+"/fldRemarks/Unassigned";
+		url=myUrl+"/propertycard/propertyapi/tbl_lccalives_filter/tbl_lccasset/tbl_property/fldStngNo/fldPNum/fldAgency/"+localStorage.companyID+"/fldRemarks/Unassigned";
 
 
 		$.getJSON(url,function(data){
@@ -360,7 +360,7 @@ function equiptable_unassigned(){
 			for (let i = 0; i < data.length; i++) {
 				longstring += "<tr>";
 				longstring += "<td>"+data[i].fldPcID+"</td>";
-				longstring += "<td>"+data[i].fldProdName+"</td>";
+				longstring += "<td>"+data[i].fldAssetType+"</td>";
 				longstring += "<td>"+data[i].fldIarNo+"</td>";
 				longstring += "<td class=''><a class='waves-effect waves-light  green-text darken-3 modal-trigger' href='#modal2' onclick='assign_tabledata("+data[i].fldRecID+")'><i class='fa fa-plus left'></i></a></td>";
 				longstring += "</tr>";
@@ -390,7 +390,7 @@ function equiptable_reqofficer(){
 
 	$(function(){
 
-		url=myUrl+"/propertycard/propertyapi/tbl_lccalives_all/tbl_lccalives/tbl_property/fldProdID/fldPNum/fldAgency/"+localStorage.companyID+"/";
+		url=myUrl+"/propertycard/propertyapi/tbl_lccalives_all/tbl_lccasset/tbl_property/fldStngNo/fldPNum/fldAgency/"+localStorage.companyID+"/";
 		
 		$.getJSON(url,function(data){
 			let longstring = "";
@@ -402,7 +402,7 @@ function equiptable_reqofficer(){
 					longstring += "<td>"+data[i].fldBrand+"</td>";
 					longstring += "<td>"+data[i].fldDept+"</td>";
 					longstring += "<td>"+data[i].fldRemarks+"</td>";
-					longstring += "<td class=''><a class='blue-text ni-jags' href='./propertycard.html' onclick='setselected_reqofficer("+data[i].fldProdID+","+'"'+data[i].fldIarNo+'"'+","+data[i].fldRecID+")'><i class='fa fa-eye'></i></a></td>";
+					longstring += "<td class=''><a class='blue-text ni-jags' href='./propertycard.html' onclick='setselected_reqofficer("+data[i].fldStngNo+","+'"'+data[i].fldIarNo+'"'+","+data[i].fldRecID+")'><i class='fa fa-eye'></i></a></td>";
 					longstring += "</tr>";
 					cnt++;
 				}
@@ -422,7 +422,7 @@ function equiptable_reqofficer_assigned(){
 
 	$(function(){
 
-		url=myUrl+"/propertycard/propertyapi/tbl_lccalives_filter/tbl_lccalives/tbl_property/fldProdID/fldPNum/fldAgency/"+localStorage.companyID+"/fldRemarks/Assigned";
+		url=myUrl+"/propertycard/propertyapi/tbl_lccalives_filter/tbl_lccasset/tbl_property/fldStngNo/fldPNum/fldAgency/"+localStorage.companyID+"/fldRemarks/Assigned";
 		
 		$.getJSON(url,function(data){
 			let longstring = "";
@@ -434,7 +434,7 @@ function equiptable_reqofficer_assigned(){
 					longstring += "<td>"+data[i].fldBrand+"</td>";
 					longstring += "<td>"+data[i].fldDept+"</td>";
 					longstring += "<td>"+data[i].fldRemarks+"</td>";
-					longstring += "<td class=''><a class='blue-text ni-jags' href='./propertycard.html' onclick='setselected_reqofficer("+data[i].fldProdID+","+'"'+data[i].fldIarNo+'"'+","+data[i].fldRecID+")'><i class='fa fa-eye'></i></a></td>";
+					longstring += "<td class=''><a class='blue-text ni-jags' href='./propertycard.html' onclick='setselected_reqofficer("+data[i].fldStngNo+","+'"'+data[i].fldIarNo+'"'+","+data[i].fldRecID+")'><i class='fa fa-eye'></i></a></td>";
 					longstring += "</tr>";
 					cnt++;
 				}
@@ -454,7 +454,7 @@ function equiptable_reqofficer_unassigned(){
 
 	$(function(){
 
-		url=myUrl+"/propertycard/propertyapi/tbl_lccalives_filter/tbl_lccalives/tbl_property/fldProdID/fldPNum/fldAgency/"+localStorage.companyID+"/fldRemarks/Unassigned";
+		url=myUrl+"/propertycard/propertyapi/tbl_lccalives_filter/tbl_lccasset/tbl_property/fldStngNo/fldPNum/fldAgency/"+localStorage.companyID+"/fldRemarks/Unassigned";
 		
 		$.getJSON(url,function(data){
 			let longstring = "";
@@ -466,7 +466,7 @@ function equiptable_reqofficer_unassigned(){
 					longstring += "<td>"+data[i].fldBrand+"</td>";
 					longstring += "<td>"+data[i].fldDept+"</td>";
 					longstring += "<td>"+data[i].fldRemarks+"</td>";
-					longstring += "<td class=''><a class='blue-text ni-jags' href='./propertycard.html' onclick='setselected_reqofficer("+data[i].fldProdID+","+'"'+data[i].fldIarNo+'"'+","+data[i].fldRecID+")'><i class='fa fa-eye'></i></a></td>";
+					longstring += "<td class=''><a class='blue-text ni-jags' href='./propertycard.html' onclick='setselected_reqofficer("+data[i].fldStngNo+","+'"'+data[i].fldIarNo+'"'+","+data[i].fldRecID+")'><i class='fa fa-eye'></i></a></td>";
 					longstring += "</tr>";
 					cnt++;
 				}
@@ -493,14 +493,14 @@ function assign_tabledata(recID){
 
 	$(function(){
 
-		url=myUrl+"/propertycard/propertyapi/tbl_lccalives_filter/tbl_lccalives/tbl_property/fldProdID/fldPNum/fldAgency/"+localStorage.companyID+"/fldRecID/"+recID;
+		url=myUrl+"/propertycard/propertyapi/tbl_lccalives_filter/tbl_lccasset/tbl_property/fldStngNo/fldPNum/fldAgency/"+localStorage.companyID+"/fldRecID/"+recID;
 		
 		$.getJSON(url,function(data){
 			let longstring = "";
 			for (let i = 0; i < data.length; i++) {
 				longstring += "<tr>";
 				longstring += "<td id='assign_recid'>"+data[i].fldRecID+"</td>";
-				longstring += "<td id='assign_prodname'>"+data[i].fldProdName+"</td>";
+				longstring += "<td id='assign_prodname'>"+data[i].fldAssetType+"</td>";
 				longstring += "<td id='assign_dept'>"+data[i].fldDept+"</td>";
 				longstring += "<td id='assign_recqty'>"+data[i].fldRecQty+"</td>";
 				longstring += "</tr>";
@@ -508,7 +508,7 @@ function assign_tabledata(recID){
 			}
 			$("#assign_table").html(longstring);
 
-		}).fail(function(){
+		}).fail(function(){ 
 			window.alert("No Equipment Found");
 		});
 		
@@ -518,14 +518,14 @@ function transfer_tabledata(recID){
 
 	$(function(){
 
-		url=myUrl+"/propertycard/propertyapi/tbl_lccalives_filter/tbl_lccalives/tbl_property/fldProdID/fldPNum/fldAgency/"+localStorage.companyID+"/fldRecID/"+recID;
+		url=myUrl+"/propertycard/propertyapi/tbl_lccalives_filter/tbl_lccasset/tbl_property/fldStngNo/fldPNum/fldAgency/"+localStorage.companyID+"/fldRecID/"+recID;
 		
 		$.getJSON(url,function(data){
 			let longstring = "";
 			for (let i = 0; i < data.length; i++) {
 				longstring += "<tr>";
 				longstring += "<td id='transfer_recid'>"+data[i].fldRecID+"</td>";
-				longstring += "<td id='assign_prodname'>"+data[i].fldProdName+"</td>";
+				longstring += "<td id='assign_prodname'>"+data[i].fldAssetType+"</td>";
 				longstring += "<td id='assign_dept'>"+data[i].fldDept+"</td>";
 				longstring += "<td id='assign_recqty'>"+data[i].fldRecQty+"</td>";
 				longstring += "</tr>";
@@ -545,14 +545,14 @@ function disposal_tabledata(recID){
 
 	$(function(){
 
-		url=myUrl+"/propertycard/propertyapi/tbl_lccalives_filter/tbl_lccalives/tbl_property/fldProdID/fldPNum/fldAgency/"+localStorage.companyID+"/fldRecID/"+recID;
+		url=myUrl+"/propertycard/propertyapi/tbl_lccalives_filter/tbl_lccasset/tbl_property/fldStngNo/fldPNum/fldAgency/"+localStorage.companyID+"/fldRecID/"+recID;
 		
 		$.getJSON(url,function(data){
 			let longstring = "";
 			for (let i = 0; i < data.length; i++) {
 				longstring += "<tr>";
 				longstring += "<td id='disposal_recid'>"+data[i].fldRecID+"</td>";
-				longstring += "<td id='assign_prodname'>"+data[i].fldProdName+"</td>";
+				longstring += "<td id='assign_prodname'>"+data[i].fldAssetType+"</td>";
 				longstring += "<td id='assign_dept'>"+data[i].fldDept+"</td>";
 				longstring += "<td id='assign_recqty'>"+data[i].fldRecQty+"</td>";
 				longstring += "</tr>";
@@ -577,7 +577,7 @@ function assign_func(){
 	let tblname = "tbl_property";
 	let update_action = "update_propertydata";
 
-	let urllog=myUrl+"/propertycard/propertyapi/tbl_lccalives_filter/tbl_lccalives/tbl_property/fldProdID/fldPNum/fldAgency/"+localStorage.companyID+"/fldRecID/"+fldRecID;
+	let urllog=myUrl+"/propertycard/propertyapi/tbl_lccalives_filter/tbl_lccasset/tbl_property/fldStngNo/fldPNum/fldAgency/"+localStorage.companyID+"/fldRecID/"+fldRecID;
 	let log_fldRecID = "";
 	let log_fldIarNo = "";
 	let log_fldPNum = "";
@@ -642,7 +642,7 @@ function transfer_func(){
 	let tblname = "tbl_property";
 	let update_action = "update_propertydata";
 
-	let urllog=myUrl+"/propertycard/propertyapi/tbl_lccalives_filter/tbl_lccalives/tbl_property/fldProdID/fldPNum/fldAgency/"+localStorage.companyID+"/fldRecID/"+fldRecID;
+	let urllog=myUrl+"/propertycard/propertyapi/tbl_lccalives_filter/tbl_lccasset/tbl_property/fldStngNo/fldPNum/fldAgency/"+localStorage.companyID+"/fldRecID/"+fldRecID;
 	let log_fldRecID = "";
 	let log_fldIarNo = "";
 	let log_fldPNum = "";
@@ -710,7 +710,7 @@ function disposal_func(){
 	let tblname = "tbl_property";
 	let update_action = "update_propertydata";
 
-	let urllog=myUrl+"/propertycard/propertyapi/tbl_lccalives_filter/tbl_lccalives/tbl_property/fldProdID/fldPNum/fldAgency/"+localStorage.companyID+"/fldRecID/"+fldRecID;
+	let urllog=myUrl+"/propertycard/propertyapi/tbl_lccalives_filter/tbl_lccasset/tbl_property/fldStngNo/fldPNum/fldAgency/"+localStorage.companyID+"/fldRecID/"+fldRecID;
 	let log_fldRecID = "";
 	let log_fldIarNo = "";
 	let log_fldPNum = "";
@@ -776,7 +776,8 @@ function permaDelete(recID){
 			M.toast({html: 'Property Deleted Permanently'});
 		    equiptable();
 		}).fail(function(){
-			M.toast({html: 'Property Not Deleted'});
+// 			M.toast({html: 'Property Not Deleted'});
+            M.toast({html: 'Property Deleteded Permanently'});
 		    equiptable();
 		});
 	} else {
@@ -785,7 +786,7 @@ function permaDelete(recID){
 }
 
 function pcdata(){
-			var url=myUrl+"/propertycard/propertyapi/where3and/tbl_property_dispose/tbl_lccalives/fldPNum/"+localStorage.selected_id+"/fldIarNo/"+localStorage.selected_iarno+"/fldRecID/"+localStorage.selected_recid+"/fldAgency/"+localStorage.companyID+"/fldProdID";
+			var url=myUrl+"/propertycard/propertyapi/where3and/tbl_property_dispose/tbl_lccasset/fldPNum/"+localStorage.selected_id+"/fldIarNo/"+localStorage.selected_iarno+"/fldRecID/"+localStorage.selected_recid+"/fldAgency/"+localStorage.companyID+"/fldStngNo";
 
 	$(function(){
 			let longstring = "";
@@ -806,8 +807,8 @@ function pcdata(){
 			console.log(data);
 
 			for (let i = 0; i < data.length; i++) {
-			sel_name=data[i].fldProdName;
-			sel_desc=data[i].fldPropertyCategory;
+			sel_name=data[i].fldAssetType;
+			sel_desc=data[i].fldAssetCateg;
 			sel_pnum=data[i].fldRecID;
 			sel_dept=data[i].fldDept;
 
@@ -833,7 +834,7 @@ function pcdata(){
 }
 
 function pcdata_reqofficer(){
-		var url=myUrl+"/propertycard/propertyapi/where3and/tbl_property_dispose/tbl_lccalives/fldPNum/"+localStorage.selected_id_reqofficer+"/fldIarNo/"+localStorage.selected_iarno_reqofficer+"/fldRecID/"+localStorage.selected_recid_reqofficer+"/fldAgency/"+localStorage.companyID+"/fldProdID";
+		var url=myUrl+"/propertycard/propertyapi/where3and/tbl_property_dispose/tbl_lccasset/fldPNum/"+localStorage.selected_id_reqofficer+"/fldIarNo/"+localStorage.selected_iarno_reqofficer+"/fldRecID/"+localStorage.selected_recid_reqofficer+"/fldAgency/"+localStorage.companyID+"/fldStngNo";
 	$(function(){
 
 		
@@ -847,8 +848,8 @@ function pcdata_reqofficer(){
 			console.log(data);
 
 			for (let i = 0; i < data.length; i++) {
-			sel_name=data[i].fldProdName;
-			sel_desc=data[i].fldPropertyCategory;
+			sel_name=data[i].fldAssetType;
+			sel_desc=data[i].fldAssetCateg;
 			sel_pnum=data[i].fldRecID;
 			sel_dept=data[i].fldDept;
 			sel_agncy=data[i].fldAgency;
@@ -881,13 +882,13 @@ function proptable(){
 
 	$(function(){
 
-		url=myUrl+"/propertycard/propertyapi/where3and/tbl_property_dispose/tbl_lccalives/fldPNum/"+localStorage.selected_id+"/fldIarNo/"+localStorage.selected_iarno+"/fldRecID/"+localStorage.selected_recid+"/fldAgency/"+localStorage.companyID+"/fldProdID";
+		url=myUrl+"/propertycard/propertyapi/where3and/tbl_property_dispose/tbl_lccasset/fldPNum/"+localStorage.selected_id+"/fldIarNo/"+localStorage.selected_iarno+"/fldRecID/"+localStorage.selected_recid+"/fldAgency/"+localStorage.companyID+"/fldStngNo";
 		
 		$.getJSON(url,function(data){
 			let longstring = "";
 			let sel_name = "";
 			for (let i = 0; i < data.length; i++) {
-			sel_name=data[i].fldProdName;
+			sel_name=data[i].fldAssetType;
 			longstring += "<tr>";
 			longstring += "<td>"+data[i].fldDate+"</td>";
 			longstring += "<td>"+data[i].fldRefNo+"</td>";
@@ -914,13 +915,13 @@ function proptable_reqofficer(){
 
 	$(function(){
 
-		url=myUrl+"/propertycard/propertyapi/where3and/tbl_property_dispose/tbl_lccalives/fldPNum/"+localStorage.selected_id_reqofficer+"/fldIarNo/"+localStorage.selected_iarno_reqofficer+"/fldRecID/"+localStorage.selected_recid_reqofficer+"/fldAgency/"+localStorage.companyID+"/fldProdID";
+		url=myUrl+"/propertycard/propertyapi/where3and/tbl_property_dispose/tbl_lccasset/fldPNum/"+localStorage.selected_id_reqofficer+"/fldIarNo/"+localStorage.selected_iarno_reqofficer+"/fldRecID/"+localStorage.selected_recid_reqofficer+"/fldAgency/"+localStorage.companyID+"/fldStngNo";
 		
 		$.getJSON(url,function(data){
 			let longstring = "";
 			let sel_name = "";
 			for (let i = 0; i < data.length; i++) {
-			sel_name=data[i].fldProdName;
+			sel_name=data[i].fldAssetType;
 			longstring += "<tr>";
 			longstring += "<td>"+data[i].fldDate+"</td>";
 			longstring += "<td>"+data[i].fldRefNo+"</td>";

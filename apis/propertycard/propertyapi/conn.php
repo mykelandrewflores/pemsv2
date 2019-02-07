@@ -1,15 +1,15 @@
 <?php 
 
 define('SERVER','localhost');
-define('USERNAME','root');
-define('PASSWORD','');
-define('DB','db_arnie');
+define('USERNAME','u687158084_arnie');
+define('PASSWORD','123456ab');
+define('DB','u687158084_pems');
 $db=new con(SERVER,USERNAME,PASSWORD,DB);
 
 class dbconnect{
 	public function db(){
-		// return $db=mysqli_connect("localhost", "u687158084_arnie", "123456ab", "u687158084_pems");
-		return $db=mysqli_connect("localhost", "root", "", "db_arnie");
+		return $db=mysqli_connect("localhost", "u687158084_arnie", "123456ab", "u687158084_pems");
+		// return $db=mysqli_connect("localhost", "root", "", "db_arnie");
 
 	}
 }
@@ -90,7 +90,7 @@ class con{
 		return $this;
 	}
 	function durationmy($tblone,$tbltwo,$idone,$idtwo,$idthree,$value1){
-		$this->string="SELECT * FROM $tblone,$tbltwo WHERE $tblone.$idone = $tbltwo.$idtwo AND $tbltwo.$idthree = $value1 ORDER BY $tbltwo.fldRecID DESC";
+		$this->string="SELECT * FROM $tblone,$tbltwo WHERE $tblone.$idone = $tbltwo.$idtwo AND $tbltwo.$idthree = $value1  ORDER BY $tbltwo.fldRecID DESC";
 		return $this;
 	}
 	function duration1($tblone,$tbltwo,$idone,$idtwo,$idthree,$value1,$idfour,$value2){
@@ -100,21 +100,21 @@ class con{
 	}
 	function searchall($tblone,$tbltwo,$idone,$idtwo,$idthree,$value1,$idfour,$value2,$idfive,$value3,$idsix,$value4){
 	
-		$this->string="SELECT * FROM $tblone,$tbltwo WHERE $tblone.$idone = $tbltwo.$idtwo AND $tbltwo.$idthree = $value1 AND $tbltwo.$idfour = '$value2' AND $tbltwo.$idfive = '$value3' AND $tblone.$idsix = '$value4' ORDER BY $tbltwo.fldRecID DESC";
+		$this->string="SELECT * FROM $tblone,$tbltwo WHERE $tblone.$idone = $tbltwo.$idtwo AND $tbltwo.$idthree = $value1 AND $tbltwo.$idfour LIKE '%$value2%' AND $tbltwo.$idfive = '$value3' AND $tblone.$idsix = '$value4' ORDER BY $tbltwo.fldRecID DESC";
 		return $this;
 	}
 	function searchpropname($tblone,$tbltwo,$idone,$idtwo,$idthree,$value1,$idfour,$value2){
 	
-		$this->string="SELECT * FROM $tblone,$tbltwo WHERE $tblone.$idone = $tbltwo.$idtwo AND $tbltwo.$idthree = $value1 AND $tbltwo.$idfour = '$value2' ORDER BY $tbltwo.fldRecID DESC";
+		$this->string="SELECT * FROM $tblone,$tbltwo WHERE $tblone.$idone = $tbltwo.$idtwo AND $tbltwo.$idthree = $value1 AND $tbltwo.$idfour LIKE '%$value2%' ORDER BY $tbltwo.fldRecID DESC";
 		return $this;
 	}
 	function searchnamecateg($tblone,$tbltwo,$idone,$idtwo,$idthree,$value1,$idfour,$value2,$idfive,$value3){
 	
-		$this->string="SELECT * FROM $tblone,$tbltwo WHERE $tblone.$idone = $tbltwo.$idtwo AND $tbltwo.$idthree = $value1 AND $tbltwo.$idfour = '$value2' AND $tblone.$idfive = '$value3' ORDER BY $tbltwo.fldRecID DESC";
+		$this->string="SELECT * FROM $tblone,$tbltwo WHERE $tblone.$idone = $tbltwo.$idtwo AND $tbltwo.$idthree = $value1 AND $tbltwo.$idfour LIKE '%$value2%' AND $tblone.$idfive = '$value3' ORDER BY $tbltwo.fldRecID DESC";
 		return $this;
 	}function searchnamedept($tblone,$tbltwo,$idone,$idtwo,$idthree,$value1,$idfour,$value2,$idfive,$value3){
 	
-		$this->string="SELECT * FROM $tblone,$tbltwo WHERE $tblone.$idone = $tbltwo.$idtwo AND $tbltwo.$idthree = $value1 AND $tbltwo.$idfour = '$value2' AND $tbltwo.$idfive = '$value3' ORDER BY $tbltwo.fldRecID DESC";
+		$this->string="SELECT * FROM $tblone,$tbltwo WHERE $tblone.$idone = $tbltwo.$idtwo AND $tbltwo.$idthree = $value1 AND $tbltwo.$idfour LIKE '%$value2%' AND $tbltwo.$idfive = '$value3' ORDER BY $tbltwo.fldRecID DESC";
 		return $this;
 	}
 	function UACtable($tblone,$tbltwo,$tblthree,$idone,$idtwo,$idthree,$position,$module){
@@ -126,9 +126,12 @@ class con{
 		$this->string="SELECT $tblone.*,$tbltwo.$position,$tblthree.$module FROM $tblone,$tbltwo,tblmodule WHERE $tblone.$idone=$tbltwo.$idtwo AND $tblone.$idthree = $tblthree.$idthree AND $tblone.$tblfour = $empid";
 		return $this;
 	}
-
+	function getNextID($tblname){
+	    $this->string="SELECT `auto_increment` FROM INFORMATION_SCHEMA.TABLES WHERE table_name = '$tblname'";
+	    return $this;
+	}
 	function APPYEAR($compid,$dept){
-		$this->string="SELECT * FROM tbl_purchaserequest b, tbl_purchaseorder d, tbl_purchaseitems e, tbl_lccalives f WHERE b.fldPrNo = d.fldPoNo AND d.fldPoNo = e.fldPrNo AND e.fldRemarks='Approved' AND e.fldPNum = f.fldProdID AND b.fldCompanyID = $compid AND b.fldDept= '$dept'";
+		$this->string="SELECT * FROM tbl_purchaserequest b, tbl_purchaseorder d, tbl_purchaseitems e, tbl_lccasset f WHERE b.fldPrNo = d.fldPoNo AND d.fldPoNo = e.fldPrNo AND e.fldRemarks='Pending' AND e.fldPNum = f.fldStngNo AND b.fldCompanyID = $compid AND b.fldDept= '$dept' ";
 		return $this;
 	}
 
@@ -334,6 +337,7 @@ class delete{
 		echo json_encode($data);
 	}
 }
+
 
 
 ?>

@@ -1,8 +1,8 @@
 <?php
 class dbconnect{
 	public function db(){
-		// return mysqli_connect("localhost", "u687158084_arnie", "123456ab", "u687158084_pems");
-		return mysqli_connect("localhost", "root", "", "db_arnie");
+		return mysqli_connect("localhost", "u687158084_arnie", "123456ab", "u687158084_pems");
+		// return mysqli_connect("localhost", "root", "", "db_arnie");
 	}
 }
 

@@ -1,7 +1,7 @@
 <?php
 header('Access-Control-Allow-Origin: *');
 
-$db = mysqli_connect("localhost", "root", "", "db_arnie");
+$db = mysqli_connect("localhost", "u687158084_arnie", "123456ab", "u687158084_pems");
 $tno = $_GET['tno'];
 $uid = $_GET['uid'];
 
